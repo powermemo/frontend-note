@@ -678,3 +678,24 @@ CONVERT(1,UNSIGNED)-2.0 X4;`
 | **`IF(expr1,expr2,expr3)`** | IF expr1?expr2:expr3 |
 | NULLIF\(expr1,expr2\) | expr1==expr2?NULL:expr1 |
 
+## 作業練習
+
+1. 顯示系統目前的日期並將 表頭命名為「系統日期」
+2. 顯示所有員工之員編、姓名、薪資、薪資+15%，並以整數表示，表頭命名為new salary。
+3. 接上題，增加一個資料向表頭命名為increase\(new salary 扣除salary的值\)
+4. 顯示員工姓名、到職日、檢討薪資日期（到職日六月後的第一個星期一），該欄位命名為review， 自訂日期格式為：Sunday, the seventh of September。
+5. 顯示每位員工的姓名、資料項\(months\_worked\)：計算到今天為止工作了幾個月\(月數四捨五入到整數\)
+6. 顯示格式：&lt;員工姓名&gt; earns &lt;薪水&gt; monthly but wants &lt;3倍薪水&gt;.並將表頭命名為dream salaries。
+7. 顯示所有員工之姓名和薪資，設定薪資長度為15字元並在左邊加上$符號，表頭命名為SALARY。
+8. 顯示員工姓名、到職日，資料項\(DAY\)： 顯示員工被雇用那天為星期幾，並以星期一作為一周的起始日，依星期排序。
+9. 顯示員工姓名和名為comm欄位：顯示佣金額，若該員工沒有佣金則顯示"NO COMMISSION"
+10. 顯示資料項employee\_and\_their\_salaries的資料來顯示所有員工姓名、薪資， 且用星號表示他們的薪資，每一個星號表100元，薪資由高至低顯示。
+
+{% tabs %}
+{% tab title="Plain Text" %}
+```text
+
+```
+{% endtab %}
+{% endtabs %}
+
