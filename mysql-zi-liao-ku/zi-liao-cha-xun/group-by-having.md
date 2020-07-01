@@ -376,3 +376,123 @@ GROUP BY deptno;`
 6. 顯示每位主管的員工編號及該主管下屬員工最低薪資，排除沒有主管和下屬員工最低薪資少於1000的主管，並以下屬員工最低薪資做降冪排序。
 7. 顯示在1980,1981,1982,1983年到職的員工數量，並給該資料項一個合適的名稱。
 
+{% tabs %}
+{% tab title="1" %}
+```text
+SELECT ROUND(MAX(sal),0) 'Maximum',  
+		ROUND(MIN(sal),0) 'Minimum', 
+        ROUND(SUM(sal),0) 'SUM', 
+        ROUND(AVG(sal),0) 'Average' 
+FROM emp;
++---------+---------+-------+---------+
+| Maximum | Minimum | SUM   | Average |
++---------+---------+-------+---------+
+|    5000 |     800 | 29025 |    2073 |
++---------+---------+-------+---------+
+1 row in set (0.03 sec)
+```
+{% endtab %}
+
+{% tab title="2" %}
+```
+SELECT job, MAX(sal), MIN(sal), SUM(sal), AVG(sal) 
+FROM emp 
+GROUP BY JOB;
++-----------+----------+----------+----------+-------------+
+| job       | MAX(sal) | MIN(sal) | SUM(sal) | AVG(sal)    |
++-----------+----------+----------+----------+-------------+
+| CLERK     |  1300.00 |   800.00 |  4150.00 | 1037.500000 |
+| SALESMAN  |  1600.00 |  1250.00 |  5600.00 | 1400.000000 |
+| MANAGER   |  2975.00 |  2450.00 |  8275.00 | 2758.333333 |
+| ANALYST   |  3000.00 |  3000.00 |  6000.00 | 3000.000000 |
+| PRESIDENT |  5000.00 |  5000.00 |  5000.00 | 5000.000000 |
++-----------+----------+----------+----------+-------------+
+5 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="3" %}
+```
+SELECT job, COUNT(*) 
+FROM emp 
+GROUP BY JOB;
++-----------+----------+
+| job       | COUNT(*) |
++-----------+----------+
+| CLERK     |        4 |
+| SALESMAN  |        4 |
+| MANAGER   |        3 |
+| ANALYST   |        2 |
+| PRESIDENT |        1 |
++-----------+----------+
+5 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="4" %}
+```
+SELECT count(*) 'Number of Managers' 
+FROM emp 
+WHERE job='MANAGER';
++--------------------+
+| Number of Managers |
++--------------------+
+|                  3 |
++--------------------+
+1 row in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="5" %}
+```
+SELECT MAX(sal)-MIN(sal) 'DIFFERENCE' 
+FROM emp;
++------------+
+| DIFFERENCE |
++------------+
+|    4200.00 |
++------------+
+1 row in set (0.04 sec)
+```
+{% endtab %}
+
+{% tab title="6" %}
+```
+SELECT mgr, MIN(sal) 
+FROM emp 
+GROUP BY mgr 
+HAVING mgr IS NOT NULL AND MIN(sal)>1000 
+ORDER BY MIN(sal) DESC; 
++------+----------+
+| mgr  | MIN(sal) |
++------+----------+
+| 7566 |  3000.00 |
+| 7839 |  2450.00 |
+| 7782 |  1300.00 |
+| 7788 |  1100.00 |
++------+----------+
+4 rows in set (0.02 sec)
+```
+{% endtab %}
+
+{% tab title="7" %}
+```
+SELECT YEAR(hiredate) 'HYear', count(*) 'Number of People' 
+FROM emp 
+GROUP by YEAR(hiredate) 
+HAVING HYear IN (1980,1981,1982,1983); 
++-------+------------------+
+| HYear | Number of People |
++-------+------------------+
+|  1980 |                1 |
+|  1981 |               10 |
+|  1982 |                2 |
+|  1983 |                1 |
++-------+------------------+
+4 rows in set (0.04 sec)
+```
+{% endtab %}
+{% endtabs %}
+
+
+
