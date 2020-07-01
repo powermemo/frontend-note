@@ -692,9 +692,261 @@ CONVERT(1,UNSIGNED)-2.0 X4;`
 10. 顯示資料項employee\_and\_their\_salaries的資料來顯示所有員工姓名、薪資， 且用星號表示他們的薪資，每一個星號表100元，薪資由高至低顯示。
 
 {% tabs %}
-{% tab title="Plain Text" %}
+{% tab title="0" %}
 ```text
+SELECT CURDATE() '系統日期';
++------------+
+| 系統日期   |
++------------+
+| 2020-07-01 |
++------------+
+1 row in set (0.14 sec)
+```
+{% endtab %}
 
+{% tab title="1" %}
+```
+SELECT empno, ename, sal, round(sal*1.15,2) 'New Salary' 
+	FROM emp;
++-------+--------+---------+------------+
+| empno | ename  | sal     | New Salary |
++-------+--------+---------+------------+
+|  7369 | SMITH  |  800.00 |     920.00 |
+|  7499 | ALLEN  | 1600.00 |    1840.00 |
+|  7521 | WARD   | 1250.00 |    1437.50 |
+|  7566 | JONES  | 2975.00 |    3421.25 |
+|  7654 | MARTIN | 1250.00 |    1437.50 |
+|  7698 | BLAKE  | 2850.00 |    3277.50 |
+|  7782 | CLARK  | 2450.00 |    2817.50 |
+|  7788 | SCOTT  | 3000.00 |    3450.00 |
+|  7839 | KING   | 5000.00 |    5750.00 |
+|  7844 | TURNER | 1500.00 |    1725.00 |
+|  7876 | ADAMS  | 1100.00 |    1265.00 |
+|  7900 | JAMES  |  950.00 |    1092.50 |
+|  7902 | FORD   | 3000.00 |    3450.00 |
+|  7934 | MILLER | 1300.00 |    1495.00 |
++-------+--------+---------+------------+
+14 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="2" %}
+```
+SELECT empno, 
+	ename, 
+	sal, 
+	round(sal*1.15,2) 'New Salary', 
+	round(sal*0.15,2) 'Increase' 
+FROM emp;
++-------+--------+---------+------------+----------+
+| empno | ename  | sal     | New Salary | Increase |
++-------+--------+---------+------------+----------+
+|  7369 | SMITH  |  800.00 |     920.00 |   120.00 |
+|  7499 | ALLEN  | 1600.00 |    1840.00 |   240.00 |
+|  7521 | WARD   | 1250.00 |    1437.50 |   187.50 |
+|  7566 | JONES  | 2975.00 |    3421.25 |   446.25 |
+|  7654 | MARTIN | 1250.00 |    1437.50 |   187.50 |
+|  7698 | BLAKE  | 2850.00 |    3277.50 |   427.50 |
+|  7782 | CLARK  | 2450.00 |    2817.50 |   367.50 |
+|  7788 | SCOTT  | 3000.00 |    3450.00 |   450.00 |
+|  7839 | KING   | 5000.00 |    5750.00 |   750.00 |
+|  7844 | TURNER | 1500.00 |    1725.00 |   225.00 |
+|  7876 | ADAMS  | 1100.00 |    1265.00 |   165.00 |
+|  7900 | JAMES  |  950.00 |    1092.50 |   142.50 |
+|  7902 | FORD   | 3000.00 |    3450.00 |   450.00 |
+|  7934 | MILLER | 1300.00 |    1495.00 |   195.00 |
++-------+--------+---------+------------+----------+
+14 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="3" %}
+```
+SELECT CONCAT(ename, ' earns ', sal ,' monthly but wants ' ,3*sal) 
+							'Dream Salaries' 
+	FROM emp;
++------------------------------------------------+
+| Dream Salaries                                 |
++------------------------------------------------+
+| SMITH earns 800.00 monthly but wants 2400.00   |
+| ALLEN earns 1600.00 monthly but wants 4800.00  |
+| WARD earns 1250.00 monthly but wants 3750.00   |
+| JONES earns 2975.00 monthly but wants 8925.00  |
+| MARTIN earns 1250.00 monthly but wants 3750.00 |
+| BLAKE earns 2850.00 monthly but wants 8550.00  |
+| CLARK earns 2450.00 monthly but wants 7350.00  |
+| SCOTT earns 3000.00 monthly but wants 9000.00  |
+| KING earns 5000.00 monthly but wants 15000.00  |
+| TURNER earns 1500.00 monthly but wants 4500.00 |
+| ADAMS earns 1100.00 monthly but wants 3300.00  |
+| JAMES earns 950.00 monthly but wants 2850.00   |
+| FORD earns 3000.00 monthly but wants 9000.00   |
+| MILLER earns 1300.00 monthly but wants 3900.00 |
++------------------------------------------------+
+14 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="4" %}
+```
+SELECT ename, 
+hiredate, 
+	DATE_FORMAT(ADDDATE(ADDDATE(hiredate,INTERVAL 6 MONTH), 
+		INTERVAL MOD(7-WEEKDAY(ADDDATE(hiredate,INTERVAL 6 MONTH)),7) DAY)
+	, '%W ,the %D of %M') 'REVIEW' 
+	FROM emp;
++--------+---------------------+------------------------------+
+| ename  | hiredate            | REVIEW                       |
++--------+---------------------+------------------------------+
+| SMITH  | 1980-12-17 00:00:00 | Monday ,the 22nd of June     |
+| ALLEN  | 1981-02-20 00:00:00 | Monday ,the 24th of August   |
+| WARD   | 1981-02-22 00:00:00 | Monday ,the 24th of August   |
+| JONES  | 1981-04-02 00:00:00 | Monday ,the 5th of October   |
+| MARTIN | 1981-09-28 00:00:00 | Monday ,the 29th of March    |
+| BLAKE  | 1981-05-01 00:00:00 | Monday ,the 2nd of November  |
+| CLARK  | 1981-06-09 00:00:00 | Monday ,the 14th of December |
+| SCOTT  | 1982-12-09 00:00:00 | Monday ,the 13th of June     |
+| KING   | 1981-11-17 00:00:00 | Monday ,the 17th of May      |
+| TURNER | 1981-09-08 00:00:00 | Monday ,the 8th of March     |
+| ADAMS  | 1983-01-12 00:00:00 | Monday ,the 18th of July     |
+| JAMES  | 1981-12-03 00:00:00 | Monday ,the 7th of June      |
+| FORD   | 1981-12-03 00:00:00 | Monday ,the 7th of June      |
+| MILLER | 1982-01-23 00:00:00 | Monday ,the 26th of July     |
++--------+---------------------+------------------------------+
+14 rows in set (0.02 sec)
+```
+{% endtab %}
+
+{% tab title="5" %}
+```
+SELECT ename, ROUND(DATEDIFF(curdate(), hiredate)/365*12,0) 'MONTHS_WORKED' 
+	FROM emp;
++--------+---------------+
+| ename  | MONTHS_WORKED |
++--------+---------------+
+| SMITH  |           475 |
+| ALLEN  |           473 |
+| WARD   |           473 |
+| JONES  |           471 |
+| MARTIN |           465 |
+| BLAKE  |           470 |
+| CLARK  |           469 |
+| SCOTT  |           451 |
+| KING   |           464 |
+| TURNER |           466 |
+| ADAMS  |           450 |
+| JAMES  |           463 |
+| FORD   |           463 |
+| MILLER |           462 |
++--------+---------------+
+14 rows in set (0.02 sec)
+```
+{% endtab %}
+
+{% tab title="7" %}
+```
+SELECT ename, lpad(sal,15,'$') 'Salary' 
+	FROM emp;
++--------+-----------------+
+| ename  | Salary          |
++--------+-----------------+
+| SMITH  | $$$$$$$$$800.00 |
+| ALLEN  | $$$$$$$$1600.00 |
+| WARD   | $$$$$$$$1250.00 |
+| JONES  | $$$$$$$$2975.00 |
+| MARTIN | $$$$$$$$1250.00 |
+| BLAKE  | $$$$$$$$2850.00 |
+| CLARK  | $$$$$$$$2450.00 |
+| SCOTT  | $$$$$$$$3000.00 |
+| KING   | $$$$$$$$5000.00 |
+| TURNER | $$$$$$$$1500.00 |
+| ADAMS  | $$$$$$$$1100.00 |
+| JAMES  | $$$$$$$$$950.00 |
+| FORD   | $$$$$$$$3000.00 |
+| MILLER | $$$$$$$$1300.00 |
++--------+-----------------+
+14 rows in set (0.05 sec)
+```
+{% endtab %}
+
+{% tab title="8" %}
+```
+SELECT ename, hiredate, weekday(hiredate)+1 'Day' 
+	FROM emp
+    order by 3;
++--------+---------------------+------+
+| ename  | hiredate            | Day  |
++--------+---------------------+------+
+| MARTIN | 1981-09-28 00:00:00 |    1 |
+| CLARK  | 1981-06-09 00:00:00 |    2 |
+| KING   | 1981-11-17 00:00:00 |    2 |
+| TURNER | 1981-09-08 00:00:00 |    2 |
+| SMITH  | 1980-12-17 00:00:00 |    3 |
+| ADAMS  | 1983-01-12 00:00:00 |    3 |
+| JONES  | 1981-04-02 00:00:00 |    4 |
+| SCOTT  | 1982-12-09 00:00:00 |    4 |
+| JAMES  | 1981-12-03 00:00:00 |    4 |
+| FORD   | 1981-12-03 00:00:00 |    4 |
+| ALLEN  | 1981-02-20 00:00:00 |    5 |
+| BLAKE  | 1981-05-01 00:00:00 |    5 |
+| MILLER | 1982-01-23 00:00:00 |    6 |
+| WARD   | 1981-02-22 00:00:00 |    7 |
++--------+---------------------+------+
+14 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="9" %}
+```
+SELECT ename, ifnull(comm,'No Commission.') 'Comm' 
+	FROM emp;
++--------+----------------+
+| ename  | Comm           |
++--------+----------------+
+| SMITH  | No Commission. |
+| ALLEN  | 300.00         |
+| WARD   | 500.00         |
+| JONES  | No Commission. |
+| MARTIN | 1400.00        |
+| BLAKE  | No Commission. |
+| CLARK  | No Commission. |
+| SCOTT  | No Commission. |
+| KING   | No Commission. |
+| TURNER | 0.00           |
+| ADAMS  | No Commission. |
+| JAMES  | No Commission. |
+| FORD   | No Commission. |
+| MILLER | No Commission. |
++--------+----------------+
+14 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="10" %}
+```
+SELECT CONCAT(ename, ' ' ,REPEAT('*',TRUNCATE(sal/100,0))) 
+             'EMPLOYEE_AND_THEIR_SALARIES' 
+FROM emp 
+ORDER BY sal DESC;
++---------------------------------------------------------+
+| EMPLOYEE_AND_THEIR_SALARIES                             |
++---------------------------------------------------------+
+| KING ************************************************** |
+| SCOTT ******************************                    |
+| FORD ******************************                     |
+| JONES *****************************                     |
+| BLAKE ****************************                      |
+| CLARK ************************                          |
+| ALLEN ****************                                  |
+| TURNER ***************                                  |
+| MILLER *************                                    |
+| WARD ************                                       |
+| MARTIN ************                                     |
+| ADAMS ***********                                       |
+| JAMES *********                                         |
+| SMITH ********                                          |
++---------------------------------------------------------+
+14 rows in set (0.02 sec)
 ```
 {% endtab %}
 {% endtabs %}

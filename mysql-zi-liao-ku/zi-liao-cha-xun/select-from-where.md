@@ -170,9 +170,114 @@ LIMIT 5;🔶`
 5. 建立一個查詢將姓名、職稱串接為一個資料項\(資料中間利用一個空白和一個逗號做區隔\)，將表頭重新命名為employee and title。
 
 {% tabs %}
-{% tab title="Plain Text" %}
+{% tab title="1" %}
 ```text
+SELECT * 
+	FROM dept;
++--------+------------+----------+
+| DEPTNO | DNAME      | LOC      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)	
+```
+{% endtab %}
 
+{% tab title="2" %}
+```
+SELECT empno, ename, job, hiredate 
+	FROM emp;
++-------+--------+-----------+---------------------+
+| empno | ename  | job       | hiredate            |
++-------+--------+-----------+---------------------+
+|  7369 | SMITH  | CLERK     | 1980-12-17 00:00:00 |
+|  7499 | ALLEN  | SALESMAN  | 1981-02-20 00:00:00 |
+|  7521 | WARD   | SALESMAN  | 1981-02-22 00:00:00 |
+|  7566 | JONES  | MANAGER   | 1981-04-02 00:00:00 |
+|  7654 | MARTIN | SALESMAN  | 1981-09-28 00:00:00 |
+|  7698 | BLAKE  | MANAGER   | 1981-05-01 00:00:00 |
+|  7782 | CLARK  | MANAGER   | 1981-06-09 00:00:00 |
+|  7788 | SCOTT  | ANALYST   | 1982-12-09 00:00:00 |
+|  7839 | KING   | PRESIDENT | 1981-11-17 00:00:00 |
+|  7844 | TURNER | SALESMAN  | 1981-09-08 00:00:00 |
+|  7876 | ADAMS  | CLERK     | 1983-01-12 00:00:00 |
+|  7900 | JAMES  | CLERK     | 1981-12-03 00:00:00 |
+|  7902 | FORD   | ANALYST   | 1981-12-03 00:00:00 |
+|  7934 | MILLER | CLERK     | 1982-01-23 00:00:00 |
++-------+--------+-----------+---------------------+
+14 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="3" %}
+```
+SELECT DISTINCT job 
+	FROM emp;
++-----------+
+| job       |
++-----------+
+| CLERK     |
+| SALESMAN  |
+| MANAGER   |
+| ANALYST   |
+| PRESIDENT |
++-----------+
+5 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="4" %}
+```
+SELECT empno 'Emp#', ename 'Employee', job 'Job', hiredate 'Hire Date' 
+	FROM emp;
++------+----------+-----------+---------------------+
+| Emp# | Employee | Job       | Hire Date           |
++------+----------+-----------+---------------------+
+| 7369 | SMITH    | CLERK     | 1980-12-17 00:00:00 |
+| 7499 | ALLEN    | SALESMAN  | 1981-02-20 00:00:00 |
+| 7521 | WARD     | SALESMAN  | 1981-02-22 00:00:00 |
+| 7566 | JONES    | MANAGER   | 1981-04-02 00:00:00 |
+| 7654 | MARTIN   | SALESMAN  | 1981-09-28 00:00:00 |
+| 7698 | BLAKE    | MANAGER   | 1981-05-01 00:00:00 |
+| 7782 | CLARK    | MANAGER   | 1981-06-09 00:00:00 |
+| 7788 | SCOTT    | ANALYST   | 1982-12-09 00:00:00 |
+| 7839 | KING     | PRESIDENT | 1981-11-17 00:00:00 |
+| 7844 | TURNER   | SALESMAN  | 1981-09-08 00:00:00 |
+| 7876 | ADAMS    | CLERK     | 1983-01-12 00:00:00 |
+| 7900 | JAMES    | CLERK     | 1981-12-03 00:00:00 |
+| 7902 | FORD     | ANALYST   | 1981-12-03 00:00:00 |
+| 7934 | MILLER   | CLERK     | 1982-01-23 00:00:00 |
++------+----------+-----------+---------------------+
+14 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="5" %}
+```
+SELECT CONCAT(ename,', ',job) 'Employee and Title' 
+	FROM emp;
++--------------------+
+| Employee and Title |
++--------------------+
+| SMITH, CLERK       |
+| ALLEN, SALESMAN    |
+| WARD, SALESMAN     |
+| JONES, MANAGER     |
+| MARTIN, SALESMAN   |
+| BLAKE, MANAGER     |
+| CLARK, MANAGER     |
+| SCOTT, ANALYST     |
+| KING, PRESIDENT    |
+| TURNER, SALESMAN   |
+| ADAMS, CLERK       |
+| JAMES, CLERK       |
+| FORD, ANALYST      |
+| MILLER, CLERK      |
++--------------------+
+14 rows in set (0.00 sec)
 ```
 {% endtab %}
 {% endtabs %}
@@ -196,9 +301,222 @@ LIMIT 5;🔶`
 13. 顯示佣金比薪水的1.1倍還多的員工姓名、薪資、佣金。
 
 {% tabs %}
-{% tab title="Plain Text" %}
+{% tab title="1" %}
 ```text
+SELECT ename, sal 
+	FROM emp 
+  WHERE sal>2850;
+ +-------+---------+
+| ename | sal     |
++-------+---------+
+| JONES | 2975.00 |
+| SCOTT | 3000.00 |
+| KING  | 5000.00 |
+| FORD  | 3000.00 |
++-------+---------+
+4 rows in set (0.00 sec)
+```
+{% endtab %}
 
+{% tab title="2" %}
+```
+SELECT ename, deptno 
+	FROM emp 
+  WHERE empno='7566';
++-------+--------+
+| ename | deptno |
++-------+--------+
+| JONES |     20 |
++-------+--------+
+1 row in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="3" %}
+```
+SELECT ename, sal 
+	FROM emp 
+  WHERE sal NOT BETWEEN 1500 AND 2850;
++--------+---------+
+| ename  | sal     |
++--------+---------+
+| SMITH  |  800.00 |
+| WARD   | 1250.00 |
+| JONES  | 2975.00 |
+| MARTIN | 1250.00 |
+| SCOTT  | 3000.00 |
+| KING   | 5000.00 |
+| ADAMS  | 1100.00 |
+| JAMES  |  950.00 |
+| FORD   | 3000.00 |
+| MILLER | 1300.00 |
++--------+---------+
+10 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="4" %}
+```
+SELECT ename, job, hiredate 
+	FROM emp 
+  WHERE hiredate BETWEEN '1981-2-20' AND '1981-5-1' 
+  ORDER BY hiredate;
++-------+----------+---------------------+
+| ename | job      | hiredate            |
++-------+----------+---------------------+
+| ALLEN | SALESMAN | 1981-02-20 00:00:00 |
+| WARD  | SALESMAN | 1981-02-22 00:00:00 |
+| JONES | MANAGER  | 1981-04-02 00:00:00 |
+| BLAKE | MANAGER  | 1981-05-01 00:00:00 |
++-------+----------+---------------------+
+4 rows in set (0.00 sec) 
+```
+{% endtab %}
+
+{% tab title="5" %}
+```
+SELECT ename, deptno 
+	FROM emp 
+  WHERE deptno IN (10,20) 
+  ORDER BY ename;
++--------+--------+
+| ename  | deptno |
++--------+--------+
+| ADAMS  |     20 |
+| CLARK  |     10 |
+| FORD   |     20 |
+| JONES  |     20 |
+| KING   |     10 |
+| MILLER |     10 |
+| SCOTT  |     20 |
+| SMITH  |     20 |
++--------+--------+
+8 rows in set (0.02 sec) 
+```
+{% endtab %}
+
+{% tab title="6" %}
+```
+SELECT ename 'Employee' ,sal 'Monthly Salary' 
+	FROM emp 
+  WHERE sal>1500 AND deptno IN (10,30);
++----------+----------------+
+| Employee | Monthly Salary |
++----------+----------------+
+| CLARK    |        2450.00 |
+| KING     |        5000.00 |
+| ALLEN    |        1600.00 |
+| BLAKE    |        2850.00 |
++----------+----------------+
+4 rows in set (0.00 sec)  
+```
+{% endtab %}
+
+{% tab title="7" %}
+```
+SELECT ename, job, hiredate
+	FROM emp 
+  WHERE hiredate BETWEEN '1982-01-01' AND '1982-12-31';
++--------+---------+---------------------+
+| ename  | job     | hiredate            |
++--------+---------+---------------------+
+| SCOTT  | ANALYST | 1982-12-09 00:00:00 |
+| MILLER | CLERK   | 1982-01-23 00:00:00 |
++--------+---------+---------------------+
+2 rows in set (0.00 sec)  
+```
+{% endtab %}
+
+{% tab title="8" %}
+```
+SELECT ename, job 
+	FROM emp 
+    WHERE mgr IS NULL;
++-------+-----------+
+| ename | job       |
++-------+-----------+
+| KING  | PRESIDENT |
++-------+-----------+
+1 row in set (0.00 sec)    
+```
+{% endtab %}
+
+{% tab title="9" %}
+```
+SELECT ename, sal, comm 
+	FROM emp 
+    WHERE comm IS NOT NULL AND comm<>0 
+    ORDER BY sal DESC, comm DESC;
++--------+---------+---------+
+| ename  | sal     | comm    |
++--------+---------+---------+
+| ALLEN  | 1600.00 |  300.00 |
+| MARTIN | 1250.00 | 1400.00 |
+| WARD   | 1250.00 |  500.00 |
++--------+---------+---------+
+3 rows in set (0.00 sec)    
+```
+{% endtab %}
+
+{% tab title="10" %}
+```
+SELECT ename, job 
+	FROM emp 
+    WHERE ename LIKE '__A%';
++-------+---------+
+| ename | job     |
++-------+---------+
+| BLAKE | MANAGER |
+| CLARK | MANAGER |
+| ADAMS | CLERK   |
++-------+---------+
+3 rows in set (0.00 sec)    
+```
+{% endtab %}
+
+{% tab title="11" %}
+```
+SELECT ename, mgr, deptno 
+	FROM emp 
+    WHERE (ename LIKE '%LL%' AND deptno=30) OR (mgr='7782');
++--------+------+--------+
+| ename  | mgr  | deptno |
++--------+------+--------+
+| ALLEN  | 7698 |     30 |
+| MILLER | 7782 |     10 |
++--------+------+--------+
+2 rows in set (0.02 sec)
+```
+{% endtab %}
+
+{% tab title="12" %}
+```
+SELECT ename, job, sal 
+	FROM emp 
+    WHERE job IN ('Clerk','Analyst') AND sal NOT IN (1000,3000,5000);
++--------+-------+---------+
+| ename  | job   | sal     |
++--------+-------+---------+
+| SMITH  | CLERK |  800.00 |
+| ADAMS  | CLERK | 1100.00 |
+| JAMES  | CLERK |  950.00 |
+| MILLER | CLERK | 1300.00 |
++--------+-------+---------+
+4 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="13" %}
+```
+SELECT ename, sal, comm 
+	FROM emp 
+    WHERE comm>sal*1.1;
++--------+---------+---------+
+| ename  | sal     | comm    |
++--------+---------+---------+
+| MARTIN | 1250.00 | 1400.00 |
++--------+---------+---------+
+1 row in set (0.00 sec)
 ```
 {% endtab %}
 {% endtabs %}
