@@ -45,12 +45,18 @@ description: 參照講義p.165 p.193
 column name	null?		data type
 id		NOT NULL	NUMERIC(7)
 name		NOT NULL	VARCHAR(24)*/
+
+CREATE TABLE department 
+	(id NUMERIC(7) NOT NULL, 
+	 name VARCHAR(24) NOT NULL); 
 ```
 {% endtab %}
 
 {% tab title="2" %}
 ```
 -- 利用DEPT資料表，將資料新增至DEPARTMENT資料表中(只新增相對的資料欄)
+INSERT INTO department(id, name) 
+	SELECT deptno, dname FROM dept;
 ```
 {% endtab %}
 
@@ -63,12 +69,19 @@ last_name	NOT NULL	VARCHAR(24)
 first_name		 	VARCHAR(24)
 dept_id	 			NUMERIC(7)*/
 
+CREATE TABLE employee 
+	(id NUMERIC(7) NOT NULL, 
+     last_name VARCHAR(24) NOT NULL, 
+     frist_name VARCHAR(24), 
+     deptno NUMERIC(7)); 
 ```
 {% endtab %}
 
 {% tab title="4" %}
 ```
 -- 將EMPLOYEE資料表中last_name欄位資料型態更改為varchar(40)
+ALTER TABLE employee 
+	CHANGE COLUMN last_name last_name VARCHAR(40);
 
 ```
 {% endtab %}
@@ -78,19 +91,27 @@ dept_id	 			NUMERIC(7)*/
 /*使用EMP資料表結構中EMPNO,ENAME, DEPTNO定義來新建EMPLOYEE2資料表
 並將欄位名稱設定為id, last_name,dept_id*/
 
+
+CREATE TABLE employee2 
+	SELECT empno AS id, 
+		   ename AS last_name, 
+           deptno AS dept_id 
+	FROM emp;
 ```
 {% endtab %}
 
 {% tab title="6" %}
 ```
 -- 刪除整個EMPLOYEE資料表
-
+DROP TABLE employee;
 ```
 {% endtab %}
 
 {% tab title="7" %}
 ```
 -- 將EMPLOYEE2資料表改名為EMPLOYEE
+ALTER TABLE employee2 
+	RENAME AS employee;
 
 ```
 {% endtab %}
@@ -98,28 +119,32 @@ dept_id	 			NUMERIC(7)*/
 {% tab title="8" %}
 ```
 -- 將EMPLOYEE資料表中的LAST_NAME欄位刪除
-
+ALTER TABLE employee 
+	DROP last_name;
 ```
 {% endtab %}
 
 {% tab title="9" %}
 ```
 -- 修改EMPLOYEE資料表，新增一個欄位SALARY資料型態為NUMERIC , precision 7
-
+ALTER TABLE employee 
+	ADD salary NUMERIC(7);
 ```
 {% endtab %}
 
 {% tab title="10" %}
 ```
 -- 修改EMPLOYEE資料表，使用ID欄位新增一個primary key限制條件，並為他命名
-
+ALTER TABLE employee 
+	ADD CONSTRAINT pk_employee_id PRIMARY KEY(id);
 ```
 {% endtab %}
 
 {% tab title="11" %}
 ```
 -- 在EMPLOYEE資料表新增一個外部鍵(foreign key)以確保員工不會被分派到一個不存在的部門。
-
+ALTER TABLE employee 
+	ADD CONSTRAINT fk_employee_deptid FOREIGN KEY(dept_id) REFERENCES dept(deptno);
 ```
 {% endtab %}
 {% endtabs %}

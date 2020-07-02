@@ -1,4 +1,4 @@
-# DML新增修改刪除
+# DML資料庫維護&交易控制
 
 ## 新增
 
@@ -41,7 +41,7 @@ WHERE 條件判斷;`
 
 
 
-## 作業練習
+## 作業練習－DML\(p.164\)
 
 1. 將下列資料新增至MY\_EMP資料表中，不列舉欄位
 
@@ -81,6 +81,10 @@ WHERE 條件判斷;`
 /*將下列資料新增至MY_EMP資料表中，不列舉欄位
 1	patel	Ralph	rpatel	795*/
 
+INSERT INTO my_emp 
+	VALUES(1,'Patel','Ralph','rpatel',795);
+	
+Query OK, 1 row affected (0.10 sec)
 ```
 {% endtab %}
 
@@ -88,6 +92,9 @@ WHERE 條件判斷;`
 ```
 /*使用列舉的方式將下列資料新增至my_emp資料表中
 2	dancs	betty	bdancs	860*/
+
+INSERT INTO my_emp(id,last_name, first_name, userid, salary) 
+	VALUES(2,'Dances','Betty','bdances',860);
 ```
 {% endtab %}
 
@@ -96,6 +103,10 @@ WHERE 條件判斷;`
 /*將下列資料新增至my_emp
 3	biri	ben	bbiri	1100
 4	newman	chad	cnewman	750*/
+
+INSERT INTO my_emp 
+	VALUES(3,'Biri','Ben','bbiri',1100),
+		  (4,'Newman','Chad','cnewmam',750);
 ```
 {% endtab %}
 
@@ -103,18 +114,27 @@ WHERE 條件判斷;`
 ```
 -- 將員工編號為3的名字(last name)更改為Drexler
 
+SET SQL_SAFE_UPDATES = 0;
+UPDATE my_emp 
+	SET last_name='Drexler' WHERE ID=3;
+
 ```
 {% endtab %}
 
 {% tab title="5" %}
 ```
 -- 將薪資低於900元的所有員工調整為1000元
+
+UPDATE my_emp 
+	SET salary=1000 WHERE salary<900;
 ```
 {% endtab %}
 
 {% tab title="6" %}
 ```
 -- 確認資料更新已更改到資料庫中
+
+
 
 ```
 {% endtab %}
@@ -123,6 +143,8 @@ WHERE 條件判斷;`
 ```
 -- 刪除Betty Dancs的資料
 
+DELETE FROM my_emp 
+	WHERE userid='bdances';
 ```
 {% endtab %}
 
@@ -135,6 +157,15 @@ WHERE 條件判斷;`
  * 確認資料已被你刪光了
  * 放棄刪除資料的動作
  * 確認交易*/
+ 
+ 
+ START TRANSACTION;
+  UPDATE my_emp SET salary = salary * 1.1;
+  SAVEPOINT SP1;
+  DELETE FROM my_emp;
+  SELECT COUNT(*) FROM my_emp;
+  ROLLBACK TO SP1;
+  COMMIT;
 ```
 {% endtab %}
 {% endtabs %}
