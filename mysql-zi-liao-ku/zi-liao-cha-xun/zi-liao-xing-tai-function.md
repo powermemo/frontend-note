@@ -678,7 +678,7 @@ CONVERT(1,UNSIGNED)-2.0 X4;`
 | **`IF(expr1,expr2,expr3)`** | IF expr1?expr2:expr3 |
 | NULLIF\(expr1,expr2\) | expr1==expr2?NULL:expr1 |
 
-## 作業練習－DQL資料型態
+## 作業練習
 
 1. 顯示系統目前的日期並將 表頭命名為「系統日期」
 2. 顯示所有員工之員編、姓名、薪資、薪資+15%，並以整數表示，表頭命名為new salary。

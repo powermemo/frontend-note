@@ -430,7 +430,7 @@ Empty set (0.00 sec)
 {% endtab %}
 {% endtabs %}
 
-## 作業練習－DQL子查詢
+## 作業練習
 
 參照講義P.148
 
