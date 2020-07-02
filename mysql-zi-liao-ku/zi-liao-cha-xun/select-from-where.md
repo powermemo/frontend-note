@@ -161,7 +161,7 @@ LIMIT 5;🔶`
 不在「SELECT」的欄位也可以做排序。
 {% endhint %}
 
-## 作業練習
+## 作業練習－DQL-SELECT
 
 1. 建立一個查詢來顯示部門\(dept\)資料表中的所有資料。
 2. 建立一個查詢來顯示每一位員工的姓名\(name\)、職稱\(job\)、到職日\(hire date\)、員工編號\(employee number\)，並將員工編號顯示在最前面。
@@ -284,7 +284,7 @@ SELECT CONCAT(ename,', ',job) 'Employee and Title'
 
 
 
-## 作業練習
+## 作業練習－DQL-WHERE
 
 1. 顯示出所有員工薪資超過2850元的員工姓名和薪資。
 2. 顯示員編7566員工姓名及其所屬部門。

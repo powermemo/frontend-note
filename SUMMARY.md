@@ -57,5 +57,6 @@
     * [GROUP BY、HAVING](mysql-zi-liao-ku/zi-liao-cha-xun/group-by-having.md)
     * [JOIN多資料表查詢](mysql-zi-liao-ku/zi-liao-cha-xun/join-duo-zi-liao-biao-cha-xun.md)
     * [子查詢\(巢狀\)](mysql-zi-liao-ku/zi-liao-cha-xun/zi-cha-xun-chao-zhuang.md)
-  * [DML新增修改刪除](mysql-zi-liao-ku/dml-xin-zeng-xiu-gai-shan-chu.md)
+  * [DML資料庫維護&交易控制](mysql-zi-liao-ku/dml-xin-zeng-xiu-gai-shan-chu.md)
+  * [DDL資料庫物件維護](mysql-zi-liao-ku/ddl-zi-liao-ku-wu-jian-wei-hu.md)
 
