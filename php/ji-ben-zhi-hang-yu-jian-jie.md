@@ -215,14 +215,6 @@ I am \Sara\
 <?php
         echo '使用者：',$_GET['memId'],'<br>';//中括號，引號內是標籤的「name」名稱
         echo '密碼：',$_GET['memPsw'],'<br>';//中括號，引號內是標籤的「name」名稱
-    
-?>
-
-//或是使用大括號框住「回傳資料標籤」，就不會受外部引號影響
-<?php
-        echo "使用者：,{$_GET["memId"]},<br>"
-?>
-//可使用「$_GET...」、「$_POST...」或是「$_GREQUEST...」
-//「$_GREQUEST...」可取代「$_GET...」、「$_POST...」
+    ?>
 ```
 
