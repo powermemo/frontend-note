@@ -67,7 +67,7 @@ $arr3[6] = "e";//index[6]==>'e'
 //🔶🔶🔶🔶🔶
 //$i和$data是自定義的，沒有一定要這樣命名。
 foreach($arr3 as $i => $data){
-	echo "$i : $data<br>";
+	echo "index[$i] : $data<br>";
 }
 ```
 {% endtab %}
