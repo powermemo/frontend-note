@@ -366,7 +366,7 @@ GROUP BY deptno;`
 | :--- | :--- |
 | 20 | 3000.00 |
 
-## 作業練習－DQL-Group by
+## 作業練習
 
 1. 顯示所有員工的最高、最低、總和、平均薪資，表頭命名maximum,minimum,sum,average，顯示結果四捨五入取整數。
 2. 顯示每種職稱的最低、最高、總和、平均薪資。
@@ -379,8 +379,6 @@ GROUP BY deptno;`
 {% tabs %}
 {% tab title="1" %}
 ```text
-/*顯示所有員工的最高、最低、總和、平均薪資，
-表頭命名maximum,minimum,sum,average，顯示結果四捨五入取整數。*/
 SELECT ROUND(MAX(sal),0) 'Maximum',  
 		ROUND(MIN(sal),0) 'Minimum', 
         ROUND(SUM(sal),0) 'SUM', 
@@ -397,7 +395,6 @@ FROM emp;
 
 {% tab title="2" %}
 ```
--- 顯示每種職稱的最低、最高、總和、平均薪資。
 SELECT job, MAX(sal), MIN(sal), SUM(sal), AVG(sal) 
 FROM emp 
 GROUP BY JOB;
@@ -416,7 +413,6 @@ GROUP BY JOB;
 
 {% tab title="3" %}
 ```
--- 顯示每種職稱人數。
 SELECT job, COUNT(*) 
 FROM emp 
 GROUP BY JOB;
@@ -435,7 +431,6 @@ GROUP BY JOB;
 
 {% tab title="4" %}
 ```
--- 顯示資料項number of managers 來表示擔任主管的人數。
 SELECT count(*) 'Number of Managers' 
 FROM emp 
 WHERE job='MANAGER';
@@ -450,7 +445,6 @@ WHERE job='MANAGER';
 
 {% tab title="5" %}
 ```
--- 顯示資料項difference來表示公司中最高和最低薪水間的差額。
 SELECT MAX(sal)-MIN(sal) 'DIFFERENCE' 
 FROM emp;
 +------------+
@@ -464,8 +458,6 @@ FROM emp;
 
 {% tab title="6" %}
 ```
-/*顯示每位主管的員工編號及該主管下屬員工最低薪資，
-排除沒有主管和下屬員工最低薪資少於1000的主管，並以下屬員工最低薪資做降冪排序。*/
 SELECT mgr, MIN(sal) 
 FROM emp 
 GROUP BY mgr 
@@ -485,7 +477,6 @@ ORDER BY MIN(sal) DESC;
 
 {% tab title="7" %}
 ```
--- 顯示在1980,1981,1982,1983年到職的員工數量，並給該資料項一個合適的名稱。
 SELECT YEAR(hiredate) 'HYear', count(*) 'Number of People' 
 FROM emp 
 GROUP by YEAR(hiredate) 
