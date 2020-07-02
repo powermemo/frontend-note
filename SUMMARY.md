@@ -47,7 +47,7 @@
     * [Untitled](js/30days/untitled.md)
 * [PHP](php/README.md)
   * [設定&安裝](php/she-ding-an-zhuang.md)
-  * [基本執行與簡介](php/ji-ben-zhi-hang-yu-jian-jie.md)
+  * [基本執行](php/ji-ben-zhi-hang-yu-jian-jie.md)
   * [基本內容](php/ji-ben-nei-rong/README.md)
     * [資料型別與變數](php/ji-ben-nei-rong/zi-liao-xing-bie-yu-bian-shu.md)
     * [運算式](php/ji-ben-nei-rong/yun-suan-shi.md)
