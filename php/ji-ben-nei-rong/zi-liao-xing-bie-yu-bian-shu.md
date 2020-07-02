@@ -162,5 +162,80 @@ I am \Sara\
 則使用大括號「{}」框住。：`"使用者：,{$_GET["memId"]},<br>";`
 {% endhint %}
 
-## 
+## textarea欄位
+
+textarea打甚麼就呈現甚麼（例如換行）  
+語法：`nl2br();`
+
+```php
+//textarea打甚麼就呈現甚麼（例如換行）
+echo nl2br($_GET["note"]);
+```
+
+## 常數
+
+* 固定值，設定後不可再變更。
+* 自定義常數值，語法：`const 常數名稱 = 值;`，一般都是全大寫。
+* 系統內建常數，如`PHP_VERSION`、`PHP_OS`、`M_PI`。
+
+## 資料型別的檢查
+
+* gettype\(資料\);
+  * 回傳資料型別
+  * string,integer,double,array,object,...
+* is\_...
+  * 回傳布林值
+  * is\_integer\(_資料_\), is\_float\(_資料_\),is\_bool\(_資料_\), is\_string\(_資料_\),is\_null\(_資料_\),is\_resource\(_資料_\)**,** is\_array\(_資料_\),is\_object\(_資料_\),is\_numeric\(_資料_\)
+* var\_dump;
+  * **直接印出**\(所以前面不用echo\)
+  * 資料型別與值
+
+{% tabs %}
+{% tab title="PHP" %}
+```php
+echo gettype(123),"<br>";//integer
+echo is_string("12345"),"<br>";//1
+echo var_dump(3.1*2,true),"<br>";//float(6.2) bool(true)
+```
+{% endtab %}
+
+{% tab title="" %}
+```php
+echo '<h1>資料型別轉換</h1>';
+	$a_int = 123;
+	$b_str = '100NT$';
+	$c_bool = true;
+	echo ($a_int + $b_str);//223🔶7.0error
+	echo ($a_int + $c_bool);//124
+	echo ($b_str + $c_bool);//error//🔶7.0error
+```
+{% endtab %}
+{% endtabs %}
+
+## 資料類型強制轉換
+
+* 轉型運算式
+  * \(int\),\(integer\),\(float\),\(double\),\(array\)
+* setType，語法：`setType(變數,型別)`
+
+{% tabs %}
+{% tab title="轉型運算式" %}
+```php
+$a = 123.5;
+$b = (int) $a;//$a類別沒改變
+var_dump($a,$b);//float(123.5) int(123)$c = '123.5';
+```
+{% endtab %}
+
+{% tab title="setType" %}
+```php
+setType($c,'integer');//🔶$c的類別會改變
+echo '$C的資料型別:',$c,'<br>';
+echo '';
+var_dump( $a );//print [float(123.5)]
+```
+{% endtab %}
+{% endtabs %}
+
+
 
