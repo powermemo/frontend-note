@@ -64,5 +64,36 @@ switch(運算式):
 endswitch;
 ```
 {% endtab %}
+
+{% tab title="for" %}
+```php
+//通常for迴圈的「break」會搭配if條件式(不然做一次就停啦==)。
+$total = 0;
+for($i=0;$i<=1000;$i++){
+	$total = $total + $i;
+	if($total > 1000){
+		echo '1+2+...+$i =' ,$total,
+			'will large than 1000';
+		break;//結束for迴圈
+	}
+}
+```
+{% endtab %}
+
+{% tab title="while" %}
+```php
+$total = 0;
+$i=0;
+while($i<=1000){
+	$total = $total + $i;
+	$i++;
+	if($total > 1000){
+		echo '1+2+...+$i =' ,$total,
+			'will large than 1000';
+		break;//end loop
+	}
+}
+```
+{% endtab %}
 {% endtabs %}
 
