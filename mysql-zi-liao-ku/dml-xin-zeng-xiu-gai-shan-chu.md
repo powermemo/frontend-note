@@ -1,6 +1,6 @@
 # DML資料庫維護&交易控制
 
-## 新增
+## 新增表格內容-INSERT INTO
 
 `INSERT INTO 表格名  
 VALUES(欄1,欄2,...欄n);`
@@ -22,22 +22,163 @@ INSERT INTO emp
 -- 🔹可以使用子查詢的方式新增（常用在備份）
 ```
 
-## 修改
+## 修改表格內容-UPDATE
 
 `UPDATE 表格名  
 SET 修改欄位=修改值  
 WHERE 條件判斷;`
 
+{% tabs %}
+{% tab title="範例" %}
+```text
+-- 將員編7782從部門10調到部門20
+UPDATE emp
+SET deptno = 20
+WHERE empno = 7782;
+```
+{% endtab %}
 
+{% tab title="範例2" %}
+```
+-- 將員編7900的薪資改為1000
+UPDATE emp
+SET sal = 1000
+WHERE empno = 7900;
+```
+{% endtab %}
 
-## 刪除
+{% tab title="更新兩欄資料" %}
+```
+-- 將員編7369職稱改為salesman、部門改為30
+UPDATE emp
+    SET job = 'salesman'
+        deoptno = 30
+WHERE empno = 7369;
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+關掉安全機制`SET SQL_SAFE_UPDATES = 0 | 1;`\(0表關閉、1是預設值表開啟\)  
+PK、FK等原因，修改時會出問題。若設定安全機制關閉就可以修改了。
+{% endhint %}
+
+{% tabs %}
+{% tab title="用子查詢取值" %}
+```text
+-- 員編7900在部門hr是哪個部門編號
+-- 子查詢抓hr部門編號--70
+
+UPDATE emp
+SET deptno = (SELECT deptno
+              FROM dept
+              WHERE dname = 'hr') -- 70
+WHERE empno = 7900;
+```
+{% endtab %}
+
+{% tab title="用子查詢當條件用" %}
+```
+-- 將部門sales員工薪水+500
+-- 子查詢抓部門sales的部門編號--30
+
+UPDATE emp
+SET sal = sal + 500
+WHERE deptno = (SELECT deptno
+                FROM dept
+                WHERE dname = 'sales') -- 30
+                
+--示意圖
++-------+---------+---------+
+| empno | sal     | sal+500 |
++-------+---------+---------+
+|  7369 |  800.00 | 1300.00 |
+|  7499 | 1600.00 | 2100.00 |
+|  7521 | 1250.00 | 1750.00 |
+|  7654 | 1250.00 | 1750.00 |
+|  7698 | 2850.00 | 3350.00 |
+|  7844 | 1500.00 | 2000.00 |
+|  7900 |  950.00 | 1450.00 |
++-------+---------+---------+
+7 rows in set (0.00 sec)
+```
+{% endtab %}
+{% endtabs %}
+
+## 刪除表格內容DELETE FROM
 
 `DELETE FROM 表格名  
 [WHERE 條件判斷];`
 
+{% tabs %}
+{% tab title="Plain Text" %}
+```text
+-- 從表格dept刪除部門70
+DELETE FROM dept
+WHERE deptno = 70;
+```
+{% endtab %}
+
+{% tab title="子查詢條件" %}
+```
+-- 刪除名稱有「public」的部門
+DELETE FROM emp
+WHERE dept = (SELECT deptno
+              FROM dept
+              WHERE dname LIKE '%public%';
+```
+{% endtab %}
+{% endtabs %}
+
 
 
 ## 資料庫交易
+
+* COMMIT確認交易
+* ROLLBACK放棄交易
+* SAVEPOINT設定交易儲存點
+
+![](../.gitbook/assets/image%20%2839%29.png)
+
+* 交易的一致性：交易影響多筆表單，要嘛都做，要嘛都不做，不可以做一半。 
+* 不一致的舉例說明：訂單沒任何訂單項目、訂單成立但庫存沒減少
+
+### 預設的交易控制
+
+自動確認`AUTOCOMMIT = 1` \(每執行一次，就寫入硬碟執行\)
+
+### 起始一個交易
+
+* `SET AUTOCOMMIT = 0` 
+* `BEGIN`  \|  `START TRANSACTION`
+
+### 結束一個交易
+
+* `SET AUTOCOMMIT = 1`
+* `COMMIT`成立  /  `ROLLBACK`放棄
+
+
+
+{% tabs %}
+{% tab title="Plain Text" %}
+```text
+START TRANSACTION;                        -- 設定交易區塊
+    INSERT INTO tx VALUES (null,NOW());
+ROLLBACK;                                 -- 取消交易(交易倒回)
+```
+{% endtab %}
+
+{% tab title="" %}
+```
+SET AUTOCOMMIT = 0;                   -- 安全交易控制開始
+    INSERT INTO tx VALUES(null,NOW());-- 交易開始
+    ROLLBACK;                         -- 交易倒回
+        /*可繼續其他交易進行*/
+
+SET SUTOCOMMIT = 1;                   -- 安全交易控制結束
+```
+{% endtab %}
+{% endtabs %}
 
 
 

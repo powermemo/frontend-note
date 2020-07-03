@@ -247,7 +247,7 @@ function animationHandler(){
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small4.jpg)
 
-* 🔶CODEPEN\[連結\]
+* 🔶CODEPEN\[[連結](https://codepen.io/ch-zhuchu/pen/wvMpwaL)\]
 
 
 

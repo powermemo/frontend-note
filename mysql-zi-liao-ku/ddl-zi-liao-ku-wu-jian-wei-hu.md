@@ -143,8 +143,9 @@ ALTER TABLE employee
 {% tab title="11" %}
 ```
 -- 在EMPLOYEE資料表新增一個外部鍵(foreign key)以確保員工不會被分派到一個不存在的部門。
+
 ALTER TABLE employee 
-	ADD CONSTRAINT fk_employee_deptid FOREIGN KEY(dept_id) REFERENCES dept(deptno);
+ADD CONSTRAINT fk_employee_deptid FOREIGN KEY(dept_id) REFERENCES dept(deptno);
 ```
 {% endtab %}
 {% endtabs %}

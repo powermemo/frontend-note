@@ -132,7 +132,7 @@ ORDER BY a.mgr;`
 
 
 
-## 作業練習
+## 作業練習－DQL-JOIN
 
 參照講義P.134
 
