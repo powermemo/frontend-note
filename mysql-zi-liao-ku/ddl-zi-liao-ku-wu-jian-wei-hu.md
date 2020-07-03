@@ -58,8 +58,81 @@ CREATE TABLE item
 
 ### 外來鍵FK
 
-```text
+* ON DELETE
+* ON UPDATE
 
+```text
+-- 新增
+CREATE TABLE table
+(...
+    [CONSTRAINT 主鍵名]
+        FOREIGN KEY(欄位名,...) REFERENCE 外來表格(外來表格欄)
+);
+```
+
+```text
+/* 🔶RESTRICT 限制，
+    子表有，附表就不准改
+    例如，dept, deptno.10 -> 50 [X]不行改
+    因為emp.deptno有10
+*/
+```
+
+```sql
+/* 🔶CASCADE 相依性
+    父表刪子表一起刪
+    例如，dept.deptno 10 -> delete
+    emp.deptno 10 全刪
+*/
+CREATE TABLE t2
+(fk SMALLINT,
+ c2 CHAR(2),
+ FOREIGN KEY(fk) REFERENCES t1(pk) ON DELETE CASCADE -- 🔸【ON DELETE CASCADE 】
+ -- 父子一起刪
+);
+
+/*---------------------------------------------------------------*/
+
+CREATE TABLE t2
+(fk SMALLINT,
+ c2 CHAR(2),
+ FOREIGN KEY(fk) REFERENCES t1(pk) ON UPDATE CASCADE -- 🔸【ON UPDATE CASCADE 】
+ -- 父子一起改
+);
+```
+
+```sql
+/* 🔶SET NULL 設成空值
+    父表改，子表清成空值
+    例如，dept.deptno 10 -> delete
+    emp.deptno 10 -> Null
+*/
+CREATE TABLE t2
+(fk SMALLINT,
+ c2 CHAR(2),
+ FOREIGN KEY(fk) REFERENCES t1(pk) ON DELETE SET NULL -- 🔸【ON DELETE SET NULL】
+-- 父刪，子NULL
+);
+
+/*---------------------------------------------------------------*/
+
+CREATE TABLE t2
+(fk SMALLINT,
+ c2 CHAR(2),
+ FOREIGN KEY(fk) REFERENCES t1(pk) ON UPDATE SET NULL -- 🔸【ON UPDATE SET NULL 】
+ -- 父改，子NULL
+);
+```
+
+### 使用現有資料建立新的資料表
+
+```sql
+-- 子查詢
+CREATE TABLE 表格名[(欄位名)]
+  ​AS
+  SELECT
+  FROM
+  WHERE
 ```
 
 ## 修改物件
@@ -87,9 +160,9 @@ CREATE TABLE item
 3. 利用下列資料新建EMPLOYEE資料表  
    `column name	Null?		data Type`
 
-   `id		NOT NULL	NUMERIC(7)`
+   `id		NOT NULL	NUM*ERIC(7)`
 
-   `last_name	NOT NULL	VARCHAR(24)`
+   `last_nam*e	NOT NULL	VARCHAR(24)`
 
    `first_name		 	VARCHAR(24)`
 
