@@ -13,7 +13,7 @@ description: 參照講義p.165 p.193
  欄位名稱n 欄位型別n,  
 )[ENGINE 儲存引擎];`
 
-```text
+```sql
 CREATE TABLE IF NOT EXISTS dept
 (    deptno SMALLINT(4) NOT NULL PRIMARY KEY, -- 欄位名 欄位型別 不為空值 主鍵
      dname VARCHAR(14) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS dept
 )ENGINE InnoDB;                               -- 儲存引擎InnoDB
 ```
 
-```text
+```sql
 -- 「[CNSTRAINT 主鍵名稱] PRIMARY KEY(欄位名稱,...)」            -- 🔶【CNSTRAINT】
 CREATE TABLE item12
 (    ordid int not null,          -- 欄位名 欄位型別 不為空值
@@ -30,7 +30,7 @@ CREATE TABLE item12
 );
 ```
 
-```text
+```sql
 -- 「AUTO_INCREMENT」自動增加ex. 流水號            -- 【🔶AUTO_INCREMENT】
 CREATE TABLE ord2
 (    oredid INT AUTO_INCREMENT PRIMARY KEY,     -- 欄位名 欄位型別 自動增加 PK
@@ -38,7 +38,7 @@ CREATE TABLE ord2
 )AUTO_INCREMENT = 101;                          -- 🔸流水號起始碼
 ```
 
-```text
+```sql
 --「UNIQUE」唯一鍵      -- 🔶【UNIQUE】
 CREATE TABLE emp
 (...,
@@ -126,22 +126,345 @@ CREATE TABLE t2
 
 ### 使用現有資料建立新的資料表
 
+`CREATE TABLE 表格名[(欄位名)]  
+  ​AS  
+  SELECT 欄位名  
+  FROM 表格名  
+  WHERE 條件`
+
 ```sql
--- 子查詢
-CREATE TABLE 表格名[(欄位名)]
+-- 用子查詢
+CREATE TABLE emp10
   ​AS
-  SELECT
-  FROM
-  WHERE
+  SELECT empno,ename,job,sal
+  FROM emp
+  WHERE deptno = 10;
+
+/*mysql> desc emp10;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| empno | int          | NO🔹 |     | NULL    |       |
+| ename | varchar(10)  | YES  |     | NULL    |       |
+| job   | varchar(9)   | YES  |     | NULL    |       |
+| sal   | decimal(7,2) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)*/
 ```
+
+### 新增欄位
+
+`ALTER TABLE 表格名  
+ADD | ALTER | MODIFY | CHANGE | DROP`
+
+{% tabs %}
+{% tab title="新增" %}
+```sql
+ALTER TABLE emp10
+    ADD COLUMN mgr SMALLINT;
+/*【🔹before】
+mysql> desc emp10;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| empno | int          | NO   |     | NULL    |       |
+| ename | varchar(10)  | YES  |     | NULL    |       |
+| job   | varchar(9)   | YES  |     | NULL    |       |
+| sal   | decimal(7,2) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)*/
+
+/*【🔹after】
+mysql> desc emp10;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| empno | int          | NO   |     | NULL    |       |
+| ename | varchar(10)  | YES  |     | NULL    |       |
+| job   | varchar(9)   | YES  |     | NULL    |       |
+| sal   | decimal(7,2) | YES  |     | NULL    |       |
+| mgr🔹 | smallint     | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)*/
+```
+{% endtab %}
+
+{% tab title="新增在第一欄" %}
+```sql
+ALTER TABLE emp10
+    ADD COLUMN phone VARCHAR(12) DEFAULT '02-66316710' FIRST; -- 🔶【FIRST】
+/*【🔹before】
+mysql> desc emp10;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| empno      | int          | NO   |     | NULL    |       |
+| ename      | varchar(10)  | YES  |     | NULL    |       |
+| job        | varchar(9)   | YES  |     | NULL    |       |
+| hiredate   | date         | YES  |     | NULL    |       |
+| sal        | decimal(7,2) | YES  |     | NULL    |       |
+| mgr        | smallint     | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+
+【🔹after】
+mysql> desc emp10;
++----------+--------------+------+-----+-------------+-------+
+| Field    | Type         | Null | Key | Default     | Extra |
++----------+--------------+------+-----+-------------+-------+
+| phone🔹  | varchar(12)  | YES  |     | 02-66316710 |       |
+| empno    | int          | NO   |     | NULL        |       |
+| ename    | varchar(10)  | YES  |     | NULL        |       |
+| job      | varchar(9)   | YES  |     | NULL        |       |
+| hiredate | date         | YES  |     | NULL        |       |
+| sal      | decimal(7,2) | YES  |     | NULL        |       |
+| mgr      | smallint     | YES  |     | NULL        |       |
++----------+--------------+------+-----+-------------+-------+
+7 rows in set (0.00 sec)*/
+```
+{% endtab %}
+
+{% tab title="新增指定欄位後" %}
+```sql
+ALTER TABLE emp10
+    ADD COLUMN hiredate DATE AFTER job; -- 🔶【AFTER】
+/*【🔹before】
+mysql> desc emp10;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| empno | int          | NO   |     | NULL    |       |
+| ename | varchar(10)  | YES  |     | NULL    |       |
+| job   | varchar(9)   | YES  |     | NULL    |       |
+| sal   | decimal(7,2) | YES  |     | NULL    |       |
+| mgr   | smallint     | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+5 rows in set (0.02 sec)*/
+
+
+/*【🔹after】
+mysql> desc emp10;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| empno      | int          | NO   |     | NULL    |       |
+| ename      | varchar(10)  | YES  |     | NULL    |       |
+| job        | varchar(9)   | YES  |     | NULL    |       |
+| hiredate🔹 | date         | YES  |     | NULL    |       |
+| sal        | decimal(7,2) | YES  |     | NULL    |       |
+| mgr        | smallint     | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)*/
+```
+{% endtab %}
+{% endtabs %}
 
 ## 修改物件
 
+`ALTER TABLE 表格名  
+ALTER | MODIFY | CHANGE`
 
+{% tabs %}
+{% tab title="改欄位預設" %}
+```sql
+ALTER TABLE emp10
+ALTER phone DROP DEFAULT;
+
+/*🔹【before】
+mysql> desc emp10;
++----------+--------------+------+-----+---------------+-------+
+| Field    | Type         | Null | Key | Default       | Extra |
++----------+--------------+------+-----+---------------+-------+
+| phone    | varchar(12)  | YES  |     | 02-66316710🔹 |       |
+| empno    | int          | NO   |     | NULL          |       |
+| ename    | varchar(10)  | YES  |     | NULL          |       |
+| job      | varchar(9)   | YES  |     | NULL          |       |
+| hiredate | date         | YES  |     | NULL          |       |
+| sal      | decimal(7,2) | YES  |     | NULL          |       |
+| mgr      | smallint     | YES  |     | NULL          |       |
++----------+--------------+------+-----+---------------+-------+
+7 rows in set (0.00 sec)
+
+🔹【after】
+mysql> desc emp10;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| phone    | varchar(12)  | YES  |     | NULL🔹  |       |
+| empno    | int          | NO   |     | NULL    |       |
+| ename    | varchar(10)  | YES  |     | NULL    |       |
+| job      | varchar(9)   | YES  |     | NULL    |       |
+| hiredate | date         | YES  |     | NULL    |       |
+| sal      | decimal(7,2) | YES  |     | NULL    |       |
+| mgr      | smallint     | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+*/
+```
+{% endtab %}
+
+{% tab title="改欄位型態,順序" %}
+```sql
+ALTER TABLE emp10
+MODIFY COLUMN mgr INT AFTER job; // 【INT】改型態了；【AFTER job】改位置了
+
+/*🔹【before】
+mysql> desc emp10;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| phone    | varchar(12)  | YES  |     | NULL    |       |
+| empno    | int          | NO   |     | NULL    |       |
+| ename    | varchar(10)  | YES  |     | NULL    |       |
+| job      | varchar(9)   | YES  |     | NULL    |       |
+| hiredate | date         | YES  |     | NULL    |       |
+| sal      | decimal(7,2) | YES  |     | NULL    |       |
+| 🟡mgr    | smallint🔹   | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+🔹【after】
+mysql> desc emp10;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| phone    | varchar(12)  | YES  |     | NULL    |       |
+| empno    | int          | NO   |     | NULL    |       |
+| ename    | varchar(10)  | YES  |     | NULL    |       |
+| job      | varchar(9)   | YES  |     | NULL    |       |
+|🟡 mgr    | int🔹        | YES  |     | NULL    |       |
+| hiredate | date         | YES  |     | NULL    |       |
+| sal      | decimal(7,2) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+*/
+```
+{% endtab %}
+
+{% tab title="改欄位型態" %}
+```sql
+ALTER TABLE emp
+MODIFY COLUMN ename VARCHAR(10) NOT NULL;
+/*🔹【before】
+mysql> desc emp10;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| phone    | varchar(12)  | YES  |     | NULL    |       |
+| empno    | int          | NO   |     | NULL    |       |
+| ename    | varchar(10)🔹| YES  |     | NULL🔹  |       |
+| job      | varchar(9)   | YES  |     | NULL    |       |
+| mgr      | int          | YES  |     | NULL    |       |
+| hiredate | date         | YES  |     | NULL    |       |
+| sal      | decimal(7,2) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+🔹【after】 == 原本就一樣.........
+mysql> desc emp10;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| phone    | varchar(12)  | YES  |     | NULL    |       |
+| empno    | int          | NO   |     | NULL    |       |
+| ename    | varchar(10)🔹| YES  |     | NULL🔹  |       |
+| job      | varchar(9)   | YES  |     | NULL    |       |
+| mgr      | int          | YES  |     | NULL    |       |
+| hiredate | date         | YES  |     | NULL    |       |
+| sal      | decimal(7,2) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+*/
+```
+{% endtab %}
+
+{% tab title="更改欄位名稱、型態" %}
+```sql
+ALTER TABLE emp10
+CHANGE COLUMN sal salary SMALLINT;
+/*🔹【before】
+mysql> desc emp10;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| phone    | varchar(12)  | YES  |     | NULL    |       |
+| empno    | int          | NO   |     | NULL    |       |
+| ename    | varchar(10)  | YES  |     | NULL    |       |
+| job      | varchar(9)   | YES  |     | NULL    |       |
+| mgr      | int          | YES  |     | NULL    |       |
+| hiredate | date         | YES  |     | NULL    |       |
+| 🟡sal    | decimal(7,2) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+🔹【after】
+mysql> desc emp10;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| phone    | varchar(12) | YES  |     | NULL    |       |
+| empno    | int         | NO   |     | NULL    |       |
+| ename    | varchar(10) | YES  |     | NULL    |       |
+| job      | varchar(9)  | YES  |     | NULL    |       |
+| mgr      | int         | YES  |     | NULL    |       |
+| hiredate | date        | YES  |     | NULL    |       |
+|🟡salary  | smallint    | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+*/
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+CHANGE 與 MODIFY相似，  
+CHANGE可以重新命名；MODIFY不能重新命名。
+{% endhint %}
 
 ## 刪除物件
 
+| 刪除欄位 | 刪除資料表 |
+| :--- | :--- |
+| `ALTER TABLE 表格名 DROP [COLUMN]` | `DROP TABLE 表格名` |
 
+{% tabs %}
+{% tab title="刪除欄位" %}
+```sql
+ALTER TABLE dpt1
+DROP COLUMN loc;
+
+/*🔹【before】
+mysql> desc dept1;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| DEPTNO | int         | NO   |     | NULL    |       |
+| DNAME  | varchar(14) | YES  |     | NULL    |       |
+| 🟡LOC  | varchar(13) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.08 sec)
+
+
+🔹【after】
+mysql> desc dept1;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| DEPTNO | int         | NO   |     | NULL    |       |
+| DNAME  | varchar(14) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+*/
+```
+{% endtab %}
+
+{% tab title="刪除資料表" %}
+```sql
+DROP TABLE emp10a;
+```
+{% endtab %}
+{% endtabs %}
 
 ## 視觀表
 
