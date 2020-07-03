@@ -157,10 +157,8 @@ WHERE dept = (SELECT deptno
 * `SET AUTOCOMMIT = 1`
 * `COMMIT`成立  /  `ROLLBACK`放棄
 
-
-
 {% tabs %}
-{% tab title="Plain Text" %}
+{% tab title="範例" %}
 ```text
 START TRANSACTION;                        -- 設定交易區塊
     INSERT INTO tx VALUES (null,NOW());
@@ -168,7 +166,7 @@ ROLLBACK;                                 -- 取消交易(交易倒回)
 ```
 {% endtab %}
 
-{% tab title="" %}
+{% tab title="範例2" %}
 ```
 SET AUTOCOMMIT = 0;                   -- 安全交易控制開始
     INSERT INTO tx VALUES(null,NOW());-- 交易開始
@@ -179,6 +177,8 @@ SET SUTOCOMMIT = 1;                   -- 安全交易控制結束
 ```
 {% endtab %}
 {% endtabs %}
+
+### 交易控制
 
 
 
