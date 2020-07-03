@@ -138,7 +138,7 @@ WHERE dept = (SELECT deptno
 * ROLLBACK放棄交易
 * SAVEPOINT設定交易儲存點
 
-![](../.gitbook/assets/image%20%2839%29.png)
+![](../.gitbook/assets/image%20%2840%29.png)
 
 * 交易的一致性：交易影響多筆表單，要嘛都做，要嘛都不做，不可以做一半。 
 * 不一致的舉例說明：訂單沒任何訂單項目、訂單成立但庫存沒減少
@@ -180,7 +180,26 @@ SET SUTOCOMMIT = 1;                   -- 安全交易控制結束
 
 ### 交易控制
 
+![](../.gitbook/assets/image%20%2839%29.png)
 
+```text
+START TRANSACTION
+    dml_statement;
+    ...
+    SAVEPOINT tx1;
+    dml_statement;
+    ...
+    SAVEPOINT tx2;
+    dml_statement;
+    ...
+    SAVEPOINT tx3;
+    dml_statement;
+    ...
+    ROLLBACK TO tx3;  -- SAVEPOINT tx3
+    ROLLBACK TO tx2;  -- SAVEPOINT tx2
+    ROLLBACK TO tx1;  -- SAVEPOINT tx1
+ROLLBACK;             -- undo
+```
 
 ## 作業練習－DML\(p.164\)
 
