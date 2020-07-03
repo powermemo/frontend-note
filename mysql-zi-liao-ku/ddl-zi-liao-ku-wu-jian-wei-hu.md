@@ -6,7 +6,20 @@ description: 參照講義p.165 p.193
 
 ## 新增物件
 
+`CREATE TABLE [IF NOT EXISTS] 表格名稱  
+(欄位名稱1 欄位型別1 [DEFAULT '預設值'][NOT NULL] [PRIMARY KEY],  
+ 欄位名稱2 欄位型別2,  
+ ...  
+ 欄位名稱n 欄位型別n,  
+)[ENGINE 儲存引擎];`
 
+```text
+CREATE TABLE IF NOT EXISTS dept
+(    deptno SMALLINT(4) NOT NULL PRIMARY KEY, -- 欄位名 欄位型別 不為空值 主鍵
+     dname VARCHAR(14) NOT NULL,
+     Loc VAARCHAR(14) DEFAULT 'M',            -- 欄位名 欄位型別 預設值M
+)ENGINE InnoDB;                               -- 儲存引擎InnoDB
+```
 
 ## 修改物件
 
