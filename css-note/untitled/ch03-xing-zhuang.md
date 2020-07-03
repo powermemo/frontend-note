@@ -126,7 +126,7 @@ Cutout corners\[[原網址](https://www.w3cplus.com/css3/css-secrets/cutout-corn
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-23.png)
 
 {% tabs %}
-{% tab title="解決方案1" %}
+{% tab title="切角" %}
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-29.png)
 
 ```css
@@ -157,10 +157,115 @@ background-repeat: no-repeat;
 /*改參數的時候調整@mixin即可*/
 @include beveled-corners(#58a, 15px, 5px);
 ```
+
+```css
+/*摻入SVG寫法*/
+border: 20px solid transparent;
+border-image: 1 url('data:image/svg+xml,\
+ <svg xmlns="http://www.w3.org/2000/svg"\
+ width="3" height="3" fill="%2358a">\
+ <polygon points="0,1 1,0 2,0 3,1 3,2 2,3 1,3 0,2"/>\
+ </svg>');
+background: #58a;
+background-clip: padding-box;
+```
+
+```css
+/*clip-path*/
+background: #58a;
+clip-path: polygon(
+ 20px 0, calc(100% - 20px) 0, 100% 20px,
+ 100% calc(100% - 20px), calc(100% - 20px) 100%,
+ 20px 100%, 0 calc(100% - 20px), 0 20px
+```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="曲線切角" %}
+![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-31.png)
 
+```css
+background: #58a;
+background:
+ radial-gradient(circle at top left, transparent 15px, #58a 0) top left,
+ radial-gradient(circle at top right, transparent 15px, #58a 0) top right,
+ radial-gradient(circle at bottom right, transparent 15px, #58a 0) bottom right,
+ radial-gradient(circle at bottom left, transparent 15px, #58a 0) bottom left;
+background-size: 50% 50%;
+background-repeat: no-repeat;
+```
+{% endtab %}
+{% endtabs %}
+
+## 【05－梯形頁籤】
+
+Trapezoid tabs\[[原網址](https://www.w3cplus.com/blog/1658.html)\]
+
+![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-39.png)
+
+{% tabs %}
+{% tab title="First Tab" %}
+![&#x5B57;&#x6703;&#x504F;&#x4E0A;](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-43.png)
+
+```css
+.tab {
+    position: relative;
+    display: inline-block;
+    padding: .5em 1em .35em;
+    color: white;
+}
+.tab::before {
+    content: ''; /* To generate the box */
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -1;
+    background: #58a;
+    transform: perspective(.5em) rotateX(5deg);
+}
+```
+
+![&#x89E3;&#x91CB;&#x70BA;&#x4EC0;&#x9EBC;&#x6703;&#x504F;&#x4E0A;](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-45.png)
+
+![transform-originbottom;](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-45.png)
+
+```css
+transform: scaleY(1.3) perspective(.5em) rotateX(5deg);
+transform-origin: bottom;
+```
+
+![&#x5FAE;&#x8ABF;&#x4E4B;&#x5F8C;](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-47.png)
+{% endtab %}
+
+{% tab title="頁籤" %}
+![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-48.png)
+
+```css
+nav > a {
+ position: relative;
+ display: inline-block;
+ padding: .3em 1em 0;
+}
+
+nav > a::before {
+ content: '';
+ position: absolute;
+ top: 0; right: 0; bottom: 0; left: 0;
+ z-index: -1;
+ background: #ccc;
+ background-image: linear-gradient(
+  hsla(0,0%,100%,.6),
+  hsla(0,0%,100%,0));
+ border: 1px solid rgba(0,0,0,.4);
+ border-bottom: none;
+ border-radius: .5em .5em 0 0;
+ box-shadow: 0 .15em white inset;
+ transform: perspective(.5em) rotateX(5deg);
+ transform-origin: bottom;
+}
+```
+
+把`transform-origin`的值改為`bottom left`或`bottom right`，我們就可以得到向左或向右傾斜的標籤。
+
+![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-49.png)
 {% endtab %}
 {% endtabs %}
 

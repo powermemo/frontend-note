@@ -249,5 +249,85 @@ function animationHandler(){
 
 * 🔶CODEPEN\[[連結](https://codepen.io/ch-zhuchu/pen/wvMpwaL)\]
 
+## 006 - Ajax Type Ahead
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small5.jpg)
+
+## 008 - Fun with HTML5 Canvas
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small7.jpg)
+
+## 010 - Hold Shift to Check Multiple Checkboxes
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small9.jpg)
+
+## 011 - Custom HTML5 Video Player
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small10.jpg)
+
+
+
+## 013 - Slide In on Scroll
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small12.jpg)
+
+## 015 - LocalStorage and Event Delegation
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small14.jpg)
+
+## 016 - CSS Text Shadow Mouse Move Effect
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small15.jpg)
+
+## 017 - Sorting Band Names without articles
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small16.jpg)
+
+## 019 - Unreal Webcam Fun
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small18.jpg)
+
+
+
+## 020 - Native Speech Recognition
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small19.jpg)
+
+## 021 - Geolocation based Speedometer and Compass
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small20.jpg)
+
+## 022 - Follow Along Links
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small21.jpg)
+
+## 023 - Speech Synthesis
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small22.jpg)
+
+## 024 - Sticky Nav
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small23.jpg)
+
+## 026 - Stripe Follow Along Dropdown
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small25.jpg)
+
+## 027 - Click and Drag to Scroll
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small26.jpg)
+
+## 028 - Video Speed Controller UI
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small27.jpg)
+
+## 029 - Countdown Clock
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small28.jpg)
+
+## 030 - Whack A Mole Game
+
+![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small29.jpg)
+
 
 
