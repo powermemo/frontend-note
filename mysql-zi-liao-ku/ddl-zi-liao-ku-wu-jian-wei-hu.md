@@ -58,7 +58,9 @@ CREATE TABLE item
 
 ### 外來鍵FK
 
+```text
 
+```
 
 ## 修改物件
 
