@@ -21,6 +21,45 @@ CREATE TABLE IF NOT EXISTS dept
 )ENGINE InnoDB;                               -- 儲存引擎InnoDB
 ```
 
+```text
+-- 「[CNSTRAINT 主鍵名稱] PRIMARY KEY(欄位名稱,...)」            -- 🔶【CNSTRAINT】
+CREATE TABLE item12
+(    ordid int not null,          -- 欄位名 欄位型別 不為空值
+     itemid smallint not null,    -- 欄位名 欄位型別 不為空值
+     CONSTRAINT pk_item_ordid_itemid PRIMARY KEY(ordid,itemid)-- 🔸複合主鍵
+);
+```
+
+```text
+-- 「AUTO_INCREMENT」自動增加ex. 流水號            -- 【🔶AUTO_INCREMENT】
+CREATE TABLE ord2
+(    oredid INT AUTO_INCREMENT PRIMARY KEY,     -- 欄位名 欄位型別 自動增加 PK
+     ord_date DATE,                             -- 欄位名 欄位型別
+)AUTO_INCREMENT = 101;                          -- 🔸流水號起始碼
+```
+
+```text
+--「UNIQUE」唯一鍵      -- 🔶【UNIQUE】
+CREATE TABLE emp
+(...,
+ VARCHAR(200) UNIQUE, -- 🔸
+ ...,
+);
+
+
+-- 複合唯一鍵
+CREATE TABLE item
+( order INT NOT NULLk
+  items SMALLINT NUT NULL,
+  prodid smallint,
+  CONSTRAINT uk_item_ordid_prodid UNIQUE(ordid,prodid)-- 🔸
+);
+```
+
+### 外來鍵FK
+
+
+
 ## 修改物件
 
 
