@@ -630,8 +630,31 @@ background-size: 41px 100%, 61px 100%, 83px 100%;
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1509/css-secrets-58.png)
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="信封邊框" %}
+![](https://www.w3cplus.com/sites/default/files/blogs/2015/1509/css-secrets-61.png)
 
+```css
+{
+  padding: 1em; 
+  border: 1em solid transparent; 
+  background: linear-gradient(white, white) padding-box,
+    repeating-linear-gradient(-45deg, red 0, red 12.5%, 
+                              transparent 0, transparent 25%, #58a 0, #58a 37.5%,
+                              transparent 0, transparent 50%) 0 / 5em 5em;
+}
+```
+
+```css
+{
+  padding: 1em; 
+  border: 16px solid transparent; 
+  border-image: 16 
+    repeating-linear-gradient(-45deg, red 0, red 1em, 
+                              transparent 0, transparent 2em, 
+                              #58a 0, #58a 3em, 
+                              transparent 0, transparent 4em);
+}
+```
 {% endtab %}
 {% endtabs %}
 
