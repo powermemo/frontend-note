@@ -4,7 +4,7 @@ description: 'https://javascript30.com/'
 
 # Untitled
 
-## 001 - Drum Kit鼓聲
+## 001 - 鼓聲Drum Kit
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small0.jpg)
 
@@ -44,7 +44,7 @@ document.querySelectorAll('.key').forEach(function(e){
 {% endtab %}
 {% endtabs %}
 
-## 002 - JS + CSS Clock時鐘
+## 002 - 時鐘JS + CSS Clock
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small1.jpg)
 
@@ -185,7 +185,7 @@ function animationHandler(){
 {% endtab %}
 {% endtabs %}
 
-## 003 - CSS Variables 畫盤
+## 003 - 畫盤CSS Variables 
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small2.jpg)
 
@@ -243,7 +243,7 @@ function animationHandler(){
 
 * 🔶CODEPEN\[[連結](https://codepen.io/ch-zhuchu/pen/oNbodzZ)\]
 
-## 005 - Image Gallery圖片牆
+## 005 - 圖片牆Image Gallery
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small4.jpg)
 
@@ -533,7 +533,7 @@ fetch(endpoing)
 
 \(還沒寫完....\)
 
-## 008 - Fun with HTML5 Canvas小畫家
+## 008 - 小畫家Fun with HTML5 Canvas
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small7.jpg)
 
@@ -605,7 +605,7 @@ html, body {
 {% endtab %}
 {% endtabs %}
 
-## 010 - Hold Shift to Check Multiple Checkboxes按住shift選取區間
+## 010 - 按住shift選取區間Hold Shift to Check Multiple Checkboxes
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small9.jpg)
 
@@ -730,7 +730,7 @@ p {
 {% endtab %}
 {% endtabs %}
 
-## 011 - Custom HTML5 Video Player
+## 011 - 客製化影片播放器Custom HTML5 Video Player
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small10.jpg)
 
@@ -928,11 +928,7 @@ input[type=range]::-moz-range-thumb {
 {% endtab %}
 {% endtabs %}
 
-```text
-
-```
-
-## 013 - Slide In on Scroll
+## 013 - 卷軸觸發圖片出現Slide In on Scroll
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small12.jpg)
 
@@ -1085,6 +1081,11 @@ function scrollHandler(){
 上面的code沒有加「debounce」函數，如果要加的話：  
 `window.addEventListener('load',debounce(scrollHandler));`
 {% endhint %}
+
+```javascript
+//加映場：蝦皮購物頁面的商品呈現(捲軸控制)
+
+```
 
 ![](http://hi.csdn.net/attachment/201112/15/0_13239131812KG9.gif)
 
