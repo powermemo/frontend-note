@@ -533,7 +533,7 @@ fetch(endpoing)
 
 \(還沒寫完....\)
 
-## 008 - Fun with HTML5 Canvas
+## 008 - Fun with HTML5 Canvas小畫家
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small7.jpg)
 
@@ -604,9 +604,107 @@ html, body {
 {% endtab %}
 {% endtabs %}
 
-## 010 - Hold Shift to Check Multiple Checkboxes
+## 010 - Hold Shift to Check Multiple Checkboxes按住shift選取區間
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small9.jpg)
+
+{% tabs %}
+{% tab title="HTML" %}
+```text
+<div class="inbox">
+  <div class="item">
+    <input type="checkbox">
+    <p>This is an inbox layout.</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Check one item</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Hold down your Shift key</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Check a lower item</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Everything in between should also be set to checked</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Try to do it without any libraries</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Just regular JavaScript</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Good Luck!</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Don't forget to tweet your result!</p>
+  </div>
+</div>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+html {
+  font-family: sans-serif;
+  background: #ffc600;
+}
+
+.inbox {
+  max-width: 400px;
+  margin: 50px auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+input:checked + p {
+  background: #F9F9F9;
+  text-decoration: line-through;
+}
+
+input[type="checkbox"] {
+  margin: 20px;
+}
+
+p {
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
+  flex: 1;
+  font-family:'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+  border-left: 1px solid #D1E2FF;
+}
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```
+
+```
+{% endtab %}
+{% endtabs %}
 
 ## 011 - Custom HTML5 Video Player
 
