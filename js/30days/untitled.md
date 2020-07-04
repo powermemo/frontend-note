@@ -249,13 +249,360 @@ function animationHandler(){
 
 * 🔶CODEPEN\[[連結](https://codepen.io/ch-zhuchu/pen/wvMpwaL)\]
 
+{% tabs %}
+{% tab title="css" %}
+```text
+html {
+  box-sizing: border-box;
+  background: #ffc600;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+}
+
+body {
+  margin: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.panels {
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.panel {
+  flex: 1;/*每塊區域占一等份*/
+  display:flex;/*讓內文可以製中*/
+  flex-direction:column;
+  justify-content:center;
+  background: #6B0F9C;
+  box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+  color: white;
+  text-align: center;
+  align-items: center;
+  /* Safari transitionend event.propertyName === flex */
+  /* Chrome + FF transitionend event.propertyName === flex-grow */
+  transition:
+    font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    background 0.2s;
+  font-size: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
+.panel2 { background-image:url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500); }
+.panel3 { background-image:url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d); }
+.panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
+.panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
+
+/* Flex Children */
+.panel > * {
+  flex:1;/*每個物件占一等份*/
+  margin: 0;
+  width: 100%;
+  transition: transform 0.5s;
+}
+
+.panel p {
+  text-transform: uppercase;
+  font-family: 'Amatic SC', cursive;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+  font-size: 2em;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.panel > *:first-child{
+  transform:translateY(-100%);
+}
+.panel > *:last-child{
+  transform:translateY(100%);
+}
+
+.panel.open-active > *:first-child{
+  transform:translateY(0%);
+}
+.panel.open-active > *:last-child{
+  transform:translateY(0%);
+}
+
+
+
+
+.panel p:nth-child(2) {
+  font-size: 4em;
+}
+
+.panel.open {
+  font-size: 40px;
+  flex:3;
+}
+```
+{% endtab %}
+
+{% tab title="html" %}
+```
+<div class="panels">
+  <div class="panel panel1">
+    <p>Hey</p>
+    <p>Let's</p>
+    <p>Dance</p>
+  </div>
+  <div class="panel panel2">
+    <p>Give</p>
+    <p>Take</p>
+    <p>Receive</p>
+  </div>
+  <div class="panel panel3">
+    <p>Experience</p>
+    <p>It</p>
+    <p>Today</p>
+  </div>
+  <div class="panel panel4">
+    <p>Give</p>
+    <p>All</p>
+    <p>You can</p>
+  </div>
+  <div class="panel panel5">
+    <p>Life</p>
+    <p>In</p>
+    <p>Motion</p>
+  </div>
+</div>
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```javascript
+;(function(){
+  const panels = document.querySelectorAll('.panel');/*這不是陣列！*/
+  panels.forEach(pl =>{
+    pl.addEventListener('click',openHandeler);  
+    pl.addEventListener('transitionend',transitionendHandeler); /*transitionend過場結束之後*/
+  })
+  function openHandeler(){
+    this.classList.toggle('open');
+  }
+  function transitionendHandeler(e){
+    console.log(e);
+    /*如果找到flex的話*/
+    if(e.propertyName.indexOf('flex') !== -1){/*會依照屬性的數量觸發*/
+      /*就是說..沒有if找，當「open-active」CSS屬性為雙數時「toggle」就會被抵銷...*/
+      this.classList.toggle('open-active');
+    }
+  }
+  
+})()
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+JS：`classList.add()、classList.remove()`、`classList.toggle()`  
+JQ：`addClass()`、`removeClass()`、`toggleClass()`
+{% endhint %}
+
 ## 006 - Ajax Type Ahead
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small5.jpg)
 
+{% tabs %}
+{% tab title="HTML" %}
+```text
+<form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+html {
+  box-sizing: border-box;
+  background: #ffc600;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+input {
+  width: 100%;
+  padding: 20px;
+}
+
+.search-form {
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+input.search {
+  margin: 0;
+  text-align: center;
+  outline: 0;
+  border: 10px solid #F7F7F7;
+  width: 120%;
+  left: -10%;
+  position: relative;
+  top: 10px;
+  z-index: 2;
+  border-radius: 5px;
+  font-size: 40px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+}
+
+.suggestions {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  /*perspective: 20px;*/
+}
+
+.suggestions li {
+  background: white;
+  list-style: none;
+  border-bottom: 1px solid #D8D8D8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.suggestions li:nth-child(even) {
+  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+  background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+}
+
+.suggestions li:nth-child(odd) {
+  transform: perspective(100px) rotateX(-3deg) translateY(3px);
+  background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+}
+
+span.population {
+  font-size: 15px;
+}
+
+.hl {
+  background: #ffc600;
+}
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+//↓Alex的方式
+// let req = new XMLHttpRequest();
+// req.addEventListener('load',requestHandler);
+// req.open('get',endpoint);
+// req.send();
+// function requestHandler(){
+//   console.log(JSON.parse(this.reponse));
+// }
+
+//↓原作者的方式
+const cities =[];
+fetch(endpoint)
+  .then(blob => blob.json())
+  .then(data => cities.push(...data));
+
+let cities2 = null'
+fetch(endpoing)
+  .then(blob => blob.json())
+  .then(data => (cities2 = data));
+```
+{% endtab %}
+{% endtabs %}
+
+\(還沒寫完....\)
+
 ## 008 - Fun with HTML5 Canvas
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small7.jpg)
+
+{% tabs %}
+{% tab title="HTML" %}
+```text
+<canvas id="draw" width="800" height="800"></canvas>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+html, body {
+ margin: 0;
+}
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```javascript
+;(function(){
+  let canvas = document.querySelector('#draw');
+  let ctx = canvas.getContext('2d');
+  let colorDeg = 0
+  let lineWidth = 25
+  let direction = 1
+  ctx.strokeStyle = `hsl(${colorDeg},100%,50%)`;/*線條顏色*/
+  ctx.lineWidth = lineWidth;/*線條寬度*/
+  ctx.lineCap = 'round';/*線條邊邊*/
+  ctx.lineJoin = 'round';/*線條轉角*/
+  
+  let drawing = false;/*繪圖狀態*/
+  let x=0,y=0;/*xy軸起始值*/
+  canvas.addEventListener('mousedown',(e)=>{
+    drawing = true;
+    //當滑鼠按下，紀錄xy軸
+    [x,y] = [e.offsetX,e.offsetY];
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    ctx.lineTo(x,y);
+    ctx.stroke();
+  })
+  canvas.addEventListener('mousemove',(e)=>{
+    //當游標動，會一直抓位置，所以...
+    if(!drawing) return;
+    console.log(drawing); 
+    
+    ctx.beginPath();//設定起始繪圖
+    colorDeg = colorDeg<360? colorDeg+.5:0;
+    ctx.strokeStyle = `hsl(${colorDeg},100%,50%)`;
+    if(lineWidth<1 || lineWidth>50){direction*=-1;}
+    lineWidth += direction;
+    ctx.lineWidth = lineWidth;
+    ctx.moveTo(x,y);//將起始點設定為滑鼠按下的位置
+    ctx.lineTo(e.offsetX,e.offsetY);
+      [x,y] = [e.offsetX,e.offsetY];
+    ctx.stroke();//開始繪圖
+  })
+  document.addEventListener('mouseup',()=>{
+    drawing = false;
+  })
+  //當滑鼠離開畫布範圍 
+  canvas.addEventListener('mouseleave',()=>{
+    drawing = false;
+  })
+})()
+```
+{% endtab %}
+{% endtabs %}
 
 ## 010 - Hold Shift to Check Multiple Checkboxes
 
