@@ -734,7 +734,31 @@ p {
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small10.jpg)
 
+{% tabs %}
+{% tab title="HTML" %}
+```text
 
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```
+
+```
+{% endtab %}
+{% endtabs %}
+
+
+
+```text
+
+```
 
 ## 013 - Slide In on Scroll
 
