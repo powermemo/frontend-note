@@ -1082,11 +1082,6 @@ function scrollHandler(){
 `window.addEventListener('load',debounce(scrollHandler));`
 {% endhint %}
 
-```javascript
-//加映場：蝦皮購物頁面的商品呈現(捲軸控制)
-
-```
-
 ![](http://hi.csdn.net/attachment/201112/15/0_13239131812KG9.gif)
 
 javascript中製作滾動代碼的常用屬性
@@ -1104,6 +1099,24 @@ javascript中製作滾動代碼的常用屬性
 * 屏幕分辨率的高： window.screen.height;
 * 屏幕分辨率的寬： window.screen.width;
 * 屏幕可用工作區高度： window.screen.availHeight;
+
+```javascript
+//加映場：蝦皮購物頁面的商品呈現(捲軸控制)
+//已下用JQ撰寫。
+(funciton(
+    $('.img').each((index,img)=>{
+        console.log($(img).offset.top);
+        if($(img).offset().top + $(img).height()/2>
+        $(window).scrollTop().innerHeight()){
+            $(imgthis).append('<img src="https://unsplash.it/400/400">')
+        }
+    })
+){})()
+```
+
+{% hint style="info" %}
+要用「this」的話，就不能用箭頭函數！！
+{% endhint %}
 
 ## 015 - LocalStorage and Event Delegation
 
