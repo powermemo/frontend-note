@@ -1104,11 +1104,12 @@ javascript中製作滾動代碼的常用屬性
 //加映場：蝦皮購物頁面的商品呈現(捲軸控制)
 //已下用JQ撰寫。
 (funciton(
-    $('.img').each((index,img)=>{
+    $('.img').each(function(index,img){
         console.log($(img).offset.top);
         if($(img).offset().top + $(img).height()/2>
-        $(window).scrollTop().innerHeight()){
-            $(imgthis).append('<img src="https://unsplash.it/400/400">')
+        $(window).scrollTop().innerHeight()&&
+        !$(img).children().length
+        ){$(img).append('<img src="https://unsplash.it/400/400">')
         }
     })
 ){})()
@@ -1172,9 +1173,194 @@ javascript中製作滾動代碼的常用屬性
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small25.jpg)
 
-## 027 - Click and Drag to Scroll
+## 027 - 點擊拖曳Click and Drag to Scroll
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small26.jpg)
+
+{% tabs %}
+{% tab title="HTML" %}
+```aspnet
+<div class="items">
+  <div class="item item1">01</div>
+  <div class="item item2">02</div>
+  <div class="item item3">03</div>
+  <div class="item item4">04</div>
+  <div class="item item5">05</div>
+  <div class="item item6">06</div>
+  <div class="item item7">07</div>
+  <div class="item item8">08</div>
+  <div class="item item9">09</div>
+  <div class="item item10">10</div>
+  <div class="item item11">11</div>
+  <div class="item item12">12</div>
+  <div class="item item13">13</div>
+  <div class="item item14">14</div>
+  <div class="item item15">15</div>
+  <div class="item item16">16</div>
+  <div class="item item17">17</div>
+  <div class="item item18">18</div>
+  <div class="item item19">19</div>
+  <div class="item item20">20</div>
+  <div class="item item21">21</div>
+  <div class="item item22">22</div>
+  <div class="item item23">23</div>
+  <div class="item item24">24</div>
+  <div class="item item25">25</div>
+</div>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+html {
+  box-sizing: border-box;
+  background: url('https://source.unsplash.com/NFs6dRTBgaM/2000x2000') fixed;
+  background-size: cover;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 20px;
+  margin: 0;
+}
+
+.items {
+  height: 800px;
+  padding: 100px;
+  width: 100%;
+  border: 1px solid white;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  transform: scale(0.98);
+  will-change: transform;
+  position: relative;
+  background: rgba(255,255,255,0.1);
+  font-size: 0;
+  perspective: 500px;
+}
+
+.items.active {
+  background: rgba(255,255,255,0.3);
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+  transform: scale(1);
+}
+
+.item {
+  width: 200px;
+  height: calc(100% - 40px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  font-weight: 100;
+  color: rgba(0,0,0,0.15);
+  box-shadow: inset 0 0 0 10px rgba(0,0,0,0.15);
+}
+
+.item:nth-child(9n+1) { background: dodgerblue;}
+.item:nth-child(9n+2) { background: goldenrod;}
+.item:nth-child(9n+3) { background: paleturquoise;}
+.item:nth-child(9n+4) { background: gold;}
+.item:nth-child(9n+5) { background: cadetblue;}
+.item:nth-child(9n+6) { background: tomato;}
+.item:nth-child(9n+7) { background: lightcoral;}
+.item:nth-child(9n+8) { background: darkslateblue;}
+.item:nth-child(9n+9) { background: rebeccapurple;}
+
+.item:nth-child(even) { transform: scaleX(1.31) rotateY(40deg); }
+.item:nth-child(odd) { transform: scaleX(1.31) rotateY(-40deg); }
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```javascript
+/*【相對】位置的移動
+  ●三個步驟： 
+ * 一mousedown
+ * 二mousemove
+ * 三mouseup & mouseleave*/
+/*●mouseover是摸到、mousemove是移動*/
+/*座標：如果你是區塊上抓位置，建議你用「offset」。但是內容如果是會一直變動的話就不建議使用「offset」！；
+        如果你是要抓頁面上的位置，建議你用「client」或「page」。*/
+const list = document.querySelector('.items');
+//拖曳的起點
+let startX = 0;
+
+list.addEventListener('mousedown',startDrag);//手機touchstart
+list.addEventListener('mousemove',dragHandler);//手機touchmove
+list.addEventListener('mouseup',stopDrag);//手機touchend
+list.addEventListener('mouseleave',stopDrag);
+function startDrag(e){
+  list.classList.add('active');
+  startX = e.pageX;
+}
+function dragHandler(e){
+  if(list.classList.contains('active')){
+    let move = e.pageX - startX;//移動的終點減掉起點位置\
+    //每次算完之後，要把x推到新的點做為新的「startX」
+    startX = e.pageX;
+    list.scrollLeft -= move*2;
+  }
+}
+function stopDrag(){
+  list.classList.remove('active');
+}
+```
+{% endtab %}
+
+{% tab title="JS的另一種做法" %}
+```javascript
+/*【相對】位置的移動
+  ●三個步驟： 
+ * 一mousedown
+ * 二mousemove
+ * 三mouseup & mouseleave*/
+/*●mouseover是摸到、mousemove是移動*/
+/*座標：如果你是區塊上抓位置，建議你用「offset」。但是內容如果是會一直變動的話就不建議使用「offset」！；
+        如果你是要抓頁面上的位置，建議你用「client」或「page」。*/
+const list = document.querySelector('.items');
+//拖曳的起點
+let startX = 0;
+let startScroll = 0;//◎
+
+list.addEventListener('mousedown',startDrag);//手機touchstart
+list.addEventListener('mousemove',dragHandler);//手機touchmove
+list.addEventListener('mouseup',stopDrag);//手機touchend
+list.addEventListener('mouseleave',stopDrag);
+function startDrag(e){
+  list.classList.add('active');
+  startX = e.pageX;
+  startScroll = list.scrollLeft;//◎
+}
+function dragHandler(e){
+  if(list.classList.contains('active')){
+    let move = e.pageX - startX;//移動的終點減掉起點位置\
+    //每次算完之後，要把x推到新的點做為新的「startX」
+    // startX = e.pageX;
+    // list.scrollLeft -= move*2.5;
+    list.scrollLeft = startScroll - move*2.5;
+  }
+}
+function stopDrag(){
+  list.classList.remove('active');
+}
+
+```
+{% endtab %}
+{% endtabs %}
 
 ## 028 - Video Speed Controller UI
 
