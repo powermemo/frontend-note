@@ -571,6 +571,7 @@ html, body {
     drawing = true;
     //當滑鼠按下，紀錄xy軸
     [x,y] = [e.offsetX,e.offsetY];
+    //下面四條是我自己加的XD，點一下也應該要有！
     ctx.beginPath();
     ctx.moveTo(x,y);
     ctx.lineTo(x,y);
@@ -700,8 +701,31 @@ p {
 {% endtab %}
 
 {% tab title="JS" %}
-```
-
+```javascript
+;(function(){
+  //querySelectorAll不是一個標準的陣列！所以用「array from」轉換
+  const checkboxes = Array.from(
+    document.querySelectorAll('.inbox input[type="checkbox"]'));
+  let lastCheck = null;
+  checkboxes.forEach(input=>{
+    input.addEventListener('click',clickHandler);
+  });
+  
+  function clickHandler(e){
+    //檢查checkbox被打勾了沒有。有的話放個indexOf給他；沒有的話設定空值
+    if(this.checked){
+      //滿足兩個條件就全選區間，1.你有check一個checkbox、2.你有按shift
+      if(e.shiftKey && lastCheck !== null){
+        let nowCheck = checkboxes.indexOf(this);
+        checkboxes.slice(//slice你要多長切多長
+          Math.min(nowCheck,lastCheck),//較小放前、
+          Math.max(nowCheck,lastCheck)//較大放後
+        ).forEach(input =>(input.checked =true));//這區間的checkbox都勾起來
+      }
+      lastCheck = checkboxes.indexOf(this); 
+    }else{lastCheck = null;}
+  }
+})();
 ```
 {% endtab %}
 {% endtabs %}
