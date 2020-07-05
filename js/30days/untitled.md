@@ -1360,6 +1360,68 @@ function stopDrag(){
 
 ```
 {% endtab %}
+
+{% tab title="解決圖片連結被拖曳" %}
+```javascript
+/*【相對】位置的移動
+  ●三個步驟： 
+ * 一mousedown
+ * 二mousemove
+ * 三mouseup & mouseleave*/
+/*●mouseover是摸到、mousemove是移動*/
+/*座標：如果你是區塊上抓位置，建議你用「offset」。但是內容如果是會一直變動的話就不建議使用「offset」！；
+        如果你是要抓頁面上的位置，建議你用「client」或「page」。*/
+const list = document.querySelector('.items');
+//拖曳的起點
+let startX = 0;
+let startScroll = 0;//◎
+let startTime = 0;//手勢判斷新增的
+let moved = false;//以防拉到字或圖片新增的
+
+list.addEventListener('mousedown',startDrag);//手機touchstart
+list.addEventListener('mousemove',dragHandler);//手機touchmove
+list.addEventListener('mouseup',stopDrag);//手機touchend
+list.addEventListener('mouseleave',stopDrag);
+document.querySelectorAll('.itmes a').forEach(dom => {//以防拉到字或圖片
+  dom.addEventListener('click',function(e){
+    if(moved){
+      //a連結如果拖曳就不給連；a連結如果不拖曳就給連
+      e.preventDefault();  
+    }
+  })
+})
+
+
+function startDrag(e){
+  list.classList.add('active');
+  startX = e.pageX;
+  startScroll = list.scrollLeft;//◎
+  startTime = new Date().getTime();
+  moved = false;
+}
+function dragHandler(e){
+  e.preventDefault();//以防拉到字或圖片
+  if(list.classList.contains('active')){
+    moved = true;
+    let move = e.pageX - startX;//移動的終點減掉起點位置
+    //每次算完之後，要把x推到新的點做為新的「startX」
+    // startX = e.pageX;
+    // list.scrollLeft -= move*2.5;
+    list.scrollLeft = startScroll - move*2.5;
+  }
+}
+function stopDrag(e){
+  list.classList.remove('active');
+  if(new Date().getTime() - startTime <= 250){
+    if(e.pageX > startX){
+     console.log('swiper right');
+    }else if(e.pageX < startX){
+      console.log('swiper left');
+    }
+  }
+}
+```
+{% endtab %}
 {% endtabs %}
 
 ## 028 - Video Speed Controller UI
