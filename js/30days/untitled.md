@@ -4,7 +4,7 @@ description: 'https://javascript30.com/'
 
 # Untitled
 
-## 001 - Drum Kit鼓聲
+## 001 - 鼓聲Drum Kit
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small0.jpg)
 
@@ -44,7 +44,7 @@ document.querySelectorAll('.key').forEach(function(e){
 {% endtab %}
 {% endtabs %}
 
-## 002 - JS + CSS Clock時鐘
+## 002 - 時鐘JS + CSS Clock
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small1.jpg)
 
@@ -185,7 +185,7 @@ function animationHandler(){
 {% endtab %}
 {% endtabs %}
 
-## 003 - CSS Variables 畫盤
+## 003 - 畫盤CSS Variables 
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small2.jpg)
 
@@ -243,37 +243,897 @@ function animationHandler(){
 
 * 🔶CODEPEN\[[連結](https://codepen.io/ch-zhuchu/pen/oNbodzZ)\]
 
-## 005 - Image Gallery圖片牆
+## 005 - 圖片牆Image Gallery
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small4.jpg)
 
 * 🔶CODEPEN\[[連結](https://codepen.io/ch-zhuchu/pen/wvMpwaL)\]
 
+{% tabs %}
+{% tab title="css" %}
+```text
+html {
+  box-sizing: border-box;
+  background: #ffc600;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+}
+
+body {
+  margin: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.panels {
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.panel {
+  flex: 1;/*每塊區域占一等份*/
+  display:flex;/*讓內文可以製中*/
+  flex-direction:column;
+  justify-content:center;
+  background: #6B0F9C;
+  box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+  color: white;
+  text-align: center;
+  align-items: center;
+  /* Safari transitionend event.propertyName === flex */
+  /* Chrome + FF transitionend event.propertyName === flex-grow */
+  transition:
+    font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    background 0.2s;
+  font-size: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
+.panel2 { background-image:url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500); }
+.panel3 { background-image:url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d); }
+.panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
+.panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
+
+/* Flex Children */
+.panel > * {
+  flex:1;/*每個物件占一等份*/
+  margin: 0;
+  width: 100%;
+  transition: transform 0.5s;
+}
+
+.panel p {
+  text-transform: uppercase;
+  font-family: 'Amatic SC', cursive;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+  font-size: 2em;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.panel > *:first-child{
+  transform:translateY(-100%);
+}
+.panel > *:last-child{
+  transform:translateY(100%);
+}
+
+.panel.open-active > *:first-child{
+  transform:translateY(0%);
+}
+.panel.open-active > *:last-child{
+  transform:translateY(0%);
+}
+
+
+
+
+.panel p:nth-child(2) {
+  font-size: 4em;
+}
+
+.panel.open {
+  font-size: 40px;
+  flex:3;
+}
+```
+{% endtab %}
+
+{% tab title="html" %}
+```
+<div class="panels">
+  <div class="panel panel1">
+    <p>Hey</p>
+    <p>Let's</p>
+    <p>Dance</p>
+  </div>
+  <div class="panel panel2">
+    <p>Give</p>
+    <p>Take</p>
+    <p>Receive</p>
+  </div>
+  <div class="panel panel3">
+    <p>Experience</p>
+    <p>It</p>
+    <p>Today</p>
+  </div>
+  <div class="panel panel4">
+    <p>Give</p>
+    <p>All</p>
+    <p>You can</p>
+  </div>
+  <div class="panel panel5">
+    <p>Life</p>
+    <p>In</p>
+    <p>Motion</p>
+  </div>
+</div>
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```javascript
+;(function(){
+  const panels = document.querySelectorAll('.panel');/*這不是陣列！*/
+  panels.forEach(pl =>{
+    pl.addEventListener('click',openHandeler);  
+    pl.addEventListener('transitionend',transitionendHandeler); /*transitionend過場結束之後*/
+  })
+  function openHandeler(){
+    this.classList.toggle('open');
+  }
+  function transitionendHandeler(e){
+    console.log(e);
+    /*如果找到flex的話*/
+    if(e.propertyName.indexOf('flex') !== -1){/*會依照屬性的數量觸發*/
+      /*就是說..沒有if找，當「open-active」CSS屬性為雙數時「toggle」就會被抵銷...*/
+      this.classList.toggle('open-active');
+    }
+  }
+  
+})()
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+JS：`classList.add()、classList.remove()`、`classList.toggle()`  
+JQ：`addClass()`、`removeClass()`、`toggleClass()`
+{% endhint %}
+
 ## 006 - Ajax Type Ahead
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small5.jpg)
 
-## 008 - Fun with HTML5 Canvas
+{% tabs %}
+{% tab title="HTML" %}
+```text
+<form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+html {
+  box-sizing: border-box;
+  background: #ffc600;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+input {
+  width: 100%;
+  padding: 20px;
+}
+
+.search-form {
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+input.search {
+  margin: 0;
+  text-align: center;
+  outline: 0;
+  border: 10px solid #F7F7F7;
+  width: 120%;
+  left: -10%;
+  position: relative;
+  top: 10px;
+  z-index: 2;
+  border-radius: 5px;
+  font-size: 40px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+}
+
+.suggestions {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  /*perspective: 20px;*/
+}
+
+.suggestions li {
+  background: white;
+  list-style: none;
+  border-bottom: 1px solid #D8D8D8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+}
+
+.suggestions li:nth-child(even) {
+  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
+  background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+}
+
+.suggestions li:nth-child(odd) {
+  transform: perspective(100px) rotateX(-3deg) translateY(3px);
+  background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+}
+
+span.population {
+  font-size: 15px;
+}
+
+.hl {
+  background: #ffc600;
+}
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+//↓Alex的方式
+// let req = new XMLHttpRequest();
+// req.addEventListener('load',requestHandler);
+// req.open('get',endpoint);
+// req.send();
+// function requestHandler(){
+//   console.log(JSON.parse(this.reponse));
+// }
+
+//↓原作者的方式
+const cities =[];
+fetch(endpoint)
+  .then(blob => blob.json())
+  .then(data => cities.push(...data));
+
+let cities2 = null'
+fetch(endpoing)
+  .then(blob => blob.json())
+  .then(data => (cities2 = data));
+```
+{% endtab %}
+{% endtabs %}
+
+\(還沒寫完....\)
+
+## 008 - 小畫家Fun with HTML5 Canvas
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small7.jpg)
 
-## 010 - Hold Shift to Check Multiple Checkboxes
+{% tabs %}
+{% tab title="HTML" %}
+```text
+<canvas id="draw" width="800" height="800"></canvas>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+html, body {
+ margin: 0;
+}
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```javascript
+;(function(){
+  let canvas = document.querySelector('#draw');
+  let ctx = canvas.getContext('2d');
+  let colorDeg = 0
+  let lineWidth = 25
+  let direction = 1
+  ctx.strokeStyle = `hsl(${colorDeg},100%,50%)`;/*線條顏色*/
+  ctx.lineWidth = lineWidth;/*線條寬度*/
+  ctx.lineCap = 'round';/*線條邊邊*/
+  ctx.lineJoin = 'round';/*線條轉角*/
+  
+  let drawing = false;/*繪圖狀態*/
+  let x=0,y=0;/*xy軸起始值*/
+  canvas.addEventListener('mousedown',(e)=>{
+    drawing = true;
+    //當滑鼠按下，紀錄xy軸
+    [x,y] = [e.offsetX,e.offsetY];
+    //下面四條是我自己加的XD，點一下也應該要有！
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    ctx.lineTo(x,y);
+    ctx.stroke();
+  })
+  canvas.addEventListener('mousemove',(e)=>{
+    //當游標動，會一直抓位置，所以...
+    if(!drawing) return;
+    console.log(drawing); 
+    
+    ctx.beginPath();//設定起始繪圖
+    colorDeg = colorDeg<360? colorDeg+.5:0;
+    ctx.strokeStyle = `hsl(${colorDeg},100%,50%)`;
+    if(lineWidth<1 || lineWidth>50){direction*=-1;}
+    lineWidth += direction;
+    ctx.lineWidth = lineWidth;
+    ctx.moveTo(x,y);//將起始點設定為滑鼠按下的位置
+    ctx.lineTo(e.offsetX,e.offsetY);
+      [x,y] = [e.offsetX,e.offsetY];
+    ctx.stroke();//開始繪圖
+  })
+  document.addEventListener('mouseup',()=>{
+    drawing = false;
+  })
+  //當滑鼠離開畫布範圍 
+  canvas.addEventListener('mouseleave',()=>{
+    drawing = false;
+  })
+})()
+```
+{% endtab %}
+{% endtabs %}
+
+## 010 - 按住shift選取區間Hold Shift to Check Multiple Checkboxes
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small9.jpg)
 
-## 011 - Custom HTML5 Video Player
+{% tabs %}
+{% tab title="HTML" %}
+```text
+<div class="inbox">
+  <div class="item">
+    <input type="checkbox">
+    <p>This is an inbox layout.</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Check one item</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Hold down your Shift key</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Check a lower item</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Everything in between should also be set to checked</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Try to do it without any libraries</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Just regular JavaScript</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Good Luck!</p>
+  </div>
+  <div class="item">
+    <input type="checkbox">
+    <p>Don't forget to tweet your result!</p>
+  </div>
+</div>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+html {
+  font-family: sans-serif;
+  background: #ffc600;
+}
+
+.inbox {
+  max-width: 400px;
+  margin: 50px auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+input:checked + p {
+  background: #F9F9F9;
+  text-decoration: line-through;
+}
+
+input[type="checkbox"] {
+  margin: 20px;
+}
+
+p {
+  margin: 0;
+  padding: 20px;
+  transition: background 0.2s;
+  flex: 1;
+  font-family:'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+  border-left: 1px solid #D1E2FF;
+}
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```javascript
+;(function(){
+  //querySelectorAll不是一個標準的陣列！所以用「array from」轉換
+  const checkboxes = Array.from(
+    document.querySelectorAll('.inbox input[type="checkbox"]'));
+  let lastCheck = null;
+  checkboxes.forEach(input=>{
+    input.addEventListener('click',clickHandler);
+  });
+  
+  function clickHandler(e){
+    //檢查checkbox被打勾了沒有。有的話放個indexOf給他；沒有的話設定空值
+    if(this.checked){
+      //滿足兩個條件就全選區間，1.你有check一個checkbox、2.你有按shift
+      if(e.shiftKey && lastCheck !== null){
+        let nowCheck = checkboxes.indexOf(this);
+        checkboxes.slice(//slice你要多長切多長
+          Math.min(nowCheck,lastCheck),//較小放前、
+          Math.max(nowCheck,lastCheck)//較大放後
+        ).forEach(input =>(input.checked =true));//這區間的checkbox都勾起來
+      }
+      lastCheck = checkboxes.indexOf(this); 
+    }else{lastCheck = null;}
+  }
+})();
+```
+{% endtab %}
+{% endtabs %}
+
+## 011 - 客製化影片播放器Custom HTML5 Video Player
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small10.jpg)
 
+{% tabs %}
+{% tab title="HTML" %}
+```text
+<div class="player">
+  <video class="player__video viewer" src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"></video>
 
+  <div class="player__controls">
+    <div class="progress">
+      <div class="progress__filled"></div>
+    </div>
+    <button class="player__button toggle" title="Toggle Play">►</button>
+    <input type="range" name="volume" class="player__slider" min="0" max="1" step="0.05" value="1">
+    <input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.1" value="1">
+    <button data-skip="-10" class="player__button">« 10s</button>
+    <button data-skip="25" class="player__button">25s »</button>
+  </div>
+</div>
+```
+{% endtab %}
 
-## 013 - Slide In on Scroll
+{% tab title="CSS" %}
+```
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  background: #7A419B;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #7c1599 0%,#921099 48%,#7e4ae8 100%);
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+}
+
+.player {
+  max-width: 750px;
+  border: 5px solid rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  position: relative;
+  font-size: 0;
+  overflow: hidden;
+}
+
+/* This css is only applied when fullscreen is active. */
+.player:fullscreen {
+  max-width: none;
+  width: 100%;
+}
+
+.player:-webkit-full-screen {
+  max-width: none;
+  width: 100%;
+}
+
+.player__video {
+  width: 100%;
+}
+
+.player__button {
+  background: none;
+  border: 0;
+  line-height: 1;
+  color: white;
+  text-align: center;
+  outline: 0;
+  padding: 0;
+  cursor: pointer;
+  max-width: 50px;
+}
+
+.player__button:focus {
+  border-color: #ffc600;
+}
+
+.player__slider {
+  width: 10px;
+  height: 30px;
+}
+
+.player__controls {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(100%) translateY(-5px);
+  transition: all .3s;
+  flex-wrap: wrap;
+  background: rgba(0,0,0,0.1);
+}
+
+.player:hover .player__controls {
+  transform: translateY(0);
+}
+
+.player:hover .progress {
+  height: 15px;
+}
+
+.player__controls > * {
+  flex: 1;
+}
+
+.progress {
+  flex: 10;
+  position: relative;
+  display: flex;
+  flex-basis: 100%;
+  height: 5px;
+  transition: height 0.3s;
+  background: rgba(0,0,0,0.5);
+  cursor: ew-resize;
+}
+
+.progress__filled {
+  width: 50%;
+  background: #ffc600;
+  flex: 0;
+  flex-basis: 50%;
+}
+
+/* unholy css to style input type="range" */
+
+input[type=range] {
+  -webkit-appearance: none;
+  background: transparent;
+  width: 100%;
+  margin: 0 5px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+  background: rgba(255,255,255,0.8);
+  border-radius: 1.3px;
+  border: 0.2px solid rgba(1, 1, 1, 0);
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background: #ffc600;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.5px;
+  box-shadow:0 0 2px rgba(0,0,0,0.2);
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #bada55;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+  background: #ffffff;
+  border-radius: 1.3px;
+  border: 0.2px solid rgba(1, 1, 1, 0);
+}
+
+input[type=range]::-moz-range-thumb {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background: #ffc600;
+  cursor: pointer;
+}
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```
+
+```
+{% endtab %}
+{% endtabs %}
+
+## 013 - 卷軸觸發圖片出現Slide In on Scroll
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small12.jpg)
+
+{% tabs %}
+{% tab title="HTML" %}
+```text
+<div class="site-wrap">
+
+  <h1>Slide in on Scroll</h1>
+
+  <p>Consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariaturlores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Adipisicing elit. Tempore tempora rerum..</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+
+  <img src="http://unsplash.it/400/400" class="align-left slide-in">
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, deserunt facilis et iste corrupti omnis tenetur est. Iste ut est dicta dolor itaque adipisci, dolorum minima, veritatis earum provident error molestias. Ratione magni illo sint vel velit ut excepturi consectetur suscipit, earum modi accusamus voluptatem nostrum, praesentium numquam, reiciendis voluptas sit id quisquam. Consequatur in quis reprehenderit modi perspiciatis necessitatibus saepe, quidem, suscipit iure natus dignissimos ipsam, eligendi deleniti accusantium, rerum quibusdam fugit perferendis et optio recusandae sed ratione. Culpa, dolorum reprehenderit harum ab voluptas fuga, nisi eligendi natus maiores illum quas quos et aperiam aut doloremque optio maxime fugiat doloribus. Eum dolorum expedita quam, nesciunt</p>
+
+  <img src="http://unsplash.it/400/401" class="align-right slide-in">
+
+  <p> at provident praesentium atque quas rerum optio dignissimos repudiandae ullam illum quibusdam. Vel ad error quibusdam, illo ex totam placeat. Quos excepturi fuga, molestiae ea quisquam minus, ratione dicta consectetur officia omnis, doloribus voluptatibus? Veniam ipsum veritatis architecto, provident quas consequatur doloremque quam quidem earum expedita, ad delectus voluptatum, omnis praesentium nostrum qui aspernatur ea eaque adipisci et cumque ab? Ea voluptatum dolore itaque odio. Eius minima distinctio harum, officia ab nihil exercitationem. Tempora rem nemo nam temporibus molestias facilis minus ipsam quam doloribus consequatur debitis nesciunt tempore officiis aperiam quisquam, molestiae voluptates cum, fuga culpa. Distinctio accusamus quibusdam, tempore perspiciatis dolorum optio facere consequatur quidem ullam beatae architecto, ipsam sequi officiis dignissimos amet impedit natus necessitatibus tenetur repellendus dolor rem! Dicta dolorem, iure, facilis illo ex nihil ipsa amet officia, optio temporibus eum autem odit repellendus nisi. Possimus modi, corrupti error debitis doloribus dicta libero earum, sequi porro ut excepturi nostrum ea voluptatem nihil culpa? Ullam expedita eligendi obcaecati reiciendis velit provident omnis quas qui in corrupti est dolore facere ad hic, animi soluta assumenda consequuntur reprehenderit! Voluptate dolor nihil veniam laborum voluptas nisi pariatur sed optio accusantium quam consectetur, corrupti, sequi et consequuntur, excepturi doloremque. Tempore quis velit corporis neque fugit non sequi eaque rem hic. Facere, inventore, aspernatur. Accusantium modi atque, asperiores qui nobis soluta cumque suscipit excepturi possimus doloremque odit saepe perferendis temporibus molestiae nostrum voluptatum quis id sint quidem nesciunt culpa. Rerum labore dolor beatae blanditiis praesentium explicabo velit optio esse aperiam similique, voluptatem cum, maiores ipsa tempore. Reiciendis sed culpa atque inventore, nam ullam enim expedita consectetur id velit iusto alias vitae explicabo nemo neque odio reprehenderit soluta sint eaque. Aperiam, qui ut tenetur, voluptate doloremque officiis dicta quaerat voluptatem rerum natus magni. Eum amet autem dolor ullam.</p>
+
+  <img src="http://unsplash.it/200/500" class="align-left slide-in">
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio maiores adipisci quibusdam repudiandae dolor vero placeat esse sit! Quibusdam saepe aperiam explicabo placeat optio, consequuntur nihil voluptatibus expedita quia vero perferendis, deserunt et incidunt eveniet <img src="http://unsplash.it/200/200" class="align-right slide-in"> temporibus doloremque possimus facilis. Possimus labore, officia dolore! Eaque ratione saepe, alias harum laboriosam deserunt laudantium blanditiis eum explicabo placeat reiciendis labore iste sint. Consectetur expedita dignissimos, non quos distinctio, eos rerum facilis eligendi. Asperiores laudantium, rerum ratione consequatur, culpa consectetur possimus atque ab tempore illum non dolor nesciunt. Neque, rerum. A vel non incidunt, quod doloremque dignissimos necessitatibus aliquid laboriosam architecto at cupiditate commodi expedita in, quae blanditiis. Deserunt labore sequi, repellat laboriosam est, doloremque culpa reiciendis tempore excepturi. Enim nostrum fugit itaque vel corporis ullam sed tenetur ipsa qui rem quam error sint, libero. Laboriosam rem, ratione. Autem blanditiis</p>
+
+
+  <p>laborum neque repudiandae quam, cumque, voluptate veritatis itaque, placeat veniam ad nisi. Expedita, laborum reprehenderit ratione soluta velit natus, odit mollitia. Corporis rerum minima fugiat in nostrum. Assumenda natus cupiditate hic quidem ex, quas, amet ipsum esse dolore facilis beatae maxime qui inventore, iste? Maiores dignissimos dolore culpa debitis voluptatem harum, excepturi enim reiciendis, tempora ab ipsam illum aspernatur quasi qui porro saepe iure sunt eligendi tenetur quaerat ducimus quas sequi omnis aperiam suscipit! Molestiae obcaecati officiis quo, ratione eveniet, provident pariatur. Veniam quasi expedita distinctio, itaque molestiae sequi, dolorum nisi repellendus quia facilis iusto dignissimos nam? Tenetur fugit quos autem nihil, perspiciatis expedita enim tempore, alias ab maiores quis necessitatibus distinctio molestias eum, quidem. Delectus impedit quidem laborum, fugit vel neque quo, ipsam, quasi aspernatur quas odio nihil? Veniam amet reiciendis blanditiis quis reprehenderit repudiandae neque, ab ducimus, odit excepturi voluptate saepe ipsam. Voluptatem eum error voluptas porro officiis, amet! Molestias, fugit, ut! Tempore non magnam, amet, facere ducimus accusantium eos veritatis neque.</p>
+
+  <img src="http://unsplash.it/400/400" class="align-right slide-in">
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio maiores adipisci quibusdam repudiandae dolor vero placeat esse sit! Quibusdam saepe aperiam explicabo placeat optio, consequuntur nihil voluptatibus expedita quia vero perferendis, deserunt et incidunt eveniet temporibus doloremque possimus facilis. Possimus labore, officia dolore! Eaque ratione saepe, alias harum laboriosam deserunt laudantium blanditiis eum explicabo placeat reiciendis labore iste sint. Consectetur expedita dignissimos, non quos distinctio, eos rerum facilis eligendi. Asperiores laudantium, rerum ratione consequatur, culpa consectetur possimus atque ab tempore illum non dolor nesciunt. Neque, rerum. A vel non incidunt, quod doloremque dignissimos necessitatibus aliquid laboriosam architecto at cupiditate commodi expedita in, quae blanditiis. Deserunt labore sequi, repellat laboriosam est, doloremque culpa reiciendis tempore excepturi. Enim nostrum fugit itaque vel corporis ullam sed tenetur ipsa qui rem quam error sint, libero. Laboriosam rem, ratione. Autem blanditiis laborum neque repudiandae quam, cumque, voluptate veritatis itaque, placeat veniam ad nisi. Expedita, laborum reprehenderit ratione soluta velit natus, odit mollitia. Corporis rerum minima fugiat in nostrum. Assumenda natus cupiditate hic quidem ex, quas, amet ipsum esse dolore facilis beatae maxime qui inventore, iste? Maiores dignissimos dolore culpa debitis voluptatem harum, excepturi enim reiciendis, tempora ab ipsam illum aspernatur quasi qui porro saepe iure sunt eligendi tenetur quaerat ducimus quas sequi omnis aperiam suscipit! Molestiae obcaecati officiis quo, ratione eveniet, provident pariatur. Veniam quasi expedita distinctio, itaque molestiae sequi, dolorum nisi repellendus quia facilis iusto dignissimos nam? Tenetur fugit quos autem nihil, perspiciatis expedita enim tempore, alias ab maiores quis necessitatibus distinctio molestias eum, quidem. Delectus impedit quidem laborum, fugit vel neque quo, ipsam, quasi aspernatur quas odio nihil? Veniam amet reiciendis blanditiis quis reprehenderit repudiandae neque, ab ducimus, odit excepturi voluptate saepe ipsam. Voluptatem eum error voluptas porro officiis, amet! Molestias, fugit, ut! Tempore non magnam, amet, facere ducimus accusantium eos veritatis neque.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio maiores adipisci quibusdam repudiandae dolor vero placeat esse sit! Quibusdam saepe aperiam explicabo placeat optio, consequuntur nihil voluptatibus expedita quia vero perferendis, deserunt et incidunt eveniet temporibus doloremque possimus facilis. Possimus labore, officia dolore! Eaque ratione saepe, alias harum laboriosam deserunt laudantium blanditiis eum explicabo placeat reiciendis labore iste sint. Consectetur expedita dignissimos, non quos distinctio, eos rerum facilis eligendi. Asperiores laudantium, rerum ratione consequatur, culpa consectetur possimus atque ab tempore illum non dolor nesciunt. Neque, rerum. A vel non incidunt, quod doloremque dignissimos necessitatibus aliquid laboriosam architecto at cupiditate commodi expedita in, quae blanditiis. Deserunt labore sequi, repellat laboriosam est, doloremque culpa reiciendis tempore excepturi. Enim nostrum fugit itaque vel corporis ullam sed tenetur ipsa qui rem quam error sint, libero. Laboriosam rem, ratione. Autem blanditiis laborum neque repudiandae quam, cumque, voluptate veritatis itaque, placeat veniam ad nisi. Expedita, laborum reprehenderit ratione soluta velit natus, odit mollitia. Corporis rerum minima fugiat in nostrum. Assumenda natus cupiditate hic quidem ex, quas, amet ipsum esse dolore facilis beatae maxime qui inventore, iste? Maiores dignissimos dolore culpa debitis voluptatem harum, excepturi enim reiciendis, tempora ab ipsam illum aspernatur quasi qui porro saepe iure sunt eligendi tenetur quaerat ducimus quas sequi omnis aperiam suscipit! Molestiae obcaecati officiis quo, ratione eveniet, provident pariatur. Veniam quasi expedita distinctio, itaque molestiae sequi, dolorum nisi repellendus quia facilis iusto dignissimos nam? Tenetur fugit quos autem nihil, perspiciatis expedita enim tempore, alias ab maiores quis necessitatibus distinctio molestias eum, quidem. Delectus impedit quidem laborum, fugit vel neque quo, ipsam, quasi aspernatur quas odio nihil? Veniam amet reiciendis blanditiis quis reprehenderit repudiandae neque, ab ducimus, odit excepturi voluptate saepe ipsam. Voluptatem eum error voluptas porro officiis, amet! Molestias, fugit, ut! Tempore non magnam, amet, facere ducimus accusantium eos veritatis neque.</p>
+
+
+
+
+</div>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+html {
+  box-sizing: border-box;
+  background: #ffc600;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+}
+
+body {
+  margin: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.site-wrap {
+  max-width: 700px;
+  margin: 100px auto;
+  background: white;
+  padding: 40px;
+  text-align: justify;
+}
+
+.align-left {
+  float: left;
+  margin-right: 20px;
+}
+
+.align-right {
+  float: right;
+  margin-left: 20px;
+}
+
+.slide-in {
+  opacity: 0;
+  transition: all .5s;
+}
+
+.align-left.slide-in {
+  transform: translateX(-30%) scale(0.95);
+}
+
+.align-right.slide-in {
+  transform: translateX(30%) scale(0.95);
+}
+
+.slide-in.active {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```javascript
+//下面這個原作者的function(選擇性看要不要用XD)
+function debounce(func, wait = 20, immediate = true) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
+
+//通常會用到兩種事件：scroll、mousewheel
+window.addEventListener('scroll',scrollHandler);
+let images = document.querySelectorAll('img');
+
+function scrollHandler(){
+  // console.log(window.scrollY); //測試用
+  let windowTop = window.scrollY;//活動捲軸頂端的位置
+  let windowBottom = windowTop + window.innerHeight;//活動捲軸底端的位置
+
+  //跟圖片有關的放在for迴圈內
+  images.forEach((img)=>{
+    //offsetTop是頭的位置、height/2是圖片一半的位置  
+    let imgMiddle = img.offsetTop + img.height/2
+    if(imgMiddle < windowBottom && imgMiddle > windowTop){
+      img.classList.add('active');
+    }else{
+      img.classList.remove('active');
+    }
+  })
+  
+}
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+上面的code沒有加「debounce」函數，如果要加的話：  
+`window.addEventListener('load',debounce(scrollHandler));`
+{% endhint %}
+
+![](http://hi.csdn.net/attachment/201112/15/0_13239131812KG9.gif)
+
+javascript中製作滾動代碼的常用屬性
+
+* 網頁可見區域寬： document.body.clientWidth;
+* 網頁可見區域高： document.body.clientHeight;
+* 網頁可見區域寬： document.body.offsetWidth \(包括邊線的寬\);
+* 網頁可見區域高： document.body.offsetHeight \(包括邊線的高\);
+* 網頁正文全文寬： document.body.scrollWidth;
+* 網頁正文全文高： document.body.scrollHeight;
+* 網頁被捲去的高： document.body.scrollTop;
+* 網頁被捲去的左： document. body.scrollLeft;
+* 網頁正文部分上： window.screenTop;
+* 網頁正文部分左： window.screenLeft;
+* 屏幕分辨率的高： window.screen.height;
+* 屏幕分辨率的寬： window.screen.width;
+* 屏幕可用工作區高度： window.screen.availHeight;
+
+```javascript
+//加映場：蝦皮購物頁面的商品呈現(捲軸控制)
+//已下用JQ撰寫。
+(funciton(
+    $('.img').each(function(index,img){
+        console.log($(img).offset.top);
+        if($(img).offset().top + $(img).height()/2>
+        $(window).scrollTop().innerHeight()&&
+        !$(img).children().length
+        ){$(img).append('<img src="https://unsplash.it/400/400">')
+        }
+    })
+){})()
+```
+
+{% hint style="info" %}
+要用「this」的話，就不能用箭頭函數！！
+{% endhint %}
 
 ## 015 - LocalStorage and Event Delegation
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small14.jpg)
+
+{% tabs %}
+{% tab title="JS" %}
+```javascript
+
+```
+{% endtab %}
+{% endtabs %}
+
+
+
+
 
 ## 016 - CSS Text Shadow Mouse Move Effect
 
@@ -309,21 +1169,563 @@ function animationHandler(){
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small23.jpg)
 
+{% tabs %}
+{% tab title="HTML" %}
+```javascript
+<header>
+  <h1>A story about getting lost.</h1>
+</header>
+
+<nav id="main">
+  <ul>
+    <li class="logo"><a href="#">LOST.</a></li>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Images</a></li>
+    <li><a href="#">Locations</a></li>
+    <li><a href="#">Maps</a></li>
+  </ul>
+</nav>
+
+<div class="site-wrap">
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore tempora rerum, est autem cupiditate, corporis a qui libero ipsum delectus quidem dolor at nulla, adipisci veniam in reiciendis aut asperiores omnis blanditiis quod quas laborum nam! Fuga ad tempora in aspernatur pariatur fugit quibusdam dolores sunt esse magni, ut, dignissimos.</p>
+
+  <img src="http://unsplash.it/400/400" class="align-left slide-in">
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, deserunt facilis et iste corrupti omnis tenetur est. Iste ut est dicta dolor itaque adipisci, dolorum minima, veritatis earum provident error molestias. Ratione magni illo sint vel velit ut excepturi consectetur suscipit, earum modi accusamus voluptatem nostrum, praesentium numquam, reiciendis voluptas sit id quisquam. Consequatur in quis reprehenderit modi perspiciatis necessitatibus saepe, quidem, suscipit iure natus dignissimos ipsam, eligendi deleniti accusantium, rerum quibusdam fugit perferendis et optio recusandae sed ratione. Culpa, dolorum reprehenderit harum ab voluptas fuga, nisi eligendi natus maiores illum quas quos et aperiam aut doloremque optio maxime fugiat doloribus. Eum dolorum expedita quam, nesciunt</p>
+
+  <img src="http://unsplash.it/400/400" class="align-right slide-in">
+
+  <p> at provident praesentium atque quas rerum optio dignissimos repudiandae ullam illum quibusdam. Vel ad error quibusdam, illo ex totam placeat. Quos excepturi fuga, molestiae ea quisquam minus, ratione dicta consectetur officia omnis, doloribus voluptatibus? Veniam ipsum veritatis architecto, provident quas consequatur doloremque quam quidem earum expedita, ad delectus voluptatum, omnis praesentium nostrum qui aspernatur ea eaque adipisci et cumque ab? Ea voluptatum dolore itaque odio. Eius minima distinctio harum, officia ab nihil exercitationem. Tempora rem nemo nam temporibus molestias facilis minus ipsam quam doloribus consequatur debitis nesciunt tempore officiis aperiam quisquam, molestiae voluptates cum, fuga culpa. Distinctio accusamus quibusdam, tempore perspiciatis dolorum optio facere consequatur quidem ullam beatae architecto, ipsam sequi officiis dignissimos amet impedit natus necessitatibus tenetur repellendus dolor rem! Dicta dolorem, iure, facilis illo ex nihil ipsa amet officia, optio temporibus eum autem odit repellendus nisi. Possimus modi, corrupti error debitis doloribus dicta libero earum, sequi porro ut excepturi nostrum ea voluptatem nihil culpa? Ullam expedita eligendi obcaecati reiciendis velit provident omnis quas qui in corrupti est dolore facere ad hic, animi soluta assumenda consequuntur reprehenderit! Voluptate dolor nihil veniam laborum voluptas nisi pariatur sed optio accusantium quam consectetur, corrupti, sequi et consequuntur, excepturi doloremque. Tempore quis velit corporis neque fugit non sequi eaque rem hic. Facere, inventore, aspernatur. Accusantium modi atque, asperiores qui nobis soluta cumque suscipit excepturi possimus doloremque odit saepe perferendis temporibus molestiae nostrum voluptatum quis id sint quidem nesciunt culpa. Rerum labore dolor beatae blanditiis praesentium explicabo velit optio esse aperiam similique, voluptatem cum, maiores ipsa tempore. Reiciendis sed culpa atque inventore, nam ullam enim expedita consectetur id velit iusto alias vitae explicabo nemo neque odio reprehenderit soluta sint eaque. Aperiam, qui ut tenetur, voluptate doloremque officiis dicta quaerat voluptatem rerum natus magni. Eum amet autem dolor ullam.</p>
+
+
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio maiores adipisci quibusdam repudiandae dolor vero placeat esse sit! Quibusdam saepe aperiam explicabo placeat optio, consequuntur nihil voluptatibus expedita quia vero perferendis, deserunt et incidunt eveniet temporibus doloremque possimus facilis. Possimus labore, officia dolore! Eaque ratione saepe, alias harum laboriosam deserunt laudantium blanditiis eum explicabo placeat reiciendis labore iste sint. Consectetur expedita dignissimos, non quos distinctio, eos rerum facilis eligendi. Asperiores laudantium, rerum ratione consequatur, culpa consectetur possimus atque ab tempore illum non dolor nesciunt. Neque, rerum. A vel non incidunt, quod doloremque dignissimos necessitatibus aliquid laboriosam architecto at cupiditate commodi expedita in, quae blanditiis. Deserunt labore sequi, repellat laboriosam est, doloremque culpa reiciendis tempore excepturi. Enim nostrum fugit itaque vel corporis ullam sed tenetur ipsa qui rem quam error sint, libero. Laboriosam rem, ratione. Autem blanditiis laborum neque repudiandae quam, cumque, voluptate veritatis itaque, placeat veniam ad nisi. Expedita, laborum reprehenderit ratione soluta velit natus, odit mollitia. Corporis rerum minima fugiat in nostrum. Assumenda natus cupiditate hic quidem ex, quas, amet ipsum esse dolore facilis beatae maxime qui inventore, iste? Maiores dignissimos dolore culpa debitis voluptatem harum, excepturi enim reiciendis, tempora ab ipsam illum aspernatur quasi qui porro saepe iure sunt eligendi tenetur quaerat ducimus quas sequi omnis aperiam suscipit! Molestiae obcaecati officiis quo, ratione eveniet, provident pariatur. Veniam quasi expedita distinctio, itaque molestiae sequi, dolorum nisi repellendus quia facilis iusto dignissimos nam? Tenetur fugit quos autem nihil, perspiciatis expedita enim tempore, alias ab maiores quis necessitatibus distinctio molestias eum, quidem. Delectus impedit quidem laborum, fugit vel neque quo, ipsam, quasi aspernatur quas odio nihil? Veniam amet reiciendis blanditiis quis reprehenderit repudiandae neque, ab ducimus, odit excepturi voluptate saepe ipsam. Voluptatem eum error voluptas porro officiis, amet! Molestias, fugit, ut! Tempore non magnam, amet, facere ducimus accusantium eos veritatis neque.</p>
+
+  <img src="http://unsplash.it/400/400" class="align-right slide-in">
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio maiores adipisci quibusdam repudiandae dolor vero placeat esse sit! Quibusdam saepe aperiam explicabo placeat optio, consequuntur nihil voluptatibus expedita quia vero perferendis, deserunt et incidunt eveniet temporibus doloremque possimus facilis. Possimus labore, officia dolore! Eaque ratione saepe, alias harum laboriosam deserunt laudantium blanditiis eum explicabo placeat reiciendis labore iste sint. Consectetur expedita dignissimos, non quos distinctio, eos rerum facilis eligendi. Asperiores laudantium, rerum ratione consequatur, culpa consectetur possimus atque ab tempore illum non dolor nesciunt. Neque, rerum. A vel non incidunt, quod doloremque dignissimos necessitatibus aliquid laboriosam architecto at cupiditate commodi expedita in, quae blanditiis. Deserunt labore sequi, repellat laboriosam est, doloremque culpa reiciendis tempore excepturi. Enim nostrum fugit itaque vel corporis ullam sed tenetur ipsa qui rem quam error sint, libero. Laboriosam rem, ratione. Autem blanditiis laborum neque repudiandae quam, cumque, voluptate veritatis itaque, placeat veniam ad nisi. Expedita, laborum reprehenderit ratione soluta velit natus, odit mollitia. Corporis rerum minima fugiat in nostrum. Assumenda natus cupiditate hic quidem ex, quas, amet ipsum esse dolore facilis beatae maxime qui inventore, iste? Maiores dignissimos dolore culpa debitis voluptatem harum, excepturi enim reiciendis, tempora ab ipsam illum aspernatur quasi qui porro saepe iure sunt eligendi tenetur quaerat ducimus quas sequi omnis aperiam suscipit! Molestiae obcaecati officiis quo, ratione eveniet, provident pariatur. Veniam quasi expedita distinctio, itaque molestiae sequi, dolorum nisi repellendus quia facilis iusto dignissimos nam? Tenetur fugit quos autem nihil, perspiciatis expedita enim tempore, alias ab maiores quis necessitatibus distinctio molestias eum, quidem. Delectus impedit quidem laborum, fugit vel neque quo, ipsam, quasi aspernatur quas odio nihil? Veniam amet reiciendis blanditiis quis reprehenderit repudiandae neque, ab ducimus, odit excepturi voluptate saepe ipsam. Voluptatem eum error voluptas porro officiis, amet! Molestias, fugit, ut! Tempore non magnam, amet, facere ducimus accusantium eos veritatis neque.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio maiores adipisci quibusdam repudiandae dolor vero placeat esse sit! Quibusdam saepe aperiam explicabo placeat optio, consequuntur nihil voluptatibus expedita quia vero perferendis, deserunt et incidunt eveniet temporibus doloremque possimus facilis. Possimus labore, officia dolore! Eaque ratione saepe, alias harum laboriosam deserunt laudantium blanditiis eum explicabo placeat reiciendis labore iste sint. Consectetur expedita dignissimos, non quos distinctio, eos rerum facilis eligendi. Asperiores laudantium, rerum ratione consequatur, culpa consectetur possimus atque ab tempore illum non dolor nesciunt. Neque, rerum. A vel non incidunt, quod doloremque dignissimos necessitatibus aliquid laboriosam architecto at cupiditate commodi expedita in, quae blanditiis. Deserunt labore sequi, repellat laboriosam est, doloremque culpa reiciendis tempore excepturi. Enim nostrum fugit itaque vel corporis ullam sed tenetur ipsa qui rem quam error sint, libero. Laboriosam rem, ratione. Autem blanditiis laborum neque repudiandae quam, cumque, voluptate veritatis itaque, placeat veniam ad nisi. Expedita, laborum reprehenderit ratione soluta velit natus, odit mollitia. Corporis rerum minima fugiat in nostrum. Assumenda natus cupiditate hic quidem ex, quas, amet ipsum esse dolore facilis beatae maxime qui inventore, iste? Maiores dignissimos dolore culpa debitis voluptatem harum, excepturi enim reiciendis, tempora ab ipsam illum aspernatur quasi qui porro saepe iure sunt eligendi tenetur quaerat ducimus quas sequi omnis aperiam suscipit! Molestiae obcaecati officiis quo, ratione eveniet, provident pariatur. Veniam quasi expedita distinctio, itaque molestiae sequi, dolorum nisi repellendus quia facilis iusto dignissimos nam? Tenetur fugit quos autem nihil, perspiciatis expedita enim tempore, alias ab maiores quis necessitatibus distinctio molestias eum, quidem. Delectus impedit quidem laborum, fugit vel neque quo, ipsam, quasi aspernatur quas odio nihil? Veniam amet reiciendis blanditiis quis reprehenderit repudiandae neque, ab ducimus, odit excepturi voluptate saepe ipsam. Voluptatem eum error voluptas porro officiis, amet! Molestias, fugit, ut! Tempore non magnam, amet, facere ducimus accusantium eos veritatis neque.</p>
+</div>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+html {
+  box-sizing: border-box;
+  background: #eeeeee;
+  font-family: 'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+}
+
+body {
+  margin: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.site-wrap {
+  max-width: 700px;
+  margin: 70px auto;
+  background: white;
+  padding: 40px;
+  text-align: justify;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
+  transform: scale(0.98);
+  transition: transform 0.5s;
+}
+
+header {
+  text-align: center;
+  height: 50vh;
+  background: url(http://wes.io/iEgP/wow-so-deep.jpg) bottom center no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: white;
+  font-size: 7vw;
+  text-shadow: 3px 4px 0 rgba(0,0,0,0.2);
+}
+
+nav {
+  background: black;
+  top: 0;
+  width: 100%;
+  transition: all 0.5s;
+  position: relative;
+  z-index: 1;
+}
+
+nav ul {
+  margin: 0;
+  padding:0;
+  list-style: none;
+  display: flex;
+}
+
+nav li {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li.logo {
+  max-width: 0;
+  overflow: hidden;
+  background: white;
+  transition: all .5s;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+li.logo a {
+  color: black;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 20px;
+  display: inline-block;
+  color: white;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+.fixMenu #main{
+  position:fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  line-height: 0.2em;
+}
+.fixMenu #main .logo{
+  max-width:100%
+}
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```javascript
+let nav = document.querySelector('#main');
+let navPosition = nav.offsetTop;
+function scrollHandler(){
+  if(window.scrollY >= navPosition){
+    document.body.classList.add('fixMenu');
+    document.body.style.paddingTop = nav.offsetHeight+'px';
+  }else{
+    document.body.classList.remove('fixMenu');
+    document.body.style.paddingTop = "";
+  }
+}
+window.addEventListener('scroll',scrollHandler);
+window.addEventListener('resize',function(){
+  navPosition = nav.offsetTop;
+})
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+CSS增加「.fixMenu \#main」、「.fixMenu \#main .logo」
+{% endhint %}
+
 ## 026 - Stripe Follow Along Dropdown
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small25.jpg)
 
-## 027 - Click and Drag to Scroll
+## 027 - 點擊拖曳Click and Drag to Scroll
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small26.jpg)
+
+{% tabs %}
+{% tab title="HTML" %}
+```aspnet
+<div class="items">
+  <div class="item item1">01</div>
+  <div class="item item2">02</div>
+  <div class="item item3">03</div>
+  <div class="item item4">04</div>
+  <div class="item item5">05</div>
+  <div class="item item6">06</div>
+  <div class="item item7">07</div>
+  <div class="item item8">08</div>
+  <div class="item item9">09</div>
+  <div class="item item10">10</div>
+  <div class="item item11">11</div>
+  <div class="item item12">12</div>
+  <div class="item item13">13</div>
+  <div class="item item14">14</div>
+  <div class="item item15">15</div>
+  <div class="item item16">16</div>
+  <div class="item item17">17</div>
+  <div class="item item18">18</div>
+  <div class="item item19">19</div>
+  <div class="item item20">20</div>
+  <div class="item item21">21</div>
+  <div class="item item22">22</div>
+  <div class="item item23">23</div>
+  <div class="item item24">24</div>
+  <div class="item item25">25</div>
+</div>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+html {
+  box-sizing: border-box;
+  background: url('https://source.unsplash.com/NFs6dRTBgaM/2000x2000') fixed;
+  background-size: cover;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 20px;
+  margin: 0;
+}
+
+.items {
+  height: 800px;
+  padding: 100px;
+  width: 100%;
+  border: 1px solid white;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  transform: scale(0.98);
+  will-change: transform;
+  position: relative;
+  background: rgba(255,255,255,0.1);
+  font-size: 0;
+  perspective: 500px;
+}
+
+.items.active {
+  background: rgba(255,255,255,0.3);
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+  transform: scale(1);
+}
+
+.item {
+  width: 200px;
+  height: calc(100% - 40px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  font-weight: 100;
+  color: rgba(0,0,0,0.15);
+  box-shadow: inset 0 0 0 10px rgba(0,0,0,0.15);
+}
+
+.item:nth-child(9n+1) { background: dodgerblue;}
+.item:nth-child(9n+2) { background: goldenrod;}
+.item:nth-child(9n+3) { background: paleturquoise;}
+.item:nth-child(9n+4) { background: gold;}
+.item:nth-child(9n+5) { background: cadetblue;}
+.item:nth-child(9n+6) { background: tomato;}
+.item:nth-child(9n+7) { background: lightcoral;}
+.item:nth-child(9n+8) { background: darkslateblue;}
+.item:nth-child(9n+9) { background: rebeccapurple;}
+
+.item:nth-child(even) { transform: scaleX(1.31) rotateY(40deg); }
+.item:nth-child(odd) { transform: scaleX(1.31) rotateY(-40deg); }
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```javascript
+/*【相對】位置的移動
+  ●三個步驟： 
+ * 一mousedown
+ * 二mousemove
+ * 三mouseup & mouseleave*/
+/*●mouseover是摸到、mousemove是移動*/
+/*座標：如果你是區塊上抓位置，建議你用「offset」。但是內容如果是會一直變動的話就不建議使用「offset」！；
+        如果你是要抓頁面上的位置，建議你用「client」或「page」。*/
+const list = document.querySelector('.items');
+//拖曳的起點
+let startX = 0;
+
+list.addEventListener('mousedown',startDrag);//手機touchstart
+list.addEventListener('mousemove',dragHandler);//手機touchmove
+list.addEventListener('mouseup',stopDrag);//手機touchend
+list.addEventListener('mouseleave',stopDrag);
+function startDrag(e){
+  list.classList.add('active');
+  startX = e.pageX;
+}
+function dragHandler(e){
+  if(list.classList.contains('active')){
+    let move = e.pageX - startX;//移動的終點減掉起點位置\
+    //每次算完之後，要把x推到新的點做為新的「startX」
+    startX = e.pageX;
+    list.scrollLeft -= move*2;
+  }
+}
+function stopDrag(){
+  list.classList.remove('active');
+}
+```
+{% endtab %}
+
+{% tab title="JS的另一種做法" %}
+```javascript
+/*【相對】位置的移動
+  ●三個步驟： 
+ * 一mousedown
+ * 二mousemove
+ * 三mouseup & mouseleave*/
+/*●mouseover是摸到、mousemove是移動*/
+/*座標：如果你是區塊上抓位置，建議你用「offset」。但是內容如果是會一直變動的話就不建議使用「offset」！；
+        如果你是要抓頁面上的位置，建議你用「client」或「page」。*/
+const list = document.querySelector('.items');
+//拖曳的起點
+let startX = 0;
+let startScroll = 0;//◎
+
+list.addEventListener('mousedown',startDrag);//手機touchstart
+list.addEventListener('mousemove',dragHandler);//手機touchmove
+list.addEventListener('mouseup',stopDrag);//手機touchend
+list.addEventListener('mouseleave',stopDrag);
+function startDrag(e){
+  list.classList.add('active');
+  startX = e.pageX;
+  startScroll = list.scrollLeft;//◎
+}
+function dragHandler(e){
+  if(list.classList.contains('active')){
+    let move = e.pageX - startX;//移動的終點減掉起點位置\
+    //每次算完之後，要把x推到新的點做為新的「startX」
+    // startX = e.pageX;
+    // list.scrollLeft -= move*2.5;
+    list.scrollLeft = startScroll - move*2.5;
+  }
+}
+function stopDrag(){
+  list.classList.remove('active');
+}
+
+```
+{% endtab %}
+
+{% tab title="解決圖片連結被拖曳" %}
+```javascript
+/*【相對】位置的移動
+  ●三個步驟： 
+ * 一mousedown
+ * 二mousemove
+ * 三mouseup & mouseleave*/
+/*●mouseover是摸到、mousemove是移動*/
+/*座標：如果你是區塊上抓位置，建議你用「offset」。但是內容如果是會一直變動的話就不建議使用「offset」！；
+        如果你是要抓頁面上的位置，建議你用「client」或「page」。*/
+const list = document.querySelector('.items');
+//拖曳的起點
+let startX = 0;
+let startScroll = 0;//◎
+let startTime = 0;//手勢判斷新增的
+let moved = false;//以防拉到字或圖片新增的
+
+list.addEventListener('mousedown',startDrag);//手機touchstart
+list.addEventListener('mousemove',dragHandler);//手機touchmove
+list.addEventListener('mouseup',stopDrag);//手機touchend
+list.addEventListener('mouseleave',stopDrag);
+document.querySelectorAll('.itmes a').forEach(dom => {//以防拉到字或圖片
+  dom.addEventListener('click',function(e){
+    if(moved){
+      //a連結如果拖曳就不給連；a連結如果不拖曳就給連
+      e.preventDefault();  
+    }
+  })
+})
+
+
+function startDrag(e){
+  list.classList.add('active');
+  startX = e.pageX;
+  startScroll = list.scrollLeft;//◎
+  startTime = new Date().getTime();
+  moved = false;
+}
+function dragHandler(e){
+  e.preventDefault();//以防拉到字或圖片
+  if(list.classList.contains('active')){
+    moved = true;
+    let move = e.pageX - startX;//移動的終點減掉起點位置
+    //每次算完之後，要把x推到新的點做為新的「startX」
+    // startX = e.pageX;
+    // list.scrollLeft -= move*2.5;
+    list.scrollLeft = startScroll - move*2.5;
+  }
+}
+function stopDrag(e){
+  list.classList.remove('active');
+  if(new Date().getTime() - startTime <= 250){
+    if(e.pageX > startX){
+     console.log('swiper right');
+    }else if(e.pageX < startX){
+      console.log('swiper left');
+    }
+  }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ## 028 - Video Speed Controller UI
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small27.jpg)
 
-## 029 - Countdown Clock
+## 029 - 倒數計時器Countdown Clock
 
 ![](https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small28.jpg)
+
+{% tabs %}
+{% tab title="HTML" %}
+```markup
+<div class="timer">
+    <div class="timer__controls">
+      <button data-time="20" class="timer__button">20 Secs</button>
+      <button data-time="300" class="timer__button">Work 5</button>
+      <button data-time="900" class="timer__button">Quick 15</button>
+      <button data-time="1200" class="timer__button">Snack 20</button>
+      <button data-time="3600" class="timer__button">Lunch Break</button>
+      <form name="customForm" id="custom">
+        <input type="text" name="minutes" placeholder="Enter Minutes">
+      </form>
+    </div>
+    <div class="display">
+      <h1 class="display__time-left"></h1>
+      <p class="display__end-time"></p>
+    </div>
+  </div>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  background: #8E24AA;
+  background: linear-gradient(45deg,  #42a5f5 0%,#478ed1 50%,#0d47a1 100%);
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  font-family: 'Inconsolata', monospace;
+}
+
+.display__time-left {
+  font-weight: 100;
+  font-size: 20rem;
+  margin: 0;
+  color: white;
+  text-shadow: 4px 4px 0 rgba(0,0,0,0.05);
+}
+
+.timer {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.timer__controls {
+  display: flex;
+}
+
+.timer__controls > * {
+  flex: 1;
+}
+
+.timer__controls form {
+  flex: 1;
+  display: flex;
+}
+
+.timer__controls input {
+  flex: 1;
+  border: 0;
+  padding: 2rem;
+}
+
+.timer__button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 2rem;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.1);
+  border-bottom: 3px solid rgba(0,0,0,0.2);
+  border-right: 1px solid rgba(0,0,0,0.2);
+  padding: 1rem;
+  font-family: 'Inconsolata', monospace;
+}
+
+.timer__button:hover,
+.timer__button:focus {
+  background: rgba(0,0,0,0.2);
+  outline: 0;
+}
+
+.display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.display__end-time {
+  font-size: 4rem;
+  color: white;
+}
+```
+{% endtab %}
+
+{% tab title="JS" %}
+```
+
+```
+{% endtab %}
+{% endtabs %}
 
 ## 030 - Whack A Mole Game
 
