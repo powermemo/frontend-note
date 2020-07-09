@@ -223,12 +223,13 @@ echo '<h1>資料型別轉換</h1>';
 ```php
 $a = 123.5;
 $b = (int) $a;//$a類別沒改變
-var_dump($a,$b);//float(123.5) int(123)$c = '123.5';
+var_dump($a,$b);//float(123.5) int(123)
 ```
 {% endtab %}
 
 {% tab title="setType" %}
 ```php
+$c = '123.5';
 setType($c,'integer');//🔶$c的類別會改變
 echo '$C的資料型別:',$c,'<br>';
 echo '';
