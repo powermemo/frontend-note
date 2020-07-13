@@ -242,5 +242,61 @@ echo '最大值：',$max;
 
 ## 二維陣列
 
+{% tabs %}
+{% tab title="" %}
+```php
+<?php
+$arr = array(array(1,2,3,4),11,true, 'this is a book');
 
+//echo $arr[0];//[🚫not allow print array!][you need to turn it be string] //print_r()is okay!
+echo $arr[0][3];//4
+echo $arr[2];//true
+echo $arr[3];//this is a book
+?>
+```
+{% endtab %}
+
+{% tab title="for" %}
+| 1 | 2 | 3 | 4 |
+| :--- | :--- | :--- | :--- |
+| 11 | 12 | 13 | 14 |
+| 21 | 22 | 23 | 24 |
+
+```php
+$arr = array(array(1,2,3,4),array(11,12,13,14),array(21,22,23,24));
+echo "<table align='center' cellspacing='0' border='1'>";
+for($i=0;$i<3;$i++){
+	echo "<tr>";
+	for($j=0;$j<4;$j++){
+		echo "<td>",$arr[$i][$j],"</td>";
+	}
+	echo "</tr>";
+}
+echo "</table>";
+
+```
+{% endtab %}
+
+{% tab title="foreach" %}
+| 1 | 2 | 3 | 4 |
+| :--- | :--- | :--- | :--- |
+| 11 | 12 | 13 | 14 |
+| 21 | 22 | 23 | 24 |
+
+```php
+<?php
+$arr = array(array(1,2,3,4),array(11,12,13,14),array(21,22,23,24));
+echo "<table align='center' cellspacing='0' border='1'>";
+foreach($arr as $i => $row){
+	echo "<tr>";
+	foreach($row as $j => $data){
+		echo "<td>",$arr[$i][$j],"</td>";
+	}
+	echo"</tr>";
+}
+echo "</table>";
+?>
+```
+{% endtab %}
+{% endtabs %}
 
