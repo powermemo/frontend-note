@@ -298,5 +298,38 @@ echo "</table>";
 ?>
 ```
 {% endtab %}
+
+{% tab title="二維陣列表單練習" %}
+html+PHP\(檔名：0713arrayForm.php\)
+
+```markup
+<form action="0713arrayForm.php">
+    帳號<input type="text" name="memId" /><br />
+    英文能力<input type="checkBox" name="ability[]" value="read">讀
+        <input type="checkBox" name="ability[]" value="listen">聽
+        <input type="checkBox" name="ability[]" value="write">寫<br>
+    專長<br>
+    <select name="specialty" size="3" multiple >
+        <option value="VB.NET">VB.NET</option>
+        <option value="SQL">SQL Server </option>
+        <option value="JAVA">JAVA </option>
+        <option value="Delphi">Delphi </option>
+        </select>     
+    <input type="submit" value="送出">
+</form>
+```
+
+```php
+<?php
+echo "account:",$_GET["memId"],"<hr>";
+echo "lanuage: <br>";
+foreach($_GET["ability"] as $i => $data){
+	echo $data, "<br>";
+}
+echo "<hr>";
+echo "specialty:",$_GET['specialty'],"<hr>";
+?>
+```
+{% endtab %}
 {% endtabs %}
 
