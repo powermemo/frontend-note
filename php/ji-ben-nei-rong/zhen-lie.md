@@ -343,5 +343,9 @@ if(isset($_GET["ability"])){
 `isset()`用以檢查變數是否存在
 {% endhint %}
 {% endtab %}
+
+{% tab title="" %}
+
+{% endtab %}
 {% endtabs %}
 
