@@ -101,6 +101,7 @@ foreach($classmate as $id => $data){
 {% tabs %}
 {% tab title="print\_r" %}
 ```php
+//顯示所有資料
 $classmate = array('01'=>'Ling', '02'=>'Wendy','03'=>'nn');
 $classmate["04"] = "Cloud";
 print_r($classmate);
@@ -110,6 +111,7 @@ print_r($classmate);
 
 {% tab title="is\_array" %}
 ```php
+//檢測資料是否為陣列
 $arr = 10;
 $arr2 = array(11,22,33);
 echo 'is_array($arr):', is_array($arr), "<br>";//空值
@@ -119,6 +121,7 @@ echo 'is_array($arr2):', is_array($arr2), "<br>";//1
 
 {% tab title="in\_array" %}
 ```php
+//在陣列中嗎？
 $arr2 = array(11,22,33);
 echo 'in_array(33,$arr):', in_array(33, $arr2), "<br>";//1
 echo 'in_array(333,$arr2):', in_array(333, $arr2), "<br>";//空值
@@ -127,6 +130,7 @@ echo 'in_array(333,$arr2):', in_array(333, $arr2), "<br>";//空值
 
 {% tab title="array\_search" %}
 ```php
+//傳回資料在陣列中的索引值
 $arr2 = array(11,22,33);
 echo 'array_search(33,$arr):', array_search(33, $arr2), "<br>";//2
 echo 'array_search(333,$arr2):', array_search(333, $arr2), "<br>";//空值
