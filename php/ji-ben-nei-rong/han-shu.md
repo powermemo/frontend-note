@@ -143,3 +143,11 @@ echo (mb_strlen($tit) > 10) ? mb_substr($tit,0,7).'...<br>' : $tit,"<br>";
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+【非英文字串】使用「mbstring」。預設是關的，要打開....
+
+1. php.ini找「extension=mbstring」，並把「;」註解拿掉
+2. php.ini找「extension\_dir="ext"」，把「;」註解拿掉 將等號後面的值改為資料夾位置ex.「C:\php-7.4.7\ext」
+3. 打開IIS，重新啟動。
+{% endhint %}
+
