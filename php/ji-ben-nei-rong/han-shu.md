@@ -32,7 +32,10 @@ description: 分為自訂函式與內建函式
         <p><code>rand()</code>
         </p>
       </td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p>&#x5B57;&#x4E32;&#x9577;&#x5EA6;</p>
+        <p>strlen($str)</p>
+      </td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
@@ -41,7 +44,10 @@ description: 分為自訂函式與內建函式
         <p><code>mt_rand()</code>
         </p>
       </td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p>&#x5728;&#x5B57;&#x4E32;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;</p>
+        <p>strpos($str, &quot;&#x5B57;&#x4E32;&quot;)</p>
+      </td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
@@ -50,7 +56,10 @@ description: 分為自訂函式與內建函式
         <p><code>floor()</code>
         </p>
       </td>
-      <td style="text-align:left">&lt;code&gt;&lt;/code&gt;</td>
+      <td style="text-align:left">
+        <p>&#x53D6;&#x5B50;&#x5B57;&#x4E32;</p>
+        <p>substr($str,&#x5F9E;&#x54EA;&#x958B;&#x59CB;,&#x53D6;&#x5E7E;&#x500B;&#x5B57;)</p>
+      </td>
       <td style="text-align:left"></td>
     </tr>
     <tr>
@@ -59,7 +68,15 @@ description: 分為自訂函式與內建函式
         <p><code>ceil()</code>
         </p>
       </td>
+      <td style="text-align:left">
+        <p>&#x5207;&#x5B57;&#x4E32;</p>
+        <p>strlen(&quot;&#x7528;&#x751A;&#x9EBC;&#x5207;&#x5B57;&#x4E32;,,&quot;$str)</p>
+      </td>
       <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">&#x9023;&#x63A5;&#x5B57;&#x4E32;</td>
       <td style="text-align:left"></td>
     </tr>
   </tbody>
