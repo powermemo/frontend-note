@@ -243,7 +243,7 @@ echo '最大值：',$max;
 ## 二維陣列
 
 {% tabs %}
-{% tab title="" %}
+{% tab title="初試" %}
 ```php
 <?php
 $arr = array(array(1,2,3,4),11,true, 'this is a book');
