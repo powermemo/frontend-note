@@ -309,7 +309,7 @@ html+PHP\(檔名：0713arrayForm.php\)
         <input type="checkBox" name="ability[]" value="listen">聽
         <input type="checkBox" name="ability[]" value="write">寫<br>
     專長<br>
-    <select name="specialty" size="3" multiple >
+    <select name="specialty[]" size="3" multiple >
         <option value="VB.NET">VB.NET</option>
         <option value="SQL">SQL Server </option>
         <option value="JAVA">JAVA </option>
@@ -323,11 +323,19 @@ html+PHP\(檔名：0713arrayForm.php\)
 <?php
 echo "account:",$_GET["memId"],"<hr>";
 echo "lanuage: <br>";
-foreach($_GET["ability"] as $i => $data){
-	echo $data, "<br>";
+if(isset($_GET["ability"]) === true){//===true可省略
+//isset()用以檢查變數是否存在
+	foreach($_GET["ability"] as $i => $data){
+		echo "$i : $data<br>";
+	}
 }
 echo "<hr>";
-echo "specialty:",$_GET['specialty'],"<hr>";
+echo "specialty:<br>";
+if(isset($_GET["ability"])){
+	foreach($_GET['specialty'] as $i => $data){
+		echo "$i : $data<br>";
+	}
+}
 ?>
 ```
 {% endtab %}
