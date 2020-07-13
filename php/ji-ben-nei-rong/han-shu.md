@@ -17,6 +17,59 @@ description: 分為自訂函式與內建函式
 * 電子郵件
 * ...
 
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">&#x6578;&#x5B57;</th>
+      <th style="text-align:left">&#x5B57;&#x4E32;</th>
+      <th style="text-align:left">&#x65E5;&#x671F;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>&#x4E82;&#x6578;</p>
+        <p><code>rand()</code>
+        </p>
+      </td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>&#x66F4;&#x597D;&#x7684;&#x4E82;&#x6578;</p>
+        <p><code>mt_rand()</code>
+        </p>
+      </td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>&#x53D6;&#x5C0F;&#x65BC;x&#x7684;&#x6700;&#x5927;&#x6574;&#x6578;</p>
+        <p>floor()</p>
+      </td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left"></td>
+    </tr>
+  </tbody>
+</table>
+
+{% tabs %}
+{% tab title="數字" %}
+
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
 {% tabs %}
 {% tab title="數學" %}
 ```php
