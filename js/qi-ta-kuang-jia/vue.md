@@ -7,3 +7,7 @@
   )\]
 * vue-chrome擴充\[[連結](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)\]
 
+{% hint style="info" %}
+🟡v-if是判斷；v-show是操作CSS的「display」
+{% endhint %}
+
