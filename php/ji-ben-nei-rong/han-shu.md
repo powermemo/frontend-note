@@ -248,6 +248,39 @@ echo "y = $y <br>";//y = 120
 
 {% tab title="範例" %}
 ```php
+<h4>call by value</h4>
+<?php
+function adjustSalary_pp($dataArr,$amt){
+	for($i=0;$i<count($dataArr);$i++){
+		$dataArr[$i] += $amt;
+	}
+	return $dataArr;
+}
+$salaryArr = array(10000,20000,30000,40000);
+$salaryArr = adjustSalary_pp($salaryArr,2000);//🟡
+print_r($salaryArr);
+
+?>
+
+//====================================================
+
+<h4>call by reference</h4>
+<?php
+function adjustSalary_pp2(&$dataArr,$amt){//🟡
+	for($i=0;$i<count($dataArr);$i++){
+		$dataArr[$i] += $amt;
+	}
+}
+$salaryArr = array(10000,20000,30000,40000);
+adjustSalary_pp2($salaryArr,2000);
+print_r($salaryArr);
+
+?>
+```
+{% endtab %}
+
+{% tab title="範例" %}
+```php
 <h2>salary array每人加薪</h2>
 <?php
 function adjustSalary(&$dataArr,$amt){//🟡
