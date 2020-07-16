@@ -166,5 +166,45 @@ echo date("星期:w",$birthday), "<br>";//weekday: 4
 3. 打開IIS，重新啟動。
 {% endhint %}
 
+## 自訂函式
 
+{% tabs %}
+{% tab title="起手式" %}
+```php
+function sum($a, $b){
+	$total = 0;
+	$total = $a + $b;
+	return $total;
+}
+echo "10+20 = ", sum(10,20), "<br>";//310+20=30
+```
+{% endtab %}
+
+{% tab title="參數可以是陣列" %}
+```php
+function sumMany($array){//$array: 請將所有的資料放到陣列中...
+	$total = 0;
+	foreach($array as $i => $data){
+		total += $data;
+	}else{
+		$total = false;
+	}
+	return $total;
+}
+$arr = array(10,20,30);
+echo "10+20+30=", sumMany($arr),"<br>";
+/*自訂函數的參數值可以定義陣列(可用foreach帶)。
+ *但參數一定要式陣列型態，不然你可以寫else讓程式辨別，非陣列型態要return false*/
+//PHP的自訂函數不可以重複命名！(JS可以)
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+* 自訂函數的參數值可以定義陣列\(可用foreach帶\)。
+
+  但參數一定要式陣列型態，不然你可以寫else讓程式辨別，非陣列型態要return false
+
+* PHP的自訂函數不可以重複命名！\(JS可以\)
+{% endhint %}
 
