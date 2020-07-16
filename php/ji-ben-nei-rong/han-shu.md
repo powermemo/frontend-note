@@ -299,3 +299,69 @@ foreach($salaryArr as $i => $data){
 {% endtab %}
 {% endtabs %}
 
+### 設定參數的預設值
+
+```php
+<h2>預設參數</h2>
+<?php
+function printMark($classId="前端工程師班級..."){//🟡
+	echo "*****<br>";
+	echo "*****<br>";
+	echo "*****<br>";
+	echo "*****<br>";
+	echo "*****<br>";
+	echo "*****<br>$classId<br>";
+}
+echo printMark("ED102");
+//echo printMark();
+
+?>
+```
+
+### 區域變數  全域變數  靜態變數
+
+{% tabs %}
+{% tab title="PHP" %}
+```php
+<h2>global</h2>
+<?php
+$amount = 0;
+function getAmount(){//程式中使用到的amount是使用全域變數(上面定義=0的那個)
+	global $amount;//equal as ===> $GLOBALS["amount"];
+	//...
+	//...
+	$amount = 100000;
+}
+
+function showAmount(){
+global $amount;//equal as ===> $GLOBALS["amount"];
+	echo "<h3 style='color:blue;'>total: ", $amount ,"</h3><br>";
+}
+
+getAmount();
+showAmount();
+?>
+```
+{% endtab %}
+
+{% tab title="靜態變數" %}
+```php
+<h2>static</h2>
+<?
+function myStatic(){
+	static $i = 0; //靜態變數
+	$i += 1;
+	return $i;
+}
+echo myStatic(),"<br>";//1
+echo myStatic(),"<br>";//2, 靜態變數的值不會被清空, 會繼續計算
+?>
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+* 與JS不同，PHP的function變數不會往外找全域變數。 必須在function內告訴程式\(例如global $...\)，程式才會往外抓變數。
+* 靜態變數的值不會被清空, 會繼續計算
+{% endhint %}
+
