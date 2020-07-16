@@ -171,7 +171,7 @@ echo date("星期:w",$birthday), "<br>";//星期: 6
 ## 自訂函式
 
 {% tabs %}
-{% tab title="起手式" %}
+{% tab title="簡單起始" %}
 ```php
 function sum($a, $b){
 	$total = 0;
@@ -210,7 +210,7 @@ echo "10+20+30=", sumMany($arr),"<br>";
 ### 傳值呼叫 & 傳址呼叫
 
 {% tabs %}
-{% tab title="Plain Text" %}
+{% tab title="簡單起始" %}
 ```php
 <h2>call by value</h2>
 <?php
@@ -246,9 +246,22 @@ echo "y = $y <br>";//y = 120
 ```
 {% endtab %}
 
-{% tab title="" %}
-```
-
+{% tab title="範例" %}
+```php
+<h2>salary array每人加薪</h2>
+<?php
+function adjustSalary(&$dataArr,$amt){
+	for($i=0;$i<count($dataArr);$i++){
+		$dataArr[$i] += $amt;
+	}
+	return $dataArr;
+}
+$salaryArr = array(10000,20000,30000,40000);
+adjustSalary($salaryArr,2000);
+foreach($salaryArr as $i => $data){
+	echo "$data <br>";
+}
+?>
 ```
 {% endtab %}
 {% endtabs %}
