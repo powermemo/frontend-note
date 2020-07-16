@@ -207,3 +207,49 @@ echo "10+20+30=", sumMany($arr),"<br>";
 * PHP的自訂函數不可以重複命名！\(JS可以\)
 {% endhint %}
 
+### 傳值呼叫 & 傳址呼叫
+
+{% tabs %}
+{% tab title="Plain Text" %}
+```php
+<h2>call by value</h2>
+<?php
+function sum_test1($a,$b){
+	$total = $a + $b;
+	$a += 100;
+	$b += 100;
+	return $total;
+}
+$x = 10;
+$y = 20;
+echo "x + y =", sum_test1($x,$y), "<br>";//x + y =30
+echo "x = $x <br>";											//x = 10
+echo "y = $y <br>";											//y = 20
+?>
+
+//====================================================
+
+<h2>call by reference</h2>
+<?php
+function sum_test2(&$a,&$b){//🟡參數變數前面有加「&」
+	$total = $a + $b;
+	$a += 100;
+	$b += 100;
+	return $total;
+}
+$x = 10;
+$y = 20;
+echo "x + y =", sum_test2($x,$y), "<br>";//x + y =30
+echo "x = $x <br>";//x = 110
+echo "y = $y <br>";//y = 120
+?>
+```
+{% endtab %}
+
+{% tab title="" %}
+```
+
+```
+{% endtab %}
+{% endtabs %}
+
