@@ -184,11 +184,8 @@ echo "10+20 = ", sum(10,20), "<br>";//310+20=30
 ```php
 function sumMany($array){//$array: 請將所有的資料放到陣列中...
 	$total = 0;
-	foreach($array as $i => $data){
-		total += $data;
-	}else{
-		$total = false;
-	}
+	foreach($array as $i => $data){total += $data;}
+	else{$total = false;}
 	return $total;
 }
 $arr = array(10,20,30);
