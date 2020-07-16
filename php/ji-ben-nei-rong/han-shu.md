@@ -250,7 +250,7 @@ echo "y = $y <br>";//y = 120
 ```php
 <h2>salary array每人加薪</h2>
 <?php
-function adjustSalary(&$dataArr,$amt){
+function adjustSalary(&$dataArr,$amt){//🟡
 	for($i=0;$i<count($dataArr);$i++){
 		$dataArr[$i] += $amt;
 	}
