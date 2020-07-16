@@ -150,9 +150,11 @@ echo "now: ", time(),"<br>";//now: 1594862700
 $now = time();
 echo "time: ", date("Y-m-d H:i:s",$now),"<br>";//time: 2020-07-16 09:25:00
 echo "time: ", date("Y-m-d H:i:s"),"<br>";//time: 2020-07-16 09:25:00
+
+
+//生日那天星期幾？(用1985/01/05作範例)
 $birthday = mktime(0,0, 0, 1, 5, 1985);
-echo date("星期:w",$birthday), "<br>";//weekday: 4
-//https://www.php.net/manual/en/function.date
+echo date("星期:w",$birthday), "<br>";//星期: 6
 ?>
 ```
 {% endtab %}
