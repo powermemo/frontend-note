@@ -54,3 +54,15 @@
 {% endtab %}
 {% endtabs %}
 
+## 3D物件
+
+{% tabs %}
+{% tab title="low poly" %}
+{% embed url="https://codepen.io/Yakudoo/pen/pgPgeb" %}
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
