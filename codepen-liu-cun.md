@@ -42,6 +42,18 @@
 {% endtab %}
 {% endtabs %}
 
+## 小畫家
+
+{% tabs %}
+{% tab title="工具" %}
+{% embed url="https://codepen.io/wheatup/pen/GbgyLY" %}
+{% endtab %}
+
+{% tab title="色相環" %}
+{% embed url="https://codepen.io/aaroniker/pen/NLjmdz" %}
+{% endtab %}
+{% endtabs %}
+
 ## 拖曳
 
 {% tabs %}
@@ -141,16 +153,4 @@
 {% endtabs %}
 
 
-
-## 小畫家
-
-{% tabs %}
-{% tab title="工具" %}
-{% embed url="https://codepen.io/wheatup/pen/GbgyLY" %}
-{% endtab %}
-
-{% tab title="色相環" %}
-{% embed url="https://codepen.io/aaroniker/pen/NLjmdz" %}
-{% endtab %}
-{% endtabs %}
 
