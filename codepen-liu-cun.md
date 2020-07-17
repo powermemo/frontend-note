@@ -42,7 +42,35 @@
 {% tab title="排位置" %}
 {% embed url="https://codepen.io/tjramage/pen/yOEbyw" %}
 {% endtab %}
+
+{% tab title="改位置" %}
+{% embed url="https://codepen.io/bradtraversy/pen/odmVgN" %}
+{% endtab %}
+
+{% tab title="隨意位置" %}
+{% embed url="https://codepen.io/znak/pen/ntsdy" %}
+
+{% embed url="https://codepen.io/lavrton/pen/myBPGo" %}
+
+{% embed url="https://codepen.io/myquite/pen/kkdLZq" %}
+
+{% embed url="https://codepen.io/milesmanners/pen/mxbrWR" %}
+
+{% embed url="https://codepen.io/agenceme/pen/dXYPBJ" %}
+
+{% embed url="https://codepen.io/cconceicao/pen/PBQawy" %}
+{% endtab %}
+
+{% tab title="變更濾鏡" %}
+{% embed url="https://codepen.io/Siddharth11/pen/GgrEMG" %}
+
+{% embed url="https://codepen.io/Boxshadow/pen/KBcdJ" %}
+{% endtab %}
 {% endtabs %}
+
+
+
+
 
 ## sticky
 
@@ -75,12 +103,34 @@
 ## 互動
 
 {% tabs %}
-{% tab title="放煙火" %}
+{% tab title="放煙火\|雷電" %}
 {% embed url="https://codepen.io/jackrugile/pen/acAgx" %}
+
+{% embed url="https://codepen.io/Twanneman/pen/qhBKC" %}
+
+{% embed url="https://codepen.io/cliffpyles/pen/fxKDu" %}
 {% endtab %}
 
 {% tab title="起點終點" %}
 {% embed url="https://codepen.io/shshaw/pen/vJNMQY" %}
+{% endtab %}
+
+{% tab title="星球" %}
+{% embed url="https://codepen.io/jcoulterdesign/pen/eJGoOx" %}
+{% endtab %}
+{% endtabs %}
+
+
+
+## 小畫家
+
+{% tabs %}
+{% tab title="工具" %}
+{% embed url="https://codepen.io/wheatup/pen/GbgyLY" %}
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
 {% endtab %}
 {% endtabs %}
 
