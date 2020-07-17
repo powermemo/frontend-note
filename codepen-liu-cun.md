@@ -26,6 +26,20 @@
 {% tab title="數獨" %}
 {% embed url="https://codepen.io/ch-zhuchu/pen/GRoXxaB" %}
 {% endtab %}
+
+{% tab title="新接龍" %}
+{% embed url="https://codepen.io/Mobius1/pen/PpJPKE" %}
+
+{% embed url="https://codepen.io/HunorMarton/pen/rwpGXj" %}
+{% endtab %}
+
+{% tab title="彈珠檯" %}
+{% embed url="https://codepen.io/lonekorean/pen/KXLrVX" %}
+{% endtab %}
+
+{% tab title="提線人偶" %}
+{% embed url="https://codepen.io/ge1doot/pen/PqgWOY" %}
+{% endtab %}
 {% endtabs %}
 
 ## 拖曳
@@ -39,12 +53,14 @@
 {% embed url="https://codepen.io/hoanghien0410/pen/MMPaqm" %}
 {% endtab %}
 
-{% tab title="排位置" %}
-{% embed url="https://codepen.io/tjramage/pen/yOEbyw" %}
-{% endtab %}
-
 {% tab title="改位置" %}
 {% embed url="https://codepen.io/bradtraversy/pen/odmVgN" %}
+
+{% embed url="https://codepen.io/raisezhang/pen/MmjypX" %}
+
+{% embed url="https://codepen.io/scottdavis/pen/hGtEw" %}
+
+{% embed url="https://codepen.io/tjramage/pen/yOEbyw" %}
 {% endtab %}
 
 {% tab title="隨意位置" %}
@@ -95,10 +111,14 @@
 {% embed url="https://codepen.io/Yakudoo/pen/rVGraP" %}
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="商品展示" %}
+{% embed url="https://codepen.io/\_massimo/pen/zVYVNb" %}
 
+{% embed url="https://codepen.io/vivngo/pen/vwwmNy" %}
 {% endtab %}
 {% endtabs %}
+
+
 
 ## 互動
 
@@ -129,8 +149,8 @@
 {% embed url="https://codepen.io/wheatup/pen/GbgyLY" %}
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="色相環" %}
+{% embed url="https://codepen.io/aaroniker/pen/NLjmdz" %}
 {% endtab %}
 {% endtabs %}
 
