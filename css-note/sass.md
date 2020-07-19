@@ -164,14 +164,14 @@ $null:null;
 ```css
 /*宣告*/
 @mixin btn($w , $bgc , $fontSize:14px) {/*🟡「14px」是預設值*/
-  width: $w;
+  width: $w;/*🔹*/
   padding: 10px;
-  font-size: $fontSize;
+  font-size: $fontSize;/*🔹*/
   text-align: center;
   border-radius: 30px;
   color: #fff;
   cursor: pointer;
-  background-color: $bgc;
+  background-color: $bgc;/*🔹*/
   transition: .2s all ease-in;
   &:hover {
      background-color: darken($bgc , 10%);
@@ -181,10 +181,24 @@ $null:null;
 /*宣告*/
 .item{
   .btn{
-    @include btn(100px, tomato );
+    @include btn(100px, tomato );/*🟡沒有帶第三個參數*/
   }
 }
 ```
+{% endtab %}
+{% endtabs %}
+
+## 字串轉數值
+
+如class、路徑、屬性等都是字串需要做轉換
+
+{% tabs %}
+{% tab title="First Tab" %}
+
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
 {% endtab %}
 {% endtabs %}
 
