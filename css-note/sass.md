@@ -40,6 +40,26 @@ SCSS的語法有「{}」和「;」，可與CSS相容
 {% tabs %}
 {% tab title="一般變數" %}
 變數以「$」開頭命名\(有點像PHP\)
+
+```css
+$font-size : 20px;
+$color : #333;
+$margin : 10px 20px 30px 40px;  // list
+$bg-color : (
+  'blue' : #0059ff,
+  'yellow' : #ffd900,
+  'green' : #73ff00
+); // map 數值 
+
+$null : null;
+
+body {
+  $font-size : 210px;
+  font-size: $font-size;
+  max-width: 30px;
+  margin: $margin;
+}
+```
 {% endtab %}
 
 {% tab title="Second Tab" %}
