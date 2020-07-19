@@ -54,9 +54,9 @@ $null : null;
 
 body {
   $font-size : 210px;
-  font-size: $font-size;
+  font-size: $font-size;//⭐這邊使用
   max-width: 30px;
-  margin: $margin;
+  margin: $margin;//⭐這邊使用
 }
 ```
 {% endtab %}
