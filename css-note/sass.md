@@ -123,3 +123,26 @@ SCSS導入非常簡單，不用副檔名，直接輸入檔名即可。
 
 ## mixin
 
+mixin就像JS的function  
+用mixin的好處是，需要使用時才呼叫。
+
+{% tabs %}
+{% tab title="不帶參數" %}
+~
+
+```css
+/*宣告*/
+@mixin margin() {/*🟡宣告*/
+    margin: 0 auto;
+}
+
+/*呼叫*/
+@include margin();/*🟡呼叫*/
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
