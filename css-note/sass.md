@@ -24,5 +24,8 @@
 
 ## SASS簡介
 
-SASS與SCSS的念法一樣
+SASS與SCSS的念法一樣，  
+SASS的語法沒有「{}」和「;」，不可與CSS相容  
+SCSS的語法有「{}」和「;」，可與CSS相容  
+所以**一般會用SCSS**。
 
