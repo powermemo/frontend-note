@@ -70,6 +70,31 @@ body {
 
 ```markup
 <!--HTML的部分-->
+<div class="wrap">
+  <div class="item">
+    <h2>i'm h2</h2>
+    <div class="img"><img src="xxx.jpg"></div>
+    <div class="txt">Lorem ipsum dolor sit amet.</div>
+  </div>
+</div>
+```
 
+```css
+/*SCSS的部分*/
+.wrap{
+  .item{
+    h2{
+      font-size: 26px;
+      color: tomato;
+    }
+    .img{
+      border: 3px solid green;
+      width: 200px;
+    }
+    .txt{
+      font-size: 18px;
+    }
+  }
+}
 ```
 
