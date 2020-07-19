@@ -24,5 +24,5 @@
 
 ## SASS簡介
 
-
+SASS與SCSS的念法一樣
 
