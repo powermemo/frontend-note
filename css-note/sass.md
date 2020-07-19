@@ -80,9 +80,15 @@ body {
 ```
 
 ```css
-/*SCSS的部分*/
+//SCSS的部分
+$bg-color:lightblue;
 .wrap{
   .item{
+    width: 500px;
+    background: lightblue;
+    &:hover{//🟡偽元素
+      background: darken($bg-color,15%);
+    }
     h2{
       font-size: 26px;
       color: tomato;
@@ -97,4 +103,8 @@ body {
   }
 }
 ```
+
+{% hint style="info" %}
+* 使用偽元素時，以「&」開頭。
+{% endhint %}
 
