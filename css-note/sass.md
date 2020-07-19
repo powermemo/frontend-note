@@ -87,7 +87,7 @@ $bg-color:lightblue;
     width: 500px;
     background: lightblue;
     &:hover{//🟡偽元素
-      background: darken($bg-color,15%);
+      background: darken($bg-color,15%);//🟡變暗
     }
     h2{
       font-size: 26px;
@@ -106,5 +106,10 @@ $bg-color:lightblue;
 
 {% hint style="info" %}
 * 使用偽元素時，以「&」開頭。
+* darken是SASS的語法：`darken(變數名,數值);` 讓顏色變暗。
 {% endhint %}
+
+## @import導入
+
+
 
