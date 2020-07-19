@@ -141,8 +141,52 @@ mixin就像JS的function
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="帶值" %}
+~
 
+```css
+$null:null;
+/*宣告*/
+@mixin padding($num) {/*🟡參數放變數*/
+    padding: $num auto;
+}
+
+/*呼叫*/
+@include padding(5px);
+/*或是不放值，可以用「null」*/
+@include padding($null);
+```
+{% endtab %}
+
+{% tab title="預設值" %}
+.
+
+```css
+/*宣告*/
+@mixin btn($w , $bgc , $fontSize:14px) {/*🟡「14px」是預設值*/
+  width: $w;
+  padding: 10px;
+  font-size: $fontSize;
+  text-align: center;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  background-color: $bgc;
+  transition: .2s all ease-in;
+  &:hover {
+     background-color: darken($bgc , 10%);
+  }
+}
+
+/*宣告*/
+.item{
+  .btn{
+    @include btn(100px, tomato );
+  }
+}
+```
 {% endtab %}
 {% endtabs %}
+
+
 
