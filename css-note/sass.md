@@ -37,7 +37,15 @@ SCSS的語法有「{}」和「;」，可與CSS相容
 
 ## 變數型態
 
+{% tabs %}
+{% tab title="一般變數" %}
+變數以「$」開頭命名\(有點像PHP\)
+{% endtab %}
 
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
 
 
