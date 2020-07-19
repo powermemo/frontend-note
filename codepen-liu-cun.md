@@ -152,15 +152,5 @@
 {% endtab %}
 {% endtabs %}
 
-## 功能類
 
-{% tabs %}
-{% tab title="計算機" %}
-{% embed url="https://codepen.io/Lilykhan/pen/XWXPEbL" %}
-{% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
-{% endtabs %}
 

@@ -20,6 +20,7 @@
   * [Photoshop 的效果](css-note/photoshop-de-hun-he-mo-shi.md)
   * [CSS動畫](css-note/css-dong-hua.md)
   * [transform](css-note/transform.md)
+  * [SASS](css-note/sass.md)
   * [醫生，我壞掉了](css-note/yi-sheng-wo-huai-diao-le.md)
 * [視覺設計](shi-jiao-she-ji.md)
 * [JS](js/README.md)
