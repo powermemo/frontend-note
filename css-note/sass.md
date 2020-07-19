@@ -29,3 +29,7 @@ SASS的語法沒有「{}」和「;」，不可與CSS相容
 SCSS的語法有「{}」和「;」，可與CSS相容  
 所以**一般會用SCSS**。
 
+![](https://cdn-images-1.medium.com/max/1600/1*r7m8ZNvhIboyfsmlIdv9bw.png)
+
+
+
