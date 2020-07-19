@@ -35,5 +35,9 @@ SCSS的語法有「{}」和「;」，可與CSS相容
 更多介紹在SASS中文網 \[[連結](https://sass.bootcss.com/documentation)\]
 {% endhint %}
 
+## 變數型態
+
+
+
 
 
