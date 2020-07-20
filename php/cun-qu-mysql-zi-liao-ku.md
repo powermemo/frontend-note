@@ -18,7 +18,7 @@
 2. 到IIS打開phpMyAdmin資料夾的「index.php」檔案。
 {% endhint %}
 
-## PDO指令\[官網[連結](https://www.php.net/manual/en/pdo.constants.php)\]
+## PDO指令\(常數\)\[官網[連結](https://www.php.net/manual/en/pdo.constants.php)\]
 
 利用「PDO」存取SQL資料，是安全性較佳的方法。  
 PDO可連結更多資料庫系統、PDO可避免SQL injection攻擊。
