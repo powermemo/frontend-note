@@ -269,7 +269,7 @@ try {
 {% endtab %}
 
 {% tab title="👈取得物件的方法fetch" %}
-fetch
+### fetch：回傳一維陣列
 
 ```php
 <?php 
@@ -306,6 +306,91 @@ try {
 }
 
 ?>    
+```
+
+### fetchAll：回傳二維陣列
+
+```php
+<?php 
+try {
+	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
+	$user = "root";
+	$password = "root";
+	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+	$pdo = new PDO($dsn, $user, $password, $options);
+
+	$sql = "select * from `member`";
+	$products = $pdo->query($sql);//🟡
+	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);//🟡
+
+} catch (PDOException $e) {
+	echo "錯誤原因 : ", $e->getMessage(), "<br>";
+	echo "錯誤行號 : ", $e->getLine(), "<br>";
+}
+?>
+//👆寫在<head>之上
+//👇寫在<body>裡面
+
+
+<table align='center'>
+<tr><th>編號</th><th>姓名</th><th>ID</th><th>密碼</th><th>信箱</th><th>性別</th><th>生日</th><th>電話</th></tr>
+<?php
+foreach($prodRows as $i=>$prodRow){//🟡
+?>
+	<tr>
+	<td><?=$prodRow["no"]?></td>
+	<td><?=$prodRow["memName"]?></td>
+	<td><?=$prodRow["memId"]?></td>
+	<td><?=$prodRow["memPsw"]?></td>
+	<td><?=$prodRow["email"]?></td>
+	<td><?=$prodRow["sex"]?></td>
+	<td><?=$prodRow["birthday"]?></td>
+	<td><?=$prodRow["tel"]?></td>
+	</tr>
+<?php
+}
+?>
+</table> 
+```
+
+### fetchObject：回傳一個物件
+
+```php
+<?php 
+try {
+	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
+	$user = "root";
+	$password = "root";
+	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+	$pdo = new PDO($dsn, $user, $password, $options);
+
+	$sql = "select * from products";
+	$products = $pdo->query($sql);
+
+} catch (PDOException $e) {
+	echo "錯誤原因 : ", $e->getMessage(), "<br>";
+	echo "錯誤行號 : ", $e->getLine(), "<br>";
+}
+?>
+
+//👆寫在<head>之上
+//👇寫在<body>裡面
+
+<table align='center'>
+<tr><th>書號</th><th>書名</th><th>價格</th><th>作者</th></tr>
+<?php//🟡
+while( $prodRow = $products->fetchObject()){//當抓得到一筆資料, 取回來以物件的形式
+?>
+	<tr>
+	<td><?=$prodRow->psn?></td>//🟡
+	<td><?=$prodRow->pname?></td>//🟡
+	<td><?=$prodRow->price?></td>//🟡
+	<td><?=$prodRow->author?></td>//🟡
+	</tr>
+<?php
+}
+?>
+</table> 
 ```
 {% endtab %}
 {% endtabs %}
