@@ -96,7 +96,7 @@ PDO可連結更多資料庫系統、PDO可避免SQL injection攻擊。
     * `charset`：字元集
   * `$user`：使用者帳號
   * `$password`：使用者密碼
-  * $options：描述資料庫連接時的一些資訊； 以關聯性陣列的方式表示。
+  * `$options`：描述資料庫連接時的一些資訊； 以關聯性陣列的方式表示。
 
 ```php
 $dsn = "mysql:host=localhost;port=3306;dbname=books;charset=urt8";
