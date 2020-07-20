@@ -18,3 +18,5 @@
 2. 到IIS打開phpMyAdmin資料夾的「index.php」檔案。
 {% endhint %}
 
+
+
