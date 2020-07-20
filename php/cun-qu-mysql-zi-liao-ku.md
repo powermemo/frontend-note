@@ -267,6 +267,47 @@ try {
 ?>    
 ```
 {% endtab %}
+
+{% tab title="👈取得物件的方法fetch" %}
+fetch
+
+```php
+<?php 
+try {
+	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
+	$user = "root";
+	$password = "root";
+	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+	$pdo = new PDO($dsn, $user, $password, $options);
+
+	$sql = "select * from products";
+	$products = $pdo->query($sql);
+
+
+	echo "<table align='center'>";
+	echo "<tr><th>書號</th><th>書名</th><th>價格</th><th>作者</th></tr>";
+	while( $prodRow = $products->fetch(PDO::FETCH_ASSOC)){//🟡fetch
+	//當抓得到一筆資料
+	?>
+		<tr>
+		<td><?=$prodRow["psn"]?></td>//🟡
+		<td><?=$prodRow["pname"]?></td>//🟡
+		<td><?=$prodRow["price"]?></td>//🟡
+		<td><?=$prodRow["author"]?></td>//🟡
+		</tr>
+	<?php
+	}
+
+	echo "</table>";
+} catch (PDOException $e) {
+	echo "錯誤原因 : ", $e->getMessage(), "<br>";
+	echo "錯誤行號 : ", $e->getLine(), "<br>";
+	
+}
+
+?>    
+```
+{% endtab %}
 {% endtabs %}
 
 
