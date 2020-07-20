@@ -110,7 +110,7 @@ $pdo = new PDO($dsn , $user, $password);
 $dsn = "mysql:host=localhost;port=3306;dbname=books;charset=urt8";
 $user = "使用者帳號";
 $password = "使用者密碼";
-$options = array();
+$options = array(PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
 $pdo = new PDO($dsn , $user, $password, $options);
 ```
 {% endtab %}
