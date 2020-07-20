@@ -201,17 +201,17 @@ $null:null;
 ```
 
 ```css
-// 以下是mixin的另一種用法「#{$var}」
+/*以下是mixin的另一種用法「#{$var}」*/
 @mixin test($var,$w,$bgc,$fz) {
     #{$var}{
         width: $w;
         background-color: $bgc;
         font-size: $fz;
-        @content;//「@content」的意思：若某些屬性不在(#{$var})裡面，可額外增加
+        @content;/*「@content」的意思：若某些屬性不在(#{$var})裡面，可額外增加*/
     }
 }
-@include test('.box',150px,#f20,13px){//有個div的class名稱為「box」
-    border: 5px solid tomato;//「#{var}」內沒有border的屬性，另外加上的。
+@include test('.box',150px,#f20,13px){/*有個div的class名稱為「box」*/
+    border: 5px solid tomato;/*「#{var}」內沒有border的屬性，另外加上的。*/
 }
 ```
 {% endtab %}
