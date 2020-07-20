@@ -158,7 +158,7 @@ try{
 {% endtab %}
 
 {% tab title="範例" %}
-.
+
 
 ```php
 $options = array(
@@ -205,8 +205,13 @@ try {
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="query" %}
+* **`$pdo->query(`**_**`SQL命令`**_**`)`**
+  * 用來執行會取得result set的指令，例如select
 
+```text
+
+```
 {% endtab %}
 {% endtabs %}
 
