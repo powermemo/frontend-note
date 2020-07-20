@@ -144,5 +144,47 @@ try{
 {% endtab %}
 {% endtabs %}
 
+## 執行SQL指令
+
+* **`$pdo->exec(`**_**`SQL命令`**_**`)`**
+  * 用來執行不會取得result set的指令，例如inset、update、delete
+* **`$pdo->query(`**_**`SQL命令`**_**`)`**
+  * 用來執行會取得result set的指令，例如select
+* **`$pdo->prepare(`**_**`SQL命令`**_**`)`**
+  * 用來事先編譯好一個SQL敘述
+
+{% tabs %}
+{% tab title="exec" %}
+* **`$pdo->exec(`**_**`SQL命令`**_**`)`**
+  * 用來執行不會取得result set的指令，例如inset、update、delete
+
+```php
+<?php 
+try {
+	$dsn = "mysql:host=localhost;port=3306;dbname=demo;charset=utf8"
+	$user = "root";
+	$password = "root";
+	$options = array(PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
+	$pdo = new PDO($dsn, $user, $password, $options);
+
+	echo "連線成功~<br>";	
+
+	$sql = "update emp set sal += 1000";
+
+	$pdo->exec($sql);
+	echo "異動成功~<br>";	
+} catch (PDOException $e) {
+	echo "錯誤原因 : ", $e->getMessage(), "<br>";
+	echo "錯誤行號 : ", $e->getLine(), "<br>";
+}
+?> 
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
 
 
