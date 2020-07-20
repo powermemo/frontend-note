@@ -99,6 +99,7 @@ PDO可連結更多資料庫系統、PDO可避免SQL injection攻擊。
   * `$options`：描述資料庫連接時的一些資訊； 以關聯性陣列的方式表示。
 
 ```php
+//分號隔著寫，中間不要空白
 $dsn = "mysql:host=localhost;port=3306;dbname=books;charset=urt8";
 $user = "使用者帳號";
 $password = "使用者密碼";
@@ -118,9 +119,13 @@ $pdo = new PDO($dsn , $user, $password, $options);
 {% tab title="try..catch錯誤時" %}
 設定正常運作時執行指令\(try\)、錯誤時的執行指令\(catch\)
 
+* `PDOException`：例外物件
+* `getMessage()`：出了甚麼錯
+* `getLine()`：錯在第幾行
+
 ```php
 try{
-    $dsn = 'mysql:host=localhost;port=3306;dbname=demo;charset=utf8';//分號隔著寫，中間不要空白
+    $dsn = 'mysql:host=localhost;port=3306;dbname=demo;charset=utf8';
     $user = 'root';
     $password = 'root';
     // $options = array(2=>0, 8=>2); //這樣陣列記不住所以用下面的
@@ -131,9 +136,9 @@ try{
     $sql = 'update emp set sal += 1000';//字串內是PHP指令
     $affectedHow = $pdo->exec($sql);//使用「$...->exec($字串指令變數)」
     echo '成功了異動',{$affectedHow},'筆資料';
-}catch(PDOException $e){
-    echo "錯誤原因：",$e->getMessage(),"<br>";
-    echo "錯誤原因：",$e->getLine(),"<br>";
+}catch(PDOException $e){//🟡例外物件
+    echo "錯誤原因：",$e->getMessage(),"<br>";//🟡出了甚麼錯
+    echo "錯誤原因：",$e->getLine(),"<br>";//🟡錯在第幾行
 }
 ```
 {% endtab %}
