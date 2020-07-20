@@ -83,3 +83,32 @@ PDO可連結更多資料庫系統、PDO可避免SQL injection攻擊。
 {% endtab %}
 {% endtabs %}
 
+## 連結資料庫
+
+{% tabs %}
+{% tab title="First Tab" %}
+* 建立PDO物件：`$pdo = new PDO($dsn , $user, $password, $options);`
+  * `$dsn`：資料庫連線資訊
+    * `mysql:`：前置詞
+    * `host:`：主機
+    * `port`：port number
+    * `dbname`：資料庫名稱
+    * `charset`：字元集
+  * `$user`：使用者帳號
+  * `$password`：使用者密碼
+  * 
+
+```php
+$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=urt8";
+$user = "使用者帳號";
+$password = "使用者密碼";
+$options = array();
+$pdo = new PDO($dsn , $user, $password, $options);
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
