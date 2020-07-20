@@ -136,10 +136,35 @@ try{
     $sql = 'update emp set sal += 1000';//字串內是PHP指令
     $affectedHow = $pdo->exec($sql);//使用「$...->exec($字串指令變數)」
     echo '成功了異動',{$affectedHow},'筆資料';
+    
 }catch(PDOException $e){//🟡例外物件
     echo "錯誤原因：",$e->getMessage(),"<br>";//🟡出了甚麼錯
     echo "錯誤原因：",$e->getLine(),"<br>";//🟡錯在第幾行
 }
+```
+{% endtab %}
+{% endtabs %}
+
+### options
+
+{% tabs %}
+{% tab title="可設定項目" %}
+* `PDO::ATTR_CASE`：大小寫屬性
+* `PDO::ATTR_ERRMODE`：錯誤發生時
+* `PDO::ATTR_ORACLE_NULLS`：null和空字串轉換
+* `PDO::ATTR_AUTOCOMMIT`：是否自動commit\(true\)
+* `PDO::MYSQL_ATTR_USE_BUFFERED_QUERY`：
+* `PDO::ATTR_DEFAULT_FETCH_MODE`：存取資料模式
+{% endtab %}
+
+{% tab title="範例" %}
+.
+
+```php
+$options = array(
+    PDO::ATTR_CASE=>PDO::CASE_NATURAL,
+    PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_ORACLE_NULLS=>PDO::NULL_NATURAL);
 ```
 {% endtab %}
 {% endtabs %}
@@ -166,13 +191,12 @@ try {
 	$password = "root";
 	$options = array(PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
 	$pdo = new PDO($dsn, $user, $password, $options);
-
 	echo "連線成功~<br>";	
 
-	$sql = "update emp set sal += 1000";
-
-	$pdo->exec($sql);
+	$sql = "update emp set sal += 1000";//PHP指令
+	$pdo->exec($sql);//🟡透過PDO執行SQL指令
 	echo "異動成功~<br>";	
+	
 } catch (PDOException $e) {
 	echo "錯誤原因 : ", $e->getMessage(), "<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
