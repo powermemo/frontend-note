@@ -117,6 +117,25 @@ $pdo = new PDO($dsn , $user, $password, $options);
 
 {% tab title="try..catch錯誤時" %}
 設定正常運作時執行指令\(try\)、錯誤時的執行指令\(catch\)
+
+```php
+try{
+    $dsn = 'mysql:host=localhost;port=3306;dbname=demo;charset=utf8';//分號隔著寫，中間不要空白
+    $user = 'root';
+    $password = 'root';
+    // $options = array(2=>0, 8=>2); //這樣陣列記不住所以用下面的
+    $options = array(PDO::ATTR_CASE=>PDO::CASE_NATURAL, PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
+    $pdo = new PDO($dsn, $user, $password, $options);
+    echo "連線成功<br>";
+
+    $sql = 'update emp set sal += 1000';//字串內是PHP指令
+    $affectedHow = $pdo->exec($sql);//使用「$...->exec($字串指令變數)」
+    echo '成功了異動',{$affectedHow},'筆資料';
+}catch(PDOException $e){
+    echo "錯誤原因：",$e->getMessage(),"<br>";
+    echo "錯誤原因：",$e->getLine(),"<br>";
+}
+```
 {% endtab %}
 {% endtabs %}
 
