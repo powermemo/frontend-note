@@ -217,6 +217,8 @@ $null:null;
 
 {% hint style="info" %}
 * mixin的另一種用法「`#{$var}`」
+  * 「`#{$var}`」內「`@content`」的意思：若某些屬性不在\(`#{$var}`\)裡面，可額外增加
+  * `@include test('.box',150px,#f20,13px)`/\*有個div的class名稱為「box」\*/
 {% endhint %}
 
 
