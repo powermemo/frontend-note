@@ -124,7 +124,7 @@ I am \Sara\
     <title>表單</title>
 </head>
 <body>
-    <form method="get" action="form.php">
+    <form method="get" action="form.php"><!--PHP的檔名-->
         <div>
             <label for="memId">帳號：</label>
             <input type="text" name="memId" required="required"><br>
