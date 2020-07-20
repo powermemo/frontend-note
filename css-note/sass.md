@@ -194,8 +194,6 @@ $null:null;
 
 {% tabs %}
 {% tab title="First Tab" %}
-.
-
 ```markup
 <div class="box"></div>
 ```
@@ -216,6 +214,10 @@ $null:null;
 ```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+* mixin的另一種用法「`#{$var}`」
+{% endhint %}
 
 
 
