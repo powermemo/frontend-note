@@ -86,7 +86,7 @@ PDO可連結更多資料庫系統、PDO可避免SQL injection攻擊。
 ## 連結資料庫
 
 {% tabs %}
-{% tab title="new PDO" %}
+{% tab title="new PDO建立" %}
 * 建立PDO物件：`$pdo = new PDO($dsn , $user, $password, $options);`
   * `$dsn`：資料庫連線資訊
     * `mysql:`：前置詞
@@ -115,8 +115,8 @@ $pdo = new PDO($dsn , $user, $password, $options);
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="try..catch錯誤時" %}
+設定正常運作時執行指令\(try\)、錯誤時的執行指令\(catch\)
 {% endtab %}
 {% endtabs %}
 
