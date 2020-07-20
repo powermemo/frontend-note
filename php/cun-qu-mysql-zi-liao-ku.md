@@ -23,3 +23,63 @@
 利用「PDO」存取SQL資料，是安全性較佳的方法。  
 PDO可連結更多資料庫系統、PDO可避免SQL injection攻擊。
 
+老師提供較常使用的指令：
+
+{% tabs %}
+{% tab title="param" %}
+**`PDO::PARAM_BOOL`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents a boolean data type.
+
+**`PDO::PARAM_NULL`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents the SQL NULL data type.
+
+**`PDO::PARAM_INT`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents the SQL INTEGER data type.
+
+**`PDO::PARAM_STR`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents the SQL CHAR, VARCHAR, or other string data type.
+
+**`PDO::PARAM_STR_NATL`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Flag to denote a string uses the national character set. Available since PHP 7.2.0
+
+**`PDO::PARAM_STR_CHAR`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Flag to denote a string uses the regular character set. Available since PHP 7.2.0
+
+**`PDO::PARAM_LOB`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents the SQL large object data type.
+
+**`PDO::PARAM_STMT`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents a recordset type. Not currently supported by any drivers.
+
+**`PDO::PARAM_INPUT_OUTPUT`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the parameter is an INOUT parameter for a stored procedure. You must bitwise-OR this value with an explicit PDO::PARAM\_\* data type.
+{% endtab %}
+
+{% tab title="fetch" %}
+**`PDO::FETCH_LAZY`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the fetch method shall return each row as an object with variable names that correspond to the column names returned in the result set. 
+
+**`PDO::FETCH_LAZY`** creates the object variable names as they are accessed. Not valid inside [PDOStatement::fetchAll\(\)](https://www.php.net/manual/en/pdostatement.fetchall.php).
+
+**`PDO::FETCH_ASSOC`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the fetch method shall return each row as an array indexed by column name as returned in the corresponding result set. If the result set contains multiple columns with the same name, 
+
+**`PDO::FETCH_ASSOC`** returns only a single value per column name.
+
+**`PDO::FETCH_NAMED`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the fetch method shall return each row as an array indexed by column name as returned in the corresponding result set. If the result set contains multiple columns with the same name, 
+
+**`PDO::FETCH_NAMED`** returns an array of values per column name.
+
+**`PDO::FETCH_NUM`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the fetch method shall return each row as an array indexed by column number as returned in the corresponding result set, starting at column 0.
+
+**`PDO::FETCH_BOTH`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the fetch method shall return each row as an array indexed by both column name and number as returned in the corresponding result set, starting at column 0.
+{% endtab %}
+
+{% tab title="others" %}
+**`PDO::ERRMODE_SILENT`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Do not raise an error or exception if an error occurs. The developer is expected to explicitly check for errors. This is the default mode. See [Errors and error handling](https://www.php.net/manual/en/pdo.error-handling.php) for more information about this attribute.
+
+**`PDO::ERRMODE_WARNING`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Issue a PHP **`E_WARNING`** message if an error occurs. See [Errors and error handling](https://www.php.net/manual/en/pdo.error-handling.php) for more information about this attribute.
+
+**`PDO::ERRMODE_EXCEPTION`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Throw a [PDOException](https://www.php.net/manual/en/class.pdoexception.php) if an error occurs. See [Errors and error handling](https://www.php.net/manual/en/pdo.error-handling.php) for more information about this attribute.
+
+**`PDO::CASE_NATURAL`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Leave column names as returned by the database driver.
+
+**`PDO::CASE_LOWER`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Force column names to lower case.
+
+**`PDO::CASE_UPPER`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Force column names to upper case.
+
+**`PDO::NULL_NATURAL`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)
+
+**`PDO::NULL_EMPTY_STRING`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)
+{% endtab %}
+{% endtabs %}
+
