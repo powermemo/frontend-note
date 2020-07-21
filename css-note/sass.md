@@ -221,5 +221,322 @@ $null:null;
   * `@include test('.box',150px,#f20,13px)`/\*有個div的class名稱為「box」\*/
 {% endhint %}
 
+## SASS運算
+
+SASS可做運算
+
+{% tabs %}
+{% tab title="普通運算" %}
++-\*/
+
+```css
+$w:10;
+$h:9;
+.box{
+    width: 10 + 10px;
+    height: 10 - 5em;
+    font-size: $w * $h + px;
+    //斜線原本的意思：「font-sizt  /  line-hieght」
+    //🟡所以除法一定要小括號框起來。    
+    font: (15 / 5);
+    color: #333 + #999;
+}
+```
+
+```css
+//CSS
+.box {
+  width: 20px;
+  height: 5em;
+  font-size: 90px;
+  font: 3;
+  color: #cccccc;
+}
+```
+{% endtab %}
+
+{% tab title="運算公式" %}
+ex. floor, round
+
+```css
+//SCSS
+.box2{
+    //floor(x)不大於x的最大整數
+    //ceil(x)不小於x的最小整數
+    //round四捨五入
+    width: floor(100px / 3);
+    height: ceil(100px / 6);
+    margin: round(100px / 8);
+}
+```
+
+```css
+//CSS
+.box2{
+    //floor(x)不大於x的最大整數
+    //ceil(x)不小於x的最小整數
+    //round四捨五入
+    width: floor(100px / 3);
+    height: ceil(100px / 6);
+    margin: round(100px / 8);
+}
+```
+{% endtab %}
+
+{% tab title="字級" %}
+h1~h3
+
+```css
+//SCSS
+@import 'var';
+/*這裡的「$font-size」是區域變數*/
+@mixin titleH($font-size) {//宣告
+    h1{font-size: round($font-size * 4.5);}
+    h2{font-size: round($font-size * 3);}
+    h3{font-size: round($font-size * 2.8);}
+}
+/*🟡這裡的「$font-size」是全域變數
+  因為還是變數，他會去「@import 'var'」找這個變數*/
+@include titleH($font-size);
+```
+
+```css
+//CSS
+h1 {font-size: 126px;}
+h2 {font-size: 84px;}
+h3 {font-size: 78px;}
+```
+{% endtab %}
+
+{% tab title="條件" %}
+if\_\_else
+
+```css
+//SCSS
+@mixin bodyBgc($backgourndColor:black) {
+    @if($backgroundColor == black and 
+        $backgroundColor == #000){
+        background-color: $backgroundColor;
+    }
+}
+@mixin layout($width) {
+    @if $width == 100{
+        width: 100%;
+        display: block;
+    }@else{
+        width: $width +px;
+        margin: 0 auto;
+    }
+}
+
+.wrap{
+    @include layout(1366);
+    @include bodyBgc(#333);
+}
+```
+
+```css
+//CSS
+.wrap {
+  width: 1366px;
+  margin: 0 auto;
+  background-color: black;
+}
+```
+{% endtab %}
+
+{% tab title="繼承" %}
+@extend
+
+若沒有要使用參數的話「@extend」會是比「@mixin」更好的用法～
+
+```css
+//SCSS
+//「%」佔位符號
+//用「%」開頭就不會佔位了(不是一個class)
+%rect{//🟡
+    width: 100px;
+    height: 50px;
+}
+
+%textAlign{//🟡
+    text-align: center;
+}
+
+.green{
+    background-color: green;
+    @extend %rect;//🟡繼承屬性
+    @extend %textAlign;
+}
+.red{
+    background-color: red;
+    @extend %rect;//🟡繼承屬性
+    @extend %textAlign;
+}
+```
+
+```css
+//CSS
+.green, .red {
+  width: 100px;
+  height: 50px;
+}
+
+.green, .red {
+  text-align: center;
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+```
+{% endtab %}
+
+{% tab title="迴圈" %}
+@for $i from 1 through 12{}
+
+```css
+//SCSS
+@media all and (min-width:767px) and (max-width:1200px){
+    @for $i from 1 through 12{
+        .col-md-#{$i}{
+            width:($i / 12) * 100%;
+            display: block;
+        }
+    }
+}
+
+//grid-另一寫法
+@mixin grids($key,$num){
+    @for $i from 1 through $num{
+        .con-#{$key}-#{$num}{
+            width: ($i / $num) * 100%;
+            @content;
+        }
+    }
+}
+
+@mixin grids($key,$num){
+    @include grids(md, 12){
+        display: block;
+        text-align: center;
+    }
+}
+```
+
+```css
+//CSS
+@media all and (min-width: 767px) and (max-width: 1200px) {
+  .col-md-1 {
+    width: 8.33333%;
+    display: block;
+  }
+  .col-md-2 {
+    width: 16.66667%;
+    display: block;
+  }
+  .col-md-3 {
+    width: 25%;
+    display: block;
+  }
+  .col-md-4 {
+    width: 33.33333%;
+    display: block;
+  }
+  .col-md-5 {
+    width: 41.66667%;
+    display: block;
+  }
+  .col-md-6 {
+    width: 50%;
+    display: block;
+  }
+  .col-md-7 {
+    width: 58.33333%;
+    display: block;
+  }
+  .col-md-8 {
+    width: 66.66667%;
+    display: block;
+  }
+  .col-md-9 {
+    width: 75%;
+    display: block;
+  }
+  .col-md-10 {
+    width: 83.33333%;
+    display: block;
+  }
+  .col-md-11 {
+    width: 91.66667%;
+    display: block;
+  }
+  .col-md-12 {
+    width: 100%;
+    display: block;
+  }
+}
+```
+{% endtab %}
+
+{% tab title="grid" %}
+格線系統
+
+```css
+
+```
+{% endtab %}
+
+{% tab title="each" %}
+@each in
+
+```css
+//SCSS
+$images: a1, a2, a3 box feature;//可給逗號、可不給
+@each $img in $images{//🟡
+    .#{$img}-img{
+        background-image: url(./img/#{$img}.jpg);
+        // @extend .bg-image;
+    }
+}
+```
+
+```css
+//CSS
+.a1-img {
+  background-image: url(./img/a1.jpg);
+}
+
+.a2-img {
+  background-image: url(./img/a2.jpg);
+}
+
+.a3-img {
+  background-image: url(./img/a3.jpg);
+}
+
+.a4-img {
+  background-image: url(./img/a4.jpg);
+}
+
+.a5-img {
+  background-image: url(./img/a5.jpg);
+}
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+除法：
+
+* 可以\(100px / 8\);
+* 可以\(100 / 8\) + px;
+* 不可以\(100 / 8px\);
+{% endhint %}
+
 
 
