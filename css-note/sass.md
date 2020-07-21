@@ -221,5 +221,30 @@ $null:null;
   * `@include test('.box',150px,#f20,13px)`/\*有個div的class名稱為「box」\*/
 {% endhint %}
 
+## SASS運算
 
+SASS可做運算
+
+{% tabs %}
+{% tab title="First Tab" %}
+.
+
+```css
+$w:10;
+$h:9;
+.box{
+    width: 10 + 10px;
+    height: 10 - 5em;
+    font-size: $w * $h + px;
+    //斜線原本的意思：「font-sizt  /  line-hieght」
+    //🟡所以除法一定要小括號框起來。    
+    font: (15 / 5);
+}
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
