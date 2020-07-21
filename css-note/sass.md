@@ -287,9 +287,10 @@ ex. floor, round
 h1~h3
 
 ```css
+//SCSS
 @import 'var';
 /*這裡的「$font-size」是區域變數*/
-@mixin titleH($font-size) {
+@mixin titleH($font-size) {//宣告
     h1{font-size: round($font-size * 4.5);}
     h2{font-size: round($font-size * 3);}
     h3{font-size: round($font-size * 2.8);}
@@ -300,6 +301,7 @@ h1~h3
 ```
 
 ```css
+//CSS
 h1 {font-size: 126px;}
 h2 {font-size: 84px;}
 h3 {font-size: 78px;}
