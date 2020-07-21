@@ -510,7 +510,7 @@ try{
         $password = 'tibameed102';
         $options = array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
         $pdo = new PDO($dsn, $user, $password, $options);
-        $sql = "SELECT * FROM products WHERE psn = ".$_GET['pSn']." ";
+        $sql = "SELECT * FROM products WHERE psn = ".$_GET['pSn']." ";//🟡
         $searchPro = $pdo->query($sql);
     }catch(PDOException $e){
         echo 'FIND ERROR:',$e->getMessage(),'<br>';
