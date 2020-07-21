@@ -282,6 +282,29 @@ ex. floor, round
 }
 ```
 {% endtab %}
+
+{% tab title="字級" %}
+h1~h3
+
+```css
+@import 'var';
+/*這裡的「$font-size」是區域變數*/
+@mixin titleH($font-size) {
+    h1{font-size: round($font-size * 4.5);}
+    h2{font-size: round($font-size * 3);}
+    h3{font-size: round($font-size * 2.8);}
+}
+/*🟡這裡的「$font-size」是全域變數
+  因為還是變數，他會去「@import 'var'」找這個變數*/
+@include titleH($font-size);
+```
+
+```css
+h1 {font-size: 126px;}
+h2 {font-size: 84px;}
+h3 {font-size: 78px;}
+```
+{% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}
