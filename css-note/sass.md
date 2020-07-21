@@ -307,6 +307,43 @@ h2 {font-size: 84px;}
 h3 {font-size: 78px;}
 ```
 {% endtab %}
+
+{% tab title="條件" %}
+if\_\_else
+
+```css
+//SCSS
+@mixin bodyBgc($backgourndColor:black) {
+    @if($backgroundColor == black and 
+        $backgroundColor == #000){
+        background-color: $backgroundColor;
+    }
+}
+@mixin layout($width) {
+    @if $width == 100{
+        width: 100%;
+        display: block;
+    }@else{
+        width: $width +px;
+        margin: 0 auto;
+    }
+}
+
+.wrap{
+    @include layout(1366);
+    @include bodyBgc(#333);
+}
+```
+
+```css
+//CSS
+.wrap {
+  width: 1366px;
+  margin: 0 auto;
+  background-color: black;
+}
+```
+{% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}
