@@ -405,8 +405,8 @@ while( $prodRow = $products->fetchObject()){//當抓得到一筆資料, 取回�
 <?php
 try{
     $dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-    $user = 'root';
-    $password = 'tibameed102';
+    $user = '使用者名稱';
+    $password = '使用者密碼';
     $opsitions = array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
     $pdo = new PDO($dsn, $user, $password, $opsitions);
     $sql = 'select * from `member`';
@@ -506,8 +506,8 @@ try{
 <?php
     try{
         $dsn = 'mysql:host=localhost;port=3306;dbname=books;charset=utf8';
-        $user = 'root';
-        $password = 'tibameed102';
+        $user = '使用者名稱';
+        $password = '使用者密碼';
         $options = array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
         $pdo = new PDO($dsn, $user, $password, $options);
         $sql = "SELECT * FROM products WHERE psn = ".$_GET['pSn']." ";//🟡
