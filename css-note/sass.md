@@ -226,8 +226,8 @@ $null:null;
 SASS可做運算
 
 {% tabs %}
-{% tab title="First Tab" %}
-.
+{% tab title="普通運算" %}
++-\*/
 
 ```css
 $w:10;
@@ -239,12 +239,56 @@ $h:9;
     //斜線原本的意思：「font-sizt  /  line-hieght」
     //🟡所以除法一定要小括號框起來。    
     font: (15 / 5);
+    color: #333 + #999;
+}
+```
+
+```css
+//CSS
+.box {
+  width: 20px;
+  height: 5em;
+  font-size: 90px;
+  font: 3;
+  color: #cccccc;
 }
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="運算公式" %}
+ex. floor, round
 
+```css
+//SCSS
+.box2{
+    //floor(x)不大於x的最大整數
+    //ceil(x)不小於x的最小整數
+    //round四捨五入
+    width: floor(100px / 3);
+    height: ceil(100px / 6);
+    margin: round(100px / 8);
+}
+```
+
+```css
+//CSS
+.box2{
+    //floor(x)不大於x的最大整數
+    //ceil(x)不小於x的最小整數
+    //round四捨五入
+    width: floor(100px / 3);
+    height: ceil(100px / 6);
+    margin: round(100px / 8);
+}
+```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+除法：
+
+* 可以\(100px / 8\);
+* 可以\(100 / 8\) + px;
+* 不可以\(100 / 8px\);
+{% endhint %}
 
