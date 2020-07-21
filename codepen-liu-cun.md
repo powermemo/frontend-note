@@ -40,6 +40,10 @@
 {% tab title="提線人偶" %}
 {% embed url="https://codepen.io/ge1doot/pen/PqgWOY" %}
 {% endtab %}
+
+{% tab title="販賣機" %}
+{% embed url="https://codepen.io/lerida/pen/LYGXzZB" %}
+{% endtab %}
 {% endtabs %}
 
 ## 小畫家
@@ -152,5 +156,15 @@
 {% endtab %}
 {% endtabs %}
 
+## 功能類
 
+{% tabs %}
+{% tab title="計算機" %}
+{% embed url="https://codepen.io/Lilykhan/pen/XWXPEbL" %}
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
