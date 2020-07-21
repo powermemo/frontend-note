@@ -487,7 +487,82 @@ if\_\_else
 格線系統
 
 ```css
+//grid
+@media all and (min-width:767px) and (max-width:1200px){
+    @for $i from 1 through 12{
+        .col-md-#{$i}{
+            width:($i / 12) * 100%;
+            display: block;
+            background-color: green;
+        }
+    }
+}
 
+```
+
+```css
+@media all and (min-width: 767px) and (max-width: 1200px) {
+  .col-md-1 {
+    width: 8.33333%;
+    display: block;
+    background-color: green;
+  }
+  .col-md-2 {
+    width: 16.66667%;
+    display: block;
+    background-color: green;
+  }
+  .col-md-3 {
+    width: 25%;
+    display: block;
+    background-color: green;
+  }
+  .col-md-4 {
+    width: 33.33333%;
+    display: block;
+    background-color: green;
+  }
+  .col-md-5 {
+    width: 41.66667%;
+    display: block;
+    background-color: green;
+  }
+  .col-md-6 {
+    width: 50%;
+    display: block;
+    background-color: green;
+  }
+  .col-md-7 {
+    width: 58.33333%;
+    display: block;
+    background-color: green;
+  }
+  .col-md-8 {
+    width: 66.66667%;
+    display: block;
+    background-color: green;
+  }
+  .col-md-9 {
+    width: 75%;
+    display: block;
+    background-color: green;
+  }
+  .col-md-10 {
+    width: 83.33333%;
+    display: block;
+    background-color: green;
+  }
+  .col-md-11 {
+    width: 91.66667%;
+    display: block;
+    background-color: green;
+  }
+  .col-md-12 {
+    width: 100%;
+    display: block;
+    background-color: green;
+  }
+}
 ```
 {% endtab %}
 
