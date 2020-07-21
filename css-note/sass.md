@@ -344,6 +344,56 @@ if\_\_else
 }
 ```
 {% endtab %}
+
+{% tab title="繼承" %}
+@extend
+
+若沒有要使用參數的話「@extend」會是比「@mixin」更好的用法～
+
+```css
+//SCSS
+//用「%」開頭就不會佔位了(不是一個class)
+%rect{//🟡
+    width: 100px;
+    height: 50px;
+}
+
+%textAlign{//🟡
+    text-align: center;
+}
+
+.green{
+    background-color: green;
+    @extend %rect;//🟡繼承屬性
+    @extend %textAlign;
+}
+.red{
+    background-color: red;
+    @extend %rect;//🟡繼承屬性
+    @extend %textAlign;
+}
+```
+
+```css
+//CSS
+.green, .red {
+  width: 100px;
+  height: 50px;
+}
+
+.green, .red {
+  text-align: center;
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+```
+{% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}
