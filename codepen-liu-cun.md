@@ -1,5 +1,7 @@
 # codepen留存
 
+筆記互切\[[連結](https://app.gitbook.com/@memoru86/s/-1/~/drafts/-MCugBVWk13ZWGQ2vMtO/codepen-liu-cun)\]
+
 ## 遊戲game
 
 {% tabs %}
@@ -39,6 +41,10 @@
 
 {% tab title="提線人偶" %}
 {% embed url="https://codepen.io/ge1doot/pen/PqgWOY" %}
+{% endtab %}
+
+{% tab title="販賣機" %}
+{% embed url="https://codepen.io/lerida/pen/LYGXzZB" %}
 {% endtab %}
 {% endtabs %}
 
@@ -152,5 +158,27 @@
 {% endtab %}
 {% endtabs %}
 
+## 功能類
 
+{% tabs %}
+{% tab title="計算機" %}
+{% embed url="https://codepen.io/Lilykhan/pen/XWXPEbL" %}
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+## 基本向
+
+{% tabs %}
+{% tab title="前後頁面切換" %}
+{% embed url="https://codepen.io/ch-zhuchu/pen/oNbwvXv" %}
+{% endtab %}
+
+{% tab title="指定頁面切換" %}
+{% embed url="https://codepen.io/ch-zhuchu/pen/pogGXNe" %}
+{% endtab %}
+{% endtabs %}
 
