@@ -108,13 +108,11 @@ I am \Sara\
 ?>
 ```
 
-## 🍵表單欄位變數取得
+## 表單欄位變數取得
 
 * 「$\_GET\["_欄位名稱_"\]」資料安全
 * 「$\_POST\["_欄位名稱"_\]」資料不安全，例如GOOGLE搜尋，網頁欄都看得到。
 * 「$\_REQUEST\["_欄位名稱_"\]」可取代「$\_GET...」、「$\_POST...」。
-
-p.s.「欄位名稱」是指，html檔中標籤的「name」屬性的值。
 
 ▼HTML
 
@@ -126,7 +124,7 @@ p.s.「欄位名稱」是指，html檔中標籤的「name」屬性的值。
     <title>表單</title>
 </head>
 <body>
-    <form method="get" action="form.php"><!--PHP的檔名-->
+    <form method="get" action="form.php">
         <div>
             <label for="memId">帳號：</label>
             <input type="text" name="memId" required="required"><br>

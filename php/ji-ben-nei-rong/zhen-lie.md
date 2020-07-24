@@ -147,7 +147,7 @@ print_r($arr);
 {% endtab %}
 {% endtabs %}
 
-## 作業練習－摸彩
+## 作業練習
 
 {% tabs %}
 {% tab title="" %}

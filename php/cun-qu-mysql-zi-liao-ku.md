@@ -658,3 +658,7 @@ require("connectBooks.php");
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+連結資料庫連線的檔案：`require("¿¿¿.php");`
+{% endhint %}
+
