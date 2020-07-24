@@ -169,6 +169,39 @@ $options = array(
 {% endtab %}
 {% endtabs %}
 
+### 登入資料庫帳密
+
+小組專題時，大家的資料庫帳密都不大相同。  
+假設呈現的PHP檔案是「main.php」，將裡面資料庫登入的程式碼另存新檔 例如「connect.php」  
+再將「main.php」連結「connect.php」
+
+{% tabs %}
+{% tab title="connect" %}
+```php
+<?php
+$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
+$user = '使用者名稱';
+$password = '使用者密碼';
+$options = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo = new PDO($dsn, $user, $password, $options);
+?>
+```
+{% endtab %}
+
+{% tab title="main" %}
+```php
+<?php
+require("connectBooks.php");
+//像JS的script:src，像CSS的@import，像HTML的link
+?>
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+連結資料庫連線的檔案：`require("¿¿¿.php");`
+{% endhint %}
+
 ## 執行SQL指令
 
 * **`$pdo->exec(`**_**`SQL命令`**_**`)`**
@@ -634,36 +667,7 @@ if( $errMsg != ""){ //例外
 {% endtab %}
 {% endtabs %}
 
-## 登入資料庫帳密
+### 
 
-小組專題時，大家的資料庫帳密都不大相同。  
-假設呈現的PHP檔案是「main.php」，將裡面資料庫登入的程式碼另存新檔 例如「connect.php」  
-再將「main.php」連結「connect.php」
 
-{% tabs %}
-{% tab title="connect" %}
-```php
-<?php
-$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-$user = '使用者名稱';
-$password = '使用者密碼';
-$options = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$pdo = new PDO($dsn, $user, $password, $options);
-?>
-```
-{% endtab %}
-
-{% tab title="main" %}
-```php
-<?php
-require("connectBooks.php");
-//像JS的script:src，像CSS的@import，像HTML的link
-?>
-```
-{% endtab %}
-{% endtabs %}
-
-{% hint style="info" %}
-連結資料庫連線的檔案：`require("¿¿¿.php");`
-{% endhint %}
 
