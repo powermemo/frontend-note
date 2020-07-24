@@ -523,6 +523,10 @@ $statement->bindParam(:amount,10);//🟡參數:amount，要填甚麼進去(10)
 $statement->execute();
 ```
 {% endtab %}
+
+{% tab title="bindColumn\(\)" %}
+
+{% endtab %}
 {% endtabs %}
 
 ## 🍵作業－會員名單、查詢書籍
