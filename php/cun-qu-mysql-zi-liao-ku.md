@@ -429,8 +429,9 @@ while( $prodRow = $products->fetchObject()){//當抓得到一筆資料, 取回�
 
 {% tab title="prepare" %}
 * **`$pdo->prepare(`**_**`SQL命令`**_**`)`**
+  * 可以執行**inset、update、delete、select**
   * 用來事先編譯好一個SQL敘述
-  * 為什麼要用prepare？ 當指令內含有未知數，如前端表格送的資料， 我在我的指令內放未知數，編譯它再帶資料進去 防止別人竄改我資料庫\(SQL\)資料。
+  * 為什麼要用prepare？ 當指令內含有**未知數**，如前端表格送的資料， 我在我的指令內放未知數，編譯它再帶資料進去 防止別人竄改我資料庫\(SQL\)資料。
 
 ```php
 <?php
