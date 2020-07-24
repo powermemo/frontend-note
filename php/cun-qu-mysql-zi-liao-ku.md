@@ -431,16 +431,31 @@ while( $prodRow = $products->fetchObject()){//當抓得到一筆資料, 取回�
 * **`$pdo->prepare(`**_**`SQL命令`**_**`)`**
   * 用來事先編譯好一個SQL敘述
 
+{% hint style="info" %}
+$敘述名 = $pdo-&gt;prepare\(SQL命令\);  
+$敘述名-&gt;bindValue\(1, $\_GET\['標籤name名'\]\);//1代表第一個問號
+{% endhint %}
+
 ```php
 <?php
 $errMsg = "";
 try{
-    require_once("../connectBooks.php");//
-    $sql = "select * from `member` where memId=? and memPsw=?";
-    $member = $pdo->prepare($sql);//🟡
-    $member->binValue(1, $_GET['memId']);//🟡前端送來的資料
-    $member->binValue(2, $_GET['memPsw']);//🟡前端送來的資料
-    $member->execute();//🟡執行
+    require_once("../connectBooks.php");//如果require在迴圈裡就拉不出來，所以用require_once
+    //===================================================方法一：question parameter
+    // $sql = "select * from `member` where memId=? and memPsw=?";//🟡「?」
+    // $member = $pdo->prepare($sql);//🟣將prepare($sql)編譯執行
+    // $member->binValue(1, $_GET['memId']);//🟡1代表第一個問號，要帶甚麼值進去(前端送來的資料)。
+    // $member->binValue(2, $_GET['memPsw']);//🟡2代表第二個問號，要帶甚麼值進去(前端送來的資料)。
+    // $member->execute();//🟣執行
+
+
+    //===================================================方法二：named parameter
+    //我不要第一個第二個問號，我會記不住，所以我用以下的指令
+    $sql = "select * from `member` where memId=:aaa and memPsw=:bbb";//🟡「:自定義參數名」
+    $member = $pdo->prepare($sql);//🟣
+    $member->binValue(':aaa', $_GET['memId']);//🟡:aaa，要帶甚麼值進去(前端送來的資料)。
+    $member->binValue(':bbb', $_GET['memPsw']);//🟡:bbb，要帶甚麼值進去(前端送來的資料)。
+    $member->execute();//🟣執行
   }catch(PDOException $e){
     $errMsg .= "錯誤原因：".$e -> getMessage(). "<br>";
     $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
@@ -452,7 +467,6 @@ try{
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
 </head>
 <body>
@@ -469,6 +483,10 @@ if($errMsg != ""){
 </body>
 </html>
 ```
+{% endtab %}
+
+{% tab title="" %}
+
 {% endtab %}
 {% endtabs %}
 
