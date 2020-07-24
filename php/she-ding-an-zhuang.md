@@ -55,3 +55,53 @@ cmd打開命令提示字元 &gt; 輸入指令「ipconfig」
 
 ![Fast\_Cgi\_PHP&#x662F;&#x81EA;&#x5B9A;&#x7FA9;&#xFF0C;&#x96A8;&#x4FBF;&#x4F60;&#x60F3;&#x53D6;&#x751A;&#x9EBC;&#x540D;&#x5B57;&#x3002;](../.gitbook/assets/image%20%2819%29.png)
 
+### 環境設置－組態檔\(php.ini\)
+
+改變預設值\(例如時區\)的步驟，以下是以「更改為台灣時區」作為範本
+
+{% tabs %}
+{% tab title="更改時區" %}
+1. 到C槽\(你存放的位置\)php資料夾找到「php.ini-development」檔案，複製一份
+2. 將複製的那份檔案，更改副檔名為「php.ini」
+3. 修改檔案內容的「**date.timezone=**」，後面加上「Asia/Taipei」 再砍掉前面註解符號「;」
+
+p.s. 若時區無更動，IIS重新整理。
+
+![](../.gitbook/assets/image%20%2816%29.png)
+{% endtab %}
+
+{% tab title="短標籤可以作用" %}
+短標籤就是把「&lt;?php?&gt;」可以縮寫成「&lt;??&gt;」
+
+1. 到C槽\(你存放的位置\)php資料夾找到「php.ini-development」檔案，複製一份
+2. 將複製的那份檔案，更改副檔名為「php.ini」
+3. 修改檔案內容的「short\_open\_tag=On」
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+【非英文字串】使用「mbstring」。預設是關的，要打開....
+
+1. php.ini找「extension=mbstring」，並把「;」註解拿掉
+2. php.ini找「extension\_dir="ext"」，把「;」註解拿掉 將等號後面的值改為資料夾位置ex.「C:\php-7.4.7\ext」
+3. 打開IIS，重新啟動。
+{% endhint %}
+
+以下的mac電腦都可以不用弄\(已經好了\)。
+
+{% hint style="info" %}
+【引用PDO指令】\(一種安全性較佳的指令\)
+
+1. 找到ini檔，把以下註解拿掉 extension = mysqli extension = pdo\_mysql
+2. 重整IIS
+{% endhint %}
+
+{% hint style="info" %}
+【使用phpMyAdmin】\(一種網頁版的操作介面\)
+
+1. 下載phpMyAdmin\(老師提供\)，丟到wwwroot資料夾。
+2. 到IIS打開phpMyAdmin資料夾的「index.php」檔案。
+{% endhint %}
+
+
+

@@ -570,16 +570,16 @@ try{
 <?php
 
 $psn = $_REQUEST["psn"];
-$errMsg = "";
+$errMsg = "";//🟡
 //連線資料庫
 try{
-  require_once("../connectBooks.php");
+  require_once("../connectBooks.php");//🔰
 
   $sql = "select * from products where psn = $psn";
   $products = $pdo->query($sql);
 }catch(PDOException $e){
-  $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
-  $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
+  $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";//🟡
+  $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";//🟡
 }
 ?>  
 <!DOCTYPE html>
