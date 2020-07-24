@@ -430,6 +430,45 @@ while( $prodRow = $products->fetchObject()){//當抓得到一筆資料, 取回�
 {% tab title="prepare" %}
 * **`$pdo->prepare(`**_**`SQL命令`**_**`)`**
   * 用來事先編譯好一個SQL敘述
+
+```php
+<?php
+$errMsg = "";
+try{
+    require_once("../connectBooks.php");//
+    $sql = "select * from `member` where memId=? and memPsw=?";
+    $member = $pdo->prepare($sql);//🟡
+    $member->binValue(1, $_GET['memId']);//🟡前端送來的資料
+    $member->binValue(2, $_GET['memPsw']);//🟡前端送來的資料
+    $member->execute();//🟡執行
+  }catch(PDOException $e){
+    $errMsg .= "錯誤原因：".$e -> getMessage(). "<br>";
+    $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
+  }
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+</head>
+<body>
+<?php
+if($errMsg != ""){
+    echo "<div>$errMsg</div>";
+}elseif($member->rowCount() ==0){//一筆都沒找到
+    echo "<center>帳密錯誤</center>";
+}else{//取回登入者的資訊
+    $memRow = $member->fetch(PDO::FETCH_ASSOC);
+    echo  $memRow["memName"], ",您好！</br>";
+}
+?>
+</body>
+</html>
+```
 {% endtab %}
 {% endtabs %}
 
