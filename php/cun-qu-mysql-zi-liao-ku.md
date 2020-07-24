@@ -393,6 +393,11 @@ while( $prodRow = $products->fetchObject()){//當抓得到一筆資料, 取回�
 </table> 
 ```
 {% endtab %}
+
+{% tab title="prepare" %}
+* **`$pdo->prepare(`**_**`SQL命令`**_**`)`**
+  * 用來事先編譯好一個SQL敘述
+{% endtab %}
 {% endtabs %}
 
 ## 🍵作業－會員名單、查詢書籍
