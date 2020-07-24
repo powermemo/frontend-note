@@ -503,6 +503,25 @@ $statement = $pdo->prepare($sql);
 $statement->bindValue(:amount,10);//🟡參數:amount，要填甚麼進去(10)
 $statement->execute();
 ```
+
+#### bindParam\(\)
+
+第二個參數可以是變數、可以是字面值（如下例10）
+
+```php
+//=====bindParam()---問號
+$sql = "update products set price=price-?";//先用?(尚未帶值進去)
+$statement = $pdo->prepare($sql);
+$statement->bindParam(1,10);//🚫錯誤，第二個引數不能是字面表示法
+$statement->execute();
+
+
+//=====bindValue()---:參數
+$sql = "update products set price=price-:amount";//:amount自定義參數名
+$statement = $pdo->prepare($sql);
+$statement->bindParam(:amount,10);//🟡參數:amount，要填甚麼進去(10)
+$statement->execute();
+```
 {% endtab %}
 {% endtabs %}
 
