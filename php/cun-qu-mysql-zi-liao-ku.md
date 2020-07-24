@@ -395,5 +395,219 @@ while( $prodRow = $products->fetchObject()){//當抓得到一筆資料, 取回�
 {% endtab %}
 {% endtabs %}
 
+## 🍵作業－會員名單、查詢書籍
 
+{% tabs %}
+{% tab title="會員名單" %}
+.
+
+```php
+<?php
+try{
+    $dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
+    $user = '使用者名稱';
+    $password = '使用者密碼';
+    $opsitions = array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
+    $pdo = new PDO($dsn, $user, $password, $opsitions);
+    $sql = 'select * from `member`';
+    $members = $pdo->query($sql);
+}catch(PDOException $e){
+    echo '錯誤原因：',$e->getMessage(),'<br>';
+    echo '錯誤行號：',$e->getLine(),'<br>';
+}
+?>
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-PHP 資料庫會員名單</title>
+    <style>
+    body{
+        font-family:arial,微軟正黑體;
+    }
+    table{
+        margin:auto;
+    }
+    table,th,td{
+        border:1px solid black;
+        border-collapse: collapse;
+    }
+    th{
+        background-color:pink;
+    }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>編號</th>
+            <th>姓名</th>
+            <th>帳號</th>
+            <th>密碼</th>
+            <th>email</th>
+            <th>性別</th>
+            <th>生日</th>
+            <th>電話</th>
+        </tr>
+        <?php
+        while( $someone = $members->fetch(PDO::FETCH_ASSOC)){//當抓得到一筆資料
+        ?>
+        <tr>
+            <td><?=$someone["no"]?></td>
+            <td><?=$someone["memName"]?></td>
+            <td><?=$someone["memId"]?></td>
+            <td><?=$someone["memPsw"]?></td>
+            <td><?=$someone["email"]?></td>
+            <td><?=$someone["sex"]?></td>
+            <td><?=$someone["birthday"]?></td>
+            <td><?=$someone["tel"]?></td>
+        </tr>
+        <?php
+        }
+        ?>
+    </table>
+</body>
+</html>
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+.
+
+```markup
+<!--HTML-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: arial,微軟正黑體;
+        }
+    </style>
+</head>
+<body>
+    <p>書籍只有7本，請不要亂來😏</p>
+    <form method="get" action="08proQuery.php">
+        <label for="bookSearch">書籍：</label>
+        <input type="text" id="bookSearch" placeholder="請輸入書籍之書號" name="pSn">
+        <input type="submit" value="查詢">
+    </form>
+</body>
+</html>
+```
+
+```php
+//PHP
+<?php
+    try{
+        $dsn = 'mysql:host=localhost;port=3306;dbname=books;charset=utf8';
+        $user = '使用者名稱';
+        $password = '使用者密碼';
+        $options = array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
+        $pdo = new PDO($dsn, $user, $password, $options);
+        $sql = "SELECT * FROM products WHERE psn = ".$_GET['pSn']." ";//🟡
+        $searchPro = $pdo->query($sql);
+    }catch(PDOException $e){
+        echo 'FIND ERROR:',$e->getMessage(),'<br>';
+        echo 'LINE:',$e->getLine(),'<br>';
+    }
+    //http://vvv.lionfree.net/learnshow.php?l_url=html_037.html
+?>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8-PHP搜尋書單</title>
+    <style>
+    body{
+        font-family:arial,微軟正黑體;
+    }
+    h1,p{
+        text-align:center;
+    }
+    table{
+        margin:auto;
+    }
+    table,th,td{
+        border:1px solid black;
+        border-collapse: collapse;
+    }
+    th{
+        background-color:pink;
+    }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h1>書籍基本資料</h1>
+    <table>
+    <?php
+    $findbook = $searchPro->fetch(PDO::FETCH_ASSOC);
+    ?>
+        <tr>
+            <th>書號</th>
+            <td><?=$findbook["psn"]?></td>
+        </tr>
+        <tr>
+            <th>書名</th>
+            <td><?=$findbook["pname"]?></td>
+        </tr>
+        <tr>
+            <th>價格</th>
+            <td><?=$findbook["price"]?></td>
+        </tr>
+        <tr>
+            <th>作者</th>
+            <td><?=$findbook["author"]?></td>
+        </tr>
+        <tr>
+            <th>頁數</th>
+            <td><?=$findbook["pages"]?></td>
+        </tr>
+        <tr>
+            <th>圖檔</th>
+            <td><?=$findbook["image"]?></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+```
+{% endtab %}
+{% endtabs %}
+
+## 登入資料庫帳密
+
+小組專題時，大家的資料庫帳密都不大相同。  
+假設呈現的PHP檔案是「main.php」，將裡面資料庫登入的程式碼另存新檔 例如「connect.php」  
+再將「main.php」連結「connect.php」
+
+{% tabs %}
+{% tab title="connect" %}
+```php
+<?php
+$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
+$user = '使用者名稱';
+$password = '使用者密碼';
+$options = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$pdo = new PDO($dsn, $user, $password, $options);
+?>
+```
+{% endtab %}
+
+{% tab title="main" %}
+```php
+<?php
+require("connectBooks.php");
+//像JS的script:src，像CSS的@import，像HTML的link
+?>
+```
+{% endtab %}
+{% endtabs %}
 
