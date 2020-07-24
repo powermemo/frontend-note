@@ -214,7 +214,7 @@ require("connectBooks.php");
 {% tabs %}
 {% tab title="exec" %}
 * **`$pdo->exec(`**_**`SQL命令`**_**`)`**
-  * 用來執行不會取得result set的指令，例如inset、update、delete
+  * 用來執行不會取得result set的指令，例如**inset、update、delete**
 
 ```php
 <?php 
@@ -240,7 +240,7 @@ try {
 
 {% tab title="query" %}
 * **`$pdo->query(`**_**`SQL命令`**_**`)`**
-  * 用來執行會取得result set的指令，例如select
+  * 用來執行會取得result set的指令，例如**select**
 
 ```php
 <?php 
@@ -301,7 +301,7 @@ try {
 ```
 {% endtab %}
 
-{% tab title="👈取得物件的方法fetch" %}
+{% tab title="👈取得物件的方法fetch\(\)" %}
 ### fetch：回傳一維陣列
 
 ```php
@@ -430,11 +430,7 @@ while( $prodRow = $products->fetchObject()){//當抓得到一筆資料, 取回�
 {% tab title="prepare" %}
 * **`$pdo->prepare(`**_**`SQL命令`**_**`)`**
   * 用來事先編譯好一個SQL敘述
-
-{% hint style="info" %}
-$敘述名 = $pdo-&gt;prepare\(SQL命令\);  
-$敘述名-&gt;bindValue\(1, $\_GET\['標籤name名'\]\);//1代表第一個問號
-{% endhint %}
+  * 為什麼要用prepare？ 當指令內含有未知數，如前端表格送的資料， 我在我的指令內放未知數，編譯它再帶資料進去 防止別人竄改我資料庫\(SQL\)資料。
 
 ```php
 <?php
@@ -461,8 +457,10 @@ try{
     $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
   }
 ?>
+```
 
-
+```php
+//下面函式不動
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -485,8 +483,25 @@ if($errMsg != ""){
 ```
 {% endtab %}
 
-{% tab title="" %}
+{% tab title="👈引數提供bind\(\)" %}
+#### bindValue\(\)
 
+第二個參數可以是變數、可以是字面值（如下例10）
+
+```php
+//=====bindValue()---問號
+$sql = "update products set price=price-?";//先用?(尚未帶值進去)
+$statement = $pdo->prepare($sql);
+$statement->bindValue(1,10);//🟡1表示第一個問號，要填甚麼進去(10)
+$statement->execute();
+
+
+//=====bindValue()---:參數
+$sql = "update products set price=price-:amount";//:amount自定義參數名
+$statement = $pdo->prepare($sql);
+$statement->bindValue(:amount,10);//🟡參數:amount，要填甚麼進去(10)
+$statement->execute();
+```
 {% endtab %}
 {% endtabs %}
 
