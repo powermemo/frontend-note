@@ -24,7 +24,7 @@ elseif(條件):
     敘述;
 [else:
     敘述;
-}]
+]
 endif;
 ```
 {% endtab %}
