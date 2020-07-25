@@ -253,13 +253,14 @@ echo '最大值：',$max;
 {% tabs %}
 {% tab title="新建" %}
 ```
-//1️⃣先建立一維陣列，再建立二微陣列
+//方法1️⃣先建立一維陣列，再建立二微陣列
 $row0 = array(83,85);
 $row1 = array(79,77);
 $row2 = array(95,91);
 $score = array($row0, $row1, $row2);
 
-//2️⃣
+//方法2️⃣直接建立二維陣列
+$score = (array(83,85), array(79,77), array(95,91));
 ```
 {% endtab %}
 
