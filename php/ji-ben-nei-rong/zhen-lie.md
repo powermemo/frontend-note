@@ -378,3 +378,10 @@ if(isset($_GET["ability"])){
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+範例：  
+`$score = (array(83,85), array(79,77), array(95,91));`  
+`echo $score[0];`      //❌錯誤，無法印出陣列。若用`print_r($score);`可以  
+`echo $score[0][1];`  //85
+{% endhint %}
+
