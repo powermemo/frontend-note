@@ -31,7 +31,7 @@ for($i=0;$i<count($arr2);$i++){
 
 {% hint style="info" %}
 與JS不同，PHP陣列 索引值不連續，也不會出錯。  
-例如$arr\[0\]=10;  $arr\[3\] = 8;    //$arr\[1\],$arr\[2\]沒有給也沒關係。
+例如$arr\[0\]=10;  $arr\[3\] = 8;    //$arr\[1\],$arr\[2\]沒有給也沒關係\(但JS會出錯\)。
 {% endhint %}
 
 ## foreach\(as\)
