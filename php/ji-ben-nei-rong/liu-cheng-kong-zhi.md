@@ -150,3 +150,8 @@ echo "<br>總額：$ " ,array_sum($ball) * 100;
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+* JS的亂數：`Math.random();`  //大於等於零、小於1\(0.999...\)
+* PHP的亂數：`rand(min,max);` //直接設定最大值最小值
+{% endhint %}
+
