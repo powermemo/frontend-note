@@ -6,16 +6,14 @@
 {% tab title="array\(\)" %}
 ```php
 //PHP的「count()」相當於JS的「.length」
-<?php
 $arr = array(11,22,33);
 for($i=0;$i<count($arr);$i++){
 	echo $arr[$i]," ";
 }
-?>
 ```
 {% endtab %}
 
-{% tab title="一一指定" %}
+{% tab title="直接指定" %}
 ```php
 $arr2[0] = 10;
 $arr2[1] = 20;
