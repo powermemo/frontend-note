@@ -182,13 +182,13 @@ echo nl2br($_GET["note"]);
 
 ## 資料型別的檢查
 
-* gettype\(資料\);
+* `gettype(資料)`;
   * 回傳資料型別\(像是JS的「typeof\(\)」\)
   * string,integer,double,array,object,...
-* is\_...
+* `is_`...
   * 回傳布林值
   * is\_integer\(_資料_\), is\_float\(_資料_\),is\_bool\(_資料_\), is\_string\(_資料_\),is\_null\(_資料_\),is\_resource\(_資料_\)**,** is\_array\(_資料_\),is\_object\(_資料_\),is\_numeric\(_資料_\)
-* var\_dump;
+* `var_dump`;
   * **直接印出**\(所以前面不用echo\)
   * 資料型別與值
 
