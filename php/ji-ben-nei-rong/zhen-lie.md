@@ -30,7 +30,8 @@ for($i=0;$i<count($arr2);$i++){
 {% endtabs %}
 
 {% hint style="info" %}
-與JS不同，PHP陣列不用連續給值也不會出錯
+與JS不同，PHP陣列 索引值不連續，也不會出錯。  
+例如$arr\[0\]=10;  $arr\[3\] = 8;    //$arr\[1\],$arr\[2\]沒有給也沒關係。
 {% endhint %}
 
 ## foreach\(as\)
