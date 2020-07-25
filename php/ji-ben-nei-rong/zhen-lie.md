@@ -21,7 +21,7 @@ for($i=0;$i<count($arr2);$i++){
 //PHP的「count()」相當於JS的「.length」
 $arr = array(11,22,33);
 for($i=0;$i<count($arr);$i++){
-	echo $arr[$i]," ";
+	echo $arr[$i]," ";  //跟JS一樣，陣列索引值可以是變數
 }
 ```
 {% endtab %}
