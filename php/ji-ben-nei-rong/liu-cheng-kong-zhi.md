@@ -97,6 +97,10 @@ while($i<=1000){
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+與JS不同，PHP的else if是連在一起的「`elseif`」。
+{% endhint %}
+
 ## 作業練習
 
 {% tabs %}
