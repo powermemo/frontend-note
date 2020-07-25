@@ -32,11 +32,6 @@ PHP的「count\(\)」相當於JS的「.length」。
 跟JS一樣，PHP陣列索引值可以是變數
 {% endhint %}
 
-{% hint style="info" %}
-與JS不同，PHP陣列 索引值不連續，也不會出錯。  
-例如$arr\[0\]=10;  $arr\[3\] = 8;    //$arr\[1\],$arr\[2\]沒有給也沒關係\(但JS會出錯\)。
-{% endhint %}
-
 ## foreach\(as\)
 
 PHP可以`$arr[5]='測試字串';`一一指定陣列的值，但\[0\]~\[4\]都沒有給值，PHP不會保留位置  
@@ -91,6 +86,11 @@ foreach($classmate as $id => $data){
 ```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+上例，PHP不會保留\[3\]\[4\]\[5\]的位置，但JS會  
+&lt;count\($arr3\)錯誤，因為\[3\]\[4\]\[5\]沒有資料
+{% endhint %}
 
 ## 相關函數
 
