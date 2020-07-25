@@ -29,6 +29,10 @@ for($i=0;$i<count($arr2);$i++){
 {% endtab %}
 {% endtabs %}
 
+{% hint style="info" %}
+與JS不同，PHP陣列不用連續給值也不會出錯
+{% endhint %}
+
 ## foreach\(as\)
 
 PHP可以`$arr[5]='測試字串';`一一指定陣列的值，但\[0\]~\[4\]都沒有給值，PHP不會保留位置  
@@ -147,7 +151,7 @@ print_r($arr);
 {% endtab %}
 {% endtabs %}
 
-## 作業練習
+## 作業練習－摸彩
 
 {% tabs %}
 {% tab title="" %}
