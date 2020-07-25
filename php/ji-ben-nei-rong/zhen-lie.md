@@ -28,7 +28,8 @@ for($i=0;$i<count($arr);$i++){
 {% endtabs %}
 
 {% hint style="info" %}
-PHP的「count\(\)」相當於JS的「.length」。
+PHP的「count\(\)」相當於JS的「.length」。  
+跟JS一樣，PHP陣列索引值可以是變數
 {% endhint %}
 
 {% hint style="info" %}
