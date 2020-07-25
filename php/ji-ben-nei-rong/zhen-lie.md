@@ -251,16 +251,26 @@ echo '最大值：',$max;
 ## 二維陣列
 
 {% tabs %}
+{% tab title="新建" %}
+```
+//1️⃣先建立一維陣列，再建立二微陣列
+$row0 = array(83,85);
+$row1 = array(79,77);
+$row2 = array(95,91);
+$score = array($row0, $row1, $row2);
+
+//2️⃣
+```
+{% endtab %}
+
 {% tab title="初試" %}
 ```php
-<?php
 $arr = array(array(1,2,3,4),11,true, 'this is a book');
 
 //echo $arr[0];//[🚫not allow print array!][you need to turn it be string] //print_r()is okay!
 echo $arr[0][3];//4
 echo $arr[2];//true
 echo $arr[3];//this is a book
-?>
 ```
 {% endtab %}
 
