@@ -335,7 +335,7 @@ html+PHP\(檔名：0713arrayForm.php\)
         <option value="SQL">SQL Server </option>
         <option value="JAVA">JAVA </option>
         <option value="Delphi">Delphi </option>
-        </select>     
+    </select>     
     <input type="submit" value="送出">
 </form>
 ```
