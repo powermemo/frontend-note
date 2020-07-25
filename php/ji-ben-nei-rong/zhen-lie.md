@@ -3,25 +3,25 @@
 ## 新增陣列
 
 {% tabs %}
+{% tab title="直接指定" %}
+```php
+$arr2[0] = 10;
+$arr2[1] = 20;
+$arr2[] = 30;  //系統幫忙帶入$arr2[2] = 30;
+$arr2[] = 40;  //系統幫忙帶入$arr2[3] = 40;
+$arr2[1] = 100;
+for($i=0;$i<count($arr2);$i++){
+	echo $arr2[$i]," ";
+}
+```
+{% endtab %}
+
 {% tab title="array\(\)" %}
 ```php
 //PHP的「count()」相當於JS的「.length」
 $arr = array(11,22,33);
 for($i=0;$i<count($arr);$i++){
 	echo $arr[$i]," ";
-}
-```
-{% endtab %}
-
-{% tab title="直接指定" %}
-```php
-$arr2[0] = 10;
-$arr2[1] = 20;
-$arr2[] = 30;
-$arr2[] = 40;
-$arr2[1] = 100;
-for($i=0;$i<count($arr2);$i++){
-	echo $arr2[$i]," ";
 }
 ```
 {% endtab %}
