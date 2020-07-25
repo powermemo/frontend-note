@@ -276,6 +276,8 @@ echo $arr[3];//this is a book
 {% endtab %}
 
 {% tab title="for" %}
+以下表格是印出結果。
+
 | 1 | 2 | 3 | 4 |
 | :--- | :--- | :--- | :--- |
 | 11 | 12 | 13 | 14 |
@@ -297,13 +299,14 @@ echo "</table>";
 {% endtab %}
 
 {% tab title="foreach" %}
+以下表格是印出結果。
+
 | 1 | 2 | 3 | 4 |
 | :--- | :--- | :--- | :--- |
 | 11 | 12 | 13 | 14 |
 | 21 | 22 | 23 | 24 |
 
 ```php
-<?php
 $arr = array(array(1,2,3,4),array(11,12,13,14),array(21,22,23,24));
 echo "<table align='center' cellspacing='0' border='1'>";
 foreach($arr as $i => $row){
@@ -314,7 +317,6 @@ foreach($arr as $i => $row){
 	echo"</tr>";
 }
 echo "</table>";
-?>
 ```
 {% endtab %}
 
