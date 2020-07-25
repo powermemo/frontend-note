@@ -3,34 +3,31 @@
 ## 新增陣列
 
 {% tabs %}
-{% tab title="直接指定" %}
+{% tab title="array\(\)" %}
+```php
+//PHP的「count()」相當於JS的「.length」
+<?php
+$arr = array(11,22,33);
+for($i=0;$i<count($arr);$i++){
+	echo $arr[$i]," ";
+}
+?>
+```
+{% endtab %}
+
+{% tab title="一一指定" %}
 ```php
 $arr2[0] = 10;
 $arr2[1] = 20;
-$arr2[] = 30;  //系統幫忙帶入$arr2[2] = 30;
-$arr2[] = 40;  //系統幫忙帶入$arr2[3] = 40;
+$arr2[] = 30;
+$arr2[] = 40;
 $arr2[1] = 100;
 for($i=0;$i<count($arr2);$i++){
 	echo $arr2[$i]," ";
 }
 ```
 {% endtab %}
-
-{% tab title="array\(\)" %}
-```php
-//PHP的「count()」相當於JS的「.length」
-$arr = array(11,22,33);
-for($i=0;$i<count($arr);$i++){
-	echo $arr[$i]," ";  //跟JS一樣，陣列索引值可以是變數
-}
-```
-{% endtab %}
 {% endtabs %}
-
-{% hint style="info" %}
-PHP的「count\(\)」相當於JS的「.length」。  
-跟JS一樣，PHP陣列索引值可以是變數
-{% endhint %}
 
 ## foreach\(as\)
 
@@ -86,11 +83,6 @@ foreach($classmate as $id => $data){
 ```
 {% endtab %}
 {% endtabs %}
-
-{% hint style="info" %}
-上例，PHP不會保留\[3\]\[4\]\[5\]的位置，但JS會  
-&lt;count\($arr3\)錯誤，因為\[3\]\[4\]\[5\]沒有資料
-{% endhint %}
 
 ## 相關函數
 
@@ -155,7 +147,7 @@ print_r($arr);
 {% endtab %}
 {% endtabs %}
 
-## 作業練習－摸彩
+## 作業練習
 
 {% tabs %}
 {% tab title="" %}
@@ -251,33 +243,20 @@ echo '最大值：',$max;
 ## 二維陣列
 
 {% tabs %}
-{% tab title="新建" %}
-```php
-//方法1️⃣先建立一維陣列，再建立二微陣列
-$row0 = array(83,85);
-$row1 = array(79,77);
-$row2 = array(95,91);
-$score = array($row0, $row1, $row2);
-
-//方法2️⃣直接建立二維陣列
-$score = (array(83,85), array(79,77), array(95,91));
-```
-{% endtab %}
-
 {% tab title="初試" %}
 ```php
+<?php
 $arr = array(array(1,2,3,4),11,true, 'this is a book');
 
 //echo $arr[0];//[🚫not allow print array!][you need to turn it be string] //print_r()is okay!
 echo $arr[0][3];//4
 echo $arr[2];//true
 echo $arr[3];//this is a book
+?>
 ```
 {% endtab %}
 
 {% tab title="for" %}
-以下表格是印出結果。
-
 | 1 | 2 | 3 | 4 |
 | :--- | :--- | :--- | :--- |
 | 11 | 12 | 13 | 14 |
@@ -299,14 +278,13 @@ echo "</table>";
 {% endtab %}
 
 {% tab title="foreach" %}
-以下表格是印出結果。
-
 | 1 | 2 | 3 | 4 |
 | :--- | :--- | :--- | :--- |
 | 11 | 12 | 13 | 14 |
 | 21 | 22 | 23 | 24 |
 
 ```php
+<?php
 $arr = array(array(1,2,3,4),array(11,12,13,14),array(21,22,23,24));
 echo "<table align='center' cellspacing='0' border='1'>";
 foreach($arr as $i => $row){
@@ -317,6 +295,7 @@ foreach($arr as $i => $row){
 	echo"</tr>";
 }
 echo "</table>";
+?>
 ```
 {% endtab %}
 
@@ -335,7 +314,7 @@ html+PHP\(檔名：0713arrayForm.php\)
         <option value="SQL">SQL Server </option>
         <option value="JAVA">JAVA </option>
         <option value="Delphi">Delphi </option>
-    </select>     
+        </select>     
     <input type="submit" value="送出">
 </form>
 ```
@@ -375,59 +354,8 @@ if(isset($_GET["ability"])){
 | 玩家四 | 16 | 43 | 42 | 50 | 34 | 52 | 6 | 9 | 10 | 2 | 26 | 7 | 32 |
 
 ```php
-//以下是我2020/07/25 Sat做的第二版
-<style>
-td{
-	text-align:center;
-	font-family:arial;
-}
-</style>
-<?php
-//一副撲克牌52張，請將其洗牌後發給4人，並顯示個玩家所得到的點數：
-//建立一個陣列值1~52
-$poker = array();
-for($i=0;$i<52;$i++){
-	$poker[$i] = $i + 1;
-	//echo $poker[$i];//for test
-}
-//打亂
-shuffle($poker);
-//分配給四個玩家
-foreach($poker as $i => $data){
-	if($data % 4 == 0){
-		$player1[$i] = $data;
-	}elseif($data % 4 == 1){
-		$player2[$i] = $data;
-	}elseif($data % 4 == 2){
-		$player3[$i] = $data;
-	}elseif($data % 4 == 3){
-		$player4[$i] = $data;
-	}
-}
-$myArray = array($player1,$player2,$player3,$player4);
-?>
-
-<!-- 印出表格資料 -->
-<table cellspacing='0' border='1'>
-<?php
-foreach($myArray as $i => $row){
-	echo "<tr><th>Player",$i+1,"</th>";
-	foreach($row as $j => $data){
-		echo "<td>".$myArray[$i][$j]."</td>";
-	}
-	echo "</tr>";
-}
-?>
-</table>
 
 ```
 {% endtab %}
 {% endtabs %}
-
-{% hint style="info" %}
-範例：  
-`$score = (array(83,85), array(79,77), array(95,91));`  
-`echo $score[0];`      //❌錯誤，無法印出陣列。若用`print_r($score);`可以  
-`echo $score[0][1];`  //85
-{% endhint %}
 
