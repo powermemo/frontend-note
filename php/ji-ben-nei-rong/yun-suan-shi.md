@@ -50,6 +50,12 @@ echo "b : $b <br>"; //21
 | F | T | F | T | T |
 | F | F | F | F | F |
 
+{% hint style="info" %}
+xor：連結兩運算元，其值不同為true，其值相同為false。  
+ex.AB都是T，AxorB就是false；A是T、B是F，AxorB就是true。  
+ex.AB都是F，AxorB也是false；A是F、B是T，AxorB也是true。
+{% endhint %}
+
 ## 字串結合運算子「.」
 
 ```php
