@@ -58,6 +58,8 @@ ex.AB都是F，AxorB也是false；A是F、B是T，AxorB也是true。
 
 ## 字串結合運算子「.」
 
+相當於JS的「+」。
+
 ```php
 <?php
 echo "name: "."amy";
@@ -65,6 +67,8 @@ echo "name: "."amy";
 ```
 
 ## 三元運算子「? : 」
+
+這部分跟JS一樣。
 
 ```php
 //跟JS一樣。
