@@ -235,7 +235,7 @@ $c = '123.5';
 setType($c,'integer');//🔶$c的類別會改變
 echo '$C的資料型別:',$c,'<br>';
 echo '';
-var_dump( $a );//print [float(123.5)]
+var_dump( $c );//print [float(123.5)]
 ```
 {% endtab %}
 {% endtabs %}
