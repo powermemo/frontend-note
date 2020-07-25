@@ -101,7 +101,7 @@ while($i<=1000){
 與JS不同，PHP的else if是連在一起的「`elseif`」。
 {% endhint %}
 
-## 作業練習
+## 作業練習－摸彩
 
 {% tabs %}
 {% tab title="PHP1" %}
