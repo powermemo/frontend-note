@@ -25,7 +25,7 @@ elseif(條件):
 [else:
     敘述;
 ]
-endif;
+endif;//🔹
 ```
 {% endtab %}
 
@@ -61,7 +61,7 @@ switch(運算式):
         [break;]
     [default:
         敘述;]
-endswitch;
+endswitch;//🔹
 ```
 {% endtab %}
 
