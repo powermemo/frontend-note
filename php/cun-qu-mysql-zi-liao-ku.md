@@ -216,6 +216,12 @@ include_once("引用檔案路徑");`
   * 用來事先編譯好一個SQL敘述，可以執行inset、update、delete、select等
   * 指令內放未知數，編譯它再帶資料進去，防止別人竄改我資料庫\(SQL\)資料。
 
+{% hint style="info" %}
+PHP的「-&gt;」相當於JS的「.」  
+ex.PHP的「`$pdo->query($sql);`」  
+ex.JS的「`xxx.addEventListener('click',function(){});`」
+{% endhint %}
+
 {% tabs %}
 {% tab title="exec" %}
 * **`$pdo->exec(`**_**`SQL命令`**_**`)`**
@@ -250,11 +256,7 @@ try {
 ```php
 <?php 
 try {
-	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-	$user = "root";
-	$password = "root";
-	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-	$pdo = new PDO($dsn, $user, $password, $options);
+	require("connectBooks.php");
 
 	$sql = "select * from products";//🟡
 	$products = $pdo->query($sql);//🟡
@@ -271,12 +273,7 @@ try {
 ```php
 <?php 
 try {
-	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-	$user = "root";
-	$password = "root";
-	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-	$pdo = new PDO($dsn, $user, $password, $options);
-
+	require("connectBooks.php");
 	$sql = "select * from products";
 	$products = $pdo->query($sql);
 
@@ -312,16 +309,9 @@ try {
 ```php
 <?php 
 try {
-	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-	$user = "root";
-	$password = "root";
-	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-	$pdo = new PDO($dsn, $user, $password, $options);
-
+	$require("connectBooks.php");
 	$sql = "select * from products";
 	$products = $pdo->query($sql);
-
-
 	echo "<table align='center'>";
 	echo "<tr><th>書號</th><th>書名</th><th>價格</th><th>作者</th></tr>";
 	while( $prodRow = $products->fetch(PDO::FETCH_ASSOC)){//🟡fetch
@@ -351,12 +341,7 @@ try {
 ```php
 <?php 
 try {
-	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-	$user = "root";
-	$password = "root";
-	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-	$pdo = new PDO($dsn, $user, $password, $options);
-
+	require("connectBooks.php");
 	$sql = "select * from `member`";
 	$products = $pdo->query($sql);//🟡
 	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);//🟡
@@ -396,12 +381,7 @@ foreach($prodRows as $i=>$prodRow){//🟡
 ```php
 <?php 
 try {
-	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-	$user = "root";
-	$password = "root";
-	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-	$pdo = new PDO($dsn, $user, $password, $options);
-
+	require("connectBooks.php");
 	$sql = "select * from products";
 	$products = $pdo->query($sql);
 
