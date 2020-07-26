@@ -419,11 +419,11 @@ $errMsg = "";
 try{
     require_once("../connectBooks.php");//如果require在迴圈裡就拉不出來，所以用require_once
     //===================================================方法一：question parameter
-    // $sql = "select * from `member` where memId=? and memPsw=?";//🟡「?」
-    // $member = $pdo->prepare($sql);//🟣將prepare($sql)編譯執行
-    // $member->binValue(1, $_GET['memId']);//🟡1代表第一個問號，要帶甚麼值進去(前端送來的資料)。
-    // $member->binValue(2, $_GET['memPsw']);//🟡2代表第二個問號，要帶甚麼值進去(前端送來的資料)。
-    // $member->execute();//🟣執行
+    $sql = "select * from `member` where memId=? and memPsw=?";//🟡「?」
+    $member = $pdo->prepare($sql);//🟣將prepare($sql)編譯執行
+    $member->binValue(1, $_GET['memId']);//🟡1代表第一個問號，要帶甚麼值進去(前端送來的資料)。
+    $member->binValue(2, $_GET['memPsw']);//🟡2代表第二個問號，要帶甚麼值進去(前端送來的資料)。
+    $member->execute();//🟣執行
 
 
     //===================================================方法二：named parameter
@@ -454,7 +454,7 @@ if($errMsg != ""){
     echo "<div>$errMsg</div>";
 }elseif($member->rowCount() ==0){//一筆都沒找到
     echo "<center>帳密錯誤</center>";
-}else{//取回登入者的資訊
+}else{                            //取回登入者的資訊
     $memRow = $member->fetch(PDO::FETCH_ASSOC);
     echo  $memRow["memName"], ",您好！</br>";
 }
@@ -486,7 +486,7 @@ $statement->execute();
 
 #### bindParam\(\)
 
-第二個參數可以是變數、可以是字面值（如下例10）
+第二個參數只能是變數（如下例$amount）
 
 ```php
 //=====bindParam()---問號
@@ -499,7 +499,7 @@ $statement->execute();
 //=====bindValue()---:參數
 $sql = "update products set price=price-:amount";//:amount自定義參數名
 $statement = $pdo->prepare($sql);
-$statement->bindParam(:amount,10);//🟡參數:amount，要填甚麼進去(10)
+$statement->bindParam(:amount,$amount);//🟡參數:amount，要填甚麼進去($amount)
 $statement->execute();
 ```
 {% endtab %}
