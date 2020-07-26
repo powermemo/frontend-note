@@ -256,8 +256,7 @@ try {
 ```php
 <?php 
 try {
-	require("connectBooks.php");
-
+	require("connectBooks.php");//這個範例應該要連郭老師資料庫的，連books是錯誤的..
 	$sql = "select * from products";//🟡
 	$products = $pdo->query($sql);//🟡
 	
@@ -273,25 +272,23 @@ try {
 ```php
 <?php 
 try {
-	require("connectBooks.php");
+	require("connectBooks.php");//這個範例應該要連郭老師資料庫的，連books是錯誤的..
 	$sql = "select * from products";
 	$products = $pdo->query($sql);
-
-
+	
 	echo "<table align='center'>";
 	echo "<tr><th>書號</th><th>書名</th><th>價格</th><th>作者</th></tr>";
-	while( $prodRow = $products->fetch(PDO::FETCH_ASSOC)){//🟡fetch
+	while( $prodRow = $products->fetch(PDO::FETCH_ASSOC)){//🟡fetch一維陣列
 	//當抓得到一筆資料
 	?>
 		<tr>
-		<td><?=$prodRow["psn"]?></td>//🟡
+		<td><?=$prodRow["psn"]?></td>//🟡中括號內是資料庫表格表頭名稱
 		<td><?=$prodRow["pname"]?></td>//🟡
 		<td><?=$prodRow["price"]?></td>//🟡
 		<td><?=$prodRow["author"]?></td>//🟡
 		</tr>
 	<?php
 	}
-
 	echo "</table>";
 } catch (PDOException $e) {
 	echo "錯誤原因 : ", $e->getMessage(), "<br>";
