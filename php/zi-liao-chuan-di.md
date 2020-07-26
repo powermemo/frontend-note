@@ -69,11 +69,13 @@
 
 ## 透過客戶端cookie傳遞資料
 
-語法：`setcookie("自定義cookie名稱", "cookie的值" [, 時間]);`
+寫入語法：`setcookie("自定義cookie名稱", "cookie的值" [, 時間]);`
 
 * cookie名稱：自定義，例如`memId`。
 * 值：cookie的值，例如`$_GET["memId"`\]。
 * 時間：選填，cookie保留的期限，在設定時間內有效，例如`time()+60`； 若未設定時間，關閉瀏覽器時即刻刪除cookie。
+
+讀出語法：`$_COOKIE["自定義cookie名稱"];`，例如`$_COOKIE["memId"];`。
 
 {% tabs %}
 {% tab title="登入案例" %}
@@ -128,6 +130,16 @@ if($errMsg !=""){
 }
 ?>
 <a href="cookieMember.php">前往會員專區</a>  
+```
+
+#### 登入成功的會員專區 \(對應範例檔案cookieMember.php\)
+
+```php
+<?php
+echo "帳號 : ", $_COOKIE["memId"],"<br>";
+echo "姓名 : ", $_COOKIE["memName"],"<br>";
+echo "email : ", $_COOKIE["email"],"<br>";
+?> 
 ```
 {% endtab %}
 {% endtabs %}
