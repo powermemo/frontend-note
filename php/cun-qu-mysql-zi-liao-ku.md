@@ -506,16 +506,14 @@ $statement->execute();
 #### bindColumn\(\)
 
 ```php
+$sql = "select * from products where price<500";
 $products = $pdo->query($sql);
 $products->bindColumn(1,$psn);    //第一直欄
 $products->bindColumn(2,$pname);    //第二直欄
 $products->bindColumn(3,$price);    //第三直欄
 $products->bindColumn(4,$author);    //第四直欄
+$products->fetch();
 ```
-{% endtab %}
-
-{% tab title="bindColumn\(\)" %}
-
 {% endtab %}
 {% endtabs %}
 
