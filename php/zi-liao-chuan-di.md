@@ -100,12 +100,12 @@ $errMsg = "";
 try {
 	require_once("./connectBooks.php");
 	$sql = "select * from member` where memId=:memId and memPsw=:memPsw"; 
-	$member = $pdo->prepare( $sql ); //先編譯好
+	$member = $pdo->prepare( $sql ); 			//先編譯好
 	$member->bindValue(":memId", $memId); //代入資料
 	$member->bindValue(":memPsw", $memPsw);
 	$member->execute();//執行之
 
-	if( $member->rowCount() == 0 ){//找不到時怎麼做
+	if( $member->rowCount() == 0 ){				//找不到時怎麼做
 		$errMsg .= "帳密錯誤, <a href='cookieLogin.html'>重新登入</a><br>";
 	}else{
 		$memRow = $member->fetch(PDO::FETCH_ASSOC);
@@ -114,7 +114,6 @@ try {
 		setcookie("memName",$memRow["memName"],time()+60);
 		setcookie("email",$memRow["email"],time()+60);//一分鐘後失效
 		//有效期限若為三天內：time()+3*24*60*60
-
 	}
 } catch (PDOException $e) {
 	$errMsg .= "錯誤 : ".$e -> getMessage()."<br>";
@@ -129,9 +128,7 @@ if($errMsg !=""){
 }else{
     echo $memRow["memName"], " 您好~<br>";
 }
-
 ?>
-
 <a href="cookieMember.php">前往會員專區</a>  
 ```
 {% endtab %}
