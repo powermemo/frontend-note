@@ -57,15 +57,23 @@
 
 ## 透過URL傳遞資料
 
+用a連結去抓資料
+
 {% tabs %}
-{% tab title="First Tab" %}
+{% tab title="產品清單範例" %}
+#### 對應範例檔案prodList.php
 
-{% endtab %}
+```php
+while($prodRow = $products->fetch(PDO::FETCH_ASSOC)){
+    <a href="prodQuery.php?psn=<?=$prodRow['psn']?>"></a>
+}
+```
 
-{% tab title="Second Tab" %}
-
+#### 對應範例檔案prodQuery.php
 {% endtab %}
 {% endtabs %}
+
+
 
 ## 透過客戶端cookie傳遞資料
 
