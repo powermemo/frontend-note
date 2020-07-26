@@ -77,8 +77,6 @@
 
 {% tabs %}
 {% tab title="登入案例" %}
-已登入介面為例
-
 #### 登入介面 \(對應範例檔案cookieLogin.html\)
 
 ```markup
