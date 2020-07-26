@@ -725,11 +725,11 @@ td {
 if( $errMsg != ""){ //例外
   echo "<div><center>$errMsg</center></div>";
 }elseif($products->rowCount()==0){
-      echo "<div><center>查無此商品資料</center></div>";
+      echo "<div><center>查無此商品資料</center></div>"; 
+  // 🟡🟡以上為查不到資料時的碼🟡🟡 
 }else{
       $prodRow = $products->fetchObject();
 ?>
-  <!-- 🟡🟡以上為查不到資料時的碼🟡🟡 -->
 <br>
 <h2 style="text-align:center;color:deeppink">書籍基本資料</h2>
   <table align="center" width="300" >
