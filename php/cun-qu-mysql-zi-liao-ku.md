@@ -342,7 +342,6 @@ try {
 	$sql = "select * from `member`";
 	$products = $pdo->query($sql);//🟡
 	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);//🟡
-
 } catch (PDOException $e) {
 	echo "錯誤原因 : ", $e->getMessage(), "<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
@@ -381,7 +380,6 @@ try {
 	require("connectBooks.php");
 	$sql = "select * from products";
 	$products = $pdo->query($sql);
-
 } catch (PDOException $e) {
 	echo "錯誤原因 : ", $e->getMessage(), "<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
