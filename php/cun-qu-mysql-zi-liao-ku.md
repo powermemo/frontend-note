@@ -202,6 +202,8 @@ require("connectBooks.php");
 連結資料庫連線的檔案：  
 `require_once("引用檔案路徑");  或是  
 include_once("引用檔案路徑");`
+
+※ 像JS的script:src，像CSS的@import，像HTML的link
 {% endhint %}
 
 ## 執行SQL指令
