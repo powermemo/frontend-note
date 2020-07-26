@@ -2,7 +2,7 @@
 description: 分為自訂函式與內建函式
 ---
 
-# 函數
+# 函式
 
 ## 內建函式
 
@@ -72,7 +72,7 @@ description: 分為自訂函式與內建函式
         </p>
       </td>
       <td style="text-align:left">
-        <p>&#x5207;&#x5B57;&#x4E32;&#x1F538;&#x6703;&#x8B8A;&#x6210;&#x9663;&#x5217;</p>
+        <p>&#x5207;&#x5B57;&#x4E32;&#x1F538;&#x6703;&#x8B8A;&#x6210;&#x9663;&#x5217;&#x3010;&#x5B57;&#x4E32;&#x8F49;&#x9663;&#x5217;&#x3011;</p>
         <p><code>explode(&quot;&#x7528;&#x751A;&#x9EBC;&#x5207;&#x5B57;&#x4E32;,&quot;$str)</code>
         </p>
       </td>
@@ -81,7 +81,7 @@ description: 分為自訂函式與內建函式
     <tr>
       <td style="text-align:left"></td>
       <td style="text-align:left">
-        <p>&#x9023;&#x63A5;&#x5B57;&#x4E32;</p>
+        <p>&#x9023;&#x63A5;&#x5B57;&#x4E32;&#x3010;(&#x53EF;&#x80FD;&#x662F;)&#x9663;&#x5217;&#x8F49;&#x5B57;&#x4E32;&#x3011;</p>
         <p><code>implode(&quot;&#x7528;&#x751A;&#x9EBC;&#x9023;&#x63A5;&#x5B57;&#x4E32;,&quot;$&#x5F88;&#x591A;&#x5B57;&#x4E32;&#x53EF;&#x80FD;&#x662F;&#x9663;&#x5217;)</code>
         </p>
       </td>
@@ -93,8 +93,8 @@ description: 分為自訂函式與內建函式
 {% tabs %}
 {% tab title="數學" %}
 ```php
-echo "floor(2.4): ",floor(2.4), "<br>";//2
-echo "ceil(2.4): ",ceil(2.4), "<br>";//3
+echo "floor(2.4): ",floor(2.4), "<br>";//2，無條件捨去
+echo "ceil(2.4): ",ceil(2.4), "<br>";//3，無條件進位
 echo "ceil(28/7): ",ceil(28/7), "<br>";//4
 ```
 {% endtab %}
@@ -102,17 +102,19 @@ echo "ceil(28/7): ",ceil(28/7), "<br>";//4
 {% tab title="字串" %}
 ```php
 $str = 'abcdeabcde';
-echo 'strlen($str): ', strlen($str),"<br>";//10
-echo 'strpos($str,"cd"): ', strpos($str,"cd"),"<br>";//2
-echo 'strpos($str,"eab"): ', strpos($str,"eab"),"<br>";//4
-echo 'substr($str,2,5): ', substr($str,2,5),"<br>";//cdeab
-echo "<b>EXPLODE</b><br>";
+echo 'strlen($str): ', strlen($str),"<br>";//10，字串長杜
+echo 'strpos($str,"cd"): ', strpos($str,"cd"),"<br>";//2，字串位置
+echo 'strpos($str,"eab"): ', strpos($str,"eab"),"<br>";//4，字串位置
+echo 'substr($str,2,5): ', substr($str,2,5),"<br>";//cdeab，取子字串
+
+//=====EXPLODE切字串=====【字串轉陣列】
 $str = 'aa,bb:cc,dd,ee';
-$arr = explode(",",$str);//🟡explode()is an array
+$arr = explode(",",$str);//🟡explode()是一個陣列
 foreach($arr as $i => $data){//0:aa 1:bb:cc 2:dd 3:ee
 	echo "$i : $data <br>";
 }
 
+//=====IMPLODE連接字串=====【(可能是)陣列轉字串】
 $arr = array(11,22,33);
 echo "<b>JOIN: </b>",implode(",",$arr), "<br>";//11,22,33
 ```

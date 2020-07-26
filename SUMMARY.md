@@ -60,7 +60,7 @@
     * [運算式](php/ji-ben-nei-rong/yun-suan-shi.md)
     * [流程控制](php/ji-ben-nei-rong/liu-cheng-kong-zhi.md)
     * [陣列](php/ji-ben-nei-rong/zhen-lie.md)
-    * [函數](php/ji-ben-nei-rong/han-shu.md)
+    * [函式](php/ji-ben-nei-rong/han-shu.md)
   * [存取MySQL資料庫](php/cun-qu-mysql-zi-liao-ku.md)
   * [資料傳遞](php/zi-liao-chuan-di.md)
   * [上傳檔案](php/shang-chuan-dang-an.md)
