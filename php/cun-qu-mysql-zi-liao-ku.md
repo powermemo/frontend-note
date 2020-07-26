@@ -231,7 +231,7 @@ try {
 	$pdo = new PDO($dsn, $user, $password, $options);
 	echo "連線成功~<br>";	
 
-	$sql = "update emp set sal += 1000";//PHP指令
+	$sql = "update emp set sal += 1000";//PHP指令，加薪$1000
 	$pdo->exec($sql);//🟡透過PDO執行SQL指令
 	echo "異動成功~<br>";	
 	
