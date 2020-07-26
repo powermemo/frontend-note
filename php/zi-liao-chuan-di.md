@@ -16,7 +16,7 @@
 
 {% tabs %}
 {% tab title="First Tab" %}
-#### 查書單書號\(對應範例檔案prodQuery.html\)
+#### 查書單書號 \(對應範例檔案prodQuery.html\)
 
 ```markup
 <form method="get" action="08proQuery.php">
@@ -26,7 +26,7 @@
 </form>
 ```
 
-#### 查詢到的書單明細\(對應範例檔案prodQuery.php\)
+#### 查詢到的書單明細-可以更動內容 \(對應範例檔案prodQuery.php\)
 
 ```php
 <?php
@@ -41,6 +41,12 @@
         $errMsg .= "行號：".$e->getLine()."<br>";
     }
 ?>
+```
+
+#### 更動內容是否成功 \(對應範例檔案prodQueryToDb.php\)
+
+```text
+
 ```
 {% endtab %}
 
