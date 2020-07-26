@@ -213,7 +213,8 @@ include_once("引用檔案路徑");`
 * **`$pdo->query(`**_**`SQL命令`**_**`)`**
   * 用來執行會取得result set的指令，例如select
 * **`$pdo->prepare(`**_**`SQL命令`**_**`)`**
-  * 用來事先編譯好一個SQL敘述
+  * 用來事先編譯好一個SQL敘述，可以執行inset、update、delete、select等
+  * 指令內放未知數，編譯它再帶資料進去，防止別人竄改我資料庫\(SQL\)資料。
 
 {% tabs %}
 {% tab title="exec" %}
