@@ -37,7 +37,11 @@ description: 分為自訂函式與內建函式
         <p><code>strlen($str)</code>
         </p>
       </td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p>&#x73FE;&#x5728;&#x6642;&#x9593;</p>
+        <p><code>time()</code>
+        </p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -50,7 +54,11 @@ description: 分為自訂函式與內建函式
         <p><code>strpos($str, &quot;&#x5B57;&#x4E32;&quot;)</code>
         </p>
       </td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p>&#x6642;&#x9593;&#x683C;&#x5F0F;</p>
+        <p><code>date(&quot;&#x683C;&#x5F0F;&quot;, &#x6642;&#x9593;&#x51FD;&#x5F0F;&#x7B49;)</code>
+        </p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -63,7 +71,11 @@ description: 分為自訂函式與內建函式
         <p><code>substr($str,&#x5F9E;&#x54EA;&#x958B;&#x59CB;,&#x53D6;&#x5E7E;&#x500B;&#x5B57;)</code>
         </p>
       </td>
-      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p>&#x6642;&#x9593;&#x6233;&#x8A18;</p>
+        <p><code>mktime(&#x6642;,&#x5206;,&#x79D2;,&#x6708;,&#x65E5;,&#x5E74;)</code>
+        </p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -179,6 +191,10 @@ echo date("星期:w",$birthday), "<br>";//星期: 6
 3. 打開IIS，重新啟動。
 {% endhint %}
 
+{% hint style="info" %}
+三元運算，「?」及「:」中間的字串串接要用「.」，不然會error
+{% endhint %}
+
 ## 自訂函式
 
 {% tabs %}
@@ -190,6 +206,13 @@ function sum($a, $b){
 	return $total;
 }
 echo "10+20 = ", sum(10,20), "<br>";//310+20=30
+
+
+
+function sayHello($name){
+	echo "Hello",$name,"<br>";
+}
+sayHello("Alice");//Hello Alice
 ```
 {% endtab %}
 
@@ -197,7 +220,7 @@ echo "10+20 = ", sum(10,20), "<br>";//310+20=30
 ```php
 function sumMany($array){//$array: 請將所有的資料放到陣列中...
 	$total = 0;
-	if(is_array($array)){foreach($array as $i => $data){$total += $data;}}
+	if(is_array($array)){foreach($array as $data){$total += $data;}}
 	else{return false;}
 	return $total;
 }
@@ -210,13 +233,17 @@ echo "10+20+30=", sumMany($arr),"<br>";
 {% endtab %}
 {% endtabs %}
 
+{% hint style="danger" %}
+PHP的自訂函數不可以重複命名！\(JS可以\)
+{% endhint %}
+
 {% hint style="info" %}
 * 自訂函數的參數值可以定義陣列\(可用foreach帶\)。
 
-  但參數一定要式陣列型態，不然你可以寫else讓程式辨別，非陣列型態要return false
-
-* PHP的自訂函數不可以重複命名！\(JS可以\)
+  但參數一定要是陣列型態，不然你可以寫else讓程式辨別，非陣列型態要return false
 {% endhint %}
+
+
 
 ### 傳值呼叫 & 傳址呼叫
 
@@ -257,8 +284,9 @@ echo "y = $y <br>";//y = 120
 ```
 {% endtab %}
 
-{% tab title="範例" %}
+{% tab title="範例-加薪" %}
 ```php
+//薪水加薪
 <h4>call by value</h4>
 <?php
 function adjustSalary_pp($dataArr,$amt){
@@ -270,7 +298,7 @@ function adjustSalary_pp($dataArr,$amt){
 $salaryArr = array(10000,20000,30000,40000);
 $salaryArr = adjustSalary_pp($salaryArr,2000);//🟡
 print_r($salaryArr);
-
+//12000  22000  32000  42000
 ?>
 
 //====================================================
@@ -336,16 +364,16 @@ echo printMark("ED102");
 ```php
 <h2>global</h2>
 <?php
-$amount = 0;
+$amount = 0;					//全域變數
 function getAmount(){//程式中使用到的amount是使用全域變數(上面定義=0的那個)
-	global $amount;//equal as ===> $GLOBALS["amount"];
+	global $amount;		//🟡全域equal as ===> $GLOBALS["amount"];
 	//...
 	//...
-	$amount = 100000;
+	$amount = 100000;	//全域
 }
 
 function showAmount(){
-global $amount;//equal as ===> $GLOBALS["amount"];
+global $amount;			//全域equal as ===> $GLOBALS["amount"];
 	echo "<h3 style='color:blue;'>total: ", $amount ,"</h3><br>";
 }
 
