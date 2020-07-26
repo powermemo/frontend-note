@@ -199,7 +199,9 @@ require("connectBooks.php");
 {% endtabs %}
 
 {% hint style="info" %}
-連結資料庫連線的檔案：`require("¿¿¿.php");`
+連結資料庫連線的檔案：  
+`require_once("引用檔案路徑");  或是  
+include_once("引用檔案路徑");`
 {% endhint %}
 
 ## 執行SQL指令

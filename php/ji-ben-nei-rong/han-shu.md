@@ -2,7 +2,7 @@
 description: 分為自訂函式與內建函式
 ---
 
-# 函式
+# 函數
 
 ## 內建函式
 
@@ -37,11 +37,7 @@ description: 分為自訂函式與內建函式
         <p><code>strlen($str)</code>
         </p>
       </td>
-      <td style="text-align:left">
-        <p>&#x73FE;&#x5728;&#x6642;&#x9593;</p>
-        <p><code>time()</code>
-        </p>
-      </td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -54,11 +50,7 @@ description: 分為自訂函式與內建函式
         <p><code>strpos($str, &quot;&#x5B57;&#x4E32;&quot;)</code>
         </p>
       </td>
-      <td style="text-align:left">
-        <p>&#x6642;&#x9593;&#x683C;&#x5F0F;</p>
-        <p><code>date(&quot;&#x683C;&#x5F0F;&quot;, &#x6642;&#x9593;&#x51FD;&#x5F0F;&#x7B49;)</code>
-        </p>
-      </td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -71,11 +63,7 @@ description: 分為自訂函式與內建函式
         <p><code>substr($str,&#x5F9E;&#x54EA;&#x958B;&#x59CB;,&#x53D6;&#x5E7E;&#x500B;&#x5B57;)</code>
         </p>
       </td>
-      <td style="text-align:left">
-        <p>&#x6642;&#x9593;&#x6233;&#x8A18;</p>
-        <p><code>mktime(&#x6642;,&#x5206;,&#x79D2;,&#x6708;,&#x65E5;,&#x5E74;)</code>
-        </p>
-      </td>
+      <td style="text-align:left"></td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -84,7 +72,7 @@ description: 分為自訂函式與內建函式
         </p>
       </td>
       <td style="text-align:left">
-        <p>&#x5207;&#x5B57;&#x4E32;&#x1F7E1;&#x6703;&#x8B8A;&#x6210;&#x9663;&#x5217;&#x3010;&#x5B57;&#x4E32;&#x8F49;&#x9663;&#x5217;&#x3011;</p>
+        <p>&#x5207;&#x5B57;&#x4E32;&#x1F538;&#x6703;&#x8B8A;&#x6210;&#x9663;&#x5217;</p>
         <p><code>explode(&quot;&#x7528;&#x751A;&#x9EBC;&#x5207;&#x5B57;&#x4E32;,&quot;$str)</code>
         </p>
       </td>
@@ -93,17 +81,8 @@ description: 分為自訂函式與內建函式
     <tr>
       <td style="text-align:left"></td>
       <td style="text-align:left">
-        <p>&#x9023;&#x63A5;&#x5B57;&#x4E32;&#x3010;(&#x53EF;&#x80FD;&#x662F;)&#x9663;&#x5217;&#x8F49;&#x5B57;&#x4E32;&#x3011;</p>
+        <p>&#x9023;&#x63A5;&#x5B57;&#x4E32;</p>
         <p><code>implode(&quot;&#x7528;&#x751A;&#x9EBC;&#x9023;&#x63A5;&#x5B57;&#x4E32;,&quot;$&#x5F88;&#x591A;&#x5B57;&#x4E32;&#x53EF;&#x80FD;&#x662F;&#x9663;&#x5217;)</code>
-        </p>
-      </td>
-      <td style="text-align:left"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left"></td>
-      <td style="text-align:left">
-        <p>&#x82F1;&#x6587;&#x5916;&#x7684;&#x5B57;&#x4E32;&#xFF0C;&#x4EE5;&#x1F7E1;&#x300C;mb_&#x300D;&#x958B;&#x982D;</p>
-        <p>&#x4F8B;&#x5982;&#x5B57;&#x4E32;&#x9577;&#x5EA6;&#xFF1A;<code>mb_strlen($str)</code>
         </p>
       </td>
       <td style="text-align:left"></td>
@@ -114,8 +93,8 @@ description: 分為自訂函式與內建函式
 {% tabs %}
 {% tab title="數學" %}
 ```php
-echo "floor(2.4): ",floor(2.4), "<br>";//2，無條件捨去
-echo "ceil(2.4): ",ceil(2.4), "<br>";//3，無條件進位
+echo "floor(2.4): ",floor(2.4), "<br>";//2
+echo "ceil(2.4): ",ceil(2.4), "<br>";//3
 echo "ceil(28/7): ",ceil(28/7), "<br>";//4
 ```
 {% endtab %}
@@ -123,19 +102,17 @@ echo "ceil(28/7): ",ceil(28/7), "<br>";//4
 {% tab title="字串" %}
 ```php
 $str = 'abcdeabcde';
-echo 'strlen($str): ', strlen($str),"<br>";//10，字串長杜
-echo 'strpos($str,"cd"): ', strpos($str,"cd"),"<br>";//2，字串位置
-echo 'strpos($str,"eab"): ', strpos($str,"eab"),"<br>";//4，字串位置
-echo 'substr($str,2,5): ', substr($str,2,5),"<br>";//cdeab，取子字串
-
-//=====EXPLODE切字串=====【字串轉陣列】
+echo 'strlen($str): ', strlen($str),"<br>";//10
+echo 'strpos($str,"cd"): ', strpos($str,"cd"),"<br>";//2
+echo 'strpos($str,"eab"): ', strpos($str,"eab"),"<br>";//4
+echo 'substr($str,2,5): ', substr($str,2,5),"<br>";//cdeab
+echo "<b>EXPLODE</b><br>";
 $str = 'aa,bb:cc,dd,ee';
-$arr = explode(",",$str);//🟡explode()是一個陣列
+$arr = explode(",",$str);//🟡explode()is an array
 foreach($arr as $i => $data){//0:aa 1:bb:cc 2:dd 3:ee
 	echo "$i : $data <br>";
 }
 
-//=====IMPLODE連接字串=====【(可能是)陣列轉字串】
 $arr = array(11,22,33);
 echo "<b>JOIN: </b>",implode(",",$arr), "<br>";//11,22,33
 ```
@@ -191,10 +168,6 @@ echo date("星期:w",$birthday), "<br>";//星期: 6
 3. 打開IIS，重新啟動。
 {% endhint %}
 
-{% hint style="info" %}
-三元運算，「?」及「:」中間的字串串接要用「.」，不然會error
-{% endhint %}
-
 ## 自訂函式
 
 {% tabs %}
@@ -206,13 +179,6 @@ function sum($a, $b){
 	return $total;
 }
 echo "10+20 = ", sum(10,20), "<br>";//310+20=30
-
-
-
-function sayHello($name){
-	echo "Hello",$name,"<br>";
-}
-sayHello("Alice");//Hello Alice
 ```
 {% endtab %}
 
@@ -220,7 +186,7 @@ sayHello("Alice");//Hello Alice
 ```php
 function sumMany($array){//$array: 請將所有的資料放到陣列中...
 	$total = 0;
-	if(is_array($array)){foreach($array as $data){$total += $data;}}
+	if(is_array($array)){foreach($array as $i => $data){$total += $data;}}
 	else{return false;}
 	return $total;
 }
@@ -233,17 +199,13 @@ echo "10+20+30=", sumMany($arr),"<br>";
 {% endtab %}
 {% endtabs %}
 
-{% hint style="danger" %}
-PHP的自訂函數不可以重複命名！\(JS可以\)
-{% endhint %}
-
 {% hint style="info" %}
 * 自訂函數的參數值可以定義陣列\(可用foreach帶\)。
 
-  但參數一定要是陣列型態，不然你可以寫else讓程式辨別，非陣列型態要return false
+  但參數一定要式陣列型態，不然你可以寫else讓程式辨別，非陣列型態要return false
+
+* PHP的自訂函數不可以重複命名！\(JS可以\)
 {% endhint %}
-
-
 
 ### 傳值呼叫 & 傳址呼叫
 
@@ -284,9 +246,8 @@ echo "y = $y <br>";//y = 120
 ```
 {% endtab %}
 
-{% tab title="範例-加薪" %}
+{% tab title="範例" %}
 ```php
-//薪水加薪
 <h4>call by value</h4>
 <?php
 function adjustSalary_pp($dataArr,$amt){
@@ -298,7 +259,7 @@ function adjustSalary_pp($dataArr,$amt){
 $salaryArr = array(10000,20000,30000,40000);
 $salaryArr = adjustSalary_pp($salaryArr,2000);//🟡
 print_r($salaryArr);
-//12000  22000  32000  42000
+
 ?>
 
 //====================================================
@@ -364,16 +325,16 @@ echo printMark("ED102");
 ```php
 <h2>global</h2>
 <?php
-$amount = 0;					//全域變數
+$amount = 0;
 function getAmount(){//程式中使用到的amount是使用全域變數(上面定義=0的那個)
-	global $amount;		//🟡全域equal as ===> $GLOBALS["amount"];
+	global $amount;//equal as ===> $GLOBALS["amount"];
 	//...
 	//...
-	$amount = 100000;	//全域
+	$amount = 100000;
 }
 
 function showAmount(){
-global $amount;			//全域equal as ===> $GLOBALS["amount"];
+global $amount;//equal as ===> $GLOBALS["amount"];
 	echo "<h3 style='color:blue;'>total: ", $amount ,"</h3><br>";
 }
 
