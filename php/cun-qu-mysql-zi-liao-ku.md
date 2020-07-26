@@ -182,7 +182,7 @@ $options = array(
 $dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
 $user = '使用者名稱';
 $password = '使用者密碼';
-$options = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$options = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//好像有錯..我不確定..
 $pdo = new PDO($dsn, $user, $password, $options);
 ?>
 ```
