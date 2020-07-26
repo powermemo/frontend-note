@@ -72,7 +72,7 @@ description: 分為自訂函式與內建函式
         </p>
       </td>
       <td style="text-align:left">
-        <p>&#x5207;&#x5B57;&#x4E32;&#x1F538;&#x6703;&#x8B8A;&#x6210;&#x9663;&#x5217;&#x3010;&#x5B57;&#x4E32;&#x8F49;&#x9663;&#x5217;&#x3011;</p>
+        <p>&#x5207;&#x5B57;&#x4E32;&#x1F7E1;&#x6703;&#x8B8A;&#x6210;&#x9663;&#x5217;&#x3010;&#x5B57;&#x4E32;&#x8F49;&#x9663;&#x5217;&#x3011;</p>
         <p><code>explode(&quot;&#x7528;&#x751A;&#x9EBC;&#x5207;&#x5B57;&#x4E32;,&quot;$str)</code>
         </p>
       </td>
@@ -83,6 +83,15 @@ description: 分為自訂函式與內建函式
       <td style="text-align:left">
         <p>&#x9023;&#x63A5;&#x5B57;&#x4E32;&#x3010;(&#x53EF;&#x80FD;&#x662F;)&#x9663;&#x5217;&#x8F49;&#x5B57;&#x4E32;&#x3011;</p>
         <p><code>implode(&quot;&#x7528;&#x751A;&#x9EBC;&#x9023;&#x63A5;&#x5B57;&#x4E32;,&quot;$&#x5F88;&#x591A;&#x5B57;&#x4E32;&#x53EF;&#x80FD;&#x662F;&#x9663;&#x5217;)</code>
+        </p>
+      </td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p>&#x82F1;&#x6587;&#x5916;&#x7684;&#x5B57;&#x4E32;&#xFF0C;&#x4EE5;&#x1F7E1;&#x300C;mb_&#x300D;&#x958B;&#x982D;</p>
+        <p>&#x4F8B;&#x5982;&#x5B57;&#x4E32;&#x9577;&#x5EA6;&#xFF1A;<code>mb_strlen($str)</code>
         </p>
       </td>
       <td style="text-align:left"></td>
