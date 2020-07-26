@@ -300,7 +300,7 @@ try {
 ```
 {% endtab %}
 
-{% tab title="👈取得物件的方法fetch¿\(\)" %}
+{% tab title="👈取得物件的方法fetch¿\(\)👉" %}
 ### fetch：回傳一維陣列
 
 ```php
@@ -501,6 +501,16 @@ $sql = "update products set price=price-:amount";//:amount自定義參數名
 $statement = $pdo->prepare($sql);
 $statement->bindParam(:amount,$amount);//🟡參數:amount，要填甚麼進去($amount)
 $statement->execute();
+```
+
+#### bindColumn\(\)
+
+```php
+$products = $pdo->query($sql);
+$products->bindColumn(1,$psn);    //第一直欄
+$products->bindColumn(2,$pname);    //第二直欄
+$products->bindColumn(3,$price);    //第三直欄
+$products->bindColumn(4,$author);    //第四直欄
 ```
 {% endtab %}
 
