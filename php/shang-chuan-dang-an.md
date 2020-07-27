@@ -203,7 +203,7 @@ switch($_FILES["upFile"]["error"]){
 
 ### 範例
 
-搭配檔案「」、「」
+搭配檔案「fileUploadMany.html」、「fileUploadMany.php」
 
 ```markup
 <!--HTML-->
