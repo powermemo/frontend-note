@@ -311,6 +311,24 @@ if($errMsg !=""){
 ?>
 <a href="sessionMember.php">前往會員專區</a>  
 ```
+
+#### 前往會員中心-會員資料 \(對應範例檔案\)
+
+```php
+<?php
+//記得要使用session之前，要先啟用serssion
+session_start();
+?>
+<?php
+echo "id : ", session_id() ,"<br>";
+//自session中取回登入者資料
+echo "帳號 : ", $_SESSION["memId"],  "<br>";
+echo "姓名 : ", $_SESSION["memName"], "<br>";  
+echo "id : ", $_SESSION["no"], "<br>";
+echo "email : ", $_SESSION["email"], "<br>";
+echo "tel : ", $_SESSION["tel"], "<br>";
+?> 
+```
 {% endtab %}
 
 {% tab title="Second Tab" %}
