@@ -21,7 +21,9 @@ Client端上傳資料到Server端暫存區檔案會不見，
 
 ### php.ini相關設定
 
-
+* 允許上傳：file\_uploads = on
+* 上傳暫存區：upload\_tmp\_dir = C:\php位置....\tmp
+* 上傳容量上限：upload\_max\_filesize = 2M
 
 ### $\_FILES\[\]取得上傳資料
 
