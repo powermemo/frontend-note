@@ -94,7 +94,103 @@ Client端上傳資料到Server端暫存區檔案會不見，
 
 ### copy\(\)暫存檔存放暫存路徑
 
+語法：copy\("來源路徑及檔名","複製之目的路徑及檔名"\)
 
+```php
+//例如
+$dir = "images";                        //路徑名
+$from = $_FILES["upFile"]["tmp_name"];    //來源路徑及檔名
+$to = "$dir/".$_FILES["upFile"]["name"]; //複製之目的路徑及檔名
+copy($from, $to);
+echo "上傳成功～<br>";
+```
 
 ### move\_uploaded\_file\(\)將暫存檔移到指定路徑
+
+語法：move\_uploaded\_file\("來源路徑及檔名","複製之目的路徑及檔名"\)
+
+```php
+//例如
+$dir = "images";                        //路徑名
+$from = $_FILES["upFile"]["tmp_name"];    //來源路徑及檔名
+$to = "$dir/".$_FILES["upFile"]["name"]; //複製之目的路徑及檔名
+move_uploaded_file($from, $to);
+echo "上傳成功～<br>";
+```
+
+### 範例
+
+{% tabs %}
+{% tab title="1" %}
+錯誤代號
+
+```php
+echo "帳號：", $_POST["memId"], "<br>";
+switch($_FILES["upFile"]["error"];){
+    case 0://上傳成功
+        //============檢查資料夾是否存在
+        $dir = "images";//路徑名
+        if(file_exists($dir)==false){
+            //沒有這個資料夾，創建一個資料夾
+            mkdir($dir);//make directory
+        }
+        $from = $_FILES["upFile"]["tmp_name"];
+        $to = "$dir/".$_FILES["upFile"]["name"]; //images/smile.gif
+        copy($from, $to);
+        echo "上傳成功～<br>";
+    break;
+    case 1: //php.ini系統上限設定為2M
+        echo "上傳檔案太大，不得超過",ini_get("upload_max_filesize"),"<br>";
+    break;
+    case 2: //fileUpload指定上限(小於等於ini系統上限)為123456 Bytes
+        echo "上傳檔案太大",$_POST["MAX_FILE_SIZE"],"<br>";
+    break;
+    case 3:
+        echo "檔案損毀或丟失<br>";
+    break;
+    case 4:
+        echo "檔案未選取<br>";
+    break;
+    default:
+        echo "系統錯誤，請通知維護人員<br>";
+}
+```
+{% endtab %}
+
+{% tab title="2" %}
+錯誤代碼
+
+```php
+echo "帳號：", $_POST["memId"], "<br>";
+switch($_FILES["upFile"]["error"]){
+    case UPLOAD_ERR_OK://上傳成功
+        //============檢查資料夾是否存在
+        $dir = "images";//路徑名
+        if(file_exists($dir)==false){
+            //沒有這個資料夾，創建一個資料夾
+            mkdir($dir);//make directory
+        }
+        $from = $_FILES["upFile"]["tmp_name"];
+        $to = "$dir/".$_FILES["upFile"]["name"]; //images/smile.gif
+        copy($from, $to);
+        echo "上傳成功～<br>";
+    break;
+    case UPLOAD_ERR_INI_SIZE: //php.ini系統上限設定為2M
+        echo "上傳檔案太大，不得超過",ini_get("upload_max_filesize")," Bytes<br>";
+    break;
+    case UPLOAD_ERR_FORM_SIZE: //fileUpload指定上限(小於等於ini系統上限)為123456 Bytes
+        echo "上傳檔案太大","不得超過",$_POST["MAX_FILE_SIZE"]," Bytes<br>";
+    break;
+    case UPLOAD_ERR_PARTIAL:
+        echo "檔案損毀或丟失<br>";
+    break;
+    case UPLOAD_ERR_NO_FILE:
+        echo "檔案未選取<br>";
+    break;
+    default:
+        echo "系統錯誤，請通知維護人員<br>";
+}
+```
+{% endtab %}
+{% endtabs %}
 
