@@ -92,7 +92,7 @@ if($errMsg != ""){
 
 {% tabs %}
 {% tab title="產品清單範例" %}
-#### 對應範例檔案prodList.php
+#### 書單-附連結 \(對應範例檔案prodList.php\)
 
 ```php
 <?php 
@@ -124,7 +124,7 @@ while( $prodRow = $products->fetch(PDO::FETCH_ASSOC)){//當抓得到一筆資料
 </table> 
 ```
 
-#### 對應範例檔案prodQuery.php
+#### 書單詳細內容 \(對應範例檔案prodQuery.php\)
 
 ```php
 <?php
