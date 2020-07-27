@@ -92,5 +92,9 @@ Client端上傳資料到Server端暫存區檔案會不見，
   </tbody>
 </table>
 
-### 
+### copy\(\)暫存檔存放暫存路徑
+
+
+
+### move\_uploaded\_file\(\)將暫存檔移到指定路徑
 
