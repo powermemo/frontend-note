@@ -45,8 +45,39 @@
 
 #### 更動內容是否成功 \(對應範例檔案prodQueryToDb.php\)
 
-```text
+```php
+<?php
+$errMsg = '';
+try{
+    require_once('../connectBooks.php');
+    $sql = "update products set pname=:pname,
+                                price=:price,
+                                author=:author,
+                                pages=:pages,
+                                image=:image   where psn=:psn";
+    $products = $pdo->prepare($sql);
+    $products->bindValue(':psn',$_GET['psn']);
+    $products->bindValue(':pname',$_GET['pname']);
+    $products->bindValue(':price',$_GET['price']);
+    $products->bindValue(':author',$_GET['author']);
+    $products->bindValue(':pages',$_GET['pages']);
+    $products->bindValue(':image',$_GET['image']);
+    $products->execute();
+}catch(PDOException $e){
+    $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
+    $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
+}
+?>
+//👆頁面最上方
+//👇body裡面
+<?php
+if($errMsg != ""){
+    echo "<center>$errMsg</center>";
+}else{
+    echo "異動成功~<br>";
+}
 
+?>
 ```
 {% endtab %}
 
