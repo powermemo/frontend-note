@@ -120,6 +120,8 @@ echo "上傳成功～<br>";
 
 ### 範例
 
+對應範例檔案「fileUpload.html」、「fileUpload.php」
+
 {% tabs %}
 {% tab title="1" %}
 錯誤代號
@@ -193,4 +195,61 @@ switch($_FILES["upFile"]["error"]){
 ```
 {% endtab %}
 {% endtabs %}
+
+## 上傳多個檔案
+
+* 標籤換成&lt;input type="file" name="upFile\[\]"&gt;&lt;br&gt;  「upFile\[\]」陣列型態。
+* 搭配迴圈寫
+
+### 範例
+
+搭配檔案「」、「」
+
+```markup
+<!--HTML-->
+<form action="fileUploadMany.php" method="post" enctype="multipart/form-data">
+    帳號 <input type="text" name="memId"><br>
+    姓名<input type="text" name="memName"><br>	
+    大頭貼一 <input type="file" name="upFile[]"><br>
+    大頭貼二 <input type="file" name="upFile[]"><br>
+    大頭貼三 <input type="file" name="upFile[]"><br>
+    <input type="submit" value="OK">
+</form>  
+```
+
+```php
+//PHP
+<?php 
+foreach($_FILES["upFile"]["error"] as $i => $data){
+    switch($_FILES["upFile"]["error"][$i]){
+        case UPLOAD_ERR_OK://上傳成功
+            //============檢查資料夾是否存在
+            $dir = "images";//路徑名
+            if(file_exists($dir)==false){
+                //沒有這個資料夾，創建一個資料夾
+                mkdir($dir);//make directory
+            }
+            $from = $_FILES["upFile"]["tmp_name"][$i];
+            $to = "$dir/".$_FILES["upFile"]["name"][$i]; //images/smile.gif
+            copy($from, $to);
+            echo "上傳成功～<br>";
+        break;
+        case UPLOAD_ERR_INI_SIZE: //php.ini系統上限設定為2M
+            echo "上傳檔案太大，不得超過",ini_get("upload_max_filesize")," Bytes<br>";
+        break;
+        case UPLOAD_ERR_FORM_SIZE: //fileUpload指定上限(小於等於ini系統上限)為123456 Bytes
+            echo "上傳檔案太大","不得超過",$_POST["MAX_FILE_SIZE"]," Bytes<br>";
+        break;
+        case UPLOAD_ERR_PARTIAL:
+            echo "檔案損毀或丟失<br>";
+        break;
+        case UPLOAD_ERR_NO_FILE:
+            echo "檔案未選取<br>";
+        break;
+        default:
+            echo "系統錯誤，請通知維護人員<br>";
+    }
+}
+?>
+```
 
