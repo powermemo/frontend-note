@@ -95,12 +95,76 @@ if($errMsg != ""){
 #### 對應範例檔案prodList.php
 
 ```php
-while($prodRow = $products->fetch(PDO::FETCH_ASSOC)){
-    <a href="prodQuery.php?psn=<?=$prodRow['psn']?>"></a>
+<?php 
+try {
+	require_once("../connectBooks.php");
+	$sql = "select * from products";
+	$products = $pdo->query($sql);
+} catch (PDOException $e) {
+	echo "錯誤原因 : ", $e->getMessage(), "<br>";
+	echo "錯誤行號 : ", $e->getLine(), "<br>";
 }
+?>
+//👆開頭
+//👇body內
+<table align='center'>
+<tr bgcolor="#bfbfef"><th>書號</th><th>書名</th><th>價格</th><th>作者</th></tr>
+<?php
+while( $prodRow = $products->fetch(PDO::FETCH_ASSOC)){//當抓得到一筆資料, 取回來以陣列的形式
+?>
+	<tr>
+	<td><?=$prodRow["psn"]?></td>
+	<td><a href="prodQuery.php?psn=<?=$prodRow['psn']?>"><?=$prodRow["pname"]?></a></td>
+	<td><?=$prodRow["price"]?></td>
+	<td><?=$prodRow["author"]?></td>
+	</tr>
+<?php
+}
+?>
+</table> 
 ```
 
 #### 對應範例檔案prodQuery.php
+
+```php
+<?php
+$psn = $_REQUEST["psn"];
+$errMsg = "";
+//連線資料庫
+try{
+  require_once("../connectBooks.php");
+  $sql = "select * from products where psn = $psn";
+  $products = $pdo->query($sql);
+}catch(PDOException $e){
+  $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
+  $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
+}
+?>
+//👆開頭
+//👇body內
+<?php 
+if( $errMsg != ""){ //例外
+  echo "<div><center>$errMsg</center></div>";
+}elseif($products->rowCount()==0){
+      echo "<div><center>查無此商品資料</center></div>";
+}else{
+      $prodRow = $products->fetchObject();
+?>
+  <!-- 🟡🟡🟡🟡🟡 -->
+<br>
+<h2 style="text-align:center;color:deeppink">書籍基本資料</h2>
+  <table align="center" width="300" >
+    <tr><th>書號</th><td><?php echo $prodRow->psn;?></td></tr>
+    <tr><th>書名</th><td><?php echo $prodRow->pname;?></td></tr>
+    <tr><th>價格</th><td><?php echo $prodRow->price;?></td></tr>
+    <tr><th>作者</th><td><?php echo $prodRow->author;?></td></tr>
+    <tr><th>頁數</th><td><?php echo $prodRow->pages;?></td></tr>
+    <tr><th>圖檔</th><td><?php echo $prodRow->image;?></td></tr>
+  </table>
+  <?php
+}
+?>
+```
 {% endtab %}
 {% endtabs %}
 
