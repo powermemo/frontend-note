@@ -198,8 +198,16 @@ switch($_FILES["upFile"]["error"]){
 
 ## 上傳多個檔案
 
-* 標籤換成&lt;input type="file" name="upFile\[\]"&gt;&lt;br&gt;  「upFile\[\]」陣列型態。
+* 標籤換成`<input type="file" name="upFile[]"><br>`  「`name="upFile[]"`」陣列型態。
 * 搭配迴圈寫
+
+{% hint style="info" %}
+input:file的屬性  
+`<input type="file" name="upFile[]" multiple accept="image/*">`  
+「`name="upFile[]"`」：陣列型態  
+「`multiple`」：可複選檔案  
+「`accept="image/*"`」：指定檔案格式
+{% endhint %}
 
 ### 範例
 
