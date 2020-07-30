@@ -1,8 +1,17 @@
 # three js
 
-學習手冊\[[連結](https://threejs.org/docs/)\]
+學習手冊\(英文\)\[[連結](https://threejs.org/docs/)\]  
+入門手冊\(中文\)\[[連結](https://read.douban.com/reader/ebook/7412854/)\]
 
-IT邦幫忙介紹\[[連結](https://ithelp.ithome.com.tw/articles/10199699)\]
+* IT邦幫忙介紹\[[連結](https://ithelp.ithome.com.tw/articles/10199699)\] 
+  * [官網範例](https://threejs.org/examples/)
+  * [Learning Three.js](https://github.com/josdirksen/learning-threejs)
+  * [Three.js 101 : Hello World! \(Part 1\)](https://medium.com/@necsoft/three-js-101-hello-world-part-1-443207b1ebe1)
+  * [Three.js快速入門](https://www.itread01.com/articles/1476704140.html)
+
+| \[3-[立方動畫](https://ithelp.ithome.com.tw/articles/10199702)\]\[[果](https://dezchuang.github.io/ironman-three.js/day03_helloThree/index.html)\] |  |  |  |  |  |  |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|  |  |  |  |  |  |  |
 
 ## 簡介
 
