@@ -1,7 +1,7 @@
 # three js
 
 學習手冊\(英文\)\[[連結](https://threejs.org/docs/)\]  
-入門手冊\(中文\)\[[連結](https://read.douban.com/reader/ebook/7412854/)\]
+入門指南\(中文\)\[[連結](https://read.douban.com/reader/ebook/7412854/)\]
 
 * IT邦幫忙介紹\[[連結](https://ithelp.ithome.com.tw/articles/10199699)\] 
   * [官網範例](https://threejs.org/examples/)
