@@ -101,7 +101,7 @@ for(let i in obj.phone){
 
 {% tabs %}
 {% tab title="json\_encode" %}
-json\_encode\(\)
+json\_encode\(\)  //陣列\|物件   轉   字串
 
 ```php
 //PHP的索引陣列轉成json
@@ -121,7 +121,7 @@ echo "json:$str<br>";
 {% endtab %}
 
 {% tab title="json\_decode" %}
-json\_decode\(\)
+json\_decode\(\)  //字串        轉   陣列\|物件
 
 ```php
 //json格式一：轉成PHP的陣列
