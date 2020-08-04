@@ -184,5 +184,9 @@
 {% tab title="前面合體" %}
 {% embed url="https://codepen.io/ch-zhuchu/pen/poyoyzb" caption="https://codepen.io/ch-zhuchu/pen/poyoyzb" %}
 {% endtab %}
+
+{% tab title="增加一組\(clone\)" %}
+{% embed url="https://codepen.io/ch-zhuchu/pen/WNwNwNQ" caption="https://codepen.io/ch-zhuchu/pen/WNwNwNQ" %}
+{% endtab %}
 {% endtabs %}
 
