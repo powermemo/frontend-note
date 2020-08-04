@@ -113,11 +113,18 @@ xhr.setRequestHeader("content-Type","application/x-www-form-urlencoded")
     </tr>
     <tr>
       <td style="text-align:left">status</td>
-      <td style="text-align:left">&#x4F3A;&#x670D;&#x5668;&#x56DE;&#x50B3;&#x7684;Http&#x72C0;&#x614B;&#x78BC;</td>
+      <td style="text-align:left">
+        <p>&#x4F3A;&#x670D;&#x5668;&#x56DE;&#x50B3;&#x7684;Http&#x72C0;&#x614B;&#x78BC;</p>
+        <p>ex.<b>404</b>&#x627E;&#x4E0D;&#x5230;&#x6A94;&#x6848;&#x3001;<b>500</b>server&#x7AEF;&#x9023;&#x7DDA;&#x554F;&#x984C;</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">statusText</td>
-      <td style="text-align:left">&#x4F3A;&#x670D;&#x5668;&#x56DE;&#x50B3;&#x7684;Http&#x72C0;&#x614B;&#x6587;&#x5B57;&#x8A0A;&#x606F;</td>
+      <td style="text-align:left">
+        <p>&#x4F3A;&#x670D;&#x5668;&#x56DE;&#x50B3;&#x7684;Http&#x72C0;&#x614B;&#x6587;&#x5B57;&#x8A0A;&#x606F;</p>
+        <p>ex.404<b>&#x627E;&#x4E0D;&#x5230;&#x6A94;&#x6848;</b>&#x3001;500<b>server&#x7AEF;&#x9023;&#x7DDA;&#x554F;&#x984C;</b>
+        </p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">responseText</td>
@@ -126,8 +133,14 @@ xhr.setRequestHeader("content-Type","application/x-www-form-urlencoded")
     <tr>
       <td style="text-align:left">responseXML</td>
       <td style="text-align:left">&#x4F3A;&#x670D;&#x5668;&#x7684;&#x56DE;&#x50B3;&#x8CC7;&#x6599;&#xFF0C;&#x56DE;&#x61C9;&#x7684;&#x5167;&#x5BB9;&#x70BA;XML
-        Document</td>
+        Document(&#x4E32;&#x6D41;&#x6587;&#x4EF6;&#x6A94;&#x6848;)</td>
     </tr>
   </tbody>
 </table>
+
+{% hint style="info" %}
+onload\(發生在readyState=4之後\)、  
+timeout、  
+ontimeout
+{% endhint %}
 
