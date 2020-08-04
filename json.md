@@ -93,8 +93,8 @@ for(let i in obj.phone){
 ## PHP的JSON
 
 {% hint style="info" %}
-* `json_encode()`
-* `json_decode()`
+* `json_encode()  //陣列|物件   轉   字串`
+* `json_decode()  //字串        轉   陣列|物件`
 {% endhint %}
 
 對應範例檔0804「json.php」
