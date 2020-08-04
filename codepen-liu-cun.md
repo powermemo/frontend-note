@@ -52,11 +52,11 @@
 
 {% tabs %}
 {% tab title="工具" %}
-{% embed url="https://codepen.io/wheatup/pen/GbgyLY" %}
+{% embed url="https://codepen.io/wheatup/pen/GbgyLY" caption="https://codepen.io/wheatup/pen/GbgyLY" %}
 {% endtab %}
 
 {% tab title="色相環" %}
-{% embed url="https://codepen.io/aaroniker/pen/NLjmdz" %}
+{% embed url="https://codepen.io/aaroniker/pen/NLjmdz" caption="https://codepen.io/aaroniker/pen/NLjmdz" %}
 {% endtab %}
 {% endtabs %}
 
@@ -64,41 +64,41 @@
 
 {% tabs %}
 {% tab title="語昕老師作業" %}
-{% embed url="https://codepen.io/ch-zhuchu/pen/OJMwbaz" %}
+{% embed url="https://codepen.io/ch-zhuchu/pen/OJMwbaz" caption="https://codepen.io/ch-zhuchu/pen/OJMwbaz" %}
 {% endtab %}
 
 {% tab title="3D自動圖牆" %}
-{% embed url="https://codepen.io/hoanghien0410/pen/MMPaqm" %}
+{% embed url="https://codepen.io/hoanghien0410/pen/MMPaqm" caption="https://codepen.io/hoanghien0410/pen/MMPaqm" %}
 {% endtab %}
 
 {% tab title="改位置" %}
-{% embed url="https://codepen.io/bradtraversy/pen/odmVgN" %}
+{% embed url="https://codepen.io/bradtraversy/pen/odmVgN" caption="https://codepen.io/bradtraversy/pen/odmVgN" %}
 
-{% embed url="https://codepen.io/raisezhang/pen/MmjypX" %}
+{% embed url="https://codepen.io/raisezhang/pen/MmjypX" caption="https://codepen.io/raisezhang/pen/MmjypX" %}
 
-{% embed url="https://codepen.io/scottdavis/pen/hGtEw" %}
+{% embed url="https://codepen.io/scottdavis/pen/hGtEw" caption="https://codepen.io/scottdavis/pen/hGtEw" %}
 
-{% embed url="https://codepen.io/tjramage/pen/yOEbyw" %}
+{% embed url="https://codepen.io/tjramage/pen/yOEbyw" caption="https://codepen.io/tjramage/pen/yOEbyw" %}
 {% endtab %}
 
 {% tab title="隨意位置" %}
-{% embed url="https://codepen.io/znak/pen/ntsdy" %}
+{% embed url="https://codepen.io/znak/pen/ntsdy" caption="https://codepen.io/znak/pen/ntsdy" %}
 
-{% embed url="https://codepen.io/lavrton/pen/myBPGo" %}
+{% embed url="https://codepen.io/lavrton/pen/myBPGo" caption="https://codepen.io/lavrton/pen/myBPGo" %}
 
-{% embed url="https://codepen.io/myquite/pen/kkdLZq" %}
+{% embed url="https://codepen.io/myquite/pen/kkdLZq" caption="https://codepen.io/myquite/pen/kkdLZq" %}
 
-{% embed url="https://codepen.io/milesmanners/pen/mxbrWR" %}
+{% embed url="https://codepen.io/milesmanners/pen/mxbrWR" caption="https://codepen.io/milesmanners/pen/mxbrWR" %}
 
-{% embed url="https://codepen.io/agenceme/pen/dXYPBJ" %}
+{% embed url="https://codepen.io/agenceme/pen/dXYPBJ" caption="https://codepen.io/agenceme/pen/dXYPBJ" %}
 
-{% embed url="https://codepen.io/cconceicao/pen/PBQawy" %}
+{% embed url="https://codepen.io/cconceicao/pen/PBQawy" caption="https://codepen.io/cconceicao/pen/PBQawy" %}
 {% endtab %}
 
 {% tab title="變更濾鏡" %}
-{% embed url="https://codepen.io/Siddharth11/pen/GgrEMG" %}
+{% embed url="https://codepen.io/Siddharth11/pen/GgrEMG" caption="https://codepen.io/Siddharth11/pen/GgrEMG" %}
 
-{% embed url="https://codepen.io/Boxshadow/pen/KBcdJ" %}
+{% embed url="https://codepen.io/Boxshadow/pen/KBcdJ" caption="https://codepen.io/Boxshadow/pen/KBcdJ" %}
 {% endtab %}
 {% endtabs %}
 
@@ -112,7 +112,7 @@
 
 {% tabs %}
 {% tab title="人員與內容" %}
-{% embed url="https://codepen.io/ch-zhuchu/pen/gOPzOvV" %}
+{% embed url="https://codepen.io/ch-zhuchu/pen/gOPzOvV" caption="https://codepen.io/ch-zhuchu/pen/gOPzOvV" %}
 {% endtab %}
 
 {% tab title="Second Tab" %}
@@ -130,9 +130,9 @@
 {% endtab %}
 
 {% tab title="商品展示" %}
-{% embed url="https://codepen.io/\_massimo/pen/zVYVNb" %}
+{% embed url="https://codepen.io/\_massimo/pen/zVYVNb" caption="https://codepen.io/\_massimo/pen/zVYVNb" %}
 
-{% embed url="https://codepen.io/vivngo/pen/vwwmNy" %}
+{% embed url="https://codepen.io/vivngo/pen/vwwmNy" caption="https://codepen.io/vivngo/pen/vwwmNy" %}
 {% endtab %}
 {% endtabs %}
 
@@ -142,19 +142,19 @@
 
 {% tabs %}
 {% tab title="放煙火\|雷電" %}
-{% embed url="https://codepen.io/jackrugile/pen/acAgx" %}
+{% embed url="https://codepen.io/jackrugile/pen/acAgx" caption="https://codepen.io/jackrugile/pen/acAgx" %}
 
-{% embed url="https://codepen.io/Twanneman/pen/qhBKC" %}
+{% embed url="https://codepen.io/Twanneman/pen/qhBKC" caption="https://codepen.io/Twanneman/pen/qhBKC" %}
 
-{% embed url="https://codepen.io/cliffpyles/pen/fxKDu" %}
+{% embed url="https://codepen.io/cliffpyles/pen/fxKDu" caption="https://codepen.io/cliffpyles/pen/fxKDu" %}
 {% endtab %}
 
 {% tab title="起點終點" %}
-{% embed url="https://codepen.io/shshaw/pen/vJNMQY" %}
+{% embed url="https://codepen.io/shshaw/pen/vJNMQY" caption="https://codepen.io/shshaw/pen/vJNMQY" %}
 {% endtab %}
 
 {% tab title="星球" %}
-{% embed url="https://codepen.io/jcoulterdesign/pen/eJGoOx" %}
+{% embed url="https://codepen.io/jcoulterdesign/pen/eJGoOx" caption="https://codepen.io/jcoulterdesign/pen/eJGoOx" %}
 {% endtab %}
 {% endtabs %}
 
@@ -162,7 +162,7 @@
 
 {% tabs %}
 {% tab title="計算機" %}
-{% embed url="https://codepen.io/Lilykhan/pen/XWXPEbL" %}
+{% embed url="https://codepen.io/Lilykhan/pen/XWXPEbL" caption="https://codepen.io/Lilykhan/pen/XWXPEbL" %}
 {% endtab %}
 
 {% tab title="Second Tab" %}
@@ -174,11 +174,15 @@
 
 {% tabs %}
 {% tab title="前後頁面切換" %}
-{% embed url="https://codepen.io/ch-zhuchu/pen/oNbwvXv" %}
+{% embed url="https://codepen.io/ch-zhuchu/pen/oNbwvXv" caption="https://codepen.io/ch-zhuchu/pen/oNbwvXv" %}
 {% endtab %}
 
 {% tab title="指定頁面切換" %}
-{% embed url="https://codepen.io/ch-zhuchu/pen/pogGXNe" %}
+{% embed url="https://codepen.io/ch-zhuchu/pen/pogGXNe" caption="https://codepen.io/ch-zhuchu/embed/pogGXNe" %}
+{% endtab %}
+
+{% tab title="前面合體" %}
+{% embed url="https://codepen.io/ch-zhuchu/pen/poyoyzb" caption="https://codepen.io/ch-zhuchu/pen/poyoyzb" %}
 {% endtab %}
 {% endtabs %}
 
