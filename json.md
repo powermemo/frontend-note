@@ -9,15 +9,15 @@ description: 一種資料交換的格式
 {% hint style="info" %}
 兩種常見的方法
 
-* `JSON.stringify(js物件)`
-* `JSON.parse(json字串)`
+* `JSON.stringify(js物件) //物件轉字串`
+* `JSON.parse(json字串)   //`
 {% endhint %}
 
 對應範例檔0804「json.html」
 
 {% tabs %}
 {% tab title="stringify" %}
-JSON.stringify\(js物件\)
+JSON.stringify\(js物件\) //物件轉字串
 
 ```javascript
  var emp={
@@ -26,7 +26,7 @@ JSON.stringify\(js物件\)
   sal: 33000,
   phone:["03-4257387","03-168168","0933168168"]
 }
-var str = JSON.stringify(emp);
+var str = JSON.stringify(emp);                 //🟡
 document.write("json:",str,"<br>");
 //【result】json:{"empno":"7001","ename":"Andy","sal":33000,"phone":["03-4257387","03-168168","0933168168"]}
 ```
@@ -42,7 +42,7 @@ var emp={
         M:"0933168168",
     },
 }
-var str = JSON.stringify(emp);
+var str = JSON.stringify(emp);     //🟡
 document.write("json:",str,"<br>");
 //【result】json:{"empno":"7001","ename":"Andy","sal":33000,"phone":{"O":"03-4257387","H":"03-168168","M":"0933168168"}}
 ```
