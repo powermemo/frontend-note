@@ -66,6 +66,7 @@
   * [資料傳遞](php/zi-liao-chuan-di.md)
   * [上傳檔案](php/shang-chuan-dang-an.md)
 * [Ajax](ajax.md)
+* [JSON](json.md)
 * [MySQL資料庫](mysql-zi-liao-ku/README.md)
   * [安裝](mysql-zi-liao-ku/an-zhuang.md)
   * [操作](mysql-zi-liao-ku/cao-zuo.md)
