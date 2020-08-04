@@ -167,5 +167,11 @@ server端回應的Http狀態碼
   * 4xx用戶端錯誤\(Client Error\)
   * 5xx伺服器錯誤\(Server Error\)
 
+## XMLHttpRequest範例
+
+## W3C DOM 節點
+
+
+
 
 
