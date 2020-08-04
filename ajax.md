@@ -423,20 +423,20 @@ try{
 
 ## W3C DOM 節點
 
-| nodeType常數 | nodeType值 |
-| :--- | :--- |
-| ELEMENT\_NODE | 1 |
-| ATTRIBUTE\_NODE | 2 |
-| TEXT\_NODE | 3 |
-| CDATA\_SECTION\_NODE | 4 |
-| ENTITY\_REFERENCE\_NODE | 5 |
-| ENTITY\_NODE | 6 |
-| PROCESSING\_INSTRUCTION\_NODE | 7 |
-| COMMENT\_NODE | 8 |
-| DOCUMENT\_NODE | 9 |
-| DOCUMENT\_TYPE\_NODE | 10 |
-| DOCUMENT\_FRAGMENT\_NODE | 11 |
-| NOTATION\_NODE | 12 |
+| nodeType常數 | nodeType值 | 說明 |
+| :--- | :--- | :--- |
+| ELEMENT\_NODE | 1 | 元素節點ex.div,h2... |
+| ATTRIBUTE\_NODE | 2 |  |
+| TEXT\_NODE | 3 | 文字節點 |
+| CDATA\_SECTION\_NODE | 4 |  |
+| ENTITY\_REFERENCE\_NODE | 5 |  |
+| ENTITY\_NODE | 6 |  |
+| PROCESSING\_INSTRUCTION\_NODE | 7 |  |
+| COMMENT\_NODE | 8 |  |
+| DOCUMENT\_NODE | 9 |  |
+| DOCUMENT\_TYPE\_NODE | 10 |  |
+| DOCUMENT\_FRAGMENT\_NODE | 11 |  |
+| NOTATION\_NODE | 12 |  |
 
 範例
 
@@ -445,4 +445,14 @@ try{
 | div | 1\(元素節點\) | div | undefined |
 | h2 | 1\(元素節點\) | h2 | undefined |
 | Welcome to W3C DOM | 3\(文字節點\) | \#text | Welcome to W3C COM |
+
+## W3C DOM 文件的methods
+
+
+
+## W3C DOM 節點的methods
+
+
+
+## W3C DOM 元素的methods
 
