@@ -438,5 +438,11 @@ try{
 | DOCUMENT\_FRAGMENT\_NODE | 11 |
 | NOTATION\_NODE | 12 |
 
+範例
 
+| node | nodeType | nodeName | nodeValue |
+| :--- | :--- | :--- | :--- |
+| div | 1\(元素節點\) | div | undefined |
+| h2 | 1\(元素節點\) | h2 | undefined |
+| Welcome to W3C DOM | 3\(文字節點\) | \#text | Welcome to W3C COM |
 
