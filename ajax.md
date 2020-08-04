@@ -278,6 +278,64 @@ try{
 ?>
 ```
 {% endtab %}
+
+{% tab title="responseText" %}
+對應範例檔案07/30「getMore.html」「getMore.php」  
+取得會員資料
+
+```aspnet
+//getMore.html
+div>首頁>>會員專區</div>
+<center>
+會員帳號<input type="text" name="memId" id="memId"/>
+<input type="button" value="取得會員資料" onclick="getMember()"/>
+<div id="showPanel"></div>
+</center>
+<script>
+function getMember(){
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange=function (){
+      if( xhr.readyState == 4){
+        if( xhr.status == 200 ){
+          document.getElementById("showPanel").innerHTML = xhr.responseText;  
+        }else{
+          alert( xhr.status );
+        }
+      }
+  }
+  var url = "getMore.php?memId=" + document.getElementById("memId").value;
+  xhr.open("Get", url, true);
+  xhr.send( null );
+}
+</script>
+```
+
+```php
+//getMore.php
+<?php
+try{
+  require_once("../connectBooks.php");
+  $sql = "select * from `member` where memId=:memId";
+  $member = $pdo->prepare( $sql );
+  $member->bindValue(":memId", $_REQUEST["memId"]);
+  $member->execute();
+  //如果找得資料,將會員資料送出
+  if( $member->rowCount() == 0 ){
+    echo "not found~";
+  }else{
+    $memRow = $member->fetch(PDO::FETCH_ASSOC);
+  	$str="";
+  	foreach( $memRow as $i => $data ){
+  	  $str .= $data . "," ;
+  	}
+  	echo $str;
+  }	
+}catch(PDOException $e){
+  echo $e->getMessage();
+}
+?>
+```
+{% endtab %}
 {% endtabs %}
 
 ## W3C DOM 節點
