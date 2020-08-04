@@ -548,3 +548,44 @@ try{
 
 ## W3C DOM 元素的methods
 
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">&#x8A9E;&#x6CD5;</th>
+      <th style="text-align:left">&#x8AAA;&#x660E;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p>element.getAttribute(attributeName)</p>
+        <p>&#x4F8B;&#x5982;table.getAttribute(&quot;borderColor&quot;)</p>
+      </td>
+      <td style="text-align:left">&#x53D6;&#x5F97;element&#x4E2D;&#x67D0;&#x5C6C;&#x6027;(attributeName)&#x7684;&#x503C;</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>element.setAttribute(attributeName,value)</p>
+        <p>&#x4F8B;&#x5982;table.setAttribute(&quot;border&quot;,1)</p>
+      </td>
+      <td style="text-align:left">&#x8A2D;&#x5B9A;element&#x4E2D;&#x67D0;&#x5C6C;&#x6027;(attributeName)&#x7684;&#x503C;</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>element.removeAttribute(attributeName)</p>
+        <p>&#x4F8B;&#x5982;table.removeAttibute(&quot;border&quot;)</p>
+      </td>
+      <td style="text-align:left">&#x5C07;&#x6307;&#x5B9A;&#x7684;&#x5C6C;&#x6027;(attributeName)&#x5F9E;&#x6B64;element&#x4E2D;&#x79FB;&#x9664;</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p>element.getElementsByTagName(tagName)</p>
+        <p>&#x4F8B;&#x5982;table.getElementsByTagName(&quot;td&quot;)</p>
+      </td>
+      <td style="text-align:left">&#x53D6;&#x5F97;&#x6B64;element&#x5167;&#x6A19;&#x7C64;&#x540D;&#x7A31;&#x70BA;tagName&#x7684;
+        <br
+        />&#x6240;&#x6709;&#x5B50;&#x5143;&#x7D20;</td>
+    </tr>
+  </tbody>
+</table>
+
