@@ -144,3 +144,34 @@ timeout、
 ontimeout
 {% endhint %}
 
+### readyState屬性
+
+記錄server端目前針對請求的處理狀態。
+
+| 狀態 | 常數 | 說明 |
+| :--- | :--- | :--- |
+| 0 | UNSENT | 尚未初始化\(request not initialized\) |
+| 1 | OPENED | 請求已被建立\(server connection established\) |
+| 2 | HEADERS\_RECEIVED | 請求已被送出\(request received\) |
+| 3 | LOADING | 請求正在處理\(processing request\) |
+| 4 | DONE | 請求已完成\(request finished and response is ready\) |
+
+### status屬性
+
+server端回應的Http狀態碼
+
+* 主要三個層級，1st數字大類、2nd數字中類、3rd數字小類
+  * 1xx參考資訊\(Informational\)
+  * 2xx成功\(OK\)
+  * 3xx重新導向\(Redirection\)
+  * 4xx用戶端錯誤\(Client Error\)
+  * 5xx伺服器錯誤\(Server Error\)
+
+### responseText屬性
+
+
+
+### responseXML屬性
+
+
+
