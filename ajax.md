@@ -477,9 +477,74 @@ try{
 
 ## W3C DOM 節點的attribute
 
+| 屬性名稱 | 說明 |
+| :--- | :--- |
+| childNodes | 傳回目前元素所有子節點的節點清單 |
+| firstChild | 傳回目前元素的第一個子節點 |
+| lastChild | 傳回目前元素的最後一個子節點 |
+| nextSibling | 傳回緊鄰在目前節點之後的節點 |
+| previousSibling | 傳回緊鄰在目前節點之前的節點 |
+| parentNode | 傳回元素的父節點 |
+| nodeName | 傳回節點的節點名稱 |
+| nodeType | 傳回節點的節點型態 |
+| nodeValue | 傳回節點的值 |
+
 ## W3C DOM 節點的methods
 
-
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">&#x8A9E;&#x6CD5;</th>
+      <th style="text-align:left">&#x8AAA;&#x660E;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p><code>node.appendChild(childNode)</code>
+        </p>
+        <p>&#x4F8B;&#x5982;tr.appendChild(td)</p>
+      </td>
+      <td style="text-align:left">&#x5C07;&#x6307;&#x5B9A;&#x7684;&#x5B50;&#x7BC0;&#x9EDE;(childNode)&#x52A0;&#x5230;node&#x7684;&#x5B50;&#x7BC0;&#x9EDE;&#x6E05;&#x55AE;&#x4E2D;</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>node.insertBefore(aNode,bNode)</code>
+        </p>
+        <p>&#x4F8B;&#x5982;tr.insertBefore(newTd,targetTd)</p>
+      </td>
+      <td style="text-align:left">&#x5C07;&#x6307;&#x5B9A;&#x7684;&#x7BC0;&#x9EDE;(aNode)&#x63D2;&#x5230;node&#x4E4B;&#x4E0B;&#xFF0C;
+        <br
+        />&#x7279;&#x5B9A;&#x7BC0;&#x9EDE;(bNode)&#x4E4B;&#x524D;</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>node.removeChild(childNode)</code>
+        </p>
+        <p>&#x4F8B;&#x5982;tr.removeChild(td)</p>
+      </td>
+      <td style="text-align:left">&#x5C07;&#x5B50;&#x7BC0;&#x9EDE;(childNode)&#x5F9E;node&#x4E2D;&#x522A;&#x9664;</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>node.replaceChild(aNode,bNode)</code>
+        </p>
+        <p>&#x4F8B;&#x5982;re.replaceChild(aCell,bCell)</p>
+      </td>
+      <td style="text-align:left">&#x5C07;&#x6B64;node&#x7684;&#x5B50;&#x7BC0;&#x9EDE;&#x4E2D;&#xFF0C;&#x67D0;&#x7279;&#x5B9A;&#x7BC0;&#x9EDE;(bNode)
+        <br
+        />&#x63DB;&#x6210;&#x53E6;&#x4E00;&#x500B;&#x7BC0;&#x9EDE;(aNode)</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>node.hasChildNodes()</code>
+        </p>
+        <p>&#x4F8B;&#x5982;tr.hasChildNodes()</p>
+      </td>
+      <td style="text-align:left">&#x50B3;&#x56DE;&#x4E00;&#x500B;&#x5E03;&#x6797;&#x503C;&#xFF0C;&#x6307;&#x51FA;&#x6B64;node&#x662F;&#x5426;&#x6709;&#x5B50;&#x7BC0;&#x9EDE;</td>
+    </tr>
+  </tbody>
+</table>
 
 ## W3C DOM 元素的methods
 
