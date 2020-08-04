@@ -64,7 +64,7 @@ for(let i in obj.phone){
 // 【result】obj.empno:7001
 // 【result】obj.ename:Andy
 // 【result】obj.sal:33000
-// 【result】obj.phone:03-4257387,03-168168,0933168168
+// 【result】obj.phone:03-4257387,03-168168,0933168168 //array 會 toString
 // 【result】obj.phone[0]: 03-4257387"
 // 【result】obj.phone[1]: 03-168168"
 // 【result】obj.phone[2]: 0933168168"
@@ -83,7 +83,7 @@ for(let i in obj.phone){
  // 【result】obj.empno:7001
  // 【result】obj.ename:Andy
  // 【result】obj.sal:33000
- // 【result】obj.phone:[object Object]
+ // 【result】obj.phone:[object Object]               //[object Object]
  // 【result】obj.phone.H:03-168168
  // 【result】obj.phone.M:0933168168
 ```
@@ -153,6 +153,7 @@ echo $arr3["sal"], "<br>";
 
 ```php
 //json格式二：轉成PHP的物件
+//在JS的「.」；在PHP的「->」
 $str = '{"empno":"7001","ename":"Ann","sal":33000}';
 //下面第二個參數沒給，就是「物件」false
 $obj = json_decode($str,false);//第二個參數表示是否轉乘associative陣列，false表示轉成物件
