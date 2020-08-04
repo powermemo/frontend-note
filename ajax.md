@@ -593,3 +593,16 @@ try{
   </tbody>
 </table>
 
+## 🍵動態建立表格
+
+{% tabs %}
+{% tab title="DOM" %}
+對應範例檔案07/30「getMore\_XML.html」「getMore\_XML.php」  
+取得會員資料（僅字串相連）
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
