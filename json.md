@@ -154,7 +154,7 @@ echo $arr3["sal"], "<br>";
 ```php
 //json格式二：轉成PHP的物件
 $str = '{"empno":"7001","ename":"Ann","sal":33000}';
-//下面第二個參數沒給，就是「物件」
+//下面第二個參數沒給，就是「物件」false
 $obj = json_decode($str,false);//第二個參數表示是否轉乘associative陣列，false表示轉成物件
 echo $obj->empno, "<br>";
 echo $obj->ename, "<br>";
