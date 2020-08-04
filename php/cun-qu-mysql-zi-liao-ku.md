@@ -182,7 +182,7 @@ $options = array(
 $dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
 $user = '使用者名稱';
 $password = '使用者密碼';
-$options = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$options = array(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//好像有錯..我不確定..
 $pdo = new PDO($dsn, $user, $password, $options);
 ?>
 ```
@@ -199,7 +199,11 @@ require("connectBooks.php");
 {% endtabs %}
 
 {% hint style="info" %}
-連結資料庫連線的檔案：`require("¿¿¿.php");`
+連結資料庫連線的檔案：  
+`require_once("引用檔案路徑");  或是  
+include_once("引用檔案路徑");`
+
+※ 像JS的script:src，像CSS的@import，像HTML的link
 {% endhint %}
 
 ## 執行SQL指令
@@ -209,7 +213,14 @@ require("connectBooks.php");
 * **`$pdo->query(`**_**`SQL命令`**_**`)`**
   * 用來執行會取得result set的指令，例如select
 * **`$pdo->prepare(`**_**`SQL命令`**_**`)`**
-  * 用來事先編譯好一個SQL敘述
+  * 用來事先編譯好一個SQL敘述，可以執行inset、update、delete、select等
+  * 指令內放未知數，編譯它再帶資料進去，防止別人竄改我資料庫\(SQL\)資料。
+
+{% hint style="info" %}
+PHP的「-&gt;」相當於JS的「.」  
+ex.PHP的「`$pdo->query($sql);`」  
+ex.JS的「`xxx.addEventListener('click',function(){});`」
+{% endhint %}
 
 {% tabs %}
 {% tab title="exec" %}
@@ -226,7 +237,7 @@ try {
 	$pdo = new PDO($dsn, $user, $password, $options);
 	echo "連線成功~<br>";	
 
-	$sql = "update emp set sal += 1000";//PHP指令
+	$sql = "update emp set sal += 1000";//PHP指令，加薪$1000
 	$pdo->exec($sql);//🟡透過PDO執行SQL指令
 	echo "異動成功~<br>";	
 	
@@ -245,12 +256,7 @@ try {
 ```php
 <?php 
 try {
-	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-	$user = "root";
-	$password = "root";
-	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-	$pdo = new PDO($dsn, $user, $password, $options);
-
+	require("connectBooks.php");//這個範例應該要連郭老師資料庫的，連books是錯誤的..
 	$sql = "select * from products";//🟡
 	$products = $pdo->query($sql);//🟡
 	
@@ -266,30 +272,23 @@ try {
 ```php
 <?php 
 try {
-	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-	$user = "root";
-	$password = "root";
-	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-	$pdo = new PDO($dsn, $user, $password, $options);
-
+	require("connectBooks.php");//這個範例應該要連郭老師資料庫的，連books是錯誤的..
 	$sql = "select * from products";
 	$products = $pdo->query($sql);
-
-
+	
 	echo "<table align='center'>";
 	echo "<tr><th>書號</th><th>書名</th><th>價格</th><th>作者</th></tr>";
-	while( $prodRow = $products->fetch(PDO::FETCH_ASSOC)){//🟡fetch
+	while( $prodRow = $products->fetch(PDO::FETCH_ASSOC)){//🟡fetch一維陣列
 	//當抓得到一筆資料
 	?>
 		<tr>
-		<td><?=$prodRow["psn"]?></td>//🟡
+		<td><?=$prodRow["psn"]?></td>//🟡中括號內是資料庫表格表頭名稱
 		<td><?=$prodRow["pname"]?></td>//🟡
 		<td><?=$prodRow["price"]?></td>//🟡
 		<td><?=$prodRow["author"]?></td>//🟡
 		</tr>
 	<?php
 	}
-
 	echo "</table>";
 } catch (PDOException $e) {
 	echo "錯誤原因 : ", $e->getMessage(), "<br>";
@@ -301,22 +300,15 @@ try {
 ```
 {% endtab %}
 
-{% tab title="👈取得物件的方法fetch¿\(\)" %}
+{% tab title="👈取得物件的方法fetch¿\(\)👉" %}
 ### fetch：回傳一維陣列
 
 ```php
 <?php 
 try {
-	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-	$user = "root";
-	$password = "root";
-	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-	$pdo = new PDO($dsn, $user, $password, $options);
-
+	$require("connectBooks.php");
 	$sql = "select * from products";
 	$products = $pdo->query($sql);
-
-
 	echo "<table align='center'>";
 	echo "<tr><th>書號</th><th>書名</th><th>價格</th><th>作者</th></tr>";
 	while( $prodRow = $products->fetch(PDO::FETCH_ASSOC)){//🟡fetch
@@ -346,16 +338,10 @@ try {
 ```php
 <?php 
 try {
-	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-	$user = "root";
-	$password = "root";
-	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-	$pdo = new PDO($dsn, $user, $password, $options);
-
+	require("connectBooks.php");
 	$sql = "select * from `member`";
 	$products = $pdo->query($sql);//🟡
 	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);//🟡
-
 } catch (PDOException $e) {
 	echo "錯誤原因 : ", $e->getMessage(), "<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
@@ -391,15 +377,9 @@ foreach($prodRows as $i=>$prodRow){//🟡
 ```php
 <?php 
 try {
-	$dsn = "mysql:host=localhost;port=3306;dbname=books;charset=utf8";
-	$user = "root";
-	$password = "root";
-	$options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
-	$pdo = new PDO($dsn, $user, $password, $options);
-
+	require("connectBooks.php");
 	$sql = "select * from products";
 	$products = $pdo->query($sql);
-
 } catch (PDOException $e) {
 	echo "錯誤原因 : ", $e->getMessage(), "<br>";
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
@@ -439,11 +419,11 @@ $errMsg = "";
 try{
     require_once("../connectBooks.php");//如果require在迴圈裡就拉不出來，所以用require_once
     //===================================================方法一：question parameter
-    // $sql = "select * from `member` where memId=? and memPsw=?";//🟡「?」
-    // $member = $pdo->prepare($sql);//🟣將prepare($sql)編譯執行
-    // $member->binValue(1, $_GET['memId']);//🟡1代表第一個問號，要帶甚麼值進去(前端送來的資料)。
-    // $member->binValue(2, $_GET['memPsw']);//🟡2代表第二個問號，要帶甚麼值進去(前端送來的資料)。
-    // $member->execute();//🟣執行
+    $sql = "select * from `member` where memId=? and memPsw=?";//🟡「?」
+    $member = $pdo->prepare($sql);//🟣將prepare($sql)編譯執行
+    $member->binValue(1, $_GET['memId']);//🟡1代表第一個問號，要帶甚麼值進去(前端送來的資料)。
+    $member->binValue(2, $_GET['memPsw']);//🟡2代表第二個問號，要帶甚麼值進去(前端送來的資料)。
+    $member->execute();//🟣執行
 
 
     //===================================================方法二：named parameter
@@ -474,7 +454,7 @@ if($errMsg != ""){
     echo "<div>$errMsg</div>";
 }elseif($member->rowCount() ==0){//一筆都沒找到
     echo "<center>帳密錯誤</center>";
-}else{//取回登入者的資訊
+}else{                            //取回登入者的資訊
     $memRow = $member->fetch(PDO::FETCH_ASSOC);
     echo  $memRow["memName"], ",您好！</br>";
 }
@@ -506,7 +486,7 @@ $statement->execute();
 
 #### bindParam\(\)
 
-第二個參數可以是變數、可以是字面值（如下例10）
+第二個參數只能是變數（如下例$amount）
 
 ```php
 //=====bindParam()---問號
@@ -519,13 +499,21 @@ $statement->execute();
 //=====bindValue()---:參數
 $sql = "update products set price=price-:amount";//:amount自定義參數名
 $statement = $pdo->prepare($sql);
-$statement->bindParam(:amount,10);//🟡參數:amount，要填甚麼進去(10)
+$statement->bindParam(:amount,$amount);//🟡參數:amount，要填甚麼進去($amount)
 $statement->execute();
 ```
-{% endtab %}
 
-{% tab title="bindColumn\(\)" %}
+#### bindColumn\(\)
 
+```php
+$sql = "select * from products where price<500";
+$products = $pdo->query($sql);
+$products->bindColumn(1,$psn);    //第一直欄
+$products->bindColumn(2,$pname);    //第二直欄
+$products->bindColumn(3,$price);    //第三直欄
+$products->bindColumn(4,$author);    //第四直欄
+$products->fetch();
+```
 {% endtab %}
 {% endtabs %}
 
@@ -737,11 +725,11 @@ td {
 if( $errMsg != ""){ //例外
   echo "<div><center>$errMsg</center></div>";
 }elseif($products->rowCount()==0){
-      echo "<div><center>查無此商品資料</center></div>";
+      echo "<div><center>查無此商品資料</center></div>"; 
+  // 🟡🟡以上為查不到資料時的碼🟡🟡 
 }else{
       $prodRow = $products->fetchObject();
 ?>
-  <!-- 🟡🟡以下為查不到資料時的碼🟡🟡 -->
 <br>
 <h2 style="text-align:center;color:deeppink">書籍基本資料</h2>
   <table align="center" width="300" >

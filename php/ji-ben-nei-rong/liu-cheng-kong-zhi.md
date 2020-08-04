@@ -24,8 +24,8 @@ elseif(條件):
     敘述;
 [else:
     敘述;
-}]
-endif;
+]
+endif;//🔹
 ```
 {% endtab %}
 
@@ -61,7 +61,7 @@ switch(運算式):
         [break;]
     [default:
         敘述;]
-endswitch;
+endswitch;//🔹
 ```
 {% endtab %}
 
@@ -97,7 +97,11 @@ while($i<=1000){
 {% endtab %}
 {% endtabs %}
 
-## 作業練習
+{% hint style="info" %}
+與JS不同，PHP的else if是連在一起的「`elseif`」。
+{% endhint %}
+
+## 作業練習－摸彩
 
 {% tabs %}
 {% tab title="PHP1" %}
@@ -145,4 +149,22 @@ echo "<br>總額：$ " ,array_sum($ball) * 100;
 ```
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+JS的亂數：`Math.random();`  //大於等於零、小於1\(0.999...\)  
+取隨機數例如取-5~5的隨機整數  
+`parseInt(Math.random()*11)-5;`
+
+```text
+//以上步驟解說：
+Math.random();   //0~1的亂數
+*11              //-5~5共11個整數
+parseInt();     //將數值轉整數ex.1.00===>1
+-5              //範例中的「最小值」為「-5」
+```
+{% endhint %}
+
+{% hint style="info" %}
+PHP的亂數：rand\(min,max\); //直接設定最大值最小值
+{% endhint %}
 

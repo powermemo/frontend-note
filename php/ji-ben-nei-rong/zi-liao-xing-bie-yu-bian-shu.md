@@ -108,11 +108,13 @@ I am \Sara\
 ?>
 ```
 
-## 表單欄位變數取得
+## 🍵表單欄位變數取得
 
 * 「$\_GET\["_欄位名稱_"\]」資料安全
 * 「$\_POST\["_欄位名稱"_\]」資料不安全，例如GOOGLE搜尋，網頁欄都看得到。
 * 「$\_REQUEST\["_欄位名稱_"\]」可取代「$\_GET...」、「$\_POST...」。
+
+p.s.「欄位名稱」是指，html檔中標籤的「name」屬性的值。
 
 ▼HTML
 
@@ -124,7 +126,7 @@ I am \Sara\
     <title>表單</title>
 </head>
 <body>
-    <form method="get" action="form.php">
+    <form method="get" action="form.php"><!--PHP的檔名-->
         <div>
             <label for="memId">帳號：</label>
             <input type="text" name="memId" required="required"><br>
@@ -180,13 +182,13 @@ echo nl2br($_GET["note"]);
 
 ## 資料型別的檢查
 
-* gettype\(資料\);
-  * 回傳資料型別
+* `gettype(資料)`;
+  * 回傳資料型別\(像是JS的「typeof\(\)」\)
   * string,integer,double,array,object,...
-* is\_...
+* `is_`...
   * 回傳布林值
   * is\_integer\(_資料_\), is\_float\(_資料_\),is\_bool\(_資料_\), is\_string\(_資料_\),is\_null\(_資料_\),is\_resource\(_資料_\)**,** is\_array\(_資料_\),is\_object\(_資料_\),is\_numeric\(_資料_\)
-* var\_dump;
+* `var_dump`;
   * **直接印出**\(所以前面不用echo\)
   * 資料型別與值
 
@@ -233,7 +235,7 @@ $c = '123.5';
 setType($c,'integer');//🔶$c的類別會改變
 echo '$C的資料型別:',$c,'<br>';
 echo '';
-var_dump( $a );//print [float(123.5)]
+var_dump( $c );//print [float(123.5)]
 ```
 {% endtab %}
 {% endtabs %}

@@ -423,6 +423,8 @@ try{
 
 ## W3C DOM 節點
 
+![DOM](.gitbook/assets/image%20%2843%29.png)
+
 | nodeType常數 | nodeType值 | 說明 |
 | :--- | :--- | :--- |
 | ELEMENT\_NODE | 1 | 元素節點ex.div,h2... |
@@ -476,6 +478,8 @@ try{
 </table>
 
 ## W3C DOM 節點的attribute
+
+![](.gitbook/assets/image%20%2844%29.png)
 
 | 屬性名稱 | 說明 |
 | :--- | :--- |

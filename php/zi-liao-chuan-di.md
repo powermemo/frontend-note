@@ -45,8 +45,39 @@
 
 #### 更動內容是否成功 \(對應範例檔案prodQueryToDb.php\)
 
-```text
+```php
+<?php
+$errMsg = '';
+try{
+    require_once('../connectBooks.php');
+    $sql = "update products set pname=:pname,
+                                price=:price,
+                                author=:author,
+                                pages=:pages,
+                                image=:image   where psn=:psn";
+    $products = $pdo->prepare($sql);
+    $products->bindValue(':psn',$_GET['psn']);
+    $products->bindValue(':pname',$_GET['pname']);
+    $products->bindValue(':price',$_GET['price']);
+    $products->bindValue(':author',$_GET['author']);
+    $products->bindValue(':pages',$_GET['pages']);
+    $products->bindValue(':image',$_GET['image']);
+    $products->execute();
+}catch(PDOException $e){
+    $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
+    $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
+}
+?>
+//👆頁面最上方
+//👇body裡面
+<?php
+if($errMsg != ""){
+    echo "<center>$errMsg</center>";
+}else{
+    echo "異動成功~<br>";
+}
 
+?>
 ```
 {% endtab %}
 
@@ -61,15 +92,79 @@
 
 {% tabs %}
 {% tab title="產品清單範例" %}
-#### 對應範例檔案prodList.php
+#### 書單-附連結 \(對應範例檔案prodList.php\)
 
 ```php
-while($prodRow = $products->fetch(PDO::FETCH_ASSOC)){
-    <a href="prodQuery.php?psn=<?=$prodRow['psn']?>"></a>
+<?php 
+try {
+	require_once("../connectBooks.php");
+	$sql = "select * from products";
+	$products = $pdo->query($sql);
+} catch (PDOException $e) {
+	echo "錯誤原因 : ", $e->getMessage(), "<br>";
+	echo "錯誤行號 : ", $e->getLine(), "<br>";
 }
+?>
+//👆開頭
+//👇body內
+<table align='center'>
+<tr bgcolor="#bfbfef"><th>書號</th><th>書名</th><th>價格</th><th>作者</th></tr>
+<?php
+while( $prodRow = $products->fetch(PDO::FETCH_ASSOC)){//當抓得到一筆資料, 取回來以陣列的形式
+?>
+	<tr>
+	<td><?=$prodRow["psn"]?></td>
+	<td><a href="prodQuery.php?psn=<?=$prodRow['psn']?>"><?=$prodRow["pname"]?></a></td>
+	<td><?=$prodRow["price"]?></td>
+	<td><?=$prodRow["author"]?></td>
+	</tr>
+<?php
+}
+?>
+</table> 
 ```
 
-#### 對應範例檔案prodQuery.php
+#### 書單詳細內容 \(對應範例檔案prodQuery.php\)
+
+```php
+<?php
+$psn = $_REQUEST["psn"];
+$errMsg = "";
+//連線資料庫
+try{
+  require_once("../connectBooks.php");
+  $sql = "select * from products where psn = $psn";
+  $products = $pdo->query($sql);
+}catch(PDOException $e){
+  $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
+  $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
+}
+?>
+//👆開頭
+//👇body內
+<?php 
+if( $errMsg != ""){ //例外
+  echo "<div><center>$errMsg</center></div>";
+}elseif($products->rowCount()==0){
+      echo "<div><center>查無此商品資料</center></div>";
+}else{
+      $prodRow = $products->fetchObject();
+?>
+  <!-- 🟡🟡🟡🟡🟡 -->
+<br>
+<h2 style="text-align:center;color:deeppink">書籍基本資料</h2>
+  <table align="center" width="300" >
+    <tr><th>書號</th><td><?php echo $prodRow->psn;?></td></tr>
+    <tr><th>書名</th><td><?php echo $prodRow->pname;?></td></tr>
+    <tr><th>價格</th><td><?php echo $prodRow->price;?></td></tr>
+    <tr><th>作者</th><td><?php echo $prodRow->author;?></td></tr>
+    <tr><th>頁數</th><td><?php echo $prodRow->pages;?></td></tr>
+    <tr><th>圖檔</th><td><?php echo $prodRow->image;?></td></tr>
+  </table>
+  <?php
+}
+?>
+```
 {% endtab %}
 {% endtabs %}
 
@@ -153,4 +248,91 @@ echo "email : ", $_COOKIE["email"],"<br>";
 {% endtabs %}
 
 ## 透過伺服端session傳遞資料
+
+### 前置作業
+
+1. 在C槽PHP資料夾內，新建資料夾「tmp」
+2. php.ini檔，找到「session.save\_path」，將註解「;」拿掉 並修改後方路徑，例如「C:\php-7.4.7\tmp」
+3. 重啟IIS
+
+{% tabs %}
+{% tab title="First Tab" %}
+#### 登入畫面-沒有改 \(對應範例檔案sessionLogin.html\)
+
+```markup
+<div id="loginBox">
+<form action="sessionLogin.php" method="post">
+<p>帳號: <input type="text" name="memId"></p>
+<p>密碼: <input type="password" name="memPsw"></p>
+<p><input type="submit" value="登入"></p>
+</form>
+</div>
+```
+
+#### 登入結果 \(對應範例檔案sessionLogin.php\)
+
+```php
+<?php
+$memId = $_POST["memId"];
+$memPsw = $_POST["memPsw"];
+$errMsg = "";
+try {
+    require_once("../connectBooks.php");
+    $sql = "select * from `member` where memId=:memId and memPsw=:memPsw"; //''
+    $member = $pdo->prepare( $sql ); //先編譯好
+    $member->bindValue(":memId", $memId); //代入資料
+    $member->bindValue(":memPsw", $memPsw);
+    $member->execute();//執行之
+    if( $member->rowCount() == 0 ){//找不到
+        $errMsg .= "帳密錯誤, <a href='sessionLogin.html'>重新登入</a><br>";
+    }else{
+        $memRow = $member->fetch(PDO::FETCH_ASSOC);
+        //登入成功,將登入者的資料寫入session
+        session_start();                            //🟡
+        $_SESSION["memId"] = $memRow["memId"];      //🟡
+        $_SESSION["memName"] = $memRow["memName"];  //🟡
+        $_SESSION["no"] = $memRow["no"];            //🟡
+        $_SESSION["email"] = $memRow["email"];      //🟡
+        $_SESSION["tel"] = $memRow["tel"];          //🟡
+    }
+} catch (PDOException $e) {
+    $errMsg .= "錯誤 : ".$e -> getMessage()."<br>";
+    $errMsg .= "行號 : ".$e -> getLine()."<br>";
+}
+?>
+//👆頁面最上方
+//👇body內
+<?php 
+if($errMsg !=""){
+    echo $errMsg;
+}else{
+    echo $memRow["memName"], " 您好~<br>";
+}
+?>
+<a href="sessionMember.php">前往會員專區</a>  
+```
+
+#### 前往會員中心-會員資料 \(對應範例檔案\)
+
+```php
+<?php
+//記得要使用session之前，要先啟用serssion
+session_start();
+?>
+<?php
+echo "id : ", session_id() ,"<br>";
+//自session中取回登入者資料
+echo "帳號 : ", $_SESSION["memId"],  "<br>";
+echo "姓名 : ", $_SESSION["memName"], "<br>";  
+echo "id : ", $_SESSION["no"], "<br>";
+echo "email : ", $_SESSION["email"], "<br>";
+echo "tel : ", $_SESSION["tel"], "<br>";
+?> 
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
