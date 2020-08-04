@@ -448,7 +448,32 @@ try{
 
 ## W3C DOM 文件的methods
 
-
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">&#x8A9E;&#x6CD5;</th>
+      <th style="text-align:left">&#x8AAA;&#x660E;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p><code>document.createElement(</code><em><code>tagName</code></em><code>)</code>
+        </p>
+        <p>&#x4F8B;&#x5982;document.createElement(&quot;div&quot;)</p>
+      </td>
+      <td style="text-align:left"><b>&#x5EFA;&#x7ACB;</b>&#x4E00;&#x500B;&#x6A19;&#x7C64;&#x540D;&#x7A31;&#x70BA;tagName&#x7684;&#x5143;&#x7D20;</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><code>document.createTextNode(</code><em><code>text</code></em><code>)</code>
+        </p>
+        <p>&#x4F8B;&#x5982;document.createTextNode(&quot;Hello&quot;)</p>
+      </td>
+      <td style="text-align:left"><b>&#x5EFA;&#x7ACB;</b>&#x4E00;&#x500B;&#x5305;&#x542B;&#x975C;&#x614B;&#x6587;&#x5B57;&#x7684;&#x7BC0;&#x9EDE;</td>
+    </tr>
+  </tbody>
+</table>
 
 ## W3C DOM 節點的attribute
 
