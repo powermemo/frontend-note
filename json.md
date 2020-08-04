@@ -10,7 +10,7 @@ description: 一種資料交換的格式
 兩種常見的方法
 
 * `JSON.stringify(js物件) //物件轉字串`
-* `JSON.parse(json字串)   //`
+* `JSON.parse(json字串)   //字串轉物件`
 {% endhint %}
 
 對應範例檔0804「json.html」
