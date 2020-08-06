@@ -123,6 +123,10 @@ mac「command」+「shit」+「.」可以顯示隱藏檔
   </tbody>
 </table>
 
+{% hint style="danger" %}
+ 切記不要對 c 系統槽做初始化，如果不小心做的，就把 .git 這個檔案刪掉
+{% endhint %}
+
 {% hint style="info" %}
 修改檔案後才下「`git add .`」「`git commit -m "可打任何字的註解"`」指令
 {% endhint %}
@@ -140,7 +144,7 @@ message框內 輸入註解文字，就相當於以下兩個指令
 
 ![source control](.gitbook/assets/image%20%2851%29.png)
 
-![message&#x6846;](.gitbook/assets/image%20%2853%29.png)
+![message&#x6846;](.gitbook/assets/image%20%2854%29.png)
 
 ## 連線github
 
@@ -161,12 +165,12 @@ git push -u origin master
 
 打開「git bash」
 
-![git bash](.gitbook/assets/image%20%2856%29.png)
+![git bash](.gitbook/assets/image%20%2857%29.png)
 
 前面的前置作業「git push –u origin master」  
 彈出視窗輸入「user name」「user password」
 
-![](.gitbook/assets/image%20%2855%29.png)
+![git push -u origin master](.gitbook/assets/image%20%2856%29.png)
 
 ## github專案加入隊員
 
@@ -178,9 +182,13 @@ git push -u origin master
 
 ## VS code用github互傳檔案
 
-接收邀請後，其他隊員請在本機端建立一個資料夾，打開VS code 輸入github專案的路徑。
+接收邀請後，其他隊員請在本機端建立一個資料夾，打開VS code 輸入github專案的路徑。例如
 
-![](.gitbook/assets/image%20%2854%29.png)
+```text
+git clone https://github.com/username/132.git
+```
+
+![](.gitbook/assets/image%20%2855%29.png)
 
 更新的檔案後，按下vs code左方的圖示「source control」，然後按下打勾確認。
 
@@ -189,4 +197,13 @@ git push -u origin master
 然後VScode的左下角訊息就有顯示上傳，記得**手動按下**更新圖示哦～
 
 ![](.gitbook/assets/image%20%2850%29.png)
+
+### 分支衝突合併
+
+![](.gitbook/assets/image%20%2853%29.png)
+
+{% hint style="info" %}
+ 當改到相同檔案就會有衝突，  
+ **解決的方式： 就是合併完後再重新推上去一版**
+{% endhint %}
 
