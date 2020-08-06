@@ -171,11 +171,11 @@ git push -u origin master
 
 1. 到專案內按tab「settings」
 2. 左邊tab按「manage access」
-3. 下面按「invite a collaborator」   ，打上隊員的user name 例如「roycanfly」
+3. 下面按「invite a collaborator」   ，打上隊員的user name 例如「roycanfly」「sexfat」
 
 ![](.gitbook/assets/image%20%2849%29.png)
 
-
+## 
 
 
 
