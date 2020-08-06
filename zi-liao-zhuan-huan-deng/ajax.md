@@ -1,5 +1,5 @@
 ---
-description: 一種非同步的技術，它不是新語言
+description: 一種非同步的技術，它不是新語言，它不能是副檔名
 ---
 
 # Ajax
@@ -423,7 +423,7 @@ try{
 
 ## W3C DOM 節點
 
-![DOM](.gitbook/assets/image%20%2843%29.png)
+![DOM](../.gitbook/assets/image%20%2843%29.png)
 
 | nodeType常數 | nodeType值 | 說明 |
 | :--- | :--- | :--- |
@@ -479,7 +479,7 @@ try{
 
 ## W3C DOM 節點的attribute
 
-![](.gitbook/assets/image%20%2844%29.png)
+![](../.gitbook/assets/image%20%2844%29.png)
 
 | 屬性名稱 | 說明 |
 | :--- | :--- |

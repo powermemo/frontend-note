@@ -1,5 +1,5 @@
 ---
-description: 一種資料交換的格式
+description: 一種資料交換的格式，可以是副檔名
 ---
 
 # JSON

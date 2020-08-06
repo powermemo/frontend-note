@@ -60,10 +60,6 @@ body {
 }
 ```
 {% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
 {% endtabs %}
 
 ## Nesting巢狀，對應html階層
