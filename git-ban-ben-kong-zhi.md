@@ -207,3 +207,79 @@ git clone https://github.com/username/132.git
  **解決的方式： 就是合併完後再重新推上去一版**
 {% endhint %}
 
+## git 指令集
+
+
+
+```text
+git init                                       # 初始化本地git倉庫（創建新倉庫）
+git config --global user.name "xxx"            # 配置用戶名
+git config --global user.email "xxx@xxx.com"   # 配置郵件
+git config --global color.ui true              # git status等命令自動著色
+git config --global color.status auto
+git config --global color.diff auto
+git config --global color.branch auto
+git config --global color.interactive auto
+git config --global --unset http.proxy          # remove proxy configuration on git
+git clone git+ssh://git@192.168.53.168/VT.git   # clone遠程倉庫
+git status                                      # 查看當前版本狀態（是否修改）
+git add xyz                                     # 添加xyz文件至index
+git add .                                       # 增加當前子目錄下所有更改過的文件至index
+git commit -m 'xxx'                             # 提交
+git commit --amend -m 'xxx'                     # 合併上一次提交（用於反復修改）
+git commit -am 'xxx'                            # 將add和commit合為一步
+git rm xxx                                      # 刪除index中的文件
+git rm -r *                                     # 遞歸刪除
+git log                                         # 顯示提交日誌
+git log -1                                      # 顯示1行日誌 -n為n行
+git log -5
+git log --stat                                  # 顯示提交日誌及相關變動文件
+git show dfb02e6e4f2f7b573337763e5c0013802e392818 # 顯示某個提交的詳細內容
+git show dfb02                                  # 可只用commitid的前幾位
+git show HEAD                                   # 顯示HEAD提交日誌
+git show HEAD^          # 顯示HEAD的父（上一個版本）的提交日誌 ^^為上兩個版本 ^5為上5個版本
+git tag                                         # 顯示已存在的tag
+git tag -a v2.0 -m 'xxx'                        # 增加v2.0的tag
+git show v2.0                                   # 顯示v2.0的日誌及詳細內容
+git log v2.0                                    # 顯示v2.0的日誌
+git diff                                        # 顯示所有未添加至index的變更
+git diff --cached                               # 顯示所有已添加index但還未commit的變更
+git diff HEAD^                                  # 比較與上一個版本的差異
+git diff HEAD -- ./lib                          # 比較與HEAD版本lib目錄的差異
+git diff origin/master..master                  # 比較遠程分支master上有本地分支master上沒有的
+git diff origin/master..master --stat           # 只顯示差異的文件，不顯示具體內容
+git remote add origin git+ssh://git@192.168.53.168/VT.git # 增加遠程定義（用於push/pull/fetch）
+git branch                                      # 顯示本地分支
+git branch --contains 50089                     # 顯示包含提交50089的分支
+git branch -a                                   # 顯示所有分支
+git branch -r                                   # 顯示所有原創分支
+git branch --merged                             # 顯示所有已合併到當前分支的分支
+git branch --no-merged                          # 顯示所有未合併到當前分支的分支
+git branch -m master master_copy                # 本地分支改名
+git checkout -b master_copy                     # 從當前分支創建新分支master_copy並檢出
+git checkout -b master master_copy              # 上面的完整版
+git checkout features/performance               # 檢出已存在的features/performance分支
+git checkout --track hotfixes/BJVEP933          # 檢出遠程分支hotfixes/BJVEP933並創建本地跟踪分支
+git checkout v2.0                               # 檢出版本v2.0
+git checkout -b devel origin/develop            # 從遠程分支develop創建新本地分支devel並檢出
+git checkout -- README                          # 檢出head版本的README文件（可用於修改錯誤回退）
+git merge origin/master                         # 合併遠程master分支至當前分支
+git cherry-pick ff44785404a8e                   # 合併提交ff44785404a8e的修改
+git push origin master                          # 將當前分支push到遠程master分支
+git push origin :hotfixes/BJVEP933              # 刪除遠程倉庫的hotfixes/BJVEP933分支
+git push --tags                                 # 把所有tag推送到遠程倉庫
+git fetch                                       # 獲取所有遠程分支（不更新本地分支，另需merge）
+git fetch --prune                               # 獲取所有原創分支並清除服務器上已刪掉的分支
+git pull origin master                          # 獲取遠程分支master並merge到當前分支
+git mv README README2                           # 重命名文件README為README2
+git reset --hard HEAD                           # 將當前版本重置為HEAD（通常用於merge失敗回退）
+git rebase
+git branch -d hotfixes/BJVEP933 # 刪除分支hotfixes/BJVEP933（本分支修改已合併到其他分支）
+git branch -D hotfixes/BJVEP933 # 強制刪除分支hotfixes/BJVEP933
+git ls-files                                    # 列出git index包含的文件
+git show-branch                                 # 圖示當前分支歷史
+git show-branch --all                           # 圖示所有分支歷史
+git whatchanged                                 # 顯示提交歷史對應的文件修改
+git revert dfb02e6e4f2f
+```
+
