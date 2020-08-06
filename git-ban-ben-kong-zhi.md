@@ -22,6 +22,8 @@ mac「command」+「shit」+「.」可以顯示隱藏檔
 
 ## 打開vs code 終端機
 
+以下是範例操作，我已經有「bash」的情況下，是不用再新建一個「bash」的～。
+
 1.	Vscode打開後，按下方終端機，在右方下拉是選單按「select default shell」 
 
 ![](.gitbook/assets/image%20%2846%29.png)
@@ -32,7 +34,7 @@ mac「command」+「shit」+「.」可以顯示隱藏檔
 
 3.	再回到下方按下「+」圖案 
 
-![](.gitbook/assets/image%20%2847%29.png)
+![](.gitbook/assets/image%20%2848%29.png)
 
 ## git指令
 
@@ -136,15 +138,15 @@ message框內 輸入註解文字，就相當於以下兩個指令
 「`git add .`」+「`git commit -m "可打任何字的註解"`」
 {% endhint %}
 
-![source control](.gitbook/assets/image%20%2848%29.png)
+![source control](.gitbook/assets/image%20%2851%29.png)
 
-![message&#x6846;](.gitbook/assets/image%20%2851%29.png)
+![message&#x6846;](.gitbook/assets/image%20%2853%29.png)
 
 ## 連線github
 
 步驟一，github新建一個資料夾
 
-![](.gitbook/assets/image%20%2850%29.png)
+![](.gitbook/assets/image%20%2852%29.png)
 
 步驟二，將github產生的指令copy到vscode終端機上貼上，例如：
 
@@ -155,17 +157,17 @@ git push -u origin master
 
 然後打你的github帳密。
 
-### 插播－密碼打錯怎麼辦？
+### 插播－GIT密碼打錯怎麼辦？
 
 打開「git bash」
 
-![git bash](.gitbook/assets/image%20%2853%29.png)
+![git bash](.gitbook/assets/image%20%2856%29.png)
 
 前面的前置作業「git push –u origin master」  
 彈出視窗輸入「user name」「user password」  
 
 
-![](.gitbook/assets/image%20%2852%29.png)
+![](.gitbook/assets/image%20%2855%29.png)
 
 ## github專案加入隊員
 
@@ -175,9 +177,17 @@ git push -u origin master
 
 ![](.gitbook/assets/image%20%2849%29.png)
 
-## 
+## VS code用github互傳檔案
 
+接收邀請後，其他隊員請在本機端建立一個資料夾，打開VS code 輸入github專案的路徑。
 
+![](.gitbook/assets/image%20%2854%29.png)
 
+更新的檔案後，按下vs code左方的圖示「source control」，然後按下打勾確認。
 
+![](.gitbook/assets/image%20%2847%29.png)
+
+然後VScode的左下角訊息就有顯示上傳，記得**手動按下**更新圖示哦～
+
+![](.gitbook/assets/image%20%2850%29.png)
 
