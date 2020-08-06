@@ -164,8 +164,7 @@ git push -u origin master
 ![git bash](.gitbook/assets/image%20%2856%29.png)
 
 前面的前置作業「git push –u origin master」  
-彈出視窗輸入「user name」「user password」  
-
+彈出視窗輸入「user name」「user password」
 
 ![](.gitbook/assets/image%20%2855%29.png)
 
