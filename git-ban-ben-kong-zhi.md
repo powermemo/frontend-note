@@ -163,6 +163,10 @@ git push -u origin master
 
 ### 插播－GIT密碼打錯怎麼辦？
 
+{% hint style="warning" %}
+2020-08-12新增，感覺不是密碼錯誤的問題...而是我瀏覽器用另一個使用者\(B\)登入，然後VScode讀到\(B\)的伺服端\(?\)才會報錯.....。
+{% endhint %}
+
 打開「git bash」
 
 ![git bash](.gitbook/assets/image%20%2857%29.png)
