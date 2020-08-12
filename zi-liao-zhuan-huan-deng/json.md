@@ -49,7 +49,7 @@ document.write("json:",str,"<br>");
 {% endtab %}
 
 {% tab title="parse" %}
-JSON.parse\(json字串\)
+JSON.parse\(json字串\)//字串轉物件
 
 ```javascript
 var str = '{"empno": "7001","ename": "Andy","sal": "33000","phone":["03-4257387","03-168168","0933168168"]}';
