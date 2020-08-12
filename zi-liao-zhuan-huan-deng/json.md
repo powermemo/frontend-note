@@ -172,14 +172,74 @@ echo $obj->sal, "<br>";
 參照資料夾「login\_navBar」
 
 {% tabs %}
-{% tab title="First Tab" %}
+{% tab title="index+navBar" %}
 「index.php」首頁  
-連結「navBar.inc」  
-連結「login.js」
+連結「navBar.inc」，登入區域分離  
+連結「login.js」，登入控制
+
+```php
+//index.php
+<html>
+<head>
+<meta charset="utf-8">
+<title>董董購物網</title>
+<link rel="stylesheet" type="text/css" href="jsLogin.css">
+<link rel="icon" href="大頭照.jpg">
+</head>
+
+<body>
+<!---------------------這是navbar-------------------------->  
+<?php 
+require_once("navBar.inc");
+?>
+<!---------------------這是navbar-------------------------->
+
+
+<div id="content">
+<center><h1>這是首頁</h1></center><br>
+<p><center><a href="about.php">關於我們</a></center></p>
+<p><center><a href="discuss.php">討論區</a></center></p>
+</div>
+
+<div id="footer"></div>
+
+</div>
+<script src="login.js">
+</script>
+</body>
+</html>
+```
+
+```php
+//navBar.inc
+<!-- 燈箱：登入 -->
+<div id="lightBox" style="display:none">
+<table border="1" align="center" cellspacing="0" id="tableLogin">
+<tr><td>帳號</td><td><input type="text" name="memId" id="memId"></td></tr>
+<tr><td>密碼</td><td><input type="password" name="memPsw" id="memPsw"></td></tr>
+<tr><td colspan="2" align="center">
+        <input type="button" id="btnLogin" value="登入">
+        <input type="button" id="btnLoginCancel" value="取消">
+    </td></tr>
+</table>
+</div>
+
+<!-- wrapper -->
+<div id="wrapper">
+<!-- 登入bar -->
+<img src="大頭照.jpg">
+<div id="bar" style="position: absolute;top:0;right: 20px">
+<span id="memName">&nbsp;</span>   <!-- 使用者姓名 -->
+<span id="spanLogin">登入</span>
+</div>
+```
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="jsLogin" %}
+「login.js」，登入控制  
+連結「logout.php」，啟用session與關閉session資料  
+連結「ajaxLogin.php」，將資料寫入session  
+連結「getLonginInfo.php」
 {% endtab %}
 {% endtabs %}
 
