@@ -9,8 +9,8 @@ description: 一種資料交換的格式，可以是副檔名
 {% hint style="info" %}
 兩種常見的方法
 
-* `JSON.stringify(js物件) //物件轉字串`
-* `JSON.parse(json字串)   //字串轉物件`
+* `JSON.stringify(js物件) //物件|陣列轉字串(JSON)`
+* `JSON.parse(json字串)   //字串(JSON)轉物件|陣列`
 {% endhint %}
 
 對應範例檔0804「json.html」
