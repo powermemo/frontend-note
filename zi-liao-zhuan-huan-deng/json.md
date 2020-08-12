@@ -173,7 +173,9 @@ echo $obj->sal, "<br>";
 
 {% tabs %}
 {% tab title="First Tab" %}
-
+「index.php」首頁  
+連結「navBar.inc」  
+連結「login.js」
 {% endtab %}
 
 {% tab title="Second Tab" %}
