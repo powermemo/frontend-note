@@ -699,9 +699,5 @@ try{
 ?>
 ```
 {% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
 {% endtabs %}
 
