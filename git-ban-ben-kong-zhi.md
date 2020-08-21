@@ -289,3 +289,20 @@ git revert dfb02e6e4f2f
 
 ## 【git flow】\[[link](https://github.com/o0o0o1o0/groupButMy.git)\]
 
+## 【緊急】多個GIT帳號切換
+
+\[[**原網址說明**](https://medium.com/@hyWang/907c8eadbabf)\]
+
+7.取消Global設定並設定各Repository的User資料  
+\(若不取消的話，Pull資料時會使用Global的Mail及UserName\)
+
+```text
+//取消Global設定
+    $git config --global --unset user.name 
+    $git config --global --unset user.email
+
+//設定各Repository的User資料
+    $git config  user.email "userName@address"     
+    $git config  user.name "userName"
+```
+
