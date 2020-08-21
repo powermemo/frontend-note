@@ -188,5 +188,9 @@
 {% tab title="增加一組\(clone\)" %}
 {% embed url="https://codepen.io/ch-zhuchu/pen/WNwNwNQ" caption="https://codepen.io/ch-zhuchu/pen/WNwNwNQ" %}
 {% endtab %}
+
+{% tab title="輪播\(粗糙\)" %}
+{% embed url="https://codepen.io/ch-zhuchu/pen/PoNbjXe" caption="https://codepen.io/ch-zhuchu/pen/PoNbjXe" %}
+{% endtab %}
 {% endtabs %}
 
