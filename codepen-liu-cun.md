@@ -164,10 +164,6 @@
 {% tab title="計算機" %}
 {% embed url="https://codepen.io/Lilykhan/pen/XWXPEbL" caption="https://codepen.io/Lilykhan/pen/XWXPEbL" %}
 {% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
 {% endtabs %}
 
 ## 基本向
