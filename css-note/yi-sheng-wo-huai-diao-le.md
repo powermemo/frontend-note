@@ -120,7 +120,9 @@ description: 雜症處理區。
 {% endtab %}
 {% endtabs %}
 
-## 自設透明圖片
+## 圖片
+
+### 自設透明圖片
 
 本來使用「::before/::after」還有「absolute」，但是它們很難使用在RWD  
 於是更換方法二：使用線性漸層「linear-gradient」+「::before/::after」
@@ -135,6 +137,27 @@ description: 雜症處理區。
 
 ```css
 clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+```
+
+### 正方形圖片，不設固定高的情況下
+
+![&#x76EE;&#x6A19;&#xFF1A;&#x8B93;&#x6A58;&#x8272;\(&#x53F3;&#x65B9;\)&#x5716;&#x7247;&#x8A2D;&#x5B9A;&#x6210;&#x6B63;&#x65B9;&#x5F62;](../.gitbook/assets/image%20%2858%29.png)
+
+```css
+父層{
+    padding-top: 20%;
+    width: 20%;
+    position: relative;
+    overflow: hidden;
+}
+
+img(子層){
+    position: absolute;
+    height: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
 ```
 
 ## RWD

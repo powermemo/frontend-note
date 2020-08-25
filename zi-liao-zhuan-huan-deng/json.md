@@ -167,21 +167,7 @@ echo $obj->sal, "<br>";
 {% endtab %}
 {% endtabs %}
 
-## 🍵應用－串聯多頁面會員登入
-
-參照資料夾「login\_navBar」
-
-{% tabs %}
-{% tab title="First Tab" %}
-
-{% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
-{% endtabs %}
-
-
+## 
 
 
 
