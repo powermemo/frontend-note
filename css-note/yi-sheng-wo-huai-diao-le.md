@@ -144,9 +144,13 @@ clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 ![&#x76EE;&#x6A19;&#xFF1A;&#x8B93;&#x6A58;&#x8272;\(&#x53F3;&#x65B9;\)&#x5716;&#x7247;&#x8A2D;&#x5B9A;&#x6210;&#x6B63;&#x65B9;&#x5F62;](../.gitbook/assets/image%20%2858%29.png)
 
 ```css
-父層{
-    padding-top: 20%;
-    width: 20%;
+祖父層(整個橘色外框){
+    /*如果不要圖片貼邊可以設定padding*/
+}
+
+父層(img的div框){
+    padding-top: 20%;    /* 因為共有五個項目100% ÷ 5 = 20% */
+    width: 20%;          /* padding-top設定甚麼就給甚麼 */
     position: relative;
     overflow: hidden;
 }
