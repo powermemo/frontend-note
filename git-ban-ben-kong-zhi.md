@@ -294,7 +294,8 @@ git revert dfb02e6e4f2f
 \[[**原網址說明**](https://medium.com/@hyWang/907c8eadbabf)\]
 
 7.取消Global設定並設定各Repository的User資料  
-\(若不取消的話，Pull資料時會使用Global的Mail及UserName\)
+\(若不取消的話，Pull資料時會使用Global的Mail及UserName\)  
+好像成功？好像失敗....?
 
 ```text
 //取消Global設定
