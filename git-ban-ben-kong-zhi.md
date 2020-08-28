@@ -137,8 +137,8 @@ mac「command」+「shit」+「.」可以顯示隱藏檔
 {% endhint %}
 
 {% hint style="info" %}
-檔案修改後，在 source control的  
-message框內 輸入註解文字，就相當於以下兩個指令  
+檔案修改後，在 source control\*的  
+message框\*內 輸入註解文字，就相當於以下兩個指令  
 「`git add .`」+「`git commit -m "可打任何字的註解"`」
 {% endhint %}
 
