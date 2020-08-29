@@ -110,7 +110,7 @@ foreach($classmate as $id => $data){
 | in\_array\(要搜尋的值,陣列變數\) | 傳回資料是否在陣列中？ |
 | array\_search\(要搜尋的值,陣列變數\) | 傳回資料在陣列中的 索引值 |
 | shuffle\(陣列變數\) | 將陣列中的資料打亂 |
-| array\_sum\(陣列變數\) |  |
+| array\_sum\(陣列變數\) | 總和 |
 | array\_values\(陣列變數\) |  |
 | ... |  |
 
