@@ -42,7 +42,7 @@ cmd打開命令提示字元 &gt; 輸入指令「ipconfig」
   If you are using PHP as FastCGI with IIS you should use the **Non-Thread Safe \(NTS\)** versions of PHP.
 
 * 點選ZIP檔
-* 2020-06-24是這個版本 **VC15 x64 Non Thread Safe \(2020-Jun-09 17:07:39\)**[Zip](https://windows.php.net/downloads/releases/php-7.4.7-nts-Win32-vc15-x64.zip) \[24.82MB\]
+* 2020-06-24是這個版本 **VC15 x64 Non Thread Safe \(2020-Jun-09 17:07:39\)**Zip \[24.82MB\]
 
 
 
