@@ -15,7 +15,7 @@
 * prodQueryToDb.php
 
 {% tabs %}
-{% tab title="First Tab" %}
+{% tab title="html查資料" %}
 #### 查書單書號 \(對應範例檔案prodQuery.html\)
 
 ```markup
@@ -25,24 +25,77 @@
     <input type="submit" value="查詢">
 </form>
 ```
+{% endtab %}
 
+{% tab title="PHP查到的書單可以異動" %}
 #### 查詢到的書單明細-可以更動內容 \(對應範例檔案prodQuery.php\)
 
 ```php
 <?php
-    $psn = $_GET["pSn"];
-    $errMsg='';
-    try{
-        require_once("../connectBooks.php");
-        $sql = "SELECT * FROM products WHERE psn = ".$_GET['pSn']." ";
-        $searchPro = $pdo->query($sql);
-    }catch(PDOException $e){
-        $errMsg .= "錯誤：".$e->getMessage()."<br>";
-        $errMsg .= "行號：".$e->getLine()."<br>";
-    }
-?>
-```
+$psn = $_REQUEST["psn"];
+$errMsg = "";
+//連線資料庫
+try{
+  require_once("../connectBooks.php");
+  $sql = "select * from products where psn = :psn";
+  $products = $pdo->prepare($sql);
+  $products->bindValue(":psn", $psn);
+  $products->execute();
+}catch(PDOException $e){
+  $errMsg .= "錯誤原因 : ".$e -> getMessage(). "<br>";
+  $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
+}
+?>  
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>查詢商品資料</title>
+<style>
+th {
+  background:#bfbfef;
+}
+td {
+  border-bottom:1px deeppink dotted;
+}
+</style>
+</head>
 
+<body>
+<?php 
+if( $errMsg != ""){ //例外
+  echo "<div><center>$errMsg</center></div>";
+}elseif($products->rowCount()==0){
+      echo "<div><center>查無此商品資料</center></div>";
+}else{
+      $prodRow = $products->fetchObject();
+?>
+<br>
+<h2 style="text-align:center;color:deeppink">書籍基本資料</h2>
+<form action="prodUpdateToDb.php">
+  <input type="hidden" name="psn" value="<?=$prodRow->psn?>">
+  <table align="center" width="300" >
+    <tr><th>書號</th><td><?=$prodRow->psn?></td></tr>
+    <tr><th>書號</th><td><input type="text" name="psn" value="<?=$prodRow->psn?>"disabled></td></tr>
+    <tr><th>書名</th><td><input type="text" name="pname"value="<?=$prodRow->pname?>"></td></tr>
+    <tr><th>價格</th><td><input type="text" name="price"value="<?=$prodRow->price?>"></td></tr>
+    <tr><th>作者</th><td><input type="text" name="author"value="<?=$prodRow->author?>"></td></tr>
+    <tr><th>頁數</th><td><input type="text" name="pages"value="<?=$prodRow->pages?>"></td></tr>
+    <tr><th>圖檔</th><td><input type="text" name="image"value="<?=$prodRow->image?>"></td></tr>
+    <tr><td colspan="2" align="center"><input type="submit" value="確定修改"></td></tr>
+  </table>
+</form>
+  <?php
+
+}
+?>
+</body>
+</html>
+
+```
+{% endtab %}
+
+{% tab title="異動是否成功" %}
 #### 更動內容是否成功 \(對應範例檔案prodQueryToDb.php\)
 
 ```php
@@ -68,8 +121,14 @@ try{
     $errMsg .= "錯誤行號 : ".$e -> getLine(). "<br>";
 }
 ?>
-//👆頁面最上方
-//👇body裡面
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 <?php
 if($errMsg != ""){
     echo "<center>$errMsg</center>";
@@ -78,6 +137,8 @@ if($errMsg != ""){
 }
 
 ?>
+</body>
+</html>
 ```
 {% endtab %}
 {% endtabs %}
