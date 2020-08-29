@@ -146,7 +146,7 @@ p.s.「欄位名稱」是指，html檔中標籤的「name」屬性的值。
         echo "使用者：,{$_GET["memId"]},<br>"
 ?>
 //可使用「$_GET...」、「$_POST...」或是「$_GREQUEST...」
-//「$_GREQUEST...」可取代「$_GET...」、「$_POST...」
+//「$_REQUEST...」可取代「$_GET...」、「$_POST...」
 ```
 
 {% hint style="info" %}
