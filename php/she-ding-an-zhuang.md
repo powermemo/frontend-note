@@ -93,7 +93,7 @@ p.s. 若時區無更動，IIS重新整理。
 {% hint style="info" %}
 【引用PDO指令】\(一種安全性較佳的指令\)
 
-1. 找到ini檔，把以下註解拿掉 extension = mysqli extension = pdo\_mysql
+1. 找到ini檔，把以下註解「;」拿掉 extension = mysqli extension = pdo\_mysql
 2. 重整IIS
 {% endhint %}
 
