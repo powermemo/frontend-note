@@ -396,46 +396,45 @@ if(isset($_GET["ability"])){
 ```php
 //以下是我2020/07/25 Sat做的第二版
 <style>
-td{
-	text-align:center;
-	font-family:arial;
-}
+	table,tr,td{
+		text-align:center;
+		font-family:arial;
+		border-collapse:collapse;
+	}
+	td,tr{
+		border: 1px solid black;
+	}
 </style>
 <?php
 //一副撲克牌52張，請將其洗牌後發給4人，並顯示個玩家所得到的點數：
-//建立一個陣列值1~52
-$poker = array();
-for($i=0;$i<52;$i++){
-	$poker[$i] = $i + 1;
-	//echo $poker[$i];//for test
-}
-//打亂
-shuffle($poker);
-//分配給四個玩家
-foreach($poker as $i => $data){
-	if($data % 4 == 0){
-		$player1[$i] = $data;
-	}elseif($data % 4 == 1){
-		$player2[$i] = $data;
-	}elseif($data % 4 == 2){
-		$player3[$i] = $data;
-	}elseif($data % 4 == 3){
-		$player4[$i] = $data;
+	//建立一個陣列值1~52
+	$poker = array();
+	for($i=0;$i<52;$i++){
+		$poker[$i] = $i + 1;
+		//echo $poker[$i];//for test
 	}
-}
-$myArray = array($player1,$player2,$player3,$player4);
-?>
-
-<!-- 印出表格資料 -->
-<table cellspacing='0' border='1'>
-<?php
-foreach($myArray as $i => $row){
-	echo "<tr><th>Player",$i+1,"</th>";
-	foreach($row as $j => $data){
-		echo "<td>".$myArray[$i][$j]."</td>";
+	//打亂
+	shuffle($poker);
+	//分配給四個玩家
+	foreach($poker as $i => $data){
+		if		($data % 4 == 0){	$player1[$i] = $data;}
+		elseif($data % 4 == 1){	$player2[$i] = $data;}
+		elseif($data % 4 == 2){ $player3[$i] = $data;}
+		elseif($data % 4 == 3){ $player4[$i] = $data;}
 	}
-	echo "</tr>";
-}
+	$myArray = array($player1,$player2,$player3,$player4);
+	?>
+	
+	<!-- 印出表格資料 -->
+	<table>
+	<?php
+	foreach($myArray as $i => $row){
+		echo "<tr><th>Player",$i+1,"</th>";
+		foreach($row as $j => $data){
+			echo "<td>".$myArray[$i][$j]."</td>";
+		}
+		echo "</tr>";
+	}
 ?>
 </table>
 
