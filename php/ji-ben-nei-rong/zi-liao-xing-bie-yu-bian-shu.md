@@ -188,7 +188,7 @@ echo nl2br($_GET["note"]);
 ```php
 echo gettype(123),"<br>";//integer
 echo is_string("12345"),"<br>";//1
-echo var_dump(3.1*2,true),"<br>";//float(6.2) bool(true)
+var_dump(3.1*2,true),"<br>";//float(6.2) bool(true)
 ```
 {% endtab %}
 
