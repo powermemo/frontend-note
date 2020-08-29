@@ -205,7 +205,7 @@ function sum($a, $b){
 	$total = $a + $b;
 	return $total;
 }
-echo "10+20 = ", sum(10,20), "<br>";//310+20=30
+echo "10+20 = ", sum(10,20), "<br>";//10+20=30
 
 
 
