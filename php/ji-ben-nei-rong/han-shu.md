@@ -278,8 +278,8 @@ function sum_test2(&$a,&$b){//🟡參數變數前面有加「&」
 $x = 10;
 $y = 20;
 echo "x + y =", sum_test2($x,$y), "<br>";//x + y =30
-echo "x = $x <br>";//x = 110
-echo "y = $y <br>";//y = 120
+echo "x = $x <br>";											//x = 110
+echo "y = $y <br>";											//y = 120
 ?>
 ```
 {% endtab %}
@@ -293,7 +293,7 @@ function adjustSalary_pp($dataArr,$amt){
 	for($i=0;$i<count($dataArr);$i++){
 		$dataArr[$i] += $amt;
 	}
-	return $dataArr;
+	return $dataArr;														//🟡
 }
 $salaryArr = array(10000,20000,30000,40000);
 $salaryArr = adjustSalary_pp($salaryArr,2000);//🟡
@@ -311,7 +311,7 @@ function adjustSalary_pp2(&$dataArr,$amt){//🟡
 	}
 }
 $salaryArr = array(10000,20000,30000,40000);
-adjustSalary_pp2($salaryArr,2000);
+adjustSalary_pp2($salaryArr,2000);				//🟡
 print_r($salaryArr);
 
 ?>
@@ -360,7 +360,7 @@ echo printMark("ED102");
 ### 區域變數  全域變數  靜態變數
 
 {% tabs %}
-{% tab title="PHP" %}
+{% tab title="全域變數global " %}
 ```php
 <h2>global</h2>
 <?php
@@ -383,7 +383,7 @@ showAmount();
 ```
 {% endtab %}
 
-{% tab title="靜態變數" %}
+{% tab title="靜態變數static" %}
 ```php
 <h2>static</h2>
 <?
