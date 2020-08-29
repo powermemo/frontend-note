@@ -42,7 +42,7 @@ cmd打開命令提示字元 &gt; 輸入指令「ipconfig」
   If you are using PHP as FastCGI with IIS you should use the **Non-Thread Safe \(NTS\)** versions of PHP.
 
 * 點選ZIP檔
-* 2020-06-24是這個版本 **VC15 x64 Non Thread Safe \(2020-Jun-09 17:07:39\)**[Zip](https://windows.php.net/downloads/releases/php-7.4.7-nts-Win32-vc15-x64.zip) \[24.82MB\]
+* 2020-06-24是這個版本 **VC15 x64 Non Thread Safe \(2020-Jun-09 17:07:39\)**Zip \[24.82MB\]
 
 
 
@@ -71,7 +71,12 @@ p.s. 若時區無更動，IIS重新整理。
 {% endtab %}
 
 {% tab title="短標籤可以作用" %}
-短標籤就是把「&lt;?php?&gt;」可以縮寫成「&lt;??&gt;」
+短標籤就是把「`<?php?>`」可以縮寫成「`<??>`」  
+\(1.2.如果之前做過，就不用再做一次了。\)
+
+```php
+<?=$name?>
+```
 
 1. 到C槽\(你存放的位置\)php資料夾找到「php.ini-development」檔案，複製一份
 2. 將複製的那份檔案，更改副檔名為「php.ini」
@@ -92,7 +97,7 @@ p.s. 若時區無更動，IIS重新整理。
 {% hint style="info" %}
 【引用PDO指令】\(一種安全性較佳的指令\)
 
-1. 找到ini檔，把以下註解拿掉 extension = mysqli extension = pdo\_mysql
+1. 找到ini檔，把以下註解「;」拿掉 extension = mysqli extension = pdo\_mysql
 2. 重整IIS
 {% endhint %}
 
