@@ -12,6 +12,8 @@
 
 ## 字串
 
+參照範例檔：0622dataType.php
+
 {% tabs %}
 {% tab title="單引號" %}
 使用方法較有限  
@@ -41,19 +43,12 @@
 
 ```php
 <?php
-        echo "I am Sara",'<br>';
-        echo "I am \"Sara\"", '<br>';
-        echo "I am 'Sara'", '<br>';
-        echo "I am \\Sara\\", '<br>';
+        echo "I am Sara",'<br>';        //I am Sara
+        echo "I am \"Sara\"", '<br>';   //I am "Sara"
+        echo "I am 'Sara'", '<br>';     //I am 'Sara'
+        echo "I am \\Sara\\", '<br>';   //I am \Sara\
 ?>
 ```
-
-呈現結果
-
-I am Sara  
-I am "Sara"  
-I am 'Sara'  
-I am \Sara\
 
 ```php
 <?php
@@ -78,6 +73,8 @@ I am \Sara\
 {% endtabs %}
 
 ## $\_SERVER變數
+
+參照0622範例檔：server.php
 
 ```php
 <?php
