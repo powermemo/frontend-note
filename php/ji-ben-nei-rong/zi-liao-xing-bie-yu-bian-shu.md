@@ -79,9 +79,9 @@
 ```php
 <?php
     $_SERVER['REMOTE_ADDR'];//客戶端ip位置
-    $_SERVER['PHP_SELF'];//目前檔案路徑及名稱
+    $_SERVER['PHP_SELF'];   //目前檔案路徑及名稱
     $_SERVER['SERVER_NAME'];//伺服器名稱
-    phpinfo();//本機端PHP詳細資訊
+    phpinfo();              //本機端PHP詳細資訊
 ?>
 ```
 
