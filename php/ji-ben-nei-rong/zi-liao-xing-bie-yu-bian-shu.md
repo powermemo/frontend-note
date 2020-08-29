@@ -19,19 +19,12 @@
 
 ```php
 <?php
-        echo 'I am Sara','<br>';
-        echo 'I am "Sara"', '<br>';
-        echo 'I am \'Sara\'', '<br>';
-        echo 'I am \\Sara\\', '<br>';
+        echo 'I am Sara','<br>';        //I am Sara
+        echo 'I am "Sara"', '<br>';     //I am "Sara"
+        echo 'I am \'Sara\'', '<br>';   //I am 'Sara'
+        echo 'I am \\Sara\\', '<br>';   //I am \Sara\
 ?>
 ```
-
-呈現結果
-
-I am Sara  
-I am "Sara"  
-I am 'Sara'  
-I am \Sara\
 {% endtab %}
 
 {% tab title="雙引號" %}

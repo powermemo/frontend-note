@@ -51,13 +51,7 @@
 inc的寫法好比.js檔案，就只要標籤\(如`<h2></h2>`\)、`<?php?>`之類的東西就好
 {% endhint %}
 
-{% hint style="info" %}
-輸出變數值簡化版
 
-```php
-<?=$name?>
-```
-{% endhint %}
 
 ## 
 
