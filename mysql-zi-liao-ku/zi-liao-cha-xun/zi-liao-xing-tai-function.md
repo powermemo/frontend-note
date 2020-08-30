@@ -683,7 +683,7 @@ CONVERT(1,UNSIGNED)-2.0 X4;`
 1. 顯示系統目前的日期並將 表頭命名為「系統日期」
 2. 顯示所有員工之員編、姓名、薪資、薪資+15%，並以整數表示，表頭命名為new salary。
 3. 接上題，增加一個資料向表頭命名為increase\(new salary 扣除salary的值\)
-4. 顯示員工姓名、到職日、檢討薪資日期（到職日六月後的第一個星期一），該欄位命名為review， 自訂日期格式為：Sunday, the seventh of September。
+4. 🟡顯示員工姓名、到職日、檢討薪資日期（到職日六月後的第一個星期一），該欄位命名為review， 自訂日期格式為：Sunday, the seventh of September。
 5. 顯示每位員工的姓名、資料項\(months\_worked\)：計算到今天為止工作了幾個月\(月數四捨五入到整數\)
 6. 顯示格式：&lt;員工姓名&gt; earns &lt;薪水&gt; monthly but wants &lt;3倍薪水&gt;.並將表頭命名為dream salaries。
 7. 顯示所有員工之姓名和薪資，設定薪資長度為15字元並在左邊加上$符號，表頭命名為SALARY。
@@ -692,7 +692,7 @@ CONVERT(1,UNSIGNED)-2.0 X4;`
 10. 顯示資料項employee\_and\_their\_salaries的資料來顯示所有員工姓名、薪資， 且用星號表示他們的薪資，每一個星號表100元，薪資由高至低顯示。
 
 {% tabs %}
-{% tab title="0" %}
+{% tab title="1" %}
 ```text
 SELECT CURDATE() '系統日期';
 +------------+
@@ -704,9 +704,9 @@ SELECT CURDATE() '系統日期';
 ```
 {% endtab %}
 
-{% tab title="1" %}
+{% tab title="2" %}
 ```
--- 顯示系統目前的日期並將 表頭命名為「系統日期」
+-- 顯示所有員工之員編、姓名、薪資、薪資+15%，並以整數表示，表頭命名為new salary。
 SELECT empno, ename, sal, round(sal*1.15,2) 'New Salary' 
 	FROM emp;
 +-------+--------+---------+------------+
@@ -731,9 +731,9 @@ SELECT empno, ename, sal, round(sal*1.15,2) 'New Salary'
 ```
 {% endtab %}
 
-{% tab title="2" %}
+{% tab title="3" %}
 ```
--- 顯示所有員工之員編、姓名、薪資、薪資+15%，並以整數表示，表頭命名為new salary。
+-- 接上題，增加一個資料向表頭命名為increase(new salary 扣除salary的值)
 
 SELECT empno, 
 	ename, 
@@ -763,35 +763,7 @@ FROM emp;
 ```
 {% endtab %}
 
-{% tab title="3" %}
-```
--- 接上題，增加一個資料向表頭命名為increase(new salary 扣除salary的值)
-SELECT CONCAT(ename, ' earns ', sal ,' monthly but wants ' ,3*sal) 
-							'Dream Salaries' 
-	FROM emp;
-+------------------------------------------------+
-| Dream Salaries                                 |
-+------------------------------------------------+
-| SMITH earns 800.00 monthly but wants 2400.00   |
-| ALLEN earns 1600.00 monthly but wants 4800.00  |
-| WARD earns 1250.00 monthly but wants 3750.00   |
-| JONES earns 2975.00 monthly but wants 8925.00  |
-| MARTIN earns 1250.00 monthly but wants 3750.00 |
-| BLAKE earns 2850.00 monthly but wants 8550.00  |
-| CLARK earns 2450.00 monthly but wants 7350.00  |
-| SCOTT earns 3000.00 monthly but wants 9000.00  |
-| KING earns 5000.00 monthly but wants 15000.00  |
-| TURNER earns 1500.00 monthly but wants 4500.00 |
-| ADAMS earns 1100.00 monthly but wants 3300.00  |
-| JAMES earns 950.00 monthly but wants 2850.00   |
-| FORD earns 3000.00 monthly but wants 9000.00   |
-| MILLER earns 1300.00 monthly but wants 3900.00 |
-+------------------------------------------------+
-14 rows in set (0.00 sec)
-```
-{% endtab %}
-
-{% tab title="4" %}
+{% tab title="🟡4" %}
 ```
 /*顯示員工姓名、到職日、檢討薪資日期（到職日六月後的第一個星期一），該欄位命名為review，
 自訂日期格式為：Sunday, the seventh of September。*/
@@ -847,6 +819,34 @@ SELECT ename, ROUND(DATEDIFF(curdate(), hiredate)/365*12,0) 'MONTHS_WORKED'
 | MILLER |           462 |
 +--------+---------------+
 14 rows in set (0.02 sec)
+```
+{% endtab %}
+
+{% tab title="6" %}
+```
+-- 接上題，增加一個資料向表頭命名為increase(new salary 扣除salary的值)
+SELECT CONCAT(ename, ' earns ', sal ,' monthly but wants ' ,3*sal) 
+							'Dream Salaries' 
+	FROM emp;
++------------------------------------------------+
+| Dream Salaries                                 |
++------------------------------------------------+
+| SMITH earns 800.00 monthly but wants 2400.00   |
+| ALLEN earns 1600.00 monthly but wants 4800.00  |
+| WARD earns 1250.00 monthly but wants 3750.00   |
+| JONES earns 2975.00 monthly but wants 8925.00  |
+| MARTIN earns 1250.00 monthly but wants 3750.00 |
+| BLAKE earns 2850.00 monthly but wants 8550.00  |
+| CLARK earns 2450.00 monthly but wants 7350.00  |
+| SCOTT earns 3000.00 monthly but wants 9000.00  |
+| KING earns 5000.00 monthly but wants 15000.00  |
+| TURNER earns 1500.00 monthly but wants 4500.00 |
+| ADAMS earns 1100.00 monthly but wants 3300.00  |
+| JAMES earns 950.00 monthly but wants 2850.00   |
+| FORD earns 3000.00 monthly but wants 9000.00   |
+| MILLER earns 1300.00 monthly but wants 3900.00 |
++------------------------------------------------+
+14 rows in set (0.00 sec)
 ```
 {% endtab %}
 
