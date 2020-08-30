@@ -792,6 +792,11 @@ hiredate,
 | MILLER | 1982-01-23 00:00:00 | Monday ,the 26th of July     |
 +--------+---------------------+------------------------------+
 14 rows in set (0.02 sec)
+
+↓自我流的解釋XD：
+設 x = +6MONTH
+			  +month						+weekday
+adddate ( x INTERVAL +MOD(7-week(x)) DAY )
 ```
 {% endtab %}
 
