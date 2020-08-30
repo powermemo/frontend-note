@@ -270,9 +270,9 @@ try {
 	}else{
 		$memRow = $member->fetch(PDO::FETCH_ASSOC);
 		//登入成功,將登入者的資料寫入cookie
-		setcookie("memId",$memRow["memId"],time()+60);		//🟡
-		setcookie("memName",$memRow["memName"],time()+60);//🟡
-		setcookie("email",$memRow["email"],time()+60);    //🟡一分鐘後失效
+		setcookie("memId",$memRow["memId"],time()+60);
+		setcookie("memName",$memRow["memName"],time()+60);
+		setcookie("email",$memRow["email"],time()+60);//一分鐘後失效
 		//有效期限若為三天內：time()+3*24*60*60
 	}
 } catch (PDOException $e) {
@@ -369,7 +369,7 @@ if($errMsg !=""){
 <a href="sessionMember.php">前往會員專區</a>  
 ```
 
-#### 前往會員中心-會員資料 \(對應範例檔案sessionMember.php\)
+#### 前往會員中心-會員資料 \(對應範例檔案\)
 
 ```php
 <?php
