@@ -369,7 +369,7 @@ if($errMsg !=""){
 <a href="sessionMember.php">前往會員專區</a>  
 ```
 
-#### 前往會員中心-會員資料 \(對應範例檔案\)
+#### 前往會員中心-會員資料 \(對應範例檔案sessionMember.php\)
 
 ```php
 <?php
