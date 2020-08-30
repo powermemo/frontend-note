@@ -829,7 +829,9 @@ SELECT ename, ROUND(DATEDIFF(curdate(), hiredate)/365*12,0) 'MONTHS_WORKED'
 
 {% tab title="6" %}
 ```
--- 接上題，增加一個資料向表頭命名為increase(new salary 扣除salary的值)
+/*顯示格式：<員工姓名> earns <薪水> monthly but wants <3倍薪水>.
+  並將表頭命名為dream salaries。
+*/
 SELECT CONCAT(ename, ' earns ', sal ,' monthly but wants ' ,3*sal) 
 							'Dream Salaries' 
 	FROM emp;
