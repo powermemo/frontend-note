@@ -87,8 +87,8 @@ p.s. 若時區無更動，IIS重新整理。
 {% hint style="info" %}
 【非英文字串】使用「mbstring」。預設是關的，要打開....
 
-1. php.ini找「extension=mbstring」，並把「;」註解拿掉
-2. php.ini找「extension\_dir="ext"」，把「;」註解拿掉 將等號後面的值改為資料夾位置ex.「C:\php-7.4.7\ext」
+1. php.ini找「**extension=mbstring**」，並把「;」註解拿掉
+2. php.ini找「**extension\_dir="ext"**」，把「;」註解拿掉 將等號後面的值改為**資料夾位置**ex.「C:\php-7.4.7\ext」
 3. 打開IIS，重新啟動。
 {% endhint %}
 
@@ -97,7 +97,7 @@ p.s. 若時區無更動，IIS重新整理。
 {% hint style="info" %}
 【引用PDO指令】\(一種安全性較佳的指令\)
 
-1. 找到ini檔，把以下註解「;」拿掉 extension = mysqli extension = pdo\_mysql
+1. 找到ini檔，把以下註解「;」拿掉 **extension = mysqli extension = pdo\_mysql**
 2. 重整IIS
 {% endhint %}
 
