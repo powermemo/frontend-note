@@ -466,9 +466,16 @@ DROP TABLE emp10a;
 {% endtab %}
 {% endtabs %}
 
-## 視觀表
+## 視觀表view
 
+* 虛擬資料表，本身不儲存任何資料。
+* 特性：
+  * 可加強安全性。檢視表可以設定唯讀
+  * 簡化查詢複雜度
+  * 結構變更時，可以改view設定不需要改程式。
+  * 一資料表可建立多視觀表
 
+### 建立視觀表
 
 ## 作業練習－DDL\(p.191\)
 
@@ -626,6 +633,7 @@ ADD CONSTRAINT fk_employee_deptid FOREIGN KEY(dept_id) REFERENCES dept(deptno);
 {% tab title="1" %}
 ```text
 -- 使用EMP資料表中員編、姓名、部門編號 建立一個EMP_VU view，並將姓名欄改以EMPLOYEE
+
 ```
 {% endtab %}
 
@@ -639,6 +647,7 @@ ADD CONSTRAINT fk_employee_deptid FOREIGN KEY(dept_id) REFERENCES dept(deptno);
 {% tab title="3" %}
 ```
 -- 使用EMP_VU view來顯示所有員工姓名及部門編號。
+
 ```
 {% endtab %}
 
@@ -654,6 +663,7 @@ ADD CONSTRAINT fk_employee_deptid FOREIGN KEY(dept_id) REFERENCES dept(deptno);
 {% tab title="5" %}
 ```
 -- 顯示DEPT20 view欄位定義資料(結構)及其所有資料內容。
+
 ```
 {% endtab %}
 
