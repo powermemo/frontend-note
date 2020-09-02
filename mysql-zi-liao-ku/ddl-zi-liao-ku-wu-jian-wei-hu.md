@@ -485,7 +485,7 @@ AS <select_statement>`「or replace」是選填。
 
 ### 建立視觀表
 
-```aspnet
+```sql
 mysql> CREATE VIEW empvu10
     -> AS
     ->   SELECT *
@@ -494,6 +494,7 @@ mysql> CREATE VIEW empvu10
 Query OK, 0 rows affected (0.17 sec)
 
 mysql> SELECT * FROM empvu10;
+/*
 +-------+--------+-----------+------+---------------------+---------+------+--------+
 | EMPNO | ENAME  | JOB       | MGR  | HIREDATE            | SAL     | COMM | DEPTNO |
 +-------+--------+-----------+------+---------------------+---------+------+--------+
@@ -501,14 +502,87 @@ mysql> SELECT * FROM empvu10;
 |  7839 | KING   | PRESIDENT | NULL | 1981-11-17 00:00:00 | 5000.00 | NULL |     10 |
 |  7934 | MILLER | CLERK     | 7782 | 1982-01-23 00:00:00 | 1300.00 | NULL |     10 |
 +-------+--------+-----------+------+---------------------+---------+------+--------+
-3 rows in set (0.03 sec)
+3 rows in set (0.03 sec)*/
 ```
 
-### 
+### 建立視觀表－設定欄位名稱
+
+```sql
+mysql> CREATE VIEW salvu20 (employee_no, employee, annual_sal)
+    -> AS
+    -> SELECT empno, ename, sal*12
+    -> FROM emp
+    -> WHERE deptno = 20;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> SELECT * FROM salvu20;/*
++-------------+----------+------------+
+| employee_no | employee | annual_sal |
++-------------+----------+------------+
+|        7369 | SMITH    |    9600.00 |
+|        7566 | JONES    |   35700.00 |
+|        7788 | SCOTT    |   36000.00 |
+|        7876 | ADAMS    |   13200.00 |
+|        7902 | FORD     |   36000.00 |
++-------------+----------+------------+
+5 rows in set (0.00 sec)*/
+```
+
+### 建立視觀表－設定欄位名稱\(別名\)
+
+```sql
+mysql> CREATE VIEW salvu30
+    -> AS
+    -> SELECT empno 'employee_number', ename 'name', sal 'salary'
+    -> FROM emp
+    -> WHERE deptno = 30;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM salvu30;/*
++-----------------+--------+---------+
+| employee_number | name   | salary  |
++-----------------+--------+---------+
+|            7499 | ALLEN  | 1600.00 |
+|            7521 | WARD   | 1250.00 |
+|            7654 | MARTIN | 1250.00 |
+|            7698 | BLAKE  | 2850.00 |
+|            7844 | TURNER | 1500.00 |
+|            7900 | JAMES  |  950.00 |
++-----------------+--------+---------+
+6 rows in set (0.00 sec)*/
+```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="建立複雜視觀表" %}
+```sql
+mysql> CREATE VIEW dept_sum_vu(name, minsal, maxsal, avgsal)
+    -> AS
+    -> SELECT d.dname, MIN(e.sal), MAX(e.sal), AVG(e.sal)
+    -> FROM emp e JOIN dept d ON(e.deptno = d.deptno)
+    -> GROUP BY d.dname;
+/*Query OK, 0 rows affected (0.03 sec)*/
 
+mysql> DESC dept_sum_vu;/*
++--------+---------------+------+-----+---------+-------+
+| Field  | Type          | Null | Key | Default | Extra |
++--------+---------------+------+-----+---------+-------+
+| name   | varchar(14)   | YES  |     | NULL    |       |
+| minsal | decimal(7,2)  | YES  |     | NULL    |       |
+| maxsal | decimal(7,2)  | YES  |     | NULL    |       |
+| avgsal | decimal(11,6) | YES  |     | NULL    |       |
++--------+---------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)*/
+
+mysql>     SELECT * FROM dept_sum_vu;/*
++------------+---------+---------+-------------+
+| name       | minsal  | maxsal  | avgsal      |
++------------+---------+---------+-------------+
+| ACCOUNTING | 1300.00 | 5000.00 | 2916.666667 |
+| RESEARCH   |  800.00 | 3000.00 | 2175.000000 |
+| SALES      |  950.00 | 2850.00 | 1566.666667 |
++------------+---------+---------+-------------+
+3 rows in set (0.00 sec)*/
+```
 {% endtab %}
 {% endtabs %}
 
