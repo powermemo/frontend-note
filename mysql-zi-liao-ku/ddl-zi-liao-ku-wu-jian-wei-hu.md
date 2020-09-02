@@ -587,7 +587,7 @@ mysql>     SELECT * FROM dept_sum_vu;/*
 ```
 {% endtab %}
 
-{% tab title="視觀表-查詢" %}
+{% tab title="查詢" %}
 查詢功能與資料表完全一樣
 
 ```sql
@@ -613,7 +613,7 @@ mysql> SELECT name, avgsal
 ```
 {% endtab %}
 
-{% tab title="視觀表-更新" %}
+{% tab title="更新" %}
 ### 查詢view是否可執行DML命令
 
 ```sql
@@ -705,7 +705,7 @@ ERROR 1348 (HY000): Column 'annual_sal' is not updatable
 ```
 {% endtab %}
 
-{% tab title="視觀表-新增" %}
+{% tab title="新增" %}
 ### 新增資料
 
 ```sql
@@ -749,7 +749,7 @@ mysql> INSERT INTO salvu20
 ```
 {% endtab %}
 
-{% tab title="視觀表-刪除" %}
+{% tab title="刪除" %}
 ### 刪除資料
 
 ```sql
@@ -808,6 +808,81 @@ mysql> UPDATE dept_sum_vu
 mysql> DELETE FROM dept_sum_vu
     -> WHERE name='research';
 --ERROR 1288 (HY000): The target table dept_sum_vu of the DELETE is not updatable
+```
+{% endtab %}
+
+{% tab title="修改" %}
+### 修改視觀表內容
+
+-- 增加「WHITH CHECK OPTION」選項，違反VIEW的條件就不能修改。
+
+```sql
+mysql> ALTER VIEW salvu30
+    -> AS
+    -> SELECT empno 'employee_number',ename 'name',sal 'salary',deptno
+    -> FROM emp
+    -> WHERE deptno = 30
+    -> WITH CHECK OPTION;-- 🟡
+--Query OK, 0 rows affected (0.03 sec)
+
+/*mysql> SELECT * FROM salvu30;
++-----------------+--------+---------+--------+
+| employee_number | name   | salary  | deptno |
++-----------------+--------+---------+--------+
+|            7499 | ALLEN  | 2000.00 |     30 |
+|            7521 | WARD   | 1250.00 |     30 |
+|            7654 | MARTIN | 1250.00 |     30 |
+|            7698 | BLAKE  | 2850.00 |     30 |
+|            7844 | TURNER | 1500.00 |     30 |
++-----------------+--------+---------+--------+
+5 rows in set (0.02 sec)*/
+```
+
+### with check option選項－－可執行
+
+```sql
+/*mysql> SELECT * FROM salvu30;
++-----------------+--------+---------+--------+
+| employee_number | name   | salary  | deptno |
++-----------------+--------+---------+--------+
+|            7499 | ALLEN  | 2000.00 |     30 |
+|            7521 | WARD   | 1250.00 |     30 |
+|            7654 | MARTIN | 1250.00 |     30 |
+|            7698 | BLAKE  | 2850.00 |     30 |
+|            7844 | TURNER | 1500.00 |     30 |
++-----------------+--------+---------+--------+
+5 rows in set (0.02 sec)*/
+
+mysql> UPDATE salvu30
+    -> SET salary = 2000
+    -> WHERE employee_number=7499;
+--Query OK, 0 rows affected (0.01 sec)
+--Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> DELETE FROM salvu30 WHERE employee_number=7521;
+--Query OK, 1 row affected (0.01 sec)
+```
+
+### with check option選項－－不可執行
+
+```sql
+/*mysql> SELECT * FROM salvu30;
++-----------------+--------+---------+--------+
+| employee_number | name   | salary  | deptno |🔸部門編號view是抓30
++-----------------+--------+---------+--------+
+|            7499 | ALLEN  | 2000.00 |     30 |
+|            7521 | WARD   | 1250.00 |     30 |
+|            7654 | MARTIN | 1250.00 |     30 |
+|            7698 | BLAKE  | 2850.00 |     30 |
+|            7844 | TURNER | 1500.00 |     30 |
++-----------------+--------+---------+--------+
+5 rows in set (0.02 sec)*/
+
+-- 不可違反where子句的條件
+mysql> UPDATE salvu30
+    -> SET deptno = 10                        --🔸部門編號view沒有10
+    -> WHERE employee_number=7499;
+--ERROR 1369 (HY000): CHECK OPTION failed 'demo.salvu30'
 ```
 {% endtab %}
 {% endtabs %}
