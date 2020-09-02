@@ -554,6 +554,8 @@ mysql> SELECT * FROM salvu30;/*
 {% endtab %}
 
 {% tab title="建立複雜視觀表" %}
+JOIN ON
+
 ```sql
 mysql> CREATE VIEW dept_sum_vu(name, minsal, maxsal, avgsal)
     -> AS
@@ -582,6 +584,91 @@ mysql>     SELECT * FROM dept_sum_vu;/*
 | SALES      |  950.00 | 2850.00 | 1566.666667 |
 +------------+---------+---------+-------------+
 3 rows in set (0.00 sec)*/
+```
+{% endtab %}
+
+{% tab title="視觀表-查詢" %}
+查詢功能與資料表完全一樣
+
+```sql
+mysql> SELECT COUNT(*),SUM(salary) 'sum_sal_30',AVG(salary) 'avg_sal_30'
+    -> FROM salvu30;/*
++----------+------------+-------------+
+| COUNT(*) | sum_sal_30 | avg_sal_30  |
++----------+------------+-------------+
+|        6 |    9400.00 | 1566.666667 |
++----------+------------+-------------+
+1 row in set (0.00 sec)*/
+
+mysql> SELECT name, avgsal
+    -> FROM dept_sum_vu
+    -> WHERE avgsal>2000;/*
++------------+-------------+
+| name       | avgsal      |
++------------+-------------+
+| ACCOUNTING | 2916.666667 |
+| RESEARCH   | 2175.000000 |
++------------+-------------+
+2 rows in set (0.00 sec)*/
+```
+{% endtab %}
+
+{% tab title="視觀表-更新" %}
+### 查詢view是否可執行DML命令
+
+```sql
+mysql> SELECT TABLE_NAME, IS_UPDATABLE
+    -> FROM information_schema.views;/*
++-----------------------------------------------+--------------+
+| TABLE_NAME                                    | IS_UPDATABLE |
++-----------------------------------------------+--------------+
+| film_list                                     | NO           |
+| nicer_but_slower_film_list                    | NO           |
+| staff_list                                    | YES          |
+| sales_by_store                                | NO           |
+| sales_by_film_category                        | NO           |
+| actor_info                                    | NO           |
+| empvu10                                       | YES          |
+| salvu20                                       | YES          |
+| salvu30                                       | YES          |
+| dept_sum_vu                                   | NO           |
++-----------------------------------------------+--------------+
+*/
+```
+
+### 視觀表－資料更新
+
+```sql
+mysql> UPDATE salvu30
+    -> SET salary = 2000
+    -> WHERE employee_number=7499;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+/*🔹查詢視觀表內容
+mysql> SELECT * FROM salvu30;
++-----------------+--------+---------+
+| employee_number | name   | salary  |
++-----------------+--------+---------+
+|            7499 | ALLEN  | 2000.00 |
+|            7521 | WARD   | 1250.00 |
+|            7654 | MARTIN | 1250.00 |
+|            7698 | BLAKE  | 2850.00 |
+|            7844 | TURNER | 1500.00 |
+|            7900 | JAMES  |  950.00 |
++-----------------+--------+---------+
+6 rows in set (0.00 sec)*/
+
+/*🔹查詢基底資料表
+mysql> SELECT empno, ename, job, sal
+    ->     FROM emp
+    ->     WHERE empno=7499;
++-------+-------+----------+---------+
+| empno | ename | job      | sal     |
++-------+-------+----------+---------+
+|  7499 | ALLEN | SALESMAN | 2000.00 |
++-------+-------+----------+---------+
+1 row in set (0.00 sec)*/
 ```
 {% endtab %}
 {% endtabs %}

@@ -12,6 +12,8 @@
 
 ## 字串
 
+參照範例檔：0622dataType.php
+
 {% tabs %}
 {% tab title="單引號" %}
 使用方法較有限  
@@ -19,19 +21,12 @@
 
 ```php
 <?php
-        echo 'I am Sara','<br>';
-        echo 'I am "Sara"', '<br>';
-        echo 'I am \'Sara\'', '<br>';
-        echo 'I am \\Sara\\', '<br>';
+        echo 'I am Sara','<br>';        //I am Sara
+        echo 'I am "Sara"', '<br>';     //I am "Sara"
+        echo 'I am \'Sara\'', '<br>';   //I am 'Sara'
+        echo 'I am \\Sara\\', '<br>';   //I am \Sara\
 ?>
 ```
-
-呈現結果
-
-I am Sara  
-I am "Sara"  
-I am 'Sara'  
-I am \Sara\
 {% endtab %}
 
 {% tab title="雙引號" %}
@@ -48,19 +43,12 @@ I am \Sara\
 
 ```php
 <?php
-        echo "I am Sara",'<br>';
-        echo "I am \"Sara\"", '<br>';
-        echo "I am 'Sara'", '<br>';
-        echo "I am \\Sara\\", '<br>';
+        echo "I am Sara",'<br>';        //I am Sara
+        echo "I am \"Sara\"", '<br>';   //I am "Sara"
+        echo "I am 'Sara'", '<br>';     //I am 'Sara'
+        echo "I am \\Sara\\", '<br>';   //I am \Sara\
 ?>
 ```
-
-呈現結果
-
-I am Sara  
-I am "Sara"  
-I am 'Sara'  
-I am \Sara\
 
 ```php
 <?php
@@ -86,12 +74,14 @@ I am \Sara\
 
 ## $\_SERVER變數
 
+參照0622範例檔：server.php
+
 ```php
 <?php
     $_SERVER['REMOTE_ADDR'];//客戶端ip位置
-    $_SERVER['PHP_SELF'];//目前檔案路徑及名稱
+    $_SERVER['PHP_SELF'];   //目前檔案路徑及名稱
     $_SERVER['SERVER_NAME'];//伺服器名稱
-    phpinfo();//本機端PHP詳細資訊
+    phpinfo();              //本機端PHP詳細資訊
 ?>
 ```
 
@@ -114,7 +104,8 @@ I am \Sara\
 * 「$\_POST\["_欄位名稱"_\]」資料不安全，例如GOOGLE搜尋，網頁欄都看得到。
 * 「$\_REQUEST\["_欄位名稱_"\]」可取代「$\_GET...」、「$\_POST...」。
 
-p.s.「欄位名稱」是指，html檔中標籤的「name」屬性的值。
+p.s.「欄位名稱」是指，html檔中標籤的「name」屬性的值。  
+0622範例檔：form.html, form.php
 
 ▼HTML
 
@@ -156,7 +147,7 @@ p.s.「欄位名稱」是指，html檔中標籤的「name」屬性的值。
         echo "使用者：,{$_GET["memId"]},<br>"
 ?>
 //可使用「$_GET...」、「$_POST...」或是「$_GREQUEST...」
-//「$_GREQUEST...」可取代「$_GET...」、「$_POST...」
+//「$_REQUEST...」可取代「$_GET...」、「$_POST...」
 ```
 
 {% hint style="info" %}
@@ -197,7 +188,7 @@ echo nl2br($_GET["note"]);
 ```php
 echo gettype(123),"<br>";//integer
 echo is_string("12345"),"<br>";//1
-echo var_dump(3.1*2,true),"<br>";//float(6.2) bool(true)
+var_dump(3.1*2,true),"<br>";//float(6.2) bool(true)
 ```
 {% endtab %}
 

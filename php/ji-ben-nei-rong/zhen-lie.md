@@ -3,7 +3,7 @@
 ## 新增陣列
 
 {% tabs %}
-{% tab title="直接指定" %}
+{% tab title="新增陣列" %}
 ```php
 $arr2[0] = 10;
 $arr2[1] = 20;
@@ -13,16 +13,19 @@ $arr2[1] = 100;
 for($i=0;$i<count($arr2);$i++){
 	echo $arr2[$i]," ";
 }
-```
-{% endtab %}
 
-{% tab title="array\(\)" %}
-```php
-//PHP的「count()」相當於JS的「.length」
+//👇另一個新增的方法
 $arr = array(11,22,33);
 for($i=0;$i<count($arr);$i++){
 	echo $arr[$i]," ";  //跟JS一樣，陣列索引值可以是變數
 }
+```
+{% endtab %}
+
+{% tab title="新增關係陣列" %}
+```php
+$classmate = array('01'=>'Ling', '02'=>'Wendy','03'=>'nn');
+$classmate["04"] = "Cloud";                                //另一種新增方式
 ```
 {% endtab %}
 {% endtabs %}
@@ -32,12 +35,17 @@ PHP的「count\(\)」相當於JS的「.length」。
 跟JS一樣，PHP陣列索引值可以是變數
 {% endhint %}
 
+{% hint style="warning" %}
+**「關係陣列」只有PHP有**。  
+例如「$arr = array\('first'=&gt;'Anndy'\)」也等於「$arr\['first'\] = 'Anndy'」
+{% endhint %}
+
 ## foreach\(as\)
 
 PHP可以`$arr[5]='測試字串';`一一指定陣列的值，但\[0\]~\[4\]都沒有給值，PHP不會保留位置  
 這時候若使用「for」迴圈去echo\(印出\)資料，會出現錯誤訊息。
 
-為了排除錯誤訊息，要使用「foreach\(as\)」找出對印的陣列位置及資料。  
+為了排除錯誤訊息，要使用「foreach\(as\)」找出對應的陣列位置及資料。  
 語法：  
 `foreach($陣列名稱 as [$鍵值變數名稱 =>] $資料變數名稱)`  
 foreach\($zip as $key =&gt;  $data\)
@@ -102,7 +110,7 @@ foreach($classmate as $id => $data){
 | in\_array\(要搜尋的值,陣列變數\) | 傳回資料是否在陣列中？ |
 | array\_search\(要搜尋的值,陣列變數\) | 傳回資料在陣列中的 索引值 |
 | shuffle\(陣列變數\) | 將陣列中的資料打亂 |
-| array\_sum\(陣列變數\) |  |
+| array\_sum\(陣列變數\) | 總和 |
 | array\_values\(陣列變數\) |  |
 | ... |  |
 
@@ -155,7 +163,7 @@ print_r($arr);
 {% endtab %}
 {% endtabs %}
 
-## 作業練習－摸彩
+## 🍵作業練習－摸彩
 
 {% tabs %}
 {% tab title="" %}
@@ -364,7 +372,18 @@ if(isset($_GET["ability"])){
 `isset()`用以檢查變數是否存在
 {% endhint %}
 {% endtab %}
+{% endtabs %}
 
+{% hint style="info" %}
+範例：  
+`$score = (array(83,85), array(79,77), array(95,91));`  
+`echo $score[0];`      //❌錯誤，無法印出陣列。若用`print_r($score);`可以  
+`echo $score[0][1];`  //85
+{% endhint %}
+
+## 🍵作業練習－表單練習 + 發撲克牌
+
+{% tabs %}
 {% tab title="二維作業練習－撲克牌" %}
 一副撲克牌52張，請將其洗牌後發給4人，並顯示個玩家所得到的點數，如下所示：
 
@@ -377,57 +396,49 @@ if(isset($_GET["ability"])){
 ```php
 //以下是我2020/07/25 Sat做的第二版
 <style>
-td{
-	text-align:center;
-	font-family:arial;
-}
+	table,tr,td{
+		text-align:center;
+		font-family:arial;
+		border-collapse:collapse;
+	}
+	td,tr{
+		border: 1px solid black;
+	}
 </style>
 <?php
 //一副撲克牌52張，請將其洗牌後發給4人，並顯示個玩家所得到的點數：
-//建立一個陣列值1~52
-$poker = array();
-for($i=0;$i<52;$i++){
-	$poker[$i] = $i + 1;
-	//echo $poker[$i];//for test
-}
-//打亂
-shuffle($poker);
-//分配給四個玩家
-foreach($poker as $i => $data){
-	if($data % 4 == 0){
-		$player1[$i] = $data;
-	}elseif($data % 4 == 1){
-		$player2[$i] = $data;
-	}elseif($data % 4 == 2){
-		$player3[$i] = $data;
-	}elseif($data % 4 == 3){
-		$player4[$i] = $data;
+	//建立一個陣列值1~52
+	$poker = array();
+	for($i=0;$i<52;$i++){
+		$poker[$i] = $i + 1;
+		//echo $poker[$i];//for test
 	}
-}
-$myArray = array($player1,$player2,$player3,$player4);
-?>
-
-<!-- 印出表格資料 -->
-<table cellspacing='0' border='1'>
-<?php
-foreach($myArray as $i => $row){
-	echo "<tr><th>Player",$i+1,"</th>";
-	foreach($row as $j => $data){
-		echo "<td>".$myArray[$i][$j]."</td>";
+	//打亂
+	shuffle($poker);
+	//分配給四個玩家
+	foreach($poker as $i => $data){
+		if		($data % 4 == 0){	$player1[$i] = $data;}
+		elseif($data % 4 == 1){	$player2[$i] = $data;}
+		elseif($data % 4 == 2){ $player3[$i] = $data;}
+		elseif($data % 4 == 3){ $player4[$i] = $data;}
 	}
-	echo "</tr>";
-}
+	$myArray = array($player1,$player2,$player3,$player4);
+	?>
+	
+	<!-- 印出表格資料 -->
+	<table>
+	<?php
+	foreach($myArray as $i => $row){
+		echo "<tr><th>Player",$i+1,"</th>";
+		foreach($row as $j => $data){
+			echo "<td>".$myArray[$i][$j]."</td>";
+		}
+		echo "</tr>";
+	}
 ?>
 </table>
 
 ```
 {% endtab %}
 {% endtabs %}
-
-{% hint style="info" %}
-範例：  
-`$score = (array(83,85), array(79,77), array(95,91));`  
-`echo $score[0];`      //❌錯誤，無法印出陣列。若用`print_r($score);`可以  
-`echo $score[0][1];`  //85
-{% endhint %}
 
