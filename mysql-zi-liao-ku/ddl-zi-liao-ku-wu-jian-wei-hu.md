@@ -924,7 +924,7 @@ mysql> SELECT a.ename, a.sal, a.deptno, b.avgsal
 
 ## 索引index
 
-
+p.205
 
 ## 作業練習－DDL\(p.191\)
 
