@@ -217,8 +217,10 @@
 {% embed url="https://codepen.io/kanhasahu/pen/OMybab" caption="https://codepen.io/kanhasahu/pen/OMybab" %}
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="按鈕" %}
+{% embed url="https://codepen.io/ch-zhuchu/pen/OJNpvwm" caption="https://codepen.io/ch-zhuchu/pen/OJNpvwm" %}
 
+{% embed url="https://codepen.io/ch-zhuchu/pen/qBZroyW" caption="https://codepen.io/ch-zhuchu/pen/qBZroyW" %}
 {% endtab %}
 {% endtabs %}
 
