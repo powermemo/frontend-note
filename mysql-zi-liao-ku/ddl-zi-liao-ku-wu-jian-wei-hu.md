@@ -704,7 +704,53 @@ mysql>  UPDATE salvu20
 ERROR 1348 (HY000): Column 'annual_sal' is not updatable
 ```
 {% endtab %}
+
+{% tab title="視觀表-新增" %}
+.
+
+```sql
+mysql> INSERT INTO empvu10(empno,ename,sal ,deptno)
+    -> VALUES(9700,'KEN',3800,10);
+Query OK, 1 row affected (0.01 sec)
+
+/*mysql> SELECT * FROM empvu10;
++-------+--------+-----------+------+---------------------+---------+------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE            | SAL     | COMM | DEPTNO |
++-------+--------+-----------+------+---------------------+---------+------+--------+
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 00:00:00 | 2450.00 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 00:00:00 | 5000.00 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 00:00:00 | 1300.00 | NULL |     10 |
+|  9700 | KEN    | NULL      | NULL | NULL                | 3800.00 | NULL |     10 |
++-------+--------+-----------+------+---------------------+---------+------+--------+
+4 rows in set (0.00 sec)*/
+```
+
+### -- 跟資料更新一樣，計算欄位一樣不能新增P.11-17
+
+```sql
+/*mysql> DESC emp;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| EMPNO    | int          | NO   | PRI | NULL    |       |
+| ENAME    | varchar(10)  | YES  |     | NULL    |       |
+| JOB      | varchar(9)   | YES  |     | NULL    |       |
+| MGR      | int          | YES  | MUL | NULL    |       |
+| HIREDATE | datetime     | YES  |     | NULL    |       |
+| SAL      | decimal(7,2) | YES  |     | NULL    |       |
+| COMM     | decimal(7,2) | YES  |     | NULL    |       |
+| DEPTNO   | int          | NO   | MUL | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+8 rows in set (0.02 sec)*/
+
+mysql> INSERT INTO salvu20
+    -> VALUES(9800,'JACKSON',24000);
+/*ERROR 1348 (HY000): Column 'annual_sal' is not updatable*/
+```
+{% endtab %}
 {% endtabs %}
+
+
 
 ## 索引index
 
