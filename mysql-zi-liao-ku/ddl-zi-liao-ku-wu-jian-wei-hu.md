@@ -475,7 +475,46 @@ DROP TABLE emp10a;
   * 結構變更時，可以改view設定不需要改程式。
   * 一資料表可建立多視觀表
 
+{% tabs %}
+{% tab title="建立視觀表" %}
+語法：`CREATE [OR REPLACE] VIEW column  
+AS <select_statement>`「or replace」是選填。
+
+* 加上「or replace」，當有同名的view存在時，覆蓋它\(alter view\)。
+* 加上「or replace」，當沒有同名的view存在時，建立一個\(create view\)。
+
 ### 建立視觀表
+
+```aspnet
+mysql> CREATE VIEW empvu10
+    -> AS
+    ->   SELECT *
+    ->   FROM  emp
+    ->   WHERE deptno = 10;
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> SELECT * FROM empvu10;
++-------+--------+-----------+------+---------------------+---------+------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE            | SAL     | COMM | DEPTNO |
++-------+--------+-----------+------+---------------------+---------+------+--------+
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 00:00:00 | 2450.00 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 00:00:00 | 5000.00 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 00:00:00 | 1300.00 | NULL |     10 |
++-------+--------+-----------+------+---------------------+---------+------+--------+
+3 rows in set (0.03 sec)
+```
+
+### 
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+## 索引index
+
+
 
 ## 作業練習－DDL\(p.191\)
 
