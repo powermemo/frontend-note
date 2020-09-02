@@ -885,6 +885,39 @@ mysql> UPDATE salvu30
 --ERROR 1369 (HY000): CHECK OPTION failed 'demo.salvu30'
 ```
 {% endtab %}
+
+{% tab title="刪除視觀表" %}
+-- 從資料庫中刪除視觀表，不會刪除任何\(基底\)資料
+
+```sql
+mysql> DROP VIEW dept_sum_vu;
+--Query OK, 0 rows affected (0.04 sec)
+```
+{% endtab %}
+
+{% tab title="內嵌視觀表" %}
+.
+
+```sql
+mysql> SELECT a.ename, a.sal, a.deptno, b.avgsal
+    -> FROM   emp a JOIN(SELECT deptno, AVG(sal) avgsal
+    ->                   FROM emp
+    ->                   GROUP BY deptno) b
+    ->               ON (a.deptno = b.deptno)
+    -> WHERE  a.sal < b.avgsal;/*
++--------+---------+--------+-------------+
+| ename  | sal     | deptno | avgsal      |
++--------+---------+--------+-------------+
+| SMITH  |  800.00 |     20 | 2175.000000 |
+| MARTIN | 1250.00 |     30 | 1900.000000 |
+| CLARK  | 2450.00 |     10 | 2916.666667 |
+| TURNER | 1500.00 |     30 | 1900.000000 |
+| ADAMS  | 1100.00 |     20 | 2175.000000 |
+| MILLER | 1300.00 |     10 | 2916.666667 |
++--------+---------+--------+-------------+
+6 rows in set (0.00 sec)*/
+```
+{% endtab %}
 {% endtabs %}
 
 
