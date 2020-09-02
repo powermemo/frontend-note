@@ -670,6 +670,39 @@ mysql> SELECT empno, ename, job, sal
 +-------+-------+----------+---------+
 1 row in set (0.00 sec)*/
 ```
+
+### 視觀表－可更新與不可更新
+
+ \*基底資料表-非計算欄位，view可更新  
+ \*基底資料表-的計算欄位，view不可更新 
+
+```sql
+ -- 🟡可更新的資料
+mysql>  UPDATE salvu20
+    ->  SET employee='mary'
+    ->  WHERE employee_no=7902;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+/*🔹查詢視觀表
+mysql> SELECT * FROM salvu20;
++-------------+----------+------------+
+| employee_no | employee | annual_sal |
++-------------+----------+------------+
+|        7369 | SMITH    |    9600.00 |
+|        7566 | JONES    |   35700.00 |
+|        7788 | SCOTT    |   36000.00 |
+|        7876 | ADAMS    |   13200.00 |
+|      🔸7902 | mary     |   36000.00 |
++-------------+----------+------------+
+5 rows in set (0.01 sec)*/
+
+ -- 🟡不可更新的資料👇當初[annual_sal]是emp*12得來的計算欄位，view是無法更新的。
+mysql>  UPDATE salvu20
+    ->  SET annual_sal=48000
+    ->  WHERE employee_no=7902;
+ERROR 1348 (HY000): Column 'annual_sal' is not updatable
+```
 {% endtab %}
 {% endtabs %}
 
