@@ -706,7 +706,7 @@ ERROR 1348 (HY000): Column 'annual_sal' is not updatable
 {% endtab %}
 
 {% tab title="視觀表-新增" %}
-.
+### 新增資料
 
 ```sql
 mysql> INSERT INTO empvu10(empno,ename,sal ,deptno)
@@ -746,6 +746,41 @@ Query OK, 1 row affected (0.01 sec)
 mysql> INSERT INTO salvu20
     -> VALUES(9800,'JACKSON',24000);
 /*ERROR 1348 (HY000): Column 'annual_sal' is not updatable*/
+```
+{% endtab %}
+
+{% tab title="視觀表-刪除" %}
+### 刪除資料
+
+```sql
+mysql> DELETE FROM empvu10
+    -> WHERE empno=9700;
+--Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM salvu30
+    -> WHERE name='james';
+--Query OK, 1 row affected (0.01 sec)
+```
+
+### 無法刪除－違反基底資料表的資料檢查條件
+
+```sql
+/*mysql>  SELECT * FROM salvu20;
++-------------+----------+------------+
+| employee_no | employee | annual_sal |
++-------------+----------+------------+
+|        7369 | SMITH    |    9600.00 |
+|        7566 | JONES    |   35700.00 |
+|        7788 | SCOTT    |   36000.00 |
+|        7876 | ADAMS    |   13200.00 |
+|        7902 | mary     |   36000.00 |
++-------------+----------+------------+
+5 rows in set (0.00 sec)*/
+
+mysql>  DELETE FROM salvu20
+    ->  WHERE employee_no='7902';
+/*ERROR 1451 (23000): Cannot delete or update a parent row: 
+a foreign key constraint fails (`demo`.`emp`, CONSTRAINT `EMP_MGR_FK` FOREIGN KEY (`MGR`) REFERENCES `emp` (`EMPNO`))*/
 ```
 {% endtab %}
 {% endtabs %}
