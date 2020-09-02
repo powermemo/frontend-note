@@ -782,6 +782,33 @@ mysql>  DELETE FROM salvu20
 /*ERROR 1451 (23000): Cannot delete or update a parent row: 
 a foreign key constraint fails (`demo`.`emp`, CONSTRAINT `EMP_MGR_FK` FOREIGN KEY (`MGR`) REFERENCES `emp` (`EMPNO`))*/
 ```
+
+###  複雜視觀表－無法做DML p.11-19
+
+```sql
+/*mysql> SELECT * FROM dept_sum_vu;
++------------+---------+---------+-------------+
+| name       | minsal  | maxsal  | avgsal      |
++------------+---------+---------+-------------+
+| ACCOUNTING | 1300.00 | 5000.00 | 2916.666667 |
+| RESEARCH   |  800.00 | 3000.00 | 2175.000000 |
+| SALES      | 1250.00 | 2850.00 | 1770.000000 |
++------------+---------+---------+-------------+
+3 rows in set (0.00 sec)*/
+
+mysql> INSERT INTO dept_sum_vu
+    -> VALUES('education',1200,3000,2800);
+--ERROR 1471 (HY000): The target table dept_sum_vu of the INSERT is not insertable-into
+
+mysql> UPDATE dept_sum_vu
+    -> SET maxsal=4800
+    -> WHERE name='sales';
+--ERROR 1288 (HY000): The target table dept_sum_vu of the UPDATE is not updatable
+
+mysql> DELETE FROM dept_sum_vu
+    -> WHERE name='research';
+--ERROR 1288 (HY000): The target table dept_sum_vu of the DELETE is not updatable
+```
 {% endtab %}
 {% endtabs %}
 
