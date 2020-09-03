@@ -67,11 +67,6 @@ description: 參照講義p.19、p.31~p.38
         <td style="text-align:left"><code>SELECT * FROM dept;</code>
         </td>
     </tr>
-    <tr>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-    </tr>
   </tbody>
 </table>
 
