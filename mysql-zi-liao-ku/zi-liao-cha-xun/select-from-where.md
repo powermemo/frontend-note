@@ -196,7 +196,7 @@ mysql> SELECT empno,ename,job,sal,mgr
 ```
 {% endtab %}
 
-{% tab title="特殊運算子BETWEEN AND,IN" %}
+{% tab title="特殊運算子BETWEEN AND,IN,IS NULL" %}
 \(p.58\) **BETWEEN AND**查詢薪水介於2000到3500之間的員工
 
 ```text
@@ -233,6 +233,20 @@ mysql> SELECT empno,ename,job,sal
 |  7844 | TURNER | SALESMAN | 1500.00 |
 +-------+--------+----------+---------+
 6 rows in set (0.01 sec)
+```
+
+\(p.63\) **IS NULL** 找出公司老闆的資料\(mgr是null的員工\)
+
+```text
+mysql> SELECT empno,ename,job,sal,mgr
+    -> FROM emp
+    -> WHERE mgr IS NULL;
++-------+-------+-----------+---------+------+
+| empno | ename | job       | sal     | mgr  |
++-------+-------+-----------+---------+------+
+|  7839 | KING  | PRESIDENT | 5000.00 | NULL |
++-------+-------+-----------+---------+------+
+1 row in set (0.00 sec)
 ```
 {% endtab %}
 
@@ -290,10 +304,38 @@ mysql> SELECT empno,ename,job,sal
 +-------+--------+----------+---------+
 | empno | ename  | job      | sal     |
 +-------+--------+----------+---------+
+|  7521 | WARD   | SALESMAN | 1250.00 |
 |  7654 | MARTIN | SALESMAN | 1250.00 |
-|  7902 | mary   | ANALYST  | 3000.00 |
+|  7900 | JAMES  | CLERK    |  950.00 |
 +-------+--------+----------+---------+
-2 rows in set (0.00 sec)
+3 rows in set (0.01 sec)
+```
+{% endtab %}
+
+{% tab title="NOT" %}
+* NOT BETWEEN..AND..
+* NOT IN
+* NOT LIKE
+* **IS NOT NULL**
+
+\(p.64\) **NOT** 列出除了manager & salesman以外的員工
+
+```text
+mysql> SELECT empno,ename,job,sal,deptno
+    -> FROM   emp
+    -> WHERE  job NOT IN ('salesman','manager');
++-------+--------+-----------+---------+--------+
+| empno | ename  | job       | sal     | deptno |
++-------+--------+-----------+---------+--------+
+|  7369 | SMITH  | CLERK     |  800.00 |     20 |
+|  7788 | SCOTT  | ANALYST   | 3000.00 |     20 |
+|  7839 | KING   | PRESIDENT | 5000.00 |     10 |
+|  7876 | ADAMS  | CLERK     | 1100.00 |     20 |
+|  7900 | JAMES  | CLERK     |  950.00 |     30 |
+|  7902 | FORD   | ANALYST   | 3000.00 |     20 |
+|  7934 | MILLER | CLERK     | 1300.00 |     10 |
++-------+--------+-----------+---------+--------+
+7 rows in set (0.00 sec)
 ```
 {% endtab %}
 {% endtabs %}
@@ -318,6 +360,25 @@ SELECT empno, ename, sal, job,
       ELSE Sal*1
     END sal
 FROM emp;
++-------+--------+---------+-----------+----------+
+| empno | ename  | sal     | job       | sal      |
++-------+--------+---------+-----------+----------+
+|  7369 | SMITH  |  800.00 | CLERK     |   800.00 |
+|  7499 | ALLEN  | 1600.00 | SALESMAN  |  1600.00 |
+|  7521 | WARD   | 1250.00 | SALESMAN  |  1250.00 |
+|  7566 | JONES  | 2975.00 | MANAGER   | 3867.500 |
+|  7654 | MARTIN | 1250.00 | SALESMAN  |  1250.00 |
+|  7698 | BLAKE  | 2850.00 | MANAGER   | 3705.000 |
+|  7782 | CLARK  | 2450.00 | MANAGER   | 3185.000 |
+|  7788 | SCOTT  | 3000.00 | ANALYST   | 3600.000 |
+|  7839 | KING   | 5000.00 | PRESIDENT | 7500.000 |
+|  7844 | TURNER | 1500.00 | SALESMAN  |  1500.00 |
+|  7876 | ADAMS  | 1100.00 | CLERK     |  1100.00 |
+|  7900 | JAMES  |  950.00 | CLERK     |   950.00 |
+|  7902 | FORD   | 3000.00 | ANALYST   | 3600.000 |
+|  7934 | MILLER | 1300.00 | CLERK     |  1300.00 |
++-------+--------+---------+-----------+----------+
+14 rows in set (0.00 sec)
 ```
 {% endtab %}
 
@@ -333,11 +394,12 @@ WHERE
 
 ```text
 SELECT empno, ename,sal,
-　　CASE sal BETWEEN 0    AND 1000 THEN ‘A’
-　　　　　sal BETWEEN 1001 AND 2000 THEN ‘B’
-　　　　　sal BETWEEN 2001 AND 3000 THEN ‘C’
-        sal BETWEEN 2001 AND 3000 THEN ‘D’
-　　　　　ELSE ‘E’
+　　CASE 
+      WHEN  sal BETWEEN 0    AND 1000 THEN 'A'
+      WHEN  sal BETWEEN 1001 AND 2000 THEN 'B'
+      WHEN  sal BETWEEN 2001 AND 3000 THEN 'C'
+      WHEN  sal BETWEEN 3001 AND 4000 THEN 'D'
+      ELSE 'E'
 　　END sal
 FROM emp;
 ```
@@ -354,24 +416,102 @@ ORDER BY 欄位名稱 \| 欄位數 \| 欄位別名 \[ASC升冪預設 \| DESC降�
 以下範例
 
 {% tabs %}
+{% tab title="基本" %}
+\(p.68\) 沒有指定的欄位也可以做排序
+
+```text
+mysql> SELECT   empno,ename,sal--  ←－－－－－－－－－－－－－－－－－－-
+    -> FROM     emp            --                                  |
+    -> WHERE    deptno =10     --                                  |
+    -> ORDER BY hiredate; -- 🔹「hiredate」沒在指定欄位,也可以用以做排序
++-------+--------+---------+
+| empno | ename  | sal     |
++-------+--------+---------+
+|  7782 | CLARK  | 2450.00 |
+|  7839 | KING   | 5000.00 |
+|  7934 | MILLER | 1300.00 |
++-------+--------+---------+
+3 rows in set (0.00 sec)
+```
+
+```text
+-- (p.70)依欄位別名排序
+mysql> SELECT   empno,ename,sal*12 annsal-- 🔹annsal是別名
+    -> FROM     emp
+    -> WHERE    deptno = 10
+    -> ORDER BY annsal;                  -- 🔹用別名annsal排序
++-------+--------+----------+
+| empno | ename  | annsal   |
++-------+--------+----------+
+|  7934 | MILLER | 15600.00 |
+|  7782 | CLARK  | 29400.00 |
+|  7839 | KING   | 60000.00 |
++-------+--------+----------+
+3 rows in set (0.00 sec)
+```
+
+```text
+-- (p.70)依運算式排序
+mysql> SELECT   empno,ename,sal+comm bonus
+    -> FROM     emp
+    -> WHERE    deptno = 30
+    -> ORDER BY sal+comm;-- 🔹
++-------+--------+---------+
+| empno | ename  | bonus   |
++-------+--------+---------+
+|  7698 | BLAKE  |    NULL |
+|  7900 | JAMES  |    NULL |
+|  7844 | TURNER | 1500.00 |
+|  7521 | WARD   | 1750.00 |
+|  7499 | ALLEN  | 1900.00 |
+|  7654 | MARTIN | 2650.00 |
++-------+--------+---------+
+6 rows in set (0.00 sec)
+```
+{% endtab %}
+
 {% tab title="降冪" %}
-範例一：對薪資做降冪排序  
+範例一：對薪資做降冪排序 \(p.69\)  
 `SELECT empno, ename, sal  
 FROM emp  
 WHERE deptno = 10  
 ORDER BY sal DESC;🔶`
+
+```text
++-------+--------+---------+
+| empno | ename  | sal     |
++-------+--------+---------+
+|  7839 | KING   | 5000.00 |
+|  7782 | CLARK  | 2450.00 |
+|  7934 | MILLER | 1300.00 |
++-------+--------+---------+
+3 rows in set (0.00 sec)
+```
 {% endtab %}
 
 {% tab title="第x欄" %}
-範例二：對第三直排做排序  
+範例二：對第三直排做排序\(p.71\)  
 `SELECT *  
  FROM emp   
 WHERE deptno = 20   
 ORDER BY 3;🔶`
+
+```text
++-------+-------+---------+------+---------------------+---------+------+--------+
+| EMPNO | ENAME | JOB     | MGR  | HIREDATE            | SAL     | COMM | DEPTNO |
++-------+-------+---------+------+---------------------+---------+------+--------+
+|  7788 | SCOTT | ANALYST | 7566 | 1982-12-09 00:00:00 | 3000.00 | NULL |     20 |
+|  7902 | FORD  | ANALYST | 7566 | 1981-12-03 00:00:00 | 3000.00 | NULL |     20 |
+|  7369 | SMITH | CLERK   | 7902 | 1980-12-17 00:00:00 |  800.00 | NULL |     20 |
+|  7876 | ADAMS | CLERK   | 7788 | 1983-01-12 00:00:00 | 1100.00 | NULL |     20 |
+|  7566 | JONES | MANAGER | 7839 | 1981-04-02 00:00:00 | 2975.00 | NULL |     20 |
++-------+-------+---------+------+---------------------+---------+------+--------+
+5 rows in set (0.00 sec)
+```
 {% endtab %}
 
 {% tab title="多欄" %}
-範例三：多欄排序，以「逗號」分隔
+範例三：多欄排序，以「逗號」分隔\(p.72\)
 
 * 對 \[部門\] 做升冪排序
 * 對 \[職稱\] 做升冪排序
@@ -381,16 +521,51 @@ ORDER BY 3;🔶`
 `SELECT *  
 FROM emp  
 ORDER BY deptno, job, 6 DESC, 1;🔶`
+
+```text
++-------+--------+-----------+------+---------------------+---------+---------+--------+
+| EMPNO | ENAME  | JOB       | MGR  | HIREDATE            | SAL     | COMM    | DEPTNO |
++-------+--------+-----------+------+---------------------+---------+---------+--------+
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 00:00:00 | 1300.00 |    NULL |     10 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 00:00:00 | 2450.00 |    NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 00:00:00 | 5000.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 00:00:00 | 3000.00 |    NULL |     20 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 00:00:00 | 3000.00 |    NULL |     20 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 00:00:00 | 1100.00 |    NULL |     20 |
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 00:00:00 |  800.00 |    NULL |     20 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 00:00:00 | 2975.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 00:00:00 |  950.00 |    NULL |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 00:00:00 | 2850.00 |    NULL |     30 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 00:00:00 | 1600.00 |  300.00 |     30 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 00:00:00 | 1500.00 |    0.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 00:00:00 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 00:00:00 | 1250.00 | 1400.00 |     30 |
++-------+--------+-----------+------+---------------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+```
 {% endtab %}
 
 {% tab title="LIMIT" %}
-範例四：只顯示指定筆數  
+範例四：只顯示指定筆數\(p.73\)  
 \(例如有14橫列，LIMIT 5 就是指  只顯示前面五筆。\)
 
 `SELECT ename, sal, job  
 FROM emp  
-ODER BY sal DESC🔷  
+ORDER BY sal DESC🔷  
 LIMIT 5;🔶`
+
+```text
++-------+---------+-----------+
+| ename | sal     | job       |
++-------+---------+-----------+
+| KING  | 5000.00 | PRESIDENT |
+| FORD  | 3000.00 | ANALYST   |
+| SCOTT | 3000.00 | ANALYST   |
+| JONES | 2975.00 | MANAGER   |
+| BLAKE | 2850.00 | MANAGER   |
++-------+---------+-----------+
+5 rows in set (0.00 sec)
+```
 {% endtab %}
 {% endtabs %}
 
@@ -538,7 +713,7 @@ SELECT CONCAT(ename,', ',job) 'Employee and Title'
 
 
 
-## 作業練習－DQL-WHERE
+## 作業練習－DQL-WHERE\(p.73\)
 
 1. 顯示出所有員工薪資超過2850元的員工姓名和薪資。
 2. 顯示員編7566員工姓名及其所屬部門。
