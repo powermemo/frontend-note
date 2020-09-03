@@ -15,6 +15,7 @@ description: 參照講義p.19、p.31~p.38
 ## 基本指令
 
 * 備註的方法單行註解用兩槓加一個空白「-- 」； 多行註解跟CSS一樣「/\*\*/」
+* 講義p.32
 
 <table>
   <thead>
@@ -49,10 +50,11 @@ description: 參照講義p.19、p.31~p.38
         </td>
     </tr>
     <tr>
-      <td style="text-align:left">DESC <em>[&#x6B04;&#x4F4D;&#x540D;&#x7A31;]</em> TABLE;</td>
+      <td style="text-align:left">DESC[RIBE] <em>[&#x6B04;&#x4F4D;&#x540D;&#x7A31;]</em> 
+      </td>
       <td style="text-align:left">&#x5217;&#x51FA;&#x6307;&#x5B9A;&#x8CC7;&#x6599;&#x8868;&#x6B04;&#x4F4D;&#x8CC7;&#x8A0A;&#x3002;</td>
       <td
-      style="text-align:left"><code>DESC Dname TABLE;</code>
+      style="text-align:left"><code>DESCRIBE Dname ;</code>
         </td>
     </tr>
     <tr>
