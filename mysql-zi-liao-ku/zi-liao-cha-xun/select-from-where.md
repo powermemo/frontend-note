@@ -17,11 +17,7 @@ description: 參照講義p.39~p.50、p.51~p.74
 
 ## SELECT FROM WHERE\(p.51\)
 
-* 條件篩選 SELECT ... FROM ... `WHERE` 條件ex. empno&gt;10;
-  * 比較運算子=、&gt;=、&lt;=、&gt;、&lt;、&lt;&gt;
-  * 邏輯運算子AND、OR、NOT
-  * 特定運算子BETWEEN、IN、LIKE、IS NULL
-  * 特定運算子:
+* 特定運算子:
 
 <table>
   <thead>
@@ -83,29 +79,270 @@ description: 參照講義p.39~p.50、p.51~p.74
   </tbody>
 </table>
 
-* .
+{% tabs %}
+{% tab title="比較運算" %}
+\(p.53\)
 
-  * 列舉式CASE\(以下用例子\) SELECT ... FROM ... WHERE `CASE` 欄位名 　　　　　　WHEN '條件1' THEN 執行1 　　　　　　WHEN '條件2' THEN 執行2 　　　　　　WHEN '條件3' THEN 執行3 　　　　　　ELSE 執行4 　　　　　END 執行後新欄位名稱;-- \(以下代入例子\)  `WHERE CASE job 　　　　　　WHEN 'President' THEN Sal*1.5 　　　　　　WHEN 'Manager' THEN Sal*1.3 　　　　　　WHEN 'Analyst' THEN Sal*1.2 　　　　　　ELSE Sal*1 　　　　　END sal;`
+```sql
+SELECT empno, ename,job,sal
+FROM emp
+WHERE sal >=3000;
+/*
++-------+-------+-----------+---------+
+| empno | ename | job       | sal     |
++-------+-------+-----------+---------+
+|  7788 | SCOTT | ANALYST   | 3000.00 |
+|  7839 | KING  | PRESIDENT | 5000.00 |
+|  7902 | mary  | ANALYST   | 3000.00 |
++-------+-------+-----------+---------+
+3 rows in set (0.02 sec)*/
+```
 
+\(p.54\)
 
+```sql
+SELECT ename,ename,job,deptno,hiredate,sal
+FROM emp
+WHERE ename = 'KING';
+/*
++-------+-------+-----------+--------+---------------------+---------+
+| ename | ename | job       | deptno | hiredate            | sal     |
++-------+-------+-----------+--------+---------------------+---------+
+| KING  | KING  | PRESIDENT |     10 | 1981-11-17 00:00:00 | 5000.00 |
++-------+-------+-----------+--------+---------------------+---------+
+1 row in set (0.00 sec)*/
+```
 
-  * 條件式CASE  
-    SELECT ...  
-    FROM ...  
-    WHERE  
-    　　CASE 欄位名 BETWEEN x1 AND y1 THEN 執行1  
-    　　　　　欄位名 BETWEEN x2 AND y2 THEN 執行2  
-    　　　　　欄位名 BETWEEN x3 AND y3 THEN 執行3  
-    　　　　　ELSE 執行4  
-    　　　　END 執行後新欄位名稱;-- \(以下帶入例子\)
+```text
+mysql> SELECT ename, sal, comm
+    -> FROM   emp
+    -> WHERE  sal<=comm;
++--------+---------+---------+
+| ename  | sal     | comm    |
++--------+---------+---------+
+| MARTIN | 1250.00 | 1400.00 |
++--------+---------+---------+
+1 row in set (0.00 sec)
+```
+{% endtab %}
 
-  
-    `WHERE  
-    　　CASE sal BETWEEN 0    AND 1000 THEN ‘A’  
-    　　　　　sal BETWEEN 1001 AND 2000 THEN ‘B’  
-    　　　　　sal BETWEEN 2001 AND 3000 THEN ‘C’  
-    　　　　　ELSE ‘D’  
-    　　　　END sal;`
+{% tab title="邏輯運算" %}
+\(p.55\) AND
+
+```text
+SELECT empno,ename,job,sal
+FROM   emp
+WHERE  sal>=1100 AND job='clerk';
+/*
++-------+--------+-------+---------+
+| empno | ename  | job   | sal     |
++-------+--------+-------+---------+
+|  7876 | ADAMS  | CLERK | 1100.00 |
+|  7934 | MILLER | CLERK | 1300.00 |
++-------+--------+-------+---------+
+2 rows in set (0.00 sec)*/
+```
+
+```text
+mysql> SELECT empno,ename,job,sal,mgr
+    -> FROM   emp
+    -> WHERE  sal>2000 AND job = 'manager';
++-------+-------+---------+---------+------+
+| empno | ename | job     | sal     | mgr  |
++-------+-------+---------+---------+------+
+|  7566 | JONES | MANAGER | 2975.00 | 7839 |
+|  7698 | BLAKE | MANAGER | 2850.00 | 7839 |
+|  7782 | CLARK | MANAGER | 2450.00 | 7839 |
++-------+-------+---------+---------+------+
+3 rows in set (0.00 sec)
+```
+
+\(p.56\) OR
+
+```text
+mysql> SELECT empno,ename,job,sal,mgr
+    -> FROM   emp
+    -> WHERE  sal>2000 OR job = 'manager';
++-------+-------+-----------+---------+------+
+| empno | ename | job       | sal     | mgr  |
++-------+-------+-----------+---------+------+
+|  7566 | JONES | MANAGER   | 2975.00 | 7839 |
+|  7698 | BLAKE | MANAGER   | 2850.00 | 7839 |
+|  7782 | CLARK | MANAGER   | 2450.00 | 7839 |
+|  7788 | SCOTT | ANALYST   | 3000.00 | 7566 |
+|  7839 | KING  | PRESIDENT | 5000.00 | NULL |
+|  7902 | mary  | ANALYST   | 3000.00 | 7566 |
++-------+-------+-----------+---------+------+
+6 rows in set (0.00 sec)
+```
+
+\(p.57\) NOT
+
+```text
+mysql> SELECT empno,ename,job,sal,mgr
+    -> FROM   emp
+    -> WHERE  NOT(sal>2000 OR job = 'manager');
++-------+--------+----------+---------+------+
+| empno | ename  | job      | sal     | mgr  |
++-------+--------+----------+---------+------+
+|  7369 | SMITH  | CLERK    |  800.00 | 7902 |
+|  7499 | ALLEN  | SALESMAN | 2000.00 | 7698 |
+|  7654 | MARTIN | SALESMAN | 1250.00 | 7698 |
+|  7844 | TURNER | SALESMAN | 1500.00 | 7698 |
+|  7876 | ADAMS  | CLERK    | 1100.00 | 7788 |
+|  7934 | MILLER | CLERK    | 1300.00 | 7782 |
++-------+--------+----------+---------+------+
+6 rows in set (0.00 sec)
+```
+{% endtab %}
+
+{% tab title="特殊運算子BETWEEN AND,IN" %}
+\(p.58\) **BETWEEN AND**查詢薪水介於2000到3500之間的員工
+
+```text
+mysql> SELECT empno,ename,job,sal
+    -> FROM   emp
+    -> WHERE  sal BETWEEN 2000 AND 3500;
++-------+-------+----------+---------+
+| empno | ename | job      | sal     |
++-------+-------+----------+---------+
+|  7499 | ALLEN | SALESMAN | 2000.00 |
+|  7566 | JONES | MANAGER  | 2975.00 |
+|  7698 | BLAKE | MANAGER  | 2850.00 |
+|  7782 | CLARK | MANAGER  | 2450.00 |
+|  7788 | SCOTT | ANALYST  | 3000.00 |
+|  7902 | mary  | ANALYST  | 3000.00 |
++-------+-------+----------+---------+
+6 rows in set (0.00 sec)
+```
+
+\(p.59\) **IN** 列出職務為salesman或manager的員工
+
+```text
+mysql> SELECT empno,ename,job,sal
+    -> FROM   emp
+    -> WHERE  job IN ('salesman','manager');
++-------+--------+----------+---------+
+| empno | ename  | job      | sal     |
++-------+--------+----------+---------+
+|  7499 | ALLEN  | SALESMAN | 2000.00 |
+|  7566 | JONES  | MANAGER  | 2975.00 |
+|  7654 | MARTIN | SALESMAN | 1250.00 |
+|  7698 | BLAKE  | MANAGER  | 2850.00 |
+|  7782 | CLARK  | MANAGER  | 2450.00 |
+|  7844 | TURNER | SALESMAN | 1500.00 |
++-------+--------+----------+---------+
+6 rows in set (0.01 sec)
+```
+{% endtab %}
+
+{% tab title="特殊運算子LIKE" %}
+\(p.60\) **LIKE** 列出姓名以A開頭的員工
+
+```text
+mysql> SELECT empno,ename,job,sal
+    -> FROM   emp
+    -> WHERE  ename LIKE 'A%';
++-------+-------+----------+---------+
+| empno | ename | job      | sal     |
++-------+-------+----------+---------+
+|  7499 | ALLEN | SALESMAN | 2000.00 |
+|  7876 | ADAMS | CLERK    | 1100.00 |
++-------+-------+----------+---------+
+2 rows in set (0.00 sec)
+```
+
+```text
+-- (p.61)列出姓名以N結尾的員工
+mysql> SELECT empno,ename,job,sal
+    -> FROM   emp
+    -> WHERE  ename LIKE '%N';
++-------+--------+----------+---------+
+| empno | ename  | job      | sal     |
++-------+--------+----------+---------+
+|  7499 | ALLEN  | SALESMAN | 2000.00 |
+|  7654 | MARTIN | SALESMAN | 1250.00 |
++-------+--------+----------+---------+
+2 rows in set (0.00 sec)
+```
+
+```text
+-- (p.61) 列出姓名中含有T的員工
+mysql> SELECT empno,ename,job,sal
+    -> FROM   emp
+    -> WHERE  ename LIKE '%T%';
++-------+--------+----------+---------+
+| empno | ename  | job      | sal     |
++-------+--------+----------+---------+
+|  7369 | SMITH  | CLERK    |  800.00 |
+|  7654 | MARTIN | SALESMAN | 1250.00 |
+|  7788 | SCOTT  | ANALYST  | 3000.00 |
+|  7844 | TURNER | SALESMAN | 1500.00 |
++-------+--------+----------+---------+
+4 rows in set (0.00 sec)
+```
+
+```text
+-- (p.62) 列出姓名第二個字為A的員工
+mysql> SELECT empno,ename,job,sal
+    -> FROM   emp
+    -> WHERE  ename LIKE '_A%';
++-------+--------+----------+---------+
+| empno | ename  | job      | sal     |
++-------+--------+----------+---------+
+|  7654 | MARTIN | SALESMAN | 1250.00 |
+|  7902 | mary   | ANALYST  | 3000.00 |
++-------+--------+----------+---------+
+2 rows in set (0.00 sec)
+```
+{% endtab %}
+{% endtabs %}
+
+{% tabs %}
+{% tab title="列舉式CASE\(p.66\)" %}
+SELECT ...  
+FROM ...  
+ 　　　CASE 欄位名  
+　　　　　　WHEN '條件1' THEN 執行1  
+　　　　　　WHEN '條件2' THEN 執行2  
+　　　　　　WHEN '條件3' THEN 執行3  
+　　　　　　ELSE 執行4  
+　　　　　END 執行後新欄位名稱;-- \(以下代入例子\)
+
+```text
+SELECT empno, ename, sal, job,
+    CASE job
+      WHEN 'President' THEN Sal*1.5
+      WHEN 'Manager' THEN Sal*1.3
+      WHEN 'Analyst' THEN Sal*1.2
+      ELSE Sal*1
+    END sal
+FROM emp;
+```
+{% endtab %}
+
+{% tab title="條件式CASE\(p.67\)" %}
+SELECT ...  
+FROM ...  
+WHERE  
+　　CASE 欄位名 BETWEEN x1 AND y1 THEN 執行1  
+　　　　　欄位名 BETWEEN x2 AND y2 THEN 執行2  
+　　　　　欄位名 BETWEEN x3 AND y3 THEN 執行3  
+　　　　　ELSE 執行4  
+　　　　END 執行後新欄位名稱;-- \(以下帶入例子\)
+
+```text
+SELECT empno, ename,sal,
+　　CASE sal BETWEEN 0    AND 1000 THEN ‘A’
+　　　　　sal BETWEEN 1001 AND 2000 THEN ‘B’
+　　　　　sal BETWEEN 2001 AND 3000 THEN ‘C’
+        sal BETWEEN 2001 AND 3000 THEN ‘D’
+　　　　　ELSE ‘E’
+　　END sal
+FROM emp;
+```
+{% endtab %}
+{% endtabs %}
 
 ## 條件篩選ORDER BY
 
