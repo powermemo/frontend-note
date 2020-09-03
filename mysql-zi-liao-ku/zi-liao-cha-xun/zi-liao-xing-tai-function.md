@@ -999,9 +999,9 @@ SELECT ename, lpad(sal,15,'$') 'Salary'
 /*顯示員工姓名、到職日，資料項(DAY)：
 顯示員工被雇用那天為星期幾，並以星期一作為一周的起始日，依星期排序。*/
 
-SELECT ename, hiredate, weekday(hiredate)+1 'Day' 
-	FROM emp
-    order by 3;
+SELECT     ename, hiredate, weekday(hiredate)+1 'Day' 
+	FROM     emp
+  order by 3;
 +--------+---------------------+------+
 | ename  | hiredate            | Day  |
 +--------+---------------------+------+
