@@ -132,6 +132,8 @@ CREATE TABLE t2
   FROM 表格名  
   WHERE 條件`
 
+{% tabs %}
+{% tab title="使用現有資料建立新的資料表" %}
 ```sql
 -- 用子查詢
 CREATE TABLE emp10
@@ -151,6 +153,14 @@ CREATE TABLE emp10
 +-------+--------------+------+-----+---------+-------+
 4 rows in set (0.00 sec)*/
 ```
+{% endtab %}
+
+{% tab title="使用LIKE子句建立資料表" %}
+```
+
+```
+{% endtab %}
+{% endtabs %}
 
 ### 新增欄位
 
