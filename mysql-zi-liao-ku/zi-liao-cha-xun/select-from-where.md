@@ -733,10 +733,10 @@ SELECT CONCAT(ename,', ',job) 'Employee and Title'
 {% tab title="1" %}
 ```text
 -- 顯示出所有員工薪資超過2850元的員工姓名和薪資。
-SELECT ename, sal 
-	FROM emp 
+SELECT  ename, sal 
+	FROM  emp 
   WHERE sal>2850;
- +-------+---------+
++-------+---------+
 | ename | sal     |
 +-------+---------+
 | JONES | 2975.00 |
@@ -751,8 +751,8 @@ SELECT ename, sal
 {% tab title="2" %}
 ```
 -- 顯示員編7566員工姓名及其所屬部門。
-SELECT ename, deptno 
-	FROM emp 
+SELECT  ename, deptno 
+	FROM  emp 
   WHERE empno='7566';
 +-------+--------+
 | ename | deptno |
@@ -767,8 +767,8 @@ SELECT ename, deptno
 ```
 -- 顯示薪資不介於1500~2850元的員工姓名及薪資。
 
-SELECT ename, sal 
-	FROM emp 
+SELECT  ename, sal 
+	FROM  emp 
   WHERE sal NOT BETWEEN 1500 AND 2850;
 +--------+---------+
 | ename  | sal     |
@@ -791,9 +791,9 @@ SELECT ename, sal
 {% tab title="4" %}
 ```
 -- 顯示於1981-2-20和1981-5-1間進入公司的員工姓名、職稱、到職日，並依到職日由小到大排序。
-SELECT ename, job, hiredate 
-	FROM emp 
-  WHERE hiredate BETWEEN '1981-2-20' AND '1981-5-1' 
+SELECT     ename, job, hiredate 
+	FROM     emp 
+  WHERE    hiredate BETWEEN '1981-2-20' AND '1981-5-1' 
   ORDER BY hiredate;
 +-------+----------+---------------------+
 | ename | job      | hiredate            |
@@ -810,9 +810,9 @@ SELECT ename, job, hiredate
 {% tab title="5" %}
 ```
 -- 顯示部門10和30所有員工姓名及其所屬部門編號，依名字英文字母排序。
-SELECT ename, deptno 
-	FROM emp 
-  WHERE deptno IN (10,20) 
+SELECT     ename, deptno 
+	FROM     emp 
+  WHERE    deptno IN (10,20) 
   ORDER BY ename;
 +--------+--------+
 | ename  | deptno |
@@ -835,8 +835,8 @@ SELECT ename, deptno
 /*顯示薪資超過1500且在10或30部門工作員工之姓名和薪資，
 表頭命名為employee和monthly salary。
 */
-SELECT ename 'Employee' ,sal 'Monthly Salary' 
-	FROM emp 
+SELECT  ename 'Employee' ,sal 'Monthly Salary' 
+	FROM  emp 
   WHERE sal>1500 AND deptno IN (10,30);
 +----------+----------------+
 | Employee | Monthly Salary |
@@ -853,8 +853,8 @@ SELECT ename 'Employee' ,sal 'Monthly Salary'
 {% tab title="7" %}
 ```
 -- 顯示於1982年進公司的所有員工姓名、職稱、到職日。
-SELECT ename, job, hiredate
-	FROM emp 
+SELECT  ename, job, hiredate
+	FROM  emp 
   WHERE hiredate BETWEEN '1982-01-01' AND '1982-12-31';
 +--------+---------+---------------------+
 | ename  | job     | hiredate            |
@@ -869,8 +869,8 @@ SELECT ename, job, hiredate
 {% tab title="8" %}
 ```
 -- 顯示沒有主管的員工姓名和職稱。
-SELECT ename, job 
-	FROM emp 
+SELECT    ename, job 
+	FROM    emp 
     WHERE mgr IS NULL;
 +-------+-----------+
 | ename | job       |
@@ -884,10 +884,10 @@ SELECT ename, job
 {% tab title="9" %}
 ```
 -- 顯示所有有賺取佣金的員工姓名、薪資、佣金，並依薪資和佣金做降冪排序。
-SELECT ename, sal, comm 
-	FROM emp 
-    WHERE comm IS NOT NULL AND comm<>0 
-    ORDER BY sal DESC, comm DESC;
+SELECT     ename, sal, comm 
+	FROM     emp 
+  WHERE    comm IS NOT NULL AND comm<>0 
+  ORDER BY sal DESC, comm DESC;
 +--------+---------+---------+
 | ename  | sal     | comm    |
 +--------+---------+---------+
@@ -902,9 +902,9 @@ SELECT ename, sal, comm
 {% tab title="10" %}
 ```
 -- 顯示所有名字裡第三個英文字母為A的員工之姓名與職稱
-SELECT ename, job 
-	FROM emp 
-    WHERE ename LIKE '__A%';
+SELECT  ename, job 
+	FROM  emp 
+  WHERE ename LIKE '__A%';
 +-------+---------+
 | ename | job     |
 +-------+---------+
@@ -919,8 +919,8 @@ SELECT ename, job
 {% tab title="11" %}
 ```
 -- 顯示名字裡有兩個L且在30部門工作或經理是7782的員工姓名、經理員編及其所屬部門編號。
-SELECT ename, mgr, deptno 
-	FROM emp 
+SELECT    ename, mgr, deptno 
+	FROM    emp 
     WHERE (ename LIKE '%LL%' AND deptno=30) OR (mgr='7782');
 +--------+------+--------+
 | ename  | mgr  | deptno |
@@ -935,9 +935,9 @@ SELECT ename, mgr, deptno
 {% tab title="12" %}
 ```
 -- 顯示值稱為Clerk或analyst且薪水不等於1000,3000,5000的員工姓名、職稱、薪資。
-SELECT ename, job, sal 
-	FROM emp 
-    WHERE job IN ('Clerk','Analyst') AND sal NOT IN (1000,3000,5000);
+SELECT  ename, job, sal 
+	FROM  emp 
+  WHERE job IN ('Clerk','Analyst') AND sal NOT IN (1000,3000,5000);
 +--------+-------+---------+
 | ename  | job   | sal     |
 +--------+-------+---------+
@@ -953,9 +953,9 @@ SELECT ename, job, sal
 {% tab title="13" %}
 ```
 -- 顯示佣金比薪水的1.1倍還多的員工姓名、薪資、佣金。
-SELECT ename, sal, comm 
-	FROM emp 
-    WHERE comm>sal*1.1;
+SELECT  ename, sal, comm 
+	FROM  emp 
+  WHERE comm>sal*1.1;
 +--------+---------+---------+
 | ename  | sal     | comm    |
 +--------+---------+---------+
