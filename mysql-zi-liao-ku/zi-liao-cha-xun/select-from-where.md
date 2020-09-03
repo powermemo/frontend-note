@@ -4,7 +4,7 @@ description: 參照講義p.39~p.50、p.51~p.74
 
 # SELECT FROM WHERE
 
-## SELECT FROM
+## SELECT FROM\(p.39\)
 
 * 顯示表格全部欄位及資料。 `SELECT * FROM` 表格名稱; 
 * 顯示指定欄位及其底下的資料。 SELECT 欄位名稱1,欄位名稱2,欄位名稱3... FROM 表格名稱; 
@@ -15,7 +15,7 @@ description: 參照講義p.39~p.50、p.51~p.74
 
 
 
-## SELECT FROM WHERE
+## SELECT FROM WHERE\(p.51\)
 
 * 條件篩選 SELECT ... FROM ... `WHERE` 條件ex. empno&gt;10;
   * 比較運算子=、&gt;=、&lt;=、&gt;、&lt;、&lt;&gt;
@@ -171,10 +171,11 @@ LIMIT 5;🔶`
 
 {% tabs %}
 {% tab title="1" %}
-```text
+```sql
 -- 建立一個查詢來顯示部門(dept)資料表中的所有資料。
 SELECT * 
 	FROM dept;
+/*
 +--------+------------+----------+
 | DEPTNO | DNAME      | LOC      |
 +--------+------------+----------+
@@ -183,18 +184,19 @@ SELECT *
 |     30 | SALES      | CHICAGO  |
 |     40 | OPERATIONS | BOSTON   |
 +--------+------------+----------+
-4 rows in set (0.00 sec)	
+4 rows in set (0.00 sec)	*/
 ```
 {% endtab %}
 
 {% tab title="2" %}
-```
+```sql
 /*建立一個查詢來顯示每一位員工的
 姓名(name)、職稱(job)、到職日(hire date)、員工編號(employee number)，
 並將員工編號顯示在最前面。
 */
 SELECT empno, ename, job, hiredate 
-	FROM emp;
+	FROM emp;  
+/*
 +-------+--------+-----------+---------------------+
 | empno | ename  | job       | hiredate            |
 +-------+--------+-----------+---------------------+
@@ -213,15 +215,16 @@ SELECT empno, ename, job, hiredate
 |  7902 | FORD   | ANALYST   | 1981-12-03 00:00:00 |
 |  7934 | MILLER | CLERK     | 1982-01-23 00:00:00 |
 +-------+--------+-----------+---------------------+
-14 rows in set (0.00 sec)
+14 rows in set (0.00 sec)*/
 ```
 {% endtab %}
 
 {% tab title="3" %}
-```
+```sql
 -- 建立一個查詢來顯示所有員工所擔任的職稱有哪些(重複資料只顯示一次)。
 SELECT DISTINCT job 
 	FROM emp;
+/*
 +-----------+
 | job       |
 +-----------+
@@ -231,17 +234,18 @@ SELECT DISTINCT job
 | ANALYST   |
 | PRESIDENT |
 +-----------+
-5 rows in set (0.00 sec)
+5 rows in set (0.00 sec)*/
 ```
 {% endtab %}
 
 {% tab title="4" %}
-```
+```sql
 /*建立一個查詢來顯示每一位員工的姓名、職稱、到職日、員編，並將員編顯示在最前面。
 將資料表頭重新命名:emp#,Employee,job,hire date。
 */
 SELECT empno 'Emp#', ename 'Employee', job 'Job', hiredate 'Hire Date' 
 	FROM emp;
+/*
 +------+----------+-----------+---------------------+
 | Emp# | Employee | Job       | Hire Date           |
 +------+----------+-----------+---------------------+
@@ -260,17 +264,18 @@ SELECT empno 'Emp#', ename 'Employee', job 'Job', hiredate 'Hire Date'
 | 7902 | FORD     | ANALYST   | 1981-12-03 00:00:00 |
 | 7934 | MILLER   | CLERK     | 1982-01-23 00:00:00 |
 +------+----------+-----------+---------------------+
-14 rows in set (0.00 sec)
+14 rows in set (0.00 sec)*/
 ```
 {% endtab %}
 
 {% tab title="5" %}
-```
+```sql
 /*建立一個查詢將姓名、職稱串接為一個資料項(資料中間利用一個空白和一個逗號做區隔)，
 將表頭重新命名為employee and title。
 */
 SELECT CONCAT(ename,', ',job) 'Employee and Title' 
 	FROM emp;
+/*
 +--------------------+
 | Employee and Title |
 +--------------------+
@@ -289,7 +294,7 @@ SELECT CONCAT(ename,', ',job) 'Employee and Title'
 | FORD, ANALYST      |
 | MILLER, CLERK      |
 +--------------------+
-14 rows in set (0.00 sec)
+14 rows in set (0.00 sec)*/
 ```
 {% endtab %}
 {% endtabs %}
