@@ -473,7 +473,7 @@ CHANGE可以重新命名；MODIFY不能重新命名。
 {% tabs %}
 {% tab title="刪除欄位" %}
 ```sql
-ALTER TABLE dpt1
+ALTER TABLE dpt1            --(p.186)
 DROP COLUMN loc;
 
 /*🔹【before】
