@@ -10,15 +10,15 @@ description: 參照講義p.149~
 VALUES(欄1,欄2,...欄n);`
 
 ```text
-INSERT INTO emp[(指定欄位1,指定欄位2,...指定欄位n)]
+INSERT INTO emp[(指定欄位1,指定欄位2,...指定欄位n)]		(p.150)
 VALUES(欄位1值,欄位2值,...欄位n值),
-	(欄位1值,欄位2值,...欄位n值),
-	(欄位1值,欄位2值,...欄位n值);
+	    (欄位1值,欄位2值,...欄位n值),
+	    (欄位1值,欄位2值,...欄位n值);
 -- 🔹VALUES後每個小括號內都是 一筆 新增的資料，
 -- 🔹可以新增多組(多筆)資料，用逗號「,」隔開。
 
 
-INSERT INTO emp
+INSERT INTO emp																		(p.158)
 	SELECT *
 	  FROM emp1
 	  WHERE deptno=10;
@@ -26,7 +26,7 @@ INSERT INTO emp
 -- 🔹可以使用子查詢的方式新增（常用在備份）
 ```
 
-## 修改表格內容-UPDATE
+## 修改表格內容-UPDATE\(p.152\)
 
 `UPDATE 表格名  
 SET 修改欄位=修改值  
@@ -35,42 +35,42 @@ WHERE 條件判斷;`
 {% tabs %}
 {% tab title="範例" %}
 ```text
--- 將員編7782從部門10調到部門20
+-- 9-7將員編7782從部門10調到部門20    (p.152)
 UPDATE emp
-SET deptno = 20
-WHERE empno = 7782;
+SET    deptno = 20
+WHERE  empno = 7782;
 ```
 {% endtab %}
 
 {% tab title="範例2" %}
 ```
--- 將員編7900的薪資改為1000
+-- 9-8將員編7900的薪資改為1000    (p.152)
 UPDATE emp
-SET sal = 1000
-WHERE empno = 7900;
+SET    sal = 1000
+WHERE  empno = 7900;
 ```
 {% endtab %}
 
 {% tab title="更新兩欄資料" %}
 ```
--- 將員編7369職稱改為salesman、部門改為30
+-- 9-9將員編7369職稱改為salesman、部門改為30       (p.153)
 UPDATE emp
-    SET job = 'salesman'
-        deoptno = 30
-WHERE empno = 7369;
+SET    job = 'salesman'
+       deoptno = 30
+WHERE  empno = 7369;
 ```
 {% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}
-關掉安全機制`SET SQL_SAFE_UPDATES = 0 | 1;`\(0表關閉、1是預設值表開啟\)  
+關掉**安全機制`SET SQL_SAFE_UPDATES = 0 | 1;`**\(0表關閉、1是預設值表開啟\)  
 PK、FK等原因，修改時會出問題。若設定安全機制關閉就可以修改了。
 {% endhint %}
 
 {% tabs %}
 {% tab title="用子查詢取值" %}
 ```text
--- 員編7900在部門hr是哪個部門編號
+-- 9-10員編7900在部門hr是哪個部門編號       (p.153)
 -- 子查詢抓hr部門編號--70
 
 UPDATE emp
@@ -83,7 +83,7 @@ WHERE empno = 7900;
 
 {% tab title="用子查詢當條件用" %}
 ```
--- 將部門sales員工薪水+500
+-- 將部門sales員工薪水+500       (p.153)
 -- 子查詢抓部門sales的部門編號--30
 
 UPDATE emp
@@ -109,7 +109,11 @@ WHERE deptno = (SELECT deptno
 {% endtab %}
 {% endtabs %}
 
-## 刪除表格內容DELETE FROM
+{% hint style="info" %}
+用子查詢合併使用時，兩者間資料表不可以是同一個。
+{% endhint %}
+
+## 刪除表格內容DELETE FROM\(p.154\)
 
 `DELETE FROM 表格名  
 [WHERE 條件判斷];`
@@ -117,7 +121,7 @@ WHERE deptno = (SELECT deptno
 {% tabs %}
 {% tab title="Plain Text" %}
 ```text
--- 從表格dept刪除部門70
+-- 9-12從表格dept刪除部門70    (p.154)
 DELETE FROM dept
 WHERE deptno = 70;
 ```
@@ -125,11 +129,11 @@ WHERE deptno = 70;
 
 {% tab title="子查詢條件" %}
 ```
--- 刪除名稱有「public」的部門
+-- 9-13刪除名稱有「public」的部門k              (p.155)
 DELETE FROM emp
-WHERE dept = (SELECT deptno
+WHERE deptno = (SELECT deptno
               FROM dept
-              WHERE dname LIKE '%public%';
+              WHERE dname LIKE '%public%');
 ```
 {% endtab %}
 {% endtabs %}
