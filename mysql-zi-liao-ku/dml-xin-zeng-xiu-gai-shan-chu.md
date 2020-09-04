@@ -1,24 +1,24 @@
 ---
-description: 參照講義p.149~p.164
+description: 參照講義p.149~
 ---
 
 # DML資料庫維護&交易控制
 
-## 新增表格內容-INSERT  INTO\(p.150\)
+## 新增表格內容-INSERT INTO\(p.150\)
 
 `INSERT INTO 表格名  
 VALUES(欄1,欄2,...欄n);`
 
 ```text
-INSERT INTO emp[(指定欄位1,指定欄位2,...指定欄位n)]		(p.150)
+INSERT INTO emp[(指定欄位1,指定欄位2,...指定欄位n)]
 VALUES(欄位1值,欄位2值,...欄位n值),
-	    (欄位1值,欄位2值,...欄位n值),
-	    (欄位1值,欄位2值,...欄位n值);
+	(欄位1值,欄位2值,...欄位n值),
+	(欄位1值,欄位2值,...欄位n值);
 -- 🔹VALUES後每個小括號內都是 一筆 新增的資料，
 -- 🔹可以新增多組(多筆)資料，用逗號「,」隔開。
 
 
-INSERT INTO emp																		(p.158)
+INSERT INTO emp
 	SELECT *
 	  FROM emp1
 	  WHERE deptno=10;
@@ -26,7 +26,7 @@ INSERT INTO emp																		(p.158)
 -- 🔹可以使用子查詢的方式新增（常用在備份）
 ```
 
-## 修改表格內容-UPDATE  SET\(p.152\)
+## 修改表格內容-UPDATE
 
 `UPDATE 表格名  
 SET 修改欄位=修改值  
@@ -35,42 +35,42 @@ WHERE 條件判斷;`
 {% tabs %}
 {% tab title="範例" %}
 ```text
--- 9-7將員編7782從部門10調到部門20    (p.152)
+-- 將員編7782從部門10調到部門20
 UPDATE emp
-SET    deptno = 20
-WHERE  empno = 7782;
+SET deptno = 20
+WHERE empno = 7782;
 ```
 {% endtab %}
 
 {% tab title="範例2" %}
 ```
--- 9-8將員編7900的薪資改為1000    (p.152)
+-- 將員編7900的薪資改為1000
 UPDATE emp
-SET    sal = 1000
-WHERE  empno = 7900;
+SET sal = 1000
+WHERE empno = 7900;
 ```
 {% endtab %}
 
 {% tab title="更新兩欄資料" %}
 ```
--- 9-9將員編7369職稱改為salesman、部門改為30       (p.153)
+-- 將員編7369職稱改為salesman、部門改為30
 UPDATE emp
-SET    job = 'salesman'
-       deoptno = 30
-WHERE  empno = 7369;
+    SET job = 'salesman'
+        deoptno = 30
+WHERE empno = 7369;
 ```
 {% endtab %}
 {% endtabs %}
 
 {% hint style="info" %}
-關掉**安全機制`SET SQL_SAFE_UPDATES = 0 | 1;`**\(0表關閉、1是預設值表開啟\)  
+關掉安全機制`SET SQL_SAFE_UPDATES = 0 | 1;`\(0表關閉、1是預設值表開啟\)  
 PK、FK等原因，修改時會出問題。若設定安全機制關閉就可以修改了。
 {% endhint %}
 
 {% tabs %}
 {% tab title="用子查詢取值" %}
 ```text
--- 9-10員編7900在部門hr是哪個部門編號       (p.153)
+-- 員編7900在部門hr是哪個部門編號
 -- 子查詢抓hr部門編號--70
 
 UPDATE emp
@@ -83,7 +83,7 @@ WHERE empno = 7900;
 
 {% tab title="用子查詢當條件用" %}
 ```
--- 將部門sales員工薪水+500       (p.153)
+-- 將部門sales員工薪水+500
 -- 子查詢抓部門sales的部門編號--30
 
 UPDATE emp
@@ -109,11 +109,7 @@ WHERE deptno = (SELECT deptno
 {% endtab %}
 {% endtabs %}
 
-{% hint style="info" %}
-用子查詢合併使用時，兩者間資料表不可以是同一個。
-{% endhint %}
-
-## 刪除表格內容DELETE  FROM\(p.154\)
+## 刪除表格內容DELETE FROM
 
 `DELETE FROM 表格名  
 [WHERE 條件判斷];`
@@ -121,7 +117,7 @@ WHERE deptno = (SELECT deptno
 {% tabs %}
 {% tab title="Plain Text" %}
 ```text
--- 9-12從表格dept刪除部門70    (p.154)
+-- 從表格dept刪除部門70
 DELETE FROM dept
 WHERE deptno = 70;
 ```
@@ -129,18 +125,18 @@ WHERE deptno = 70;
 
 {% tab title="子查詢條件" %}
 ```
--- 9-13刪除名稱有「public」的部門k              (p.155)
+-- 刪除名稱有「public」的部門
 DELETE FROM emp
-WHERE deptno = (SELECT deptno
+WHERE dept = (SELECT deptno
               FROM dept
-              WHERE dname LIKE '%public%');
+              WHERE dname LIKE '%public%';
 ```
 {% endtab %}
 {% endtabs %}
 
 
 
-## 資料庫交易\(p.159\)
+## 資料庫交易
 
 * COMMIT確認交易
 * ROLLBACK放棄交易
@@ -151,22 +147,22 @@ WHERE deptno = (SELECT deptno
 * 交易的一致性：交易影響多筆表單，要嘛都做，要嘛都不做，不可以做一半。 
 * 不一致的舉例說明：訂單沒任何訂單項目、訂單成立但庫存沒減少
 
-### 預設的交易控制\(p.160\)
+### 預設的交易控制
 
 自動確認`AUTOCOMMIT = 1` \(每執行一次，就寫入硬碟執行\)
 
-### 起始一個交易\(p.160\)
+### 起始一個交易
 
 * `SET AUTOCOMMIT = 0` 
 * `BEGIN`  \|  `START TRANSACTION`
 
-### 結束一個交易\(p.160\)
+### 結束一個交易
 
 * `SET AUTOCOMMIT = 1`
 * `COMMIT`成立  /  `ROLLBACK`放棄
 
 {% tabs %}
-{% tab title="範例\(p.162\)" %}
+{% tab title="範例" %}
 ```text
 START TRANSACTION;                        -- 設定交易區塊
     INSERT INTO tx VALUES (null,NOW());
@@ -174,7 +170,7 @@ ROLLBACK;                                 -- 取消交易(交易倒回)
 ```
 {% endtab %}
 
-{% tab title="範例2\(p.162\)" %}
+{% tab title="範例2" %}
 ```
 SET AUTOCOMMIT = 0;                   -- 安全交易控制開始
     INSERT INTO tx VALUES(null,NOW());-- 交易開始
@@ -186,12 +182,12 @@ SET SUTOCOMMIT = 1;                   -- 安全交易控制結束
 {% endtab %}
 {% endtabs %}
 
-### 交易控制\(p.163\)
+### 交易控制
 
 ![](../.gitbook/assets/image%20%2839%29.png)
 
 ```text
-START TRANSACTION                    --(p.163)
+START TRANSACTION
     dml_statement;
     ...
     SAVEPOINT tx1;
@@ -247,7 +243,7 @@ ROLLBACK;             -- undo
 {% tab title="1" %}
 ```text
 /*將下列資料新增至MY_EMP資料表中，不列舉欄位
-	1	patel	Ralph	rpatel	795*/
+1	patel	Ralph	rpatel	795*/
 
 INSERT INTO my_emp 
 	VALUES(1,'Patel','Ralph','rpatel',795);
@@ -259,22 +255,22 @@ Query OK, 1 row affected (0.10 sec)
 {% tab title="2" %}
 ```
 /*使用列舉的方式將下列資料新增至my_emp資料表中
-	2	dancs	betty	bdancs	860*/
+2	dancs	betty	bdancs	860*/
 
 INSERT INTO my_emp(id,last_name, first_name, userid, salary) 
-						VALUES(2,'Dances','Betty','bdances',860);
+	VALUES(2,'Dances','Betty','bdances',860);
 ```
 {% endtab %}
 
 {% tab title="3" %}
 ```
 /*將下列資料新增至my_emp
-	3	biri	ben	bbiri	1100
-	4	newman	chad	cnewman	750*/
+3	biri	ben	bbiri	1100
+4	newman	chad	cnewman	750*/
 
 INSERT INTO my_emp 
 	VALUES(3,'Biri','Ben','bbiri',1100),
-		  	(4,'Newman','Chad','cnewmam',750);
+		  (4,'Newman','Chad','cnewmam',750);
 ```
 {% endtab %}
 
@@ -284,8 +280,7 @@ INSERT INTO my_emp
 
 SET SQL_SAFE_UPDATES = 0;
 UPDATE my_emp 
-	SET last_name='Drexler' 
-WHERE ID=3;
+	SET last_name='Drexler' WHERE ID=3;
 
 ```
 {% endtab %}
@@ -295,8 +290,7 @@ WHERE ID=3;
 -- 將薪資低於900元的所有員工調整為1000元
 
 UPDATE my_emp 
-	SET salary=1000 
-WHERE salary<900;
+	SET salary=1000 WHERE salary<900;
 ```
 {% endtab %}
 

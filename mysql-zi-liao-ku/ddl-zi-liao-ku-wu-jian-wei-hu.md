@@ -274,7 +274,7 @@ mysql> desc emp10;
 
 {% tab title="新增指定欄位後\(p.182\)" %}
 ```sql
-ALTER TABLE emp10
+ALTER TABLE emp10                       -- 
     ADD COLUMN hiredate DATE AFTER job; -- 🔶【AFTER】
 /*【🔹before】
 mysql> desc emp10;
@@ -308,9 +308,9 @@ mysql> desc emp10;
 {% endtabs %}
 
 {% tabs %}
-{% tab title="改欄位預設" %}
+{% tab title="改欄位預設ALTER" %}
 ```sql
-ALTER TABLE emp10
+ALTER TABLE emp10            --(p.184)
 ALTER phone DROP DEFAULT;
 
 /*🔹【before】
@@ -346,9 +346,9 @@ mysql> desc emp10;
 ```
 {% endtab %}
 
-{% tab title="改欄位型態,順序" %}
+{% tab title="改欄位型態,順序MODIFY" %}
 ```sql
-ALTER TABLE emp10
+ALTER TABLE emp10                --(p.184)
 MODIFY COLUMN mgr INT AFTER job; // 【INT】改型態了；【AFTER job】改位置了
 
 /*🔹【before】
@@ -384,9 +384,9 @@ mysql> desc emp10;
 ```
 {% endtab %}
 
-{% tab title="改欄位型態" %}
+{% tab title="改欄位型態MODIFY" %}
 ```sql
-ALTER TABLE emp
+ALTER TABLE emp                            -- (p.185)
 MODIFY COLUMN ename VARCHAR(10) NOT NULL;
 /*🔹【before】
 mysql> desc emp10;
@@ -421,9 +421,9 @@ mysql> desc emp10;
 ```
 {% endtab %}
 
-{% tab title="更改欄位名稱、型態" %}
+{% tab title="更改欄位名稱、型態CHANGE" %}
 ```sql
-ALTER TABLE emp10
+ALTER TABLE emp10                        -- (p.185)
 CHANGE COLUMN sal salary SMALLINT;
 /*🔹【before】
 mysql> desc emp10;
