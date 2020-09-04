@@ -384,7 +384,7 @@ mysql> SELECT ordid, custid, orderdate
 
 {% tab title="同表2" %}
 ```
--- 8-22 查詢各部門薪資最高的員工資料
+-- 8-22 查詢各部門薪資最高的員工資料                (p.145)
 mysql> SELECT ename, sal, deptno
     -> FROM emp oe
     -> WHERE sal = (SELECT MAX(sal)
@@ -404,7 +404,7 @@ mysql> SELECT ename, sal, deptno
 {% endtab %}
 {% endtabs %}
 
-## EXISTS－存在性測試
+## EXISTS－存在性測試\(p.146\)
 
 * EXISTS 存在性測試，結果只有true \| false
 * 語法WHERE \[NOT\] EXISTS \(subquery\)
@@ -412,14 +412,14 @@ mysql> SELECT ename, sal, deptno
 * 一般子查詢SELECT都用星號「\*」
 
 {% tabs %}
-{% tab title="存在" %}
+{% tab title="存在、不存在" %}
 ```text
--- 8-25 下過訂單的客戶資料
+-- 8-25 下過訂單的客戶資料                        (p.147)
 mysql> SELECT custid, name
     -> FROM customer AS c
     -> WHERE EXISTS (SELECT *
-    ->             FROM ord AS o
-    ->             WHERE c.custid = o.custid);
+    ->               FROM ord AS o
+    ->               WHERE c.custid = o.custid);
 +--------+----------------------------------------------+
 | custid | name                                         |
 +--------+----------------------------------------------+
@@ -435,10 +435,10 @@ mysql> SELECT custid, name
 +--------+----------------------------------------------+
 9 rows in set (0.00 sec)
 ```
-{% endtab %}
 
-{% tab title="不存在" %}
-```
+↓不存在\(NOT EXIST\)\(p.147\)
+
+```text
 -- 8-26 為下過定單的客戶資料(結果是沒有w)
 mysql> SELECT custid, name
     -> FROM customer AS c
@@ -450,9 +450,7 @@ Empty set (0.00 sec)
 {% endtab %}
 {% endtabs %}
 
-## 作業練習－DQL子查詢
-
-參照講義P.148
+## 作業練習－DQL子查詢\(p.148\)
 
 9~11較難。
 
@@ -467,7 +465,7 @@ Empty set (0.00 sec)
 9. 🟡顯示和賺取佣金的員工之部門編號和薪資都相同的員工之姓名，部門編號和薪資。
 10. 🟡顯示和在DALLAS工作的員工之薪資和佣金相同的員工之姓名，部門編號和薪資。
 11. 🟡顯示薪資和佣金都和SCOTT相同的所有員工之姓名，進公司日期和薪資。\(不要在結果中顯示SCOTT的資料\)
-12. 顯示薪資比所有職稱是"CLERK"還高的員工之姓名，進公司日期和薪資，並將結果依薪資由高志低顯示。
+12. 顯示薪資比所有職稱是"CLERK"還高的員工之姓名，進公司日期和薪資，並將結果依薪資由高至低顯示。
 
 {% tabs %}
 {% tab title="1" %}
@@ -584,6 +582,22 @@ SELECT ename, deptno, job
 | FORD  |     20 | ANALYST |
 +-------+--------+---------+
 5 rows in set (0.00 sec)
+
+
+-- 用JOIN ON也有相同的答案哦~~~~
+mysql> select e.ename,d.deptno,e.job
+    -> from   emp e JOIN dept d ON e.deptno=d.deptno
+    -> where  d.loc = 'dallas';
++-------+--------+---------+
+| ename | deptno | job     |
++-------+--------+---------+
+| SMITH |     20 | CLERK   |
+| JONES |     20 | MANAGER |
+| SCOTT |     20 | ANALYST |
+| ADAMS |     20 | CLERK   |
+| FORD  |     20 | ANALYST |
++-------+--------+---------+
+5 rows in set (0.00 sec)
 ```
 {% endtab %}
 
@@ -614,6 +628,23 @@ SELECT deptno, ename, job
     WHERE deptno = (SELECT deptno 
 								    FROM dept 
                     WHERE dname='Sales');
++--------+--------+----------+
+| deptno | ename  | job      |
++--------+--------+----------+
+|     30 | ALLEN  | SALESMAN |
+|     30 | WARD   | SALESMAN |
+|     30 | MARTIN | SALESMAN |
+|     30 | BLAKE  | MANAGER  |
+|     30 | TURNER | SALESMAN |
+|     30 | JAMES  | CLERK    |
++--------+--------+----------+
+6 rows in set (0.00 sec)
+
+
+-- 使用JOIN ON 也是可以的哦~~~
+mysql> select d.deptno,e.ename,e.job
+    -> from emp e JOIN dept d ON e.deptno=d.deptno
+    -> where d.dname = 'sales';
 +--------+--------+----------+
 | deptno | ename  | job      |
 +--------+--------+----------+
@@ -717,7 +748,7 @@ SELECT e1.ename, e1.deptno, e1.sal
 {% tab title="12" %}
 ```
 /*顯示薪資比所有職稱是"CLERK"還高的員工之姓名，
-進公司日期和薪資，並將結果依薪資由高志低顯示。*/
+進公司日期和薪資，並將結果依薪資由高至低顯示。*/
 SELECT ename, hiredate, sal 
 	FROM emp 
    WHERE sal > ALL (SELECT sal 
