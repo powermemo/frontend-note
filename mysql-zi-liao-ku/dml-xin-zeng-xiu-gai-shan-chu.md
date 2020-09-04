@@ -4,7 +4,7 @@ description: 參照講義p.149~
 
 # DML資料庫維護&交易控制
 
-## 新增表格內容-INSERT INTO
+## 新增表格內容-INSERT INTO\(p.150\)
 
 `INSERT INTO 表格名  
 VALUES(欄1,欄2,...欄n);`
