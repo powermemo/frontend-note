@@ -423,7 +423,7 @@ mysql> desc emp10;
 
 {% tab title="更改欄位名稱、型態CHANGE" %}
 ```sql
-ALTER TABLE emp10                        -- (p.185)
+ALTER TABLE emp10                        -- (p.186)
 CHANGE COLUMN sal salary SMALLINT;
 /*🔹【before】
 mysql> desc emp10;
