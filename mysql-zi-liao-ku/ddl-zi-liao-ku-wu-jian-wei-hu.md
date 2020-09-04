@@ -4,7 +4,7 @@ description: 參照講義p.165 p.193
 
 # DDL資料庫物件維護
 
-## 新增物件
+## 新增物件CREATE  TABLE\(p.167\)
 
 `CREATE TABLE [IF NOT EXISTS] 表格名稱  
 (欄位名稱1 欄位型別1 [DEFAULT '預設值'][NOT NULL] [PRIMARY KEY],  
@@ -13,14 +13,18 @@ description: 參照講義p.165 p.193
  欄位名稱n 欄位型別n,  
 )[ENGINE 儲存引擎];`
 
+{% tabs %}
+{% tab title="First Tab" %}
 ```sql
-CREATE TABLE IF NOT EXISTS dept
+CREATE TABLE IF NOT EXISTS dept               -- (p.169)
 (    deptno SMALLINT(4) NOT NULL PRIMARY KEY, -- 欄位名 欄位型別 不為空值 主鍵
      dname VARCHAR(14) NOT NULL,
      Loc VAARCHAR(14) DEFAULT 'M',            -- 欄位名 欄位型別 預設值M
 )ENGINE InnoDB;                               -- 儲存引擎InnoDB
 ```
+{% endtab %}
 
+{% tab title="Second Tab" %}
 ```sql
 -- 「[CNSTRAINT 主鍵名稱] PRIMARY KEY(欄位名稱,...)」            -- 🔶【CNSTRAINT】
 CREATE TABLE item12
@@ -55,18 +59,22 @@ CREATE TABLE item
   CONSTRAINT uk_item_ordid_prodid UNIQUE(ordid,prodid)-- 🔸
 );
 ```
+{% endtab %}
+{% endtabs %}
 
-### 外來鍵FK
+### 外來鍵FK \(p.174\)
 
 * ON DELETE
 * ON UPDATE
 
+{% tabs %}
+{% tab title="格式" %}
 ```text
 -- 新增
 CREATE TABLE table
 (...
     [CONSTRAINT 主鍵名]
-        FOREIGN KEY(欄位名,...) REFERENCE 外來表格(外來表格欄)
+    FOREIGN KEY(欄位名,...) REFERENCE 外來表格(外來表格欄)
 );
 ```
 
@@ -77,26 +85,28 @@ CREATE TABLE table
     因為emp.deptno有10
 */
 ```
+{% endtab %}
 
+{% tab title="範例" %}
 ```sql
 /* 🔶CASCADE 相依性
     父表刪子表一起刪
     例如，dept.deptno 10 -> delete
     emp.deptno 10 全刪
 */
-CREATE TABLE t2
+CREATE TABLE t2           --🔹(p.10-23---p.176)
 (fk SMALLINT,
  c2 CHAR(2),
- FOREIGN KEY(fk) REFERENCES t1(pk) ON DELETE CASCADE -- 🔸【ON DELETE CASCADE 】
+ FOREIGN KEY(fk) REFERENCES t1(pk) ON DELETE CASCADE -- 🔸【ON DELETE CASCADE】
  -- 父子一起刪
 );
 
 /*---------------------------------------------------------------*/
 
-CREATE TABLE t2
+CREATE TABLE t2           --🔹(p.10-25---p.177)
 (fk SMALLINT,
  c2 CHAR(2),
- FOREIGN KEY(fk) REFERENCES t1(pk) ON UPDATE CASCADE -- 🔸【ON UPDATE CASCADE 】
+ FOREIGN KEY(fk) REFERENCES t1(pk) ON UPDATE CASCADE -- 🔸【ON UPDATE CASCADE】
  -- 父子一起改
 );
 ```
@@ -107,7 +117,7 @@ CREATE TABLE t2
     例如，dept.deptno 10 -> delete
     emp.deptno 10 -> Null
 */
-CREATE TABLE t2
+CREATE TABLE t2           --🔹(p.10-24---p.176)
 (fk SMALLINT,
  c2 CHAR(2),
  FOREIGN KEY(fk) REFERENCES t1(pk) ON DELETE SET NULL -- 🔸【ON DELETE SET NULL】
@@ -116,15 +126,17 @@ CREATE TABLE t2
 
 /*---------------------------------------------------------------*/
 
-CREATE TABLE t2
+CREATE TABLE t2           --🔹(p.10-26---p.177)
 (fk SMALLINT,
  c2 CHAR(2),
  FOREIGN KEY(fk) REFERENCES t1(pk) ON UPDATE SET NULL -- 🔸【ON UPDATE SET NULL 】
  -- 父改，子NULL
 );
 ```
+{% endtab %}
+{% endtabs %}
 
-### 使用現有資料建立新的資料表
+### 使用現有資料建立新的資料表\(p.178\)
 
 `CREATE TABLE 表格名[(欄位名)]  
   ​AS  
@@ -135,12 +147,12 @@ CREATE TABLE t2
 {% tabs %}
 {% tab title="使用現有資料建立新的資料表" %}
 ```sql
--- 用子查詢
+-- 用子查詢。用部分欄位建立新表格
 CREATE TABLE emp10
   ​AS
-  SELECT empno,ename,job,sal
-  FROM emp
-  WHERE deptno = 10;
+  SELECT     empno,ename,job,sal
+  FROM       emp
+  WHERE      deptno = 10;
 
 /*mysql> desc emp10;
 +-------+--------------+------+-----+---------+-------+
@@ -156,19 +168,44 @@ CREATE TABLE emp10
 {% endtab %}
 
 {% tab title="使用LIKE子句建立資料表" %}
-```
+* 使用LIKE子句建立新表格。
+* 新表格**沒有任何資料**，表格是空的。
+* 新表格的欄位、型態等（表頭）會被保留。
 
+```
+-- 建立                                (p.180)
+mysql> create table emp1 like emp;
+Query OK, 0 rows affected (0.13 sec)
+
+-- 查詢🔸表頭
+mysql> desc emp1;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| EMPNO    | int          | NO   | PRI | NULL    |       |
+| ENAME    | varchar(10)  | YES  |     | NULL    |       |
+| JOB      | varchar(9)   | YES  |     | NULL    |       |
+| MGR      | int          | YES  | MUL | NULL    |       |
+| HIREDATE | datetime     | YES  |     | NULL    |       |
+| SAL      | decimal(7,2) | YES  |     | NULL    |       |
+| COMM     | decimal(7,2) | YES  |     | NULL    |       |
+| DEPTNO   | int          | NO   | MUL | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+
+-- 查詢🔸沒有資料
+mysql> select * from emp1;
+Empty set (0.00 sec)
 ```
 {% endtab %}
 {% endtabs %}
 
-### 新增欄位
+## 修改物件ALTER  TABLE\(欄位\)\(p.181\)
 
 `ALTER TABLE 表格名  
 ADD | ALTER | MODIFY | CHANGE | DROP`
 
 {% tabs %}
-{% tab title="新增" %}
+{% tab title="新增欄位\(p.181\)" %}
 ```sql
 ALTER TABLE emp10
     ADD COLUMN mgr SMALLINT;
@@ -199,7 +236,7 @@ mysql> desc emp10;
 ```
 {% endtab %}
 
-{% tab title="新增在第一欄" %}
+{% tab title="新增在第一欄\(p.182\)" %}
 ```sql
 ALTER TABLE emp10
     ADD COLUMN phone VARCHAR(12) DEFAULT '02-66316710' FIRST; -- 🔶【FIRST】
@@ -235,7 +272,7 @@ mysql> desc emp10;
 ```
 {% endtab %}
 
-{% tab title="新增指定欄位後" %}
+{% tab title="新增指定欄位後\(p.182\)" %}
 ```sql
 ALTER TABLE emp10
     ADD COLUMN hiredate DATE AFTER job; -- 🔶【AFTER】
@@ -269,11 +306,6 @@ mysql> desc emp10;
 ```
 {% endtab %}
 {% endtabs %}
-
-## 修改物件
-
-`ALTER TABLE 表格名  
-ALTER | MODIFY | CHANGE`
 
 {% tabs %}
 {% tab title="改欄位預設" %}
@@ -432,9 +464,9 @@ CHANGE 與 MODIFY相似，
 CHANGE可以重新命名；MODIFY不能重新命名。
 {% endhint %}
 
-## 刪除物件
+## 刪除物件DROP  TABLE
 
-| 刪除欄位 | 刪除資料表 |
+| 刪除欄位\(表格在、資料不在\) | 刪除資料表\(表格不在\) |
 | :--- | :--- |
 | `ALTER TABLE 表格名 DROP [COLUMN]` | `DROP TABLE 表格名` |
 

@@ -1,5 +1,5 @@
 ---
-description: 參照講義p.149~
+description: 參照講義p.149~p.164
 ---
 
 # DML資料庫維護&交易控制
