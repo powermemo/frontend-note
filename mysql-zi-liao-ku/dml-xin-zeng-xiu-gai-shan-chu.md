@@ -1,3 +1,7 @@
+---
+description: 參照講義p.149~
+---
+
 # DML資料庫維護&交易控制
 
 ## 新增表格內容-INSERT INTO
