@@ -300,7 +300,7 @@ SELECT e1.ename 'Employee',
 DESCRIBE salgrade;
 SELECT e.ename, e.job, d.dname, s.grade 
 	FROM emp e JOIN dept d ON (e.deptno=d.deptno) 
-			   		 JOIN salgrade s 
+			   		JOIN salgrade s 
 							ON (e.sal BETWEEN s.losal AND s.hisal);
 +-------+--------------+------+-----+---------+-------+
 | Field | Type         | Null | Key | Default | Extra |
