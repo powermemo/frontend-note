@@ -140,7 +140,7 @@ WHERE deptno = (SELECT deptno
 
 
 
-## 資料庫交易
+## 資料庫交易\(p.159\)
 
 * COMMIT確認交易
 * ROLLBACK放棄交易
@@ -151,22 +151,22 @@ WHERE deptno = (SELECT deptno
 * 交易的一致性：交易影響多筆表單，要嘛都做，要嘛都不做，不可以做一半。 
 * 不一致的舉例說明：訂單沒任何訂單項目、訂單成立但庫存沒減少
 
-### 預設的交易控制
+### 預設的交易控制\(p.160\)
 
 自動確認`AUTOCOMMIT = 1` \(每執行一次，就寫入硬碟執行\)
 
-### 起始一個交易
+### 起始一個交易\(p.160\)
 
 * `SET AUTOCOMMIT = 0` 
 * `BEGIN`  \|  `START TRANSACTION`
 
-### 結束一個交易
+### 結束一個交易\(p.160\)
 
 * `SET AUTOCOMMIT = 1`
 * `COMMIT`成立  /  `ROLLBACK`放棄
 
 {% tabs %}
-{% tab title="範例" %}
+{% tab title="範例\(p.162\)" %}
 ```text
 START TRANSACTION;                        -- 設定交易區塊
     INSERT INTO tx VALUES (null,NOW());
@@ -174,7 +174,7 @@ ROLLBACK;                                 -- 取消交易(交易倒回)
 ```
 {% endtab %}
 
-{% tab title="範例2" %}
+{% tab title="範例2\(p.162\)" %}
 ```
 SET AUTOCOMMIT = 0;                   -- 安全交易控制開始
     INSERT INTO tx VALUES(null,NOW());-- 交易開始
@@ -186,12 +186,12 @@ SET SUTOCOMMIT = 1;                   -- 安全交易控制結束
 {% endtab %}
 {% endtabs %}
 
-### 交易控制
+### 交易控制\(p.163\)
 
 ![](../.gitbook/assets/image%20%2839%29.png)
 
 ```text
-START TRANSACTION
+START TRANSACTION                    --(p.163)
     dml_statement;
     ...
     SAVEPOINT tx1;
@@ -247,7 +247,7 @@ ROLLBACK;             -- undo
 {% tab title="1" %}
 ```text
 /*將下列資料新增至MY_EMP資料表中，不列舉欄位
-1	patel	Ralph	rpatel	795*/
+	1	patel	Ralph	rpatel	795*/
 
 INSERT INTO my_emp 
 	VALUES(1,'Patel','Ralph','rpatel',795);
@@ -259,22 +259,22 @@ Query OK, 1 row affected (0.10 sec)
 {% tab title="2" %}
 ```
 /*使用列舉的方式將下列資料新增至my_emp資料表中
-2	dancs	betty	bdancs	860*/
+	2	dancs	betty	bdancs	860*/
 
 INSERT INTO my_emp(id,last_name, first_name, userid, salary) 
-	VALUES(2,'Dances','Betty','bdances',860);
+						VALUES(2,'Dances','Betty','bdances',860);
 ```
 {% endtab %}
 
 {% tab title="3" %}
 ```
 /*將下列資料新增至my_emp
-3	biri	ben	bbiri	1100
-4	newman	chad	cnewman	750*/
+	3	biri	ben	bbiri	1100
+	4	newman	chad	cnewman	750*/
 
 INSERT INTO my_emp 
 	VALUES(3,'Biri','Ben','bbiri',1100),
-		  (4,'Newman','Chad','cnewmam',750);
+		  	(4,'Newman','Chad','cnewmam',750);
 ```
 {% endtab %}
 
@@ -284,7 +284,8 @@ INSERT INTO my_emp
 
 SET SQL_SAFE_UPDATES = 0;
 UPDATE my_emp 
-	SET last_name='Drexler' WHERE ID=3;
+	SET last_name='Drexler' 
+WHERE ID=3;
 
 ```
 {% endtab %}
@@ -294,7 +295,8 @@ UPDATE my_emp
 -- 將薪資低於900元的所有員工調整為1000元
 
 UPDATE my_emp 
-	SET salary=1000 WHERE salary<900;
+	SET salary=1000 
+WHERE salary<900;
 ```
 {% endtab %}
 
