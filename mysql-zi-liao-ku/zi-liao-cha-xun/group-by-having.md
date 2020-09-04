@@ -445,9 +445,9 @@ mysql> SELECT deptno, GROUP_CONCAT(DISTINCT job SEPARATOR ',') jobs
 /*顯示所有員工的最高、最低、總和、平均薪資，
 表頭命名maximum,minimum,sum,average，顯示結果四捨五入取整數。*/
 SELECT ROUND(MAX(sal),0) 'Maximum',  
-		ROUND(MIN(sal),0) 'Minimum', 
-        ROUND(SUM(sal),0) 'SUM', 
-        ROUND(AVG(sal),0) 'Average' 
+		   ROUND(MIN(sal),0) 'Minimum', 
+       ROUND(SUM(sal),0) 'SUM', 
+       ROUND(AVG(sal),0) 'Average' 
 FROM emp;
 +---------+---------+-------+---------+
 | Maximum | Minimum | SUM   | Average |
