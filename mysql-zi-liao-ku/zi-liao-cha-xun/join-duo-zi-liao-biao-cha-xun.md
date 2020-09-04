@@ -139,11 +139,37 @@ ORDER BY a.mgr;`
 
 ![&#x7DE8;&#x865F;f&#x3001;g&#x662F;&#x4F7F;&#x7528;&#x300C;UNION&#x300D;&#x4E32;&#x806F;&#x5169;&#x500B;SELECT&#x7684;](../../.gitbook/assets/image.png)
 
+{% tabs %}
+{% tab title="UNION\(b+c=f\)" %}
+**Left Outer Join** + **Right Outer Join** = Outer Join \| Full Outer Join \| **Full Join**
+
+`SELECT <select_list> FROM  
+tableA a LEFT JOIN tableB b  
+ON a.key=b.key  
+UNION🔸  
+SELECT <select_list> FROM  
+tableA a RIGHT JOIN tableB b  
+ON a.key=b.key`
+{% endtab %}
+
+{% tab title="UNION\(d+e=g\)" %}
+**Left Excluding Join** + **Right Excluding Join** = **Outer Excluding Join**
+
+`SELECT <select_list> FROM  
+tableA a LEFT JOIN tableB b  
+ON a.key=b.key  
+WHERE b.key IS NULL  
+UNION🔸  
+SELECT <select_list> FROM  
+tableA a RIGHT JOIN tableB b  
+ON a.key=b.key  
+WHERE a.key IS NULL`
+{% endtab %}
+{% endtabs %}
 
 
-## 作業練習－DQL-JOIN
 
-參照講義P.134
+## 作業練習－DQL-JOIN\(p.134\)
 
 1. 顯示所有員工之姓名，所屬部門編號，部門名稱及部門所在地點。
 2. 顯示所有有賺取佣金的員工之姓名，佣金金額，部門名稱及部門所在地點。
