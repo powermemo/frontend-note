@@ -10,7 +10,7 @@
 \[[How to prevent this strange jQuery .animate\(\) lag?](https://stackoverflow.com/questions/14613498/how-to-prevent-this-strange-jquery-animate-lag)\]
 
 ```javascript
-//在.animate()前加入「.stop()」
+//🟡在.animate()前加入「.stop()」
 $("#newResForm").stop().animate({ opacity: 0 }, 100,function() {
    $("#newResFormWrap").toggle('fast', function (){
        $("#addRes").animate({ opacity: 100 }); 
