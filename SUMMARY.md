@@ -52,6 +52,7 @@
   * [其他框架](js/qi-ta-kuang-jia/README.md)
     * [three js](js/qi-ta-kuang-jia/three-js.md)
     * [vue](js/qi-ta-kuang-jia/vue.md)
+  * [壞了，我的醫生](js/huai-le-wo-de-yi-sheng.md)
 * [codepen留存](codepen-liu-cun.md)
 * [PHP](php/README.md)
   * [設定&安裝](php/she-ding-an-zhuang.md)
