@@ -258,8 +258,8 @@ try {
 <?php 
 try {
 	require("connectBooks.php");//這個範例應該要連郭老師資料庫的，連books是錯誤的..
-	$sql = "select * from products";//🟡
-	$products = $pdo->query($sql);//🟡
+	$sql = "select * from products";//🟡mysql指令
+	$products = $pdo->query($sql);//🟡PDO物件->query(mysql指令)
 	
 } catch (PDOException $e) {
 	echo "錯誤原因 : ", $e->getMessage(), "<br>";
