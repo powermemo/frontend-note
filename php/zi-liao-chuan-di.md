@@ -373,7 +373,7 @@ if($errMsg !=""){
 
 ```php
 <?php
-//記得要使用session之前，要先啟用serssion
+//記得要使用session之前，要先啟用session
 session_start();
 ?>
 <?php
