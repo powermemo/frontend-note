@@ -210,11 +210,11 @@ include_once("引用檔案路徑");`
 ## 執行SQL指令
 
 * **`$pdo->exec(`**_**`SQL命令`**_**`)`**
-  * 用來執行不會取得result set的指令，例如inset、update、delete
+  * 用來執行不會取得result set的指令，例如inset、update、delete（DML）
 * **`$pdo->query(`**_**`SQL命令`**_**`)`**
-  * 用來執行會取得result set的指令，例如select
+  * 用來執行會取得result set的指令，例如select（DQL）
 * **`$pdo->prepare(`**_**`SQL命令`**_**`)`**
-  * 用來事先編譯好一個SQL敘述，可以執行inset、update、delete、select等
+  * 用來事先編譯好一個SQL敘述，可以執行inset、update、delete、select等（DQL+DML）
   * 指令內放未知數，編譯它再帶資料進去，防止別人竄改我資料庫\(SQL\)資料。
 
 {% hint style="info" %}
