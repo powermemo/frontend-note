@@ -69,7 +69,6 @@
 * [資料轉換等](zi-liao-zhuan-huan-deng/README.md)
   * [Ajax](zi-liao-zhuan-huan-deng/ajax.md)
   * [JSON](zi-liao-zhuan-huan-deng/json.md)
-  * [XML](zi-liao-zhuan-huan-deng/xml.md)
 * [MySQL資料庫](mysql-zi-liao-ku/README.md)
   * [安裝](mysql-zi-liao-ku/an-zhuang.md)
   * [操作](mysql-zi-liao-ku/cao-zuo.md)

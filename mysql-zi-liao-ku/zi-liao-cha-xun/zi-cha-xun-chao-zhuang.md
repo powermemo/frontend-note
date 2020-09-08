@@ -4,7 +4,7 @@ description: 參照講義p.135~p.148
 
 # 子查詢\(巢狀\)
 
-## 認識子查詢
+## 認識子查詢\(p.136\)
 
 執行順序：先執行子查詢\(sub-Query\)再執行主查詢\(Main-query\)。
 
@@ -15,29 +15,29 @@ description: 參照講義p.135~p.148
 1. 自主子查詢（參照講義p.138）
 2. 相關子查詢（參照講義p.144）
 
-### 子查詢的型式
+### 子查詢的型式\(p.137\)
 
-1. 純量（單欄單筆）\(使用頻率80%\)
-2. 多值（單欄多筆）\(使用頻率20%\)
-3. 多欄位（多欄單筆）
-4. 表格值（多欄多筆）
+1. 純量（單欄單筆）\(使用頻率80%\)\(=...\)
+2. 多值（單欄多筆）\(使用頻率20%\)\(in.any.all...\)
+3. 多欄位（多欄單筆）\(exists...\)
+4. 表格值（多欄多筆）\(exists...\)
 
-### 子查詢出現的位置
+### 子查詢出現的位置\(p.136\)
 
 * WHERE 子句
 * FROM子句
 * HAVING子句
 
-## 子查詢－自主子查詢
+## 子查詢－自主子查詢\(p.138\)
 
 {% tabs %}
 {% tab title="單筆" %}
 ```aspnet
-/*8-8頁WHERE 子句
+/*8-8頁WHERE 子句                (p.138)
  *和JAEMS同部門的員工*/
 SELECT empno,ename,deptno
     -> FROM emp
-    -> WHERE deptno = (SELECT deptno -- 30
+    -> WHERE deptno = (SELECT deptno -- 30🔹
     ->                  FROM emp
     ->                  WHERE ename = 'james');
 +-------+--------+--------+
@@ -50,16 +50,18 @@ SELECT empno,ename,deptno
 |  7844 | TURNER |     30 |
 |  7900 | JAMES  |     30 |
 +-------+--------+--------+
-6 rows in set (0.00 sec)
+```
 
--- 8-9列出薪水比員工7566高的所有員工
+```text
+
+-- 8-9列出薪水比員工7566高的所有員工(p.139)
 mysql> use demo;
 Database changed
 mysql> SELECT empno, ename, sal
     -> FROM emp
     -> WHERE sal > (SELECT sal
     ->             FROM emp
-    ->             WHERE empno = 7566);
+    ->             WHERE empno = 7566);-- 🔹2975
 +-------+-------+---------+
 | empno | ename | sal     |
 +-------+-------+---------+
@@ -67,35 +69,34 @@ mysql> SELECT empno, ename, sal
 |  7839 | KING  | 5000.00 |
 |  7902 | FORD  | 3000.00 |
 +-------+-------+---------+
-3 rows in set (0.00 sec)
--- 8-9🔷細項查詢
-mysql> SELECT sal
-    -> FROM emp
-    -> WHERE empno=7566;
-+---------+
-| sal     |
-+---------+
-| 2975.00 |
-+---------+
-1 row in set (0.00 sec)
--- 8-9🔷細項查詢2
-mysql> SELECT empno, ename, sal
-    -> FROM emp
-    -> WHERE sal>2975;
-+-------+-------+---------+
-| empno | ename | sal     |
-+-------+-------+---------+
-|  7788 | SCOTT | 3000.00 |
-|  7839 | KING  | 5000.00 |
-|  7902 | FORD  | 3000.00 |
-+-------+-------+---------+
-3 rows in set (0.00 sec)
+
+    -- 8-9🔷細項查詢
+    mysql> SELECT sal
+        -> FROM emp
+        -> WHERE empno=7566;
+    +---------+
+    | sal     |
+    +---------+
+    | 2975.00 |
+    +---------+
+    
+    -- 8-9🔷細項查詢2
+    mysql> SELECT empno, ename, sal
+        -> FROM emp
+        -> WHERE sal>2975;
+    +-------+-------+---------+
+    | empno | ename | sal     |
+    +-------+-------+---------+
+    |  7788 | SCOTT | 3000.00 |
+    |  7839 | KING  | 5000.00 |
+    |  7902 | FORD  | 3000.00 |
+    +-------+-------+---------+
 ```
 {% endtab %}
 
 {% tab title="單筆2" %}
 ```
--- 8-11 薪水>公司平均薪資的員工
+-- 8-11 薪水>公司平均薪資的員工        (p.140)
 -- 平均薪資AVG(sal)---2073.2143
 mysql> SELECT empno, ename, sal
     -> FROM  emp
@@ -117,7 +118,7 @@ mysql> SELECT empno, ename, sal
 
 {% tab title="HAVING" %}
 ```
--- 8-12 應用在HAVING
+-- 8-12 應用在HAVING                        (p.140)
 -- 最低薪資 > 部門20的最低薪資(800) 的部門
 mysql> SELECT deptno, MIN(sal)
     -> FROM emp
@@ -137,7 +138,7 @@ mysql> SELECT deptno, MIN(sal)
 
 {% tab title="多個子查詢" %}
 ```
--- 8-10 多個子查詢
+-- 8-10 多個子查詢                        (p.139)
 -- 職稱salesman(7499)、薪水>1300(7934)
 mysql> SELECT empno,ename, sal, job
     -> FROM emp
@@ -153,13 +154,12 @@ mysql> SELECT empno,ename, sal, job
 |  7499 | ALLEN  | 1600.00 | SALESMAN |
 |  7844 | TURNER | 1500.00 | SALESMAN |
 +-------+--------+---------+----------+
-2 rows in set (0.00 sec)
 ```
 {% endtab %}
 
 {% tab title="IN" %}
 ```
--- 8-14公司所有主管
+-- 8-14公司所有主管                  (p.141)
 /*運算子「=」後只能有一個結果
  *「IN」後的結果可以有多個*/
   mysql> SELECT empno, ename
@@ -182,7 +182,7 @@ mysql> SELECT empno,ename, sal, job
 
 {% tab title="NULL" %}
 ```
--- 8-15 公司所有職員
+-- 8-15 公司所有職員                                (p.142)
 -- 結果是NULL ，因為裡面有格子含空值(null比較還是null)
 mysql> SELECT empno, ename
     -> FROM emp
@@ -244,7 +244,7 @@ Empty set (0.00 sec)
 {% endtab %}
 {% endtabs %}
 
-### 多筆記錄子查詢
+### 多筆記錄子查詢\(p.143\)
 
 ![10~50&#x6578;&#x503C;&#x53EA;&#x662F;&#x8209;&#x4F8B;](../../.gitbook/assets/image%20%287%29.png)
 
@@ -256,7 +256,7 @@ Empty set (0.00 sec)
 {% tabs %}
 {% tab title="ANY" %}
 ```text
--- 8-17使用ANY
+-- 8-17使用ANY																		(p.143)
 -- 薪水<  職稱「clerk」(最高薪資1300)  的員工
 SELECT empno, ename, job
 FROM emp
@@ -293,7 +293,7 @@ WHERE job = 'CLERK';
 
 {% tab title="ALL" %}
 ```text
--- 8-18 薪水 > salesman(最高薪資1600)的員工
+-- 8-18 薪水 > salesman(最高薪資1600)的員工(p.143)
 SELECT empno, ename, job, sal
 FROM emp
 WHERE sal > ALL (SELECT sal
@@ -329,19 +329,19 @@ WHERE job = 'salesman' ;
 {% endtab %}
 {% endtabs %}
 
-## 子查詢－相關子查詢
+## 子查詢－相關子查詢\(p.144\)
 
 依賴外部查詢。子查詢用到主查詢的欄位\(相關\)
 
 {% tabs %}
 {% tab title="同表" %}
 ```text
--- 8-21 每個客戶「最近」跟公司下訂單的日期
+-- 8-21 每個客戶「最近」跟公司下訂單的日期                (p.145)
 -- 沒有「WHERE」結果就會只有一筆
 -- 子查詢的WHERE意思是一個客戶一個客戶找
 mysql> SELECT ordid, custid, orderdate
-    -> FROM ord AS o1
-    -> WHERE orderdate = (SELECT MAX(orderdate)
+    -> FROM   ord AS o1
+    -> WHERE  orderdate = (SELECT MAX(orderdate)
     ->                     FROM ord AS o2
     ->                     WHERE o2.custid = o1.custid)
     -> ORDER BY custid, orderdate;
@@ -359,12 +359,32 @@ mysql> SELECT ordid, custid, orderdate
 |   614 |    108 | 1987-02-01 00:00:00 |
 +-------+--------+---------------------+
 9 rows in set (0.00 sec)
+
+        -- 🔹細項查詢(相同邏輯，也可以用其他方法例如GROUP BY)
+        mysql> SELECT custid ,MAX(orderdate)
+            ->  FROM ord AS o2
+            ->  WHERE o2.custid
+            ->  group by custid;
+        +--------+---------------------+
+        | custid | MAX(orderdate)      |
+        +--------+---------------------+
+        |    100 | 1987-03-12 00:00:00 |
+        |    101 | 1987-01-07 00:00:00 |
+        |    102 | 1987-02-15 00:00:00 |
+        |    103 | 1987-02-03 00:00:00 |
+        |    104 | 1987-02-02 00:00:00 |
+        |    105 | 1987-02-05 00:00:00 |
+        |    106 | 1986-07-14 00:00:00 |
+        |    107 | 1987-02-01 00:00:00 |
+        |    108 | 1987-02-01 00:00:00 |
+        +--------+---------------------+
+        9 rows in set (0.00 sec)
 ```
 {% endtab %}
 
 {% tab title="同表2" %}
 ```
--- 8-22 查詢各部門薪資最高的員工資料
+-- 8-22 查詢各部門薪資最高的員工資料                (p.145)
 mysql> SELECT ename, sal, deptno
     -> FROM emp oe
     -> WHERE sal = (SELECT MAX(sal)
@@ -384,7 +404,7 @@ mysql> SELECT ename, sal, deptno
 {% endtab %}
 {% endtabs %}
 
-## EXISTS－存在性測試
+## EXISTS－存在性測試\(p.146\)
 
 * EXISTS 存在性測試，結果只有true \| false
 * 語法WHERE \[NOT\] EXISTS \(subquery\)
@@ -392,14 +412,14 @@ mysql> SELECT ename, sal, deptno
 * 一般子查詢SELECT都用星號「\*」
 
 {% tabs %}
-{% tab title="存在" %}
+{% tab title="存在、不存在" %}
 ```text
--- 8-25 下過訂單的客戶資料
+-- 8-25 下過訂單的客戶資料                        (p.147)
 mysql> SELECT custid, name
     -> FROM customer AS c
     -> WHERE EXISTS (SELECT *
-    ->             FROM ord AS o
-    ->             WHERE c.custid = o.custid);
+    ->               FROM ord AS o
+    ->               WHERE c.custid = o.custid);
 +--------+----------------------------------------------+
 | custid | name                                         |
 +--------+----------------------------------------------+
@@ -415,10 +435,10 @@ mysql> SELECT custid, name
 +--------+----------------------------------------------+
 9 rows in set (0.00 sec)
 ```
-{% endtab %}
 
-{% tab title="不存在" %}
-```
+↓不存在\(NOT EXIST\)\(p.147\)
+
+```text
 -- 8-26 為下過定單的客戶資料(結果是沒有w)
 mysql> SELECT custid, name
     -> FROM customer AS c
@@ -430,9 +450,7 @@ Empty set (0.00 sec)
 {% endtab %}
 {% endtabs %}
 
-## 作業練習－DQL子查詢
-
-參照講義P.148
+## 作業練習－DQL子查詢\(p.148\)
 
 9~11較難。
 
@@ -447,7 +465,7 @@ Empty set (0.00 sec)
 9. 🟡顯示和賺取佣金的員工之部門編號和薪資都相同的員工之姓名，部門編號和薪資。
 10. 🟡顯示和在DALLAS工作的員工之薪資和佣金相同的員工之姓名，部門編號和薪資。
 11. 🟡顯示薪資和佣金都和SCOTT相同的所有員工之姓名，進公司日期和薪資。\(不要在結果中顯示SCOTT的資料\)
-12. 顯示薪資比所有職稱是"CLERK"還高的員工之姓名，進公司日期和薪資，並將結果依薪資由高志低顯示。
+12. 顯示薪資比所有職稱是"CLERK"還高的員工之姓名，進公司日期和薪資，並將結果依薪資由高至低顯示。
 
 {% tabs %}
 {% tab title="1" %}
@@ -564,6 +582,22 @@ SELECT ename, deptno, job
 | FORD  |     20 | ANALYST |
 +-------+--------+---------+
 5 rows in set (0.00 sec)
+
+
+-- 用JOIN ON也有相同的答案哦~~~~
+mysql> select e.ename,d.deptno,e.job
+    -> from   emp e JOIN dept d ON e.deptno=d.deptno
+    -> where  d.loc = 'dallas';
++-------+--------+---------+
+| ename | deptno | job     |
++-------+--------+---------+
+| SMITH |     20 | CLERK   |
+| JONES |     20 | MANAGER |
+| SCOTT |     20 | ANALYST |
+| ADAMS |     20 | CLERK   |
+| FORD  |     20 | ANALYST |
++-------+--------+---------+
+5 rows in set (0.00 sec)
 ```
 {% endtab %}
 
@@ -594,6 +628,23 @@ SELECT deptno, ename, job
     WHERE deptno = (SELECT deptno 
 								    FROM dept 
                     WHERE dname='Sales');
++--------+--------+----------+
+| deptno | ename  | job      |
++--------+--------+----------+
+|     30 | ALLEN  | SALESMAN |
+|     30 | WARD   | SALESMAN |
+|     30 | MARTIN | SALESMAN |
+|     30 | BLAKE  | MANAGER  |
+|     30 | TURNER | SALESMAN |
+|     30 | JAMES  | CLERK    |
++--------+--------+----------+
+6 rows in set (0.00 sec)
+
+
+-- 使用JOIN ON 也是可以的哦~~~
+mysql> select d.deptno,e.ename,e.job
+    -> from emp e JOIN dept d ON e.deptno=d.deptno
+    -> where d.dname = 'sales';
 +--------+--------+----------+
 | deptno | ename  | job      |
 +--------+--------+----------+
@@ -697,7 +748,7 @@ SELECT e1.ename, e1.deptno, e1.sal
 {% tab title="12" %}
 ```
 /*顯示薪資比所有職稱是"CLERK"還高的員工之姓名，
-進公司日期和薪資，並將結果依薪資由高志低顯示。*/
+進公司日期和薪資，並將結果依薪資由高至低顯示。*/
 SELECT ename, hiredate, sal 
 	FROM emp 
    WHERE sal > ALL (SELECT sal 
