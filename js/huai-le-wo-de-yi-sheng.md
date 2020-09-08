@@ -22,7 +22,7 @@ $("#newResForm").stop().animate({ opacity: 0 }, 100,function() {
 ### 怎麼知道scrollbar的寬度
 
 滿版區域一直會凸出去產生水平卷軸...\(多出window的chorme卷軸寬度17px\)。  
-不用算，直接用裏面寬度去決定滿版的寬度。  
+**不用算**，直接用裏面寬度去決定滿版的寬度。  
 `document.documentElement.clientWidth`  
 \[[Get scrollbar width in JavaScript](https://muffinman.io/get-scrollbar-width-in-javascript/)\]
 
