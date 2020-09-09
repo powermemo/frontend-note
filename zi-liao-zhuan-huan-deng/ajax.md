@@ -680,11 +680,6 @@ try{
 {% endtab %}
 {% endtabs %}
 
-{% hint style="warning" %}
-請轉跳章節【JSON】  
-再來看綜合應用～～
-{% endhint %}
-
 ## JSON
 
 一種資料交換的格式，可以是副檔名
