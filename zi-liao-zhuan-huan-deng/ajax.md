@@ -170,112 +170,74 @@ server端回應的Http狀態碼
 ### 🍵範例－XMLHttpRequest
 
 {% tabs %}
-{% tab title="GET" %}
-對應範例檔案07/28「GetResponseText.html」「GetResponseText.php」  
-檢查帳號是否重複
+{% tab title="GET N POST" %}
+* 「GetResponseText.html」「GetResponseText.php」
+* 「PostResponseText.html」「PostResponseText.php」
+* 檢查帳號是否重複
+
+#### PHP的部分\(如果你用$\_REQUEST\[''\]抓資料\)不變。
+
+```php
+<?php
+try{
+  require_once("../connectBooks.php");
+  $memId = $_POST["memId"];
+  $sql = "select * from `member` where memId=:memId";
+  $member = $pdo->prepare($sql);
+  $member->bindValue(":memId", $memId);
+  $member->execute();
+  if( $member->rowCount() !=0){echo "此帳號已存在, 不可用";}
+  else{ echo "此帳號可使用"; } 
+}catch(PDOException $e){
+  echo "error";
+}
+?>
+```
+
+#### HTML的JS五個步驟（第三第四會因post \| get而有不同）
 
 ```javascript
-//..html的表單code部分沒有列出
-//GetResponseText.html
 function checkId(){  
-  var xhr = new XMLHttpRequest();        //產生XMLHttpRequest物件
-  //註冊callback function
-  xhr.onreadystatechange = function(){    //狀態改變
-    if(xhr.readyState == 4){             //server端已處理完畢
-      if(xhr.status == 200){             //success
-        alert(xhr.responseText);
-      }else{
-        alert(xhr.status);               //失敗時告訴我狀態碼是甚麼
-      }
-    }
+//step1. 產生XMLHttpRequest物件
+  let xhr = new XMLHttpRequest();
+//step 2.註冊callback function 
+  xhr.onload = function(){
+    if(xhr.status == 200){alert(xhr.responseText)}
+    else{alert(xhr.status)}
   }
-
-  //設定好所要連結的程式
-  let url = "0728GetResponseText.php?memId=" + document.querySelector("#memId").value;
-  xhr.open("get",url, true);          //xhr.readyStae--->1
-  //送出資料
-  xhr.send(null);                     //xhr.readyStae)--->2
-}//function_checkId 
-
-//..........................................
-window.addEventListener("load", function(){
-  // document.getElementById("btnCheckId").addEventListener("click", checkId, false);
-  document.getElementById("memId").addEventListener("change", checkId, false);
-}, false);
-```
-
-```php
-//GetResponseText.php
-<?php
-try{
-  require_once("../connectBooks.php");
-  $memId = $_GET["memId"];              //取得前端送來的資料
-  $sql = "select * from `member` where memId=:memId";
-  $member = $pdo->prepare($sql);
-  $member->bindValue(":memId",$memId);
-  $member->execute();
-
-  if( $member->rowCount() !=0){         //此帳號已存在, 不可用
-    echo "此帳號已存在, 不可用";
-  }else{ //此帳號可使用
-    echo "此帳號可使用";
-  } 
-}catch(PDOException $e){
-  echo "error";
+//step 3.設定好所要連結的程式🟡【GET】
+   let url = "0728GetResponseText.php?memId=" + document.getElementById("memId").value;
+  xhr.open('get',url,true)
+//step 4.送出資料          🟡【GET】
+  xhr.send(null)
 }
-?>
+//..........................................
+//step 5.與畫面產生連結
+window.addEventListener("load", function(){
+  document.getElementById("btnCheckId").addEventListener("click", checkId, false); }, false)
 ```
-{% endtab %}
-
-{% tab title="POST" %}
-對應範例檔案07/30「PostResponseText.html」「PostResponseText.php」  
-檢查帳號是否重複
 
 ```javascript
-xhr.onload=function(){
-    if(xhr.status == 200){
-          alert(xhr.responseText);
-        }else{
-          alert(xhr.status);
-        }
+function checkId(){  
+//step1. 產生XMLHttpRequest物件
+  let xhr = new XMLHttpRequest();
+//step 2.註冊callback function 
+  xhr.onload = function(){
+    if(xhr.status == 200){alert(xhr.responseText)}
+    else{alert(xhr.status)}
   }
-  //設定好所要連結的程式
-  let url = "0730PostResponseText.php";
-  xhr.open("post",url,true);
-
-  //送出資料
-  let data_info = "memId=" + document.querySelector("#memId").value
-  xhr.setRequestHeader("content-type","application/x-ww-form-urlencoded")
-  xhr.send(data_info);
-}//function_checkId 
-
-
-//..........................................
-window.addEventListener("load", function(){
-  document.getElementById("btnCheckId").addEventListener("click", checkId, false);
-}, false)
-```
-
-```php
-<?php
-try{
-  require_once("../connectBooks.php");
-  $memId = $_POST["memId"];              //取得前端送來的資料
-  // $memId = "fghfhg";              //取得前端送來的資料
-  $sql = "select * from `member` where memId=:memId";
-  $member = $pdo->prepare($sql);
-  $member->bindValue(":memId",$memId);
-  $member->execute();
-
-  if( $member->rowCount() !=0){         //此帳號已存在, 不可用
-    echo "此帳號已存在, 不可用";
-  }else{ //此帳號可使用
-    echo "此帳號可使用";
-  } 
-}catch(PDOException $e){
-  echo "error";
+//step 3.設定好所要連結的程式🟡【POST】
+  let url = '0730PostResponseText.php'
+  xhr.open('post',url,true)
+//step 4.送出資料🟡【POST】
+  let data_info = 'memId=' + document.querySelector('#memId').value
+  xhr.setRequestHeader("content-type","application/x-www-form-urlencoded")
+  xhr.send(data_info)
 }
-?>
+//..........................................
+//step 5.與畫面產生連結
+window.addEventListener("load", function(){
+  document.getElementById("btnCheckId").addEventListener("click", checkId, false); }, false)
 ```
 {% endtab %}
 
