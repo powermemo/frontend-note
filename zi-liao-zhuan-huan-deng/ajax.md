@@ -614,7 +614,99 @@ try{
 
 {% tabs %}
 {% tab title="基本款" %}
+```markup
+<h2>JSON.stringify(物件)--1👉JS物件轉JSON字串</h2>
+<script>
+    var emp={
+        empno: "7001",
+        ename: "Andy",
+        sal: 33000,
+    }
+    var str = JSON.stringify(emp);
+    document.write("json:",str,"<br>");
+    //JS物件轉JSON字串
+    //【result】json:{"empno":"7001","ename":"Andy","sal":33000}
+</script>
+```
 
+```markup
+<h2>JSON.stringify(物件)--2👉JS物件轉JSON字串</h2>
+<script>
+    var emp={
+        empno: "7001",
+        ename: "Andy",
+        sal: 33000,
+        phone:["03-4257387","03-168168","0933168168"]
+    }
+    var str = JSON.stringify(emp);
+    document.write("json:",str,"<br>");
+    //JS物件轉JSON字串
+    //【result】json:{"empno":"7001","ename":"Andy","sal":33000,"phone":["03-4257387","03-168168","0933168168"]}
+</script>
+```
+
+```markup
+<h2>JSON.stringify(物件)--3👉JS物件轉JSON字串</h2>
+<script>
+    var emp={
+        empno: "7001",
+        ename: "Andy",
+        sal: 33000,
+        phone:{
+            O:"03-4257387",
+            H:"03-168168",
+            M:"0933168168",
+        },
+    }
+    var str = JSON.stringify(emp);
+    document.write("json:",str,"<br>");
+    //【result】json:{"empno":"7001","ename":"Andy","sal":33000,"phone":{"O":"03-4257387","H":"03-168168","M":"0933168168"}}
+</script>
+```
+
+```markup
+<h2>JSON.parse(json)👉JSON字串轉JS物件</h2>
+<script>
+    var str = '{"empno": "7001","ename": "Andy","sal": "33000","phone":["03-4257387","03-168168","0933168168"]}';
+    var obj = JSON.parse(str);
+    document.write("obj.empno:",obj.empno,"<br>");
+    document.write("obj.ename:",obj.ename,"<br>");
+    document.write("obj.sal:",obj.sal,"<br>");
+    document.write("obj.phone:",obj.phone,"<br>");//array 會 toString
+    for(let i in obj.phone){
+        document.write(`obj.phone[${i}]: ${obj.phone[i]}"<br>`);
+    }
+    //JSON字串轉JS物件
+    // 【result】obj.empno:7001
+    // 【result】obj.ename:Andy
+    // 【result】obj.sal:33000
+    // 【result】obj.phone:03-4257387,03-168168,0933168168
+    // 【result】obj.phone[0]: 03-4257387"
+    // 【result】obj.phone[1]: 03-168168"
+    // 【result】obj.phone[2]: 0933168168"
+
+</script>
+```
+
+```markup
+<h2>JSON.parse(json)---2👉JSON字串轉JS物件</h2>
+<script>
+    var str = '{"empno": "7001","ename": "Andy","sal": "33000","phone":{"O":"03-4257387","H":"03-168168","M":"0933168168"}}';
+    var obj = JSON.parse(str);
+    document.write("obj.empno:",obj.empno,"<br>");      //7001
+    document.write("obj.ename:",obj.ename,"<br>");      //Andy
+    document.write("obj.sal:",obj.sal,"<br>");          //33000
+    document.write("obj.phone:",obj.phone,"<br>");      //[object Object]
+    document.write("obj.phone.H:",obj.phone.H,"<br>");  //03-168168
+    document.write("obj.phone.M:",obj.phone.M,"<br>");  //0933168168
+    // 【result】obj.empno:7001
+    // 【result】obj.ename:Andy
+    // 【result】obj.sal:33000
+    // 【result】obj.phone:[object Object]
+    // 【result】obj.phone.H:03-168168
+    // 【result】obj.phone.M:0933168168
+</script>
+```
 {% endtab %}
 
 {% tab title="stringify" %}
@@ -702,8 +794,6 @@ for(let i in obj.phone){
 
 {% tabs %}
 {% tab title="基本款" %}
-
-
 ```php
 <h2>【encode】PHP的索引陣列轉成json</h2>
 <?php
