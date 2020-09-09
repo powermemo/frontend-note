@@ -247,7 +247,7 @@ window.addEventListener("load", function(){
 
 ```aspnet
 //getMore.html
-div>首頁>>會員專區</div>
+<div>首頁>>會員專區</div>
 <center>
 會員帳號<input type="text" name="memId" id="memId"/>
 <input type="button" value="取得會員資料" onclick="getMember()"/>
