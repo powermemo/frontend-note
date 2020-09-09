@@ -70,8 +70,8 @@ var xhr = newXMLHttpRequest();
 
 向伺服器發送請求，並將資料送到伺服器端。
 
-* send\(null\)：open\(\)的method為GET
-* send\(data\_info\)：open\(\)的method為POST
+* [send\(null\)](https://google.com)：open\(\)的method為GET
+* [send\(data\_info\)](https://google.com)：open\(\)的method為POST
   * data\_info為自定義
   * 格式："欄名1=值**&**欄名2=值**&**..."
 
