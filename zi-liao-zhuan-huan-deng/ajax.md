@@ -493,89 +493,6 @@ XML可以是副檔名。
 
 {% tabs %}
 {% tab title="responseXML" %}
-對應範例檔案07/30「getMore.html」「getMore.php」  
-取得會員資料
-
-```aspnet
-<div>首頁>>會員專區</div>
-<center>
-    <div>
-        <label for="memId">會員帳號</label>
-        <input type="text" name="memId" id="memId"/>
-        <input type="button" value="取得會員資料" onclick="getMember()"/>
-        <div id="showPanel"></div>
-    </div>
-</center>
-<script>
-    function showMember(xmlDoc){
-        var table,tr,th,td,text,textNode;
-        let fields = xmlDoc.documentElement.childNodes;
-        table = document.createElement('table');
-        for(let i=0;i<fields.length;i++){
-            tr=document.createElement('tr');
-            th=document.createElement('th');
-            td=document.createElement('td');
-            textNode=document.createTextNode(fields[i].nodeName);
-            text=document.createTextNode(fields[i].firstChild.nodeValue);
-            table.appendChild(tr);
-            tr.appendChild(th);
-            th.appendChild(textNode);
-            tr.appendChild(td);
-            td.appendChild(text);
-        }
-        document.querySelector('#showPanel').appendChild(table);
-        table.setAttribute("class","memTable");
-    }
-    function getMember(){
-        var xhr = new XMLHttpRequest();
-        xhr.onload=function(){
-            if(xhr.status ==200){
-                showMember(xhr.responseXML);
-            }else{
-                alert(xhr.status);
-            }
-        }
-        var url = "0731TESTgetMore.php?memId=" + document.querySelector('#memId').value;
-        xhr.open("Get", url, true);
-        xhr.send( null );
-    }
-</script>
-```
-
-```php
-<?php
-try{
-  require_once("../connectBooks.php");
-  $sql = "select * from `member` where memId=:memId";
-  $member = $pdo->prepare($sql);
-  $member->bindValue(":memId", $_GET["memId"]);
-  // $member->bindValue(":memId", "Sara");
-  $member->execute();
-
-  //如果找得資料，取回資料，送出xml文件
-  if($member->rowCount() == 0){ //無此會員資料
-  	echo "notFound";
-  }else{
-    $memRow = $member -> fetch(PDO::FETCH_ASSOC);
-    $xml = '<?xml version="1.0" ?>';
-    $xml .=  "<member>";
-    $xml .=  "<memId>{$memRow["memId"]}</memId>";
-    $xml .=  "<memName>{$memRow["memName"]}</memName>";
-    $xml .=  "<tel>{$memRow["tel"]}</tel>";
-    $xml .=  "<email>{$memRow["email"]}</email>";
-    $xml .=  "</member>";
-    header("content-type:text/xml");
-    echo $xml;
-  }
-  
-}catch(PDOException $e){
-  echo $e->getMessage();
-}
-?>
-```
-{% endtab %}
-
-{% tab title="responseXML" %}
 對應範例檔案07/30「getMore\_XML.html」「getMore\_XML.php」  
 取得會員資料（XML標籤）
 
@@ -697,7 +614,7 @@ try{
 
 {% tabs %}
 {% tab title="stringify" %}
-JSON.stringify\(js物件\) //物件轉字串
+JSON.stringify\(js物件\) //JS物件轉JSON字串
 
 ```javascript
  var emp={
@@ -729,7 +646,7 @@ document.write("json:",str,"<br>");
 {% endtab %}
 
 {% tab title="parse" %}
-JSON.parse\(json字串\)//字串轉物件
+JSON.parse\(json字串\)//JSON字串轉JS物件
 
 ```javascript
 var str = '{"empno": "7001","ename": "Andy","sal": "33000","phone":["03-4257387","03-168168","0933168168"]}';
