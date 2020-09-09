@@ -613,6 +613,10 @@ try{
 對應範例檔0804「json.html」
 
 {% tabs %}
+{% tab title="基本款" %}
+
+{% endtab %}
+
 {% tab title="stringify" %}
 JSON.stringify\(js物件\) //JS物件轉JSON字串
 
@@ -697,6 +701,77 @@ for(let i in obj.phone){
 對應範例檔0804「json.php」
 
 {% tabs %}
+{% tab title="基本款" %}
+
+
+```php
+<h2>【encode】PHP的索引陣列轉成json</h2>
+<?php
+$arr = array(11,22,33);
+$str = json_encode($arr);
+echo "json: $str <br>";
+//【result】json: [11,22,33]
+?>
+```
+
+```php
+<h2>【encode】PHP的associative陣列</h2>
+<?php
+$empRow = array("empno"=>"7003","ename"=>"Ann","sal"=>33000);
+$str = json_encode($empRow);
+echo "json:$str<br>";
+//【result】json:{"empno":"7003","ename":"Ann","sal":33000}
+?>
+```
+
+```php
+<h2>【decode】json格式一：轉成PHP的陣列</h2>
+<?php
+$str = '[11,22,33]';
+$arr2 = json_decode($str);
+// echo "arr2[1] : {$arr2[1]} <br>";
+foreach($arr2 as $i =>$data){
+    echo "$i : $data <br>";
+}
+// 【result】0 : 11
+// 【result】1 : 22
+// 【result】2 : 33
+?>
+```
+
+```php
+<h2>【decode】json格式二：轉成PHP的associative陣列</h2>
+<?php
+$str = '{"empno":"7001","ename":"Ann","sal":33000}';
+$arr3 = json_decode($str,true);//第二個參數表示是否轉乘associative陣列
+// foreach($arr3 as $i =>$data){
+//     echo "$i : $data <br>";
+// }
+echo $arr3["empno"], "<br>";
+echo $arr3["ename"], "<br>";
+echo $arr3["sal"], "<br>";
+// 【result】7001
+// 【result】Ann
+// 【result】33000
+?>
+```
+
+```php
+<h2>【decode】json格式二：轉成PHP的物件</h2>
+<?php
+$str = '{"empno":"7001","ename":"Ann","sal":33000}';
+//🟡下面第二個參數沒給，就是「物件」
+$obj = json_decode($str,false);//第二個參數表示是否轉乘associative陣列，false表示轉成物件
+echo $obj->empno, "<br>";
+echo $obj->ename, "<br>";
+echo $obj->sal, "<br>";
+// 【result】7001
+// 【result】Ann
+// 【result】33000
+?>
+```
+{% endtab %}
+
 {% tab title="json\_encode" %}
 json\_encode\(\)  //陣列\|物件   轉   字串
 
