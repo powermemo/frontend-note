@@ -112,7 +112,7 @@ console.log("value4=" + value4);
 
 #### 要怎麼動態新增變數
 
-用字串的方式「`.`」  
+用字串的方式「`{.}`」  
 \[[Using braces with dynamic variable names in PHP](https://stackoverflow.com/questions/9257505/using-braces-with-dynamic-variable-names-in-php)\]
 
 ```javascript
