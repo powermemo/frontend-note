@@ -87,3 +87,24 @@ function getScrollbarWidth() {
 }
 ```
 
+#### 要怎麼動態新增變數
+
+用`eval()`。這個函數是將傳入的字符串當做JavaScript 代碼進行執行。  
+\[[How to use dynamic variable names in JavaScript ?](https://www.geeksforgeeks.org/how-to-use-dynamic-variable-names-in-javascript/)\]
+
+```javascript
+var k = 'value'; 
+var i = 0; 
+for(i = 1; i < 5; i++) { 
+    eval('var ' + k + i + '= ' + i + ';'); 
+} 
+console.log("value1=" + value1); 
+console.log("value2=" + value2); 
+console.log("value3=" + value3); 
+console.log("value4=" + value4); 
+//【result】value1=1
+//【result】value2=2
+//【result】value3=3
+//【result】value4=4
+```
+
