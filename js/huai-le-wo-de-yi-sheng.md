@@ -114,11 +114,12 @@ console.log("value4=" + value4);
 
 ```javascript
 <script>
-    function express(){
+function express(){
     var value="abc";
     location.href="point.php?value=" +value;
-    }
+}
 </script>
+
 <button onclick="express()"></button>
 <?php
     echo $_GET['value'];
