@@ -73,6 +73,8 @@ $('.news .section').hover(
 
 #### jQuery傳值給PHP\(POST\)
 
+\[[jquery與php傳值篇](https://ithelp.ithome.com.tw/articles/10160671)\]
+
 {% tabs %}
 {% tab title="jQuery" %}
 ```javascript
