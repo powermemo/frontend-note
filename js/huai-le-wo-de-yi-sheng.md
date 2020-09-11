@@ -108,6 +108,25 @@ console.log("value4=" + value4);
 //【result】value4=4
 ```
 
+#### javasript傳值給php
+
+\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]
+
+```javascript
+<script>
+    function express(){
+    var value="abc";
+    location.href="point.php?value=" +value;
+    }
+</script>
+<button onclick="express()"></button>
+<?php
+    echo $_GET['value'];
+?>
+```
+
+
+
 ## PHP
 
 #### 要怎麼動態新增變數
@@ -119,5 +138,20 @@ console.log("value4=" + value4);
 for($i=0; $i<=2; $i++) {
    ${"file" . $i} = file($filelist[$i]);
 }
+```
+
+#### php傳值給javascript
+
+\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]
+
+```javascript
+<?php
+    $value="abc";
+?>
+
+<script>
+    var value="<?php echo $value; ?>";
+    document.write(value);
+</script>
 ```
 
