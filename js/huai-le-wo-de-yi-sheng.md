@@ -57,6 +57,7 @@ $('.news .section').hover(
 
 {% tab title="調整後好像正常了" %}
 ```javascript
+//❌❌❌沒有，沒有正常！
 //load後自動輪播  //🟡👇調整了下面
 timeId3=setInterval(   moveRight3 , 3500);
 //hover
