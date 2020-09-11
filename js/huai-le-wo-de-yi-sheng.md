@@ -71,6 +71,46 @@ $('.news .section').hover(
 {% endtab %}
 {% endtabs %}
 
+#### jQuery傳值給PHP\(POST\)
+
+{% tabs %}
+{% tab title="jQuery" %}
+```javascript
+<script>
+    $(function(){
+      $.post('url.php',{id:<?=$id;?>},function(data){
+        alert(data);
+      });
+    });
+</script>
+/************** or ****************/
+<script>
+    $(function(){
+    var id = $('input[name="test"]').val();
+      $.post('url.php',{id:id},function(data){
+        alert(data);
+      });
+    });
+</script>
+<input type="hidden" name="test" value="2">
+```
+{% endtab %}
+
+{% tab title="PHP" %}
+```php
+//url.php
+<?php
+    $id = $_POST['id'];
+    if($id == 2):
+      echo "ok";
+    else:
+      echo "no";
+    endif;
+?>
+```
+{% endtab %}
+{% endtabs %}
+
 ## JS
 
 #### 怎麼知道scrollbar的寬度
@@ -108,7 +148,7 @@ console.log("value4=" + value4);
 //【result】value4=4
 ```
 
-#### javasript傳值給php
+#### javasript傳值給php\(GET\)
 
 \[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]
 
