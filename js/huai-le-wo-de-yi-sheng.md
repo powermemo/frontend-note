@@ -151,7 +151,7 @@ for($i=0; $i<=2; $i++) {
 ?>
 
 <script>
-    var value="<?php echo $value; ?>";
+    var value="<?=$value; ?>";
     document.write(value);
 </script>
 ```
