@@ -92,7 +92,7 @@ p.s. 若時區無更動，IIS重新整理。
 3. 打開IIS，重新啟動。
 {% endhint %}
 
-以下的mac電腦都可以不用弄\(已經好了\)。
+以下的\(這一條\)mac電腦都可以不用弄\(已經好了\)。
 
 {% hint style="info" %}
 【引用PDO指令】\(一種安全性較佳的指令\)
@@ -106,6 +106,14 @@ p.s. 若時區無更動，IIS重新整理。
 
 1. 下載phpMyAdmin\(老師提供\)，丟到wwwroot資料夾。
 2. 到IIS打開phpMyAdmin資料夾的「index.php」檔案。
+{% endhint %}
+
+{% hint style="info" %}
+【使用session上傳資料】
+
+1. 允許上傳：file\_uploads = on
+2. 上傳暫存區：upload\_tmp\_dir = C:\php位置....\tmp
+3. 上傳容量上限：upload\_max\_filesize = 2M
 {% endhint %}
 
 

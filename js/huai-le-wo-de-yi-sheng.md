@@ -57,7 +57,6 @@ $('.news .section').hover(
 
 {% tab title="調整後好像正常了" %}
 ```javascript
-//❌❌❌沒有，沒有正常！
 //load後自動輪播  //🟡👇調整了下面
 timeId3=setInterval(   moveRight3 , 3500);
 //hover
@@ -68,48 +67,6 @@ $('.news .section').hover(
   //🟡👇調整了下面
   timeId3=setInterval(   moveRight3 , 3500);//再啟動動畫
 });
-```
-{% endtab %}
-{% endtabs %}
-
-#### jQuery傳值給PHP\(POST\)
-
-\[[jquery與php傳值篇](https://ithelp.ithome.com.tw/articles/10160671)\]
-
-{% tabs %}
-{% tab title="jQuery" %}
-```javascript
-<script>
-    $(function(){
-      $.post('url.php',{id:<?=$id;?>},function(data){
-        alert(data);
-      });
-    });
-</script>
-/************** or ****************/
-<script>
-    $(function(){
-    var id = $('input[name="test"]').val();
-      $.post('url.php',{id:id},function(data){
-        alert(data);
-      });
-    });
-</script>
-<input type="hidden" name="test" value="2">
-```
-{% endtab %}
-
-{% tab title="PHP" %}
-```php
-//url.php
-<?php
-    $id = $_POST['id'];
-    if($id == 2):
-      echo "ok";
-    else:
-      echo "no";
-    endif;
-?>
 ```
 {% endtab %}
 {% endtabs %}
@@ -151,26 +108,6 @@ console.log("value4=" + value4);
 //【result】value4=4
 ```
 
-#### javasript傳值給php\(GET\)
-
-\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]
-
-```javascript
-<script>
-function express(){
-    var value="abc";
-    location.href="point.php?value=" +value;
-}
-</script>
-
-<button onclick="express()"></button>
-<?php
-    echo $_GET['value'];
-?>
-```
-
-
-
 ## PHP
 
 #### 要怎麼動態新增變數
@@ -182,20 +119,5 @@ function express(){
 for($i=0; $i<=2; $i++) {
    ${"file" . $i} = file($filelist[$i]);
 }
-```
-
-#### php傳值給javascript
-
-\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]
-
-```javascript
-<?php
-    $value="abc";
-?>
-
-<script>
-    var value="<?=$value; ?>";
-    document.write(value);
-</script>
 ```
 
