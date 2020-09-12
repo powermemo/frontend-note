@@ -121,7 +121,8 @@ $('.news .section').hover(
 \[[Convert boolean result into number/integer](https://stackoverflow.com/questions/7820683/convert-boolean-result-into-number-integer)\]
 
 ```javascript
-var i = result ? 1 : 0;
+let chc = document.querySelectorAll('input[type=checkbox]');
+chc.forEach(data => data.checked==true ? data.value=1 : data.value=0)
 ```
 
 #### 怎麼知道scrollbar的寬度
