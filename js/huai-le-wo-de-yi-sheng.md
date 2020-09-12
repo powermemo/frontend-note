@@ -208,3 +208,9 @@ for($i=0; $i<=2; $i++) {
 </script>
 ```
 
+#### checkbox沒被選取，PHP顯示undefined
+
+\[[Undefined Index If I Do Not Check Checkbox](https://stackoverflow.com/questions/18603884/undefined-index-if-i-do-not-check-checkbox/18603899#18603899)\]
+
+ You have to use `isset($_POST['publishok'])` to check it whether it is checked in the server side.
+
