@@ -109,7 +109,7 @@ p.s. 若時區無更動，IIS重新整理。
 {% endhint %}
 
 {% hint style="info" %}
-【使用session上傳資料】
+【Server端取得上傳檔案】
 
 1. 允許上傳：file\_uploads = on
 2. 上傳暫存區：upload\_tmp\_dir = C:\php位置....\tmp
