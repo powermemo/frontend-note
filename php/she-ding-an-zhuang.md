@@ -102,18 +102,18 @@ p.s. 若時區無更動，IIS重新整理。
 {% endhint %}
 
 {% hint style="info" %}
+【Server端取得上傳檔案】
+
+1. 允許上傳：**file\_uploads** = on
+2. 上傳暫存區：**upload\_tmp\_dir** = C:\php位置....\tmp
+3. 上傳容量上限：**upload\_max\_filesize** = 2M
+{% endhint %}
+
+{% hint style="info" %}
 【使用phpMyAdmin】\(一種網頁版的操作介面\)
 
 1. 下載phpMyAdmin\(老師提供\)，丟到wwwroot資料夾。
 2. 到IIS打開phpMyAdmin資料夾的「index.php」檔案。
-{% endhint %}
-
-{% hint style="info" %}
-【Server端取得上傳檔案】
-
-1. 允許上傳：file\_uploads = on
-2. 上傳暫存區：upload\_tmp\_dir = C:\php位置....\tmp
-3. 上傳容量上限：upload\_max\_filesize = 2M
 {% endhint %}
 
 
