@@ -214,3 +214,7 @@ for($i=0; $i<=2; $i++) {
 
  You have to use `isset($_POST['publishok'])` to check it whether it is checked in the server side.
 
+```php
+echo isset($_REQUEST['e']) ? 1 : 0;
+```
+
