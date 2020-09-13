@@ -15,7 +15,7 @@
 
 ```javascript
 var str = "我說\"我真帥啊！\""; 
-console.log('str');\\其結果為「我說"我真帥啊！"」
+console.log('str');//其結果為「我說"我真帥啊！"」
 ```
 
 其他應用：

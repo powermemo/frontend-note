@@ -255,7 +255,7 @@ function express(){
 //JS檔案，以下所有「加密」「解密」純屬形容
 var jsondata;
 var flickr = {'action': 'Flickr', 'get':'getPublicPhotos'};
-var data = JSON.stringify(flickr);            //加密，把物件轉JSON字串
+var data = JSON.stringify(flickr);            //加密，把↑物件轉JSON字串
 
 var xhr = new XMLHttpRequest();
 xhr.open("POST", "../phpincl/apiConnect.php", !0);
