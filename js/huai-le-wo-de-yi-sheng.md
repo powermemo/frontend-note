@@ -116,6 +116,10 @@ $('.news .section').hover(
 
 ## JS
 
+### 基礎
+
+{% tabs %}
+{% tab title="boolean變數字" %}
 #### boolean的值怎麼變數字（給1\|0）
 
 \[[Convert boolean result into number/integer](https://stackoverflow.com/questions/7820683/convert-boolean-result-into-number-integer)\]
@@ -124,6 +128,40 @@ $('.news .section').hover(
 let chc = document.querySelectorAll('input[type=checkbox]');
 chc.forEach(data => data.checked==true ? data.value=1 : data.value=0)
 ```
+{% endtab %}
+
+{% tab title="input\[required\]的數量" %}
+#### 怎麼計算input\[required\]的數量
+
+\[[get required form elements via DOM in javascript](https://stackoverflow.com/questions/35396980/get-required-form-elements-via-dom-in-javascript)\]
+
+```javascript
+document.querySelectorAll('[required]').length;
+```
+
+#### 進階：JS指令「沒填完不准走」
+
+```php
+<input type="text"required>
+<input type="text"required>
+<button type="button" id="bara" disabled>click</button>
+<script>
+  document.querySelector('#bara').addEventListener('click',function(){
+    let elm = document.querySelectorAll('[required]');
+    let elmlen = elm.length
+    let empnum = 0; 
+    for(let i=0;i<elmlen;i++){
+      if(elm[i].value==""){empnum+=1}
+    }
+    // empnum==0?alert('yeah'):alert('no');
+    //另一種
+    if(empnum==0){alert('yeah')}
+    else{alert('no')}
+  })
+</script>
+```
+{% endtab %}
+{% endtabs %}
 
 #### 怎麼知道scrollbar的寬度
 
