@@ -271,8 +271,8 @@ xhr.onreadystatechange = function () {
 //PHP檔案
 header('Content-type: application/json');
 $json = file_get_contents('php://input');//🟡2.PHP收到JS的資料了
-$json_decode = json_decode($json, true); //第二個參數表示
-$json_encode = json_encode($json_decode);
+$json_decode = json_decode($json, true); //解密，第二個參數表示轉陣列非物件
+$json_encode = json_encode($json_decode);//加密，轉JSON字串
 echo $json_encode;                        //🔰3.資料傳回JS
 ```
 {% endtab %}
