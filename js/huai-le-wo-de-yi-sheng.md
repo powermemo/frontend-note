@@ -233,7 +233,7 @@ console.log("value4=" + value4);
 \[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]   \[[send json object from javascript to php](https://stackoverflow.com/questions/23750661/send-json-object-from-javascript-to-php/23750707)\]
 
 {% tabs %}
-{% tab title="JavaScript" %}
+{% tab title="傳旨給PHP" %}
 ```javascript
 <script>
 function express(){
@@ -249,8 +249,9 @@ function express(){
 ```
 {% endtab %}
 
-{% tab title="JS把資料傳給PHP\(非同步\)" %}
+{% tab title="把資料傳給PHP\(非同步\)" %}
 ```javascript
+//JS檔案
 var jsondata;
 var flickr = {'action': 'Flickr', 'get':'getPublicPhotos'};
 var data = JSON.stringify(flickr);
@@ -266,11 +267,8 @@ xhr.onreadystatechange = function () {
         console.log(jsondata);
     }
 }
-```
-{% endtab %}
 
-{% tab title="PHP把資料傳給PHP\(非同步\)" %}
-```php
+//PHP檔案
 header('Content-type: application/json');
 $json = file_get_contents('php://input');
 $json_decode = json_decode($json, true); 
