@@ -691,7 +691,7 @@ for(let i in obj.phone){
 
 {% hint style="info" %}
 * `json_encode()  //陣列|物件   轉   字串`
-* `json_decode()  //字串        轉   陣列|物件`
+* \`\`[`json_decode`](https://sites.google.com/site/phplearnmark/php/php-zhi-ling-qing-dan/json-han-shu/php-json_decode)`()  //字串        轉   陣列|物件`
 {% endhint %}
 
 對應範例檔0804「json.php」
