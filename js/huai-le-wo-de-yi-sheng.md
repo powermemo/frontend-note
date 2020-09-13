@@ -162,7 +162,7 @@ document.querySelectorAll('[required]').length;
 ```
 
 ```php
-//沒填粉紅色，有點沒粉紅
+//(必填)沒填粉紅色，有點沒粉紅
 <input type="text"required>
 <input type="text"required>
 <button type="button" id="bara">click</button>
