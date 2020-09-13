@@ -254,12 +254,12 @@ function express(){
 //JS檔案
 var jsondata;
 var flickr = {'action': 'Flickr', 'get':'getPublicPhotos'};
-var data = JSON.stringify(flickr);
+var data = JSON.stringify(flickr);            //加密，把物件轉JSON字串
 
 var xhr = new XMLHttpRequest();
 xhr.open("POST", "../phpincl/apiConnect.php", !0);
 xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-xhr.send(data);                                //🟡1.把資料送給PHP
+xhr.send(data);                                //🟡1.把加密資料送給PHP
 xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
         // in case we reply back from server
