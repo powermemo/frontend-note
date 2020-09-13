@@ -230,7 +230,8 @@ console.log("value4=" + value4);
 
 #### javasript傳值給php\(GET\)
 
-\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]   \[[send json object from javascript to php](https://stackoverflow.com/questions/23750661/send-json-object-from-javascript-to-php/23750707)\]
+\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]    
+非同步：\[[send json object from javascript to php](https://stackoverflow.com/questions/23750661/send-json-object-from-javascript-to-php/23750707)\]  \[[YOUTUBE](https://youtu.be/mNrJDGfQGz0?t=213)\]
 
 {% tabs %}
 {% tab title="傳旨給PHP" %}
