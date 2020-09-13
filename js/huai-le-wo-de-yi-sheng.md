@@ -160,6 +160,36 @@ document.querySelectorAll('[required]').length;
   })
 </script>
 ```
+
+```php
+//沒填粉紅色，有點沒粉紅
+<input type="text"required>
+<input type="text"required>
+<button type="button" id="bara">click</button>
+<script>
+  let elm = document.querySelectorAll('[required]');
+  let elmlen = elm.length
+  document.querySelector('#bara').addEventListener('click',function(){
+    let empnum = 0; 
+    for(let i=0;i<elmlen;i++){
+      if(elm[i].value==""){//如果表格沒填
+        empnum+=1;//計算沒填的表格
+        elm[i].classList.add('noucant')//背景變成粉紅色
+      }else{//有填表格
+        elm[i].classList.remove('noucant')//去除粉紅色
+      }
+    }
+    if(empnum==0){alert('yeah')}
+    else{ alert('no')}
+  })
+  for(let i=0;i<elmlen;i++){
+    elm[i].addEventListener('change',function(){
+      if(elm[i].value==""){elm[i].classList.add('noucant')}
+      else{elm[i].classList.remove('noucant')}
+    })
+  }
+</script>
+```
 {% endtab %}
 {% endtabs %}
 
