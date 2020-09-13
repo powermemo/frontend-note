@@ -263,7 +263,7 @@ xhr.send(data);                                //🟡1.把加密資料送給PHP
 xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
         // in case we reply back from server
-        jsondata = JSON.parse(xhr.responseText);//🔰4.資料從PHP回來了
+        jsondata = JSON.parse(xhr.responseText);//🔰4.資料從PHP回來了，解密。
         console.log(jsondata);
     }
 }
