@@ -251,7 +251,7 @@ function express(){
 
 {% tab title="把資料傳給PHP\(非同步\)" %}
 ```javascript
-//JS檔案
+//JS檔案，以下所有「加密」「解密」純屬形容
 var jsondata;
 var flickr = {'action': 'Flickr', 'get':'getPublicPhotos'};
 var data = JSON.stringify(flickr);            //加密，把物件轉JSON字串
