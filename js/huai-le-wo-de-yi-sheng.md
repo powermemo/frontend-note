@@ -230,8 +230,10 @@ console.log("value4=" + value4);
 
 #### javasript傳值給php\(GET\)
 
-\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]
+\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]   \[[send json object from javascript to php](https://stackoverflow.com/questions/23750661/send-json-object-from-javascript-to-php/23750707)\]
 
+{% tabs %}
+{% tab title="JavaScript" %}
 ```javascript
 <script>
 function express(){
@@ -245,6 +247,38 @@ function express(){
     echo $_GET['value'];
 ?>
 ```
+{% endtab %}
+
+{% tab title="JS把資料傳給PHP\(非同步\)" %}
+```javascript
+var jsondata;
+var flickr = {'action': 'Flickr', 'get':'getPublicPhotos'};
+var data = JSON.stringify(flickr);
+
+var xhr = new XMLHttpRequest();
+xhr.open("POST", "../phpincl/apiConnect.php", !0);
+xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+xhr.send(data);
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        // in case we reply back from server
+        jsondata = JSON.parse(xhr.responseText);
+        console.log(jsondata);
+    }
+}
+```
+{% endtab %}
+
+{% tab title="PHP把資料傳給PHP\(非同步\)" %}
+```php
+header('Content-type: application/json');
+$json = file_get_contents('php://input');
+$json_decode = json_decode($json, true); 
+$json_encode = json_encode($json_decode);
+echo $json_encode;
+```
+{% endtab %}
+{% endtabs %}
 
 
 
