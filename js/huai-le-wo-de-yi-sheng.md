@@ -263,7 +263,7 @@ xhr.send(data);                                //🟡1.把資料送給PHP
 xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
         // in case we reply back from server
-        jsondata = JSON.parse(xhr.responseText);//🔰3.資料從PHP回來了
+        jsondata = JSON.parse(xhr.responseText);//🔰4.資料從PHP回來了
         console.log(jsondata);
     }
 }
@@ -271,9 +271,9 @@ xhr.onreadystatechange = function () {
 //PHP檔案
 header('Content-type: application/json');
 $json = file_get_contents('php://input');//🟡2.PHP收到JS的資料了
-$json_decode = json_decode($json, true); 
+$json_decode = json_decode($json, true); //第二個參數表示
 $json_encode = json_encode($json_decode);
-echo $json_encode;
+echo $json_encode;                        //🔰3.資料傳回JS
 ```
 {% endtab %}
 {% endtabs %}
