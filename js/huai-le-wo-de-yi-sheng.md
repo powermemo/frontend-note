@@ -321,6 +321,8 @@ document.querySelector('#hibtn').addEventListener('click',function(e){
 
 #### 奶奶的,我對非同步運作還是超級不熟
 
+我放作品使用的...
+
 {% tabs %}
 {% tab title="html" %}
 ```php
@@ -334,11 +336,6 @@ document.querySelector('#hibtn').addEventListener('click',function(e){
           <span class="title">帳號</span>
           <input class="content" disabled value="" name="ven_id">
       </div>
-
-      <!-- <div class="item">
-          <span class="title">密碼</span>
-          <input class="content" value="＊＊＊＊＊＊">
-      </div> -->
       
       <div class="item">
           <span class="title">認證狀態</span>
