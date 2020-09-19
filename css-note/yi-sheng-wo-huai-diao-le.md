@@ -251,5 +251,13 @@ img(子層){
 {% endtab %}
 {% endtabs %}
 
+### 內文死活都不肯換行
+
+`white-space: pre;` 一點都不管用
+
+```css
+word-break: break-all;
+```
+
 
 
