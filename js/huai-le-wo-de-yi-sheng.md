@@ -321,7 +321,7 @@ document.querySelector('#hibtn').addEventListener('click',function(e){
 
 #### 奶奶的,我對非同步運作還是超級不熟
 
-我放作品使用的...
+我放作品使用的使用者資料更改...
 
 {% tabs %}
 {% tab title="html" %}
