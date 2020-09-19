@@ -290,7 +290,7 @@ input:email的格式、input\[required\]等等全都沒有用
 {% endtab %}
 
 {% tab title="解方" %}
-\[[checkValidity等form原生JS驗證方法和屬性詳細介紹](https://www.zhangxinxu.com/wordpress/2019/08/js-checkvalidity-setcustomvalidity/)\]
+\[[checkValidity等form原生JS驗證方法和屬性詳細介紹](https://www.zhangxinxu.com/wordpress/2019/08/js-checkvalidity-setcustomvalidity/)\] \[[範例](https://codepen.io/nickleus/pen/qOjOGe)\]
 
 用`checkValidity()`判斷  
 用`reportValidity()`呼叫
