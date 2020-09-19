@@ -285,7 +285,8 @@ echo $json_encode;                        //🔰3.資料傳回JS
 
 {% tabs %}
 {% tab title="問題" %}
-input:email的格式、input\[required\]等等全都沒有用
+input:email的格式、input\[required\]等等全都沒有用  
+資料就這樣直接送去給PHP了！！
 {% endtab %}
 
 {% tab title="解方" %}
@@ -300,7 +301,7 @@ document.querySelector('#hibtn').addEventListener('click',function(e){
     if(valid){//🟢JS原生程式form判斷為true
       e.preventDefault();
       if(itsclose==false){
-        changeVMfoData()//執行某支function
+        changeVMfoData()//執行非同步function送出資料
         let reqElm = document.querySelectorAll('#class1 [required]')
         for(let i=0;i<reqElm.length;i++){
           itsclose = true;
@@ -308,10 +309,10 @@ document.querySelector('#hibtn').addEventListener('click',function(e){
         }
       }
     }else{    //🟢JS原生程式form判斷為false
-      //🟡
-      document.querySelector('#class1 [name="ven_email"]').reportValidity()
-      document.querySelector('#class1 [name="ven_tel"]').reportValidity()
-      document.querySelector('#class1 [name="ven_name"]').reportValidity()
+      //🟡這邊欄位若不符合設定的格式|規範就呼叫（例如：請填寫這個欄位）
+      document.querySelector('[name="ven_email"]').reportValidity()
+      document.querySelector('[name="ven_tel"]').reportValidity()
+      document.querySelector('[name="ven_name"]').reportValidity()
     }
   })
 ```
