@@ -319,6 +319,250 @@ document.querySelector('#hibtn').addEventListener('click',function(e){
 {% endtab %}
 {% endtabs %}
 
+#### 奶奶的,我對非同步運作還是超級不熟
+
+{% tabs %}
+{% tab title="html" %}
+```php
+<div class="ven_information class" id="class1">
+  <form class="all" method="POST">
+      <div class="item">
+          <span class="title">會員編號</span>
+          <input class="content" disabled value="" name="ven_no">
+      </div>
+      <div class="item">
+          <span class="title">帳號</span>
+          <input class="content" disabled value="" name="ven_id">
+      </div>
+
+      <!-- <div class="item">
+          <span class="title">密碼</span>
+          <input class="content" value="＊＊＊＊＊＊">
+      </div> -->
+      
+      <div class="item">
+          <span class="title">認證狀態</span>
+          <input class="content" disabled value="" name="ven_id_qu">
+      </div>
+
+      <div class="item">
+          <span class="title">負責人</span>
+          <input class="content" disabled value="" name="ven_name" required maxlength="3"> 
+      </div>
+
+      <div class="item">
+          <span class="title">聯絡電話</span>
+          <input class="content" disabled value="" name="ven_tel" type="tel" size="10" required>
+      </div>
+      <div class="item rwd">
+          <span class="title">Email</span>
+          <input class="content" disabled value="" name="ven_email" type="email" required>
+      </div>
+      <div class="btn">
+          <input type="button" value="修改資料" name="edit" id="edit" class="btn-cir_gr2 fw_6">
+          <input type="button" value="確認送出" name="submit" id="submit" class="btn-cir_pk2 fw_6">
+      </div>
+    </form>
+</div>
+```
+{% endtab %}
+
+{% tab title="js" %}
+```php
+var itsclose = true;
+function doFirst(){
+  //非同步畫面呈現（綁資料庫）
+  function loadVMfoData(){
+    let xhr = new XMLHttpRequest();
+    let url = "./connect/vendor_member_fromUT_start.php";
+    // let jdata = JSON.stringify(data);
+    xhr.onload = function(){
+      if(xhr.status == 200){
+        let jresult = JSON.parse(xhr.responseText);
+        switch(jresult.vq){
+          case '0':
+            $('#class1 [name="ven_id_qu"]').val('待認證')
+            break;
+          case '1':
+            $('#class1 [name="ven_id_qu"]').val('認證未通過')
+            break;
+          case '2':
+            $('#class1 [name="ven_id_qu"]').val('認證已通過')
+            break;
+        }
+        $('#class1 [name="ven_no"]').val(jresult.vno)
+        $('#class1 [name="ven_id"]').val(jresult.vi)
+        $('#class1 [name="ven_name"]').val(jresult.vn)
+        $('#class1 [name="ven_tel"]').val(jresult.vt)
+        $('#class1 [name="ven_email"]').val(jresult.ve)
+      }else{
+        alert(xhr.status)
+      }
+    }
+    xhr.open("GET",url,true);
+    xhr.send(null);
+  }
+  loadVMfoData();
+  sendInData();
+  //非同步傳送資料
+  function changeVMfoData(){
+    let xhr = new XMLHttpRequest();
+    let url = "./connect/vendor_member_fromUT.php";
+    let jdata = JSON.stringify(data);
+    xhr.onload = function(){
+      if(xhr.status == 200){
+        let jresult = JSON.parse(xhr.responseText);
+        // console.log(jresult)
+        $('#class1 [name="ven_name"]').val(jresult.vn)
+        $('#class1 [name="ven_tel"]').val(jresult.vt)
+        $('#class1 [name="ven_email"]').val(jresult.ve)
+      }else{
+        alert(xhr.status)
+      }
+    }
+    xhr.open("POST",url,true);
+    xhr.setRequestHeader("content-type","application/json")
+    xhr.send(jdata);
+  } 
+  
+  //修改資料按鈕
+  $('#class1 #edit').click(function(){
+    let reqElm = document.querySelectorAll('#class1 [required]')
+    for(let i=0;i<reqElm.length;i++){
+      itsclose = false;
+      reqElm[i].disabled = false;
+    }
+  })
+  
+  //事件聆聽
+  document.querySelector('#class1 [name="ven_name"]').addEventListener('change',sendInData)
+  document.querySelector('#class1 [name="ven_tel"]').addEventListener('change',sendInData)
+  document.querySelector('#class1 [name="ven_email"]').addEventListener('change',sendInData)
+  document.querySelector('#class1 #submit').addEventListener('click',function(e){
+    var valid = this.form.checkValidity();
+    if(valid){
+      e.preventDefault();
+      if(itsclose==false){
+        changeVMfoData()
+        let reqElm = document.querySelectorAll('#class1 [required]')
+        for(let i=0;i<reqElm.length;i++){
+          itsclose = true;
+          reqElm[i].disabled = true;
+        }
+      }
+    }else{
+      // alert('格式不對或欄位未填')
+      document.querySelector('#class1 [name="ven_email"]').reportValidity()
+      document.querySelector('#class1 [name="ven_tel"]').reportValidity()
+      document.querySelector('#class1 [name="ven_name"]').reportValidity()
+    }
+  })
+}//doFirst()
+//資料裡面放東西
+function sendInData(){
+  data = {}
+  let ven_nameVal = document.querySelector('#class1 [name="ven_name"]').value
+  let ven_telVal = document.querySelector('#class1 [name="ven_tel"]').value
+  let ven_emailVal = document.querySelector('#class1 [name="ven_email"]').value
+  data.vn = ven_nameVal;  //送PHP記得這個物件的索引值名稱唷~~
+  data.vt = ven_telVal;   //送PHP記得這個物件的索引值名稱唷~~
+  data.ve = ven_emailVal; //送PHP記得這個物件的索引值名稱唷~~
+}
+
+
+
+window.addEventListener('load',doFirst);
+```
+{% endtab %}
+
+{% tab title="PHP\(connect\)" %}
+```php
+<?php
+//連線(連資料庫帳號密碼等設定)用的
+  $dsn = 'mysql:host=localhost;port=3306;dbname=yesman;charset=utf8';
+  $user = '資料庫帳號';
+  $password = '資料庫密碼';
+  $options  = array(PDO::ATTR_CASE=>PDO::CASE_NATURAL, 
+                    PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION);
+  $pdo = new PDO($dsn,$user,$password,$options);
+?>
+```
+{% endtab %}
+
+{% tab title="PHP\(load\)" %}
+```php
+<?php
+//當畫面跑完，要撈資料庫的資料到畫面上
+//./connect/vendor_member_fromUT_start.php
+$venNo = 6;//測試用，寫死的
+try{
+  require_once('./connect.php');
+  $sql = 'select * from vendor_info where ven_no=:venNo;';
+  $veninfoU = $pdo->prepare($sql);
+  $veninfoU->bindValue(':venNo',$venNo);
+  $veninfoU->execute();
+  while($veninfoURow=$veninfoU->fetchObject()){
+    $jresult = array(
+      'vno'=>$veninfoURow->ven_no,
+      'vi'=>$veninfoURow->ven_id,
+      'vq'=>$veninfoURow->ven_id_qu,
+      'vn'=>$veninfoURow->ven_name,
+      'vt'=>$veninfoURow->ven_tel,
+      've'=>$veninfoURow->ven_email
+    );
+  }
+  echo json_encode($jresult);
+}catch(PDOException $e){
+  echo "錯誤 : ".$e -> getMessage()."<br>";
+  echo "行號 : ".$e -> getLine()."<br>";
+}
+?>
+```
+{% endtab %}
+
+{% tab title="PHP\(sendNback\)" %}
+```php
+<?php
+//當按下送出鍵，資料傳給資料庫、並讓畫面資料呈現剛剛輸入的(這好像..)..
+//./connect/vendor_member_fromUT.php
+$venNo = 6;//測試用，寫死的
+$jdata = json_decode(file_get_contents('php://input'), true);
+// $jresult = array(23=>'234',347=>'三三娘娘');
+$vname  = $jdata["vn"];//JS那邊命名的物件名稱
+$vtel   = $jdata["vt"];//JS那邊命名的物件名稱
+$vemail = $jdata["ve"];//JS那邊命名的物件名稱
+try{
+  require_once('./connect.php');
+  $sql = 'update vendor_info
+          set ven_name=:vname,ven_tel=:vtel,ven_email=:vemail
+          where ven_no=:venNo;';
+  $sql2 = 'select * from vendor_info where ven_no=:venNo;';
+  $veninfoU = $pdo->prepare($sql);
+  $veninfoU->bindValue(':vname',$vname);
+  $veninfoU->bindValue(':vtel',$vtel);
+  $veninfoU->bindValue(':vemail',$vemail);
+  $veninfoU->bindValue(':venNo',$venNo);
+  $veninfoU->execute();
+  $veninfoU = $pdo->prepare($sql2);
+  $veninfoU->bindValue(':venNo',$venNo);
+  $veninfoU->execute();
+  while($veninfoURow=$veninfoU->fetchObject()){
+    $jresult = array(
+      'vn'=>$veninfoURow->ven_name,
+      'vt'=>$veninfoURow->ven_tel,
+      've'=>$veninfoURow->ven_email
+    );
+  }
+  echo json_encode($jresult);
+}catch(PDOException $e){
+  echo "錯誤 : ".$e -> getMessage()."<br>";
+  echo "行號 : ".$e -> getLine()."<br>";
+}
+?>
+```
+{% endtab %}
+{% endtabs %}
+
 
 
 ## PHP
