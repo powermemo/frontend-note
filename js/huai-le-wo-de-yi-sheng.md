@@ -279,6 +279,45 @@ echo $json_encode;                        //🔰3.資料傳回JS
 {% endtab %}
 {% endtabs %}
 
+### 非同步
+
+#### 表單認證功能失效
+
+{% tabs %}
+{% tab title="問題" %}
+input:email的格式、input\[required\]等等全都沒有用
+{% endtab %}
+
+{% tab title="解方" %}
+\[[checkValidity等form原生JS驗證方法和屬性詳細介紹](https://www.zhangxinxu.com/wordpress/2019/08/js-checkvalidity-setcustomvalidity/)\]
+
+用`checkValidity()`判斷  
+用`reportValidity()`呼叫
+
+```php
+document.querySelector('#hibtn').addEventListener('click',function(e){
+    var valid = this.form.checkValidity();//🟡
+    if(valid){//🟢JS原生程式form判斷為true
+      e.preventDefault();
+      if(itsclose==false){
+        changeVMfoData()//執行某支function
+        let reqElm = document.querySelectorAll('#class1 [required]')
+        for(let i=0;i<reqElm.length;i++){
+          itsclose = true;
+          reqElm[i].disabled = true;
+        }
+      }
+    }else{    //🟢JS原生程式form判斷為false
+      //🟡
+      document.querySelector('#class1 [name="ven_email"]').reportValidity()
+      document.querySelector('#class1 [name="ven_tel"]').reportValidity()
+      document.querySelector('#class1 [name="ven_name"]').reportValidity()
+    }
+  })
+```
+{% endtab %}
+{% endtabs %}
+
 
 
 ## PHP
