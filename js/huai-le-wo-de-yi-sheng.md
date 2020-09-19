@@ -465,9 +465,6 @@ function sendInData(){
   data.vt = ven_telVal;   //送PHP記得這個物件的索引值名稱唷~~
   data.ve = ven_emailVal; //送PHP記得這個物件的索引值名稱唷~~
 }
-
-
-
 window.addEventListener('load',doFirst);
 ```
 {% endtab %}
