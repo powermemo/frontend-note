@@ -328,6 +328,12 @@ negative lookahead 是相對於 positive lookahead，只有在接下來的內容
 ▼ Email Regex / Email 正規表示式
 
 ```javascript
+<input pattern="(\d{4})-(\d{3})-(\d{3})"/>
+```
+
+▼ Email Regex / Email 正規表示式
+
+```javascript
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 ```
 
