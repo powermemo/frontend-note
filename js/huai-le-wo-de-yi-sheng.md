@@ -122,6 +122,31 @@ $('.news .section').hover(
 {% endtab %}
 {% endtabs %}
 
+#### checkbox的required
+
+\[[Using the HTML5 “required” attribute for a group of checkboxes?](https://stackoverflow.com/questions/6218494/using-the-html5-required-attribute-for-a-group-of-checkboxes)\]
+
+{% tabs %}
+{% tab title="架構" %}
+```markup
+<div class="checkbox-group required">
+    <input type="checkbox" name="checkbox_name[]">
+    <input type="checkbox" name="checkbox_name[]">
+    <input type="checkbox" name="checkbox_name[]">
+    <input type="checkbox" name="checkbox_name[]">
+</div>
+```
+{% endtab %}
+
+{% tab title="JQ" %}
+```javascript
+$('div.checkbox-group.required :checkbox:checked').length > 0
+```
+{% endtab %}
+{% endtabs %}
+
+
+
 ## JS
 
 ### 基礎
