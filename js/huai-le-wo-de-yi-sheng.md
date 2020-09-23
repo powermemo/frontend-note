@@ -298,8 +298,20 @@ echo $json_encode;                        //🔰3.資料傳回JS
 * 用一個「假標籤」滿版，先display:none，在滑動時顯示出來\(再消失\)。
 
 {% tabs %}
-{% tab title="First Tab" %}
+{% tab title="架構" %}
+這邊大致放一下，不是全部
 
+```markup
+<nav><ul><li></li></ul></nav>
+<div class="section section1">
+  <div class="animate">...</div>
+  <!-- ↓防止滑動的空標籤 -->
+  <div class="noScrollWell"></div>
+  <!-- ↓下面這是輪播套件 -->
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel"></div>
+  <button>scrollDown</button>
+</div>
+```
 {% endtab %}
 
 {% tab title="js" %}
