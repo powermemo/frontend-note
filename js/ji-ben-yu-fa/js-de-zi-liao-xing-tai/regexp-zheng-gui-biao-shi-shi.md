@@ -325,7 +325,7 @@ negative lookahead 是相對於 positive lookahead，只有在接下來的內容
 
 ## 範例
 
-▼ Email Regex / Email 正規表示式
+▼手機號碼 正規表示式
 
 ```javascript
 <input pattern="(\d{4})-(\d{3})-(\d{3})"/>
