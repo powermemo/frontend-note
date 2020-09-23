@@ -138,20 +138,6 @@ $('.news .section').hover(
 </script>
 ```
 
-{% tabs %}
-{% tab title="架構" %}
-```markup
-
-```
-{% endtab %}
-
-{% tab title="JQ" %}
-```javascript
-
-```
-{% endtab %}
-{% endtabs %}
-
 
 
 ## JS
