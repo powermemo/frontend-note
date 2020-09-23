@@ -22,7 +22,9 @@ $("#newResForm").stop().animate({ opacity: 0 }, 100,function() {
 hover之後，閒置一段時間，動畫不受控地快轉。  
 `❌setInterval(()=>{fn()},time)  
 ✅setInterval(fn,time)`  
-\[[Adding pause on hover to setInterval\(\)?](https://stackoverflow.com/questions/10913703/adding-pause-on-hover-to-setinterval)\]
+\[[~~Adding pause on hover to setInterval\(\)?~~](https://stackoverflow.com/questions/10913703/adding-pause-on-hover-to-setinterval)~~\]~~
+
+我用了bootstrap...
 
 {% tabs %}
 {% tab title="\(不是重點\)動畫函式" %}
@@ -68,6 +70,12 @@ $('.news .section').hover(
   //🟡👇調整了下面
   timeId3=setInterval(   moveRight3 , 3500);//再啟動動畫
 });
+```
+{% endtab %}
+
+{% tab title="" %}
+```
+
 ```
 {% endtab %}
 {% endtabs %}
@@ -278,6 +286,16 @@ echo $json_encode;                        //🔰3.資料傳回JS
 ```
 {% endtab %}
 {% endtabs %}
+
+### 事件
+
+#### wheel事件沒辦法做到fullpage的不閃跳
+
+​我沒有百分之百清除，但降低很多\(頻率\)這樣的感覺。  
+我用同學的方法：
+
+* 靠DOM觸發滑動功能，而不是document,window等。
+* 用一個「假標籤」滿版，先display:none，在滑動時顯示出來\(再消失\)。
 
 ### 非同步
 
