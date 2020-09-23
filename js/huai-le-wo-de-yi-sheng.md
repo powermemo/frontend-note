@@ -289,13 +289,72 @@ echo $json_encode;                        //🔰3.資料傳回JS
 
 ### 事件
 
-#### wheel事件沒辦法做到fullpage的不閃跳
+#### wheel事件沒辦法做到[fullpage](https://alvarotrigo.com/fullPage/)的不閃跳
 
 ​我沒有百分之百清除，但降低很多\(頻率\)這樣的感覺。  
 我用同學的方法：
 
 * 靠DOM觸發滑動功能，而不是document,window等。
 * 用一個「假標籤」滿版，先display:none，在滑動時顯示出來\(再消失\)。
+
+{% tabs %}
+{% tab title="First Tab" %}
+
+{% endtab %}
+
+{% tab title="js" %}
+我只要第一第二屏有效果、剩下的頁面不套用..
+
+```php
+function wheelDown(e)  {//🟡scroll down
+  $(".noScrollWell").show();
+  $('body,html').stop().animate({scrollTop: ww },800 ,
+    function(){ $(".noScrollWell").hide(); }     //禁止滑動的牆壁消失
+  )
+}
+
+function wheelUp(e){ //🟡scroll top
+  $(".noScrollWell").show();
+  $('body,html').stop().animate({scrollTop: '' },800,
+    function(){ $(".noScrollWell").hide();}     //禁止滑動的牆壁消失
+  )  
+}
+
+//🟡當我滾動滑鼠的時候
+$('.container,#carouselExampleCaptions').on('wheel  DOMMouseScroll', function(e) { 
+// $('.section1').on('scroll', function(e) { //當我滑動的時候
+  // e.stopPropagation();
+  // e.preventDefault();
+  // e.stopImmediatePropagation(); 
+  delta = e.originalEvent.deltaY;
+  wheelhandler(e)
+});
+
+//🟡當阻絕的牆壁出現，停止一切scroll功能
+$(".noScrollWell").on('scroll touchmove mousewheel', function(e){
+  e.preventDefault();     
+  e.stopPropagation();
+  return false;
+})
+
+//🟡滑鼠事件
+let sss=0 ;
+function wheelhandler(e){
+  delta = e.originalEvent.deltaY;
+  if (delta > 0 && $(window).scrollTop() < ww/2) { //滑鼠往下滑  而且  <80
+    clearTimeout(sss)
+    sss=setTimeout(wheelDown(),800)
+    e.preventDefault();    e.stopPropagation();//停止預設事件
+  } else if(delta < 0 && ($(window).scrollTop() > $(window).scrollTop()/2 && $(window).scrollTop() <=ww)) {          
+    clearTimeout(sss)
+    sss= setTimeout(wheelUp(),800)                   //滑鼠往上滑 
+    e.preventDefault();    e.stopPropagation();//停止預設事件
+  }
+  return false;
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ### 非同步
 
