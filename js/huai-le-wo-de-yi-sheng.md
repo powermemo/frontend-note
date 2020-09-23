@@ -309,7 +309,8 @@ echo $json_encode;                        //🔰3.資料傳回JS
   <!-- ↓防止滑動的空標籤 -->
   <div class="noScrollWell"></div>
   <!-- ↓下面這是輪播套件 -->
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel"></div>
+  <div id="carouselExampleCaptions" 
+      class="carousel slide" data-ride="carousel"></div>
   <button>scrollDown</button>
 </div>
 
