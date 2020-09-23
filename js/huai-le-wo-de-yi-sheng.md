@@ -303,6 +303,7 @@ echo $json_encode;                        //🔰3.資料傳回JS
 
 ```markup
 <nav><ul><li></li></ul></nav>
+<!-- 🟡第一屏 -->
 <div class="section section1">
   <div class="animate">...</div>
   <!-- ↓防止滑動的空標籤 -->
@@ -311,6 +312,14 @@ echo $json_encode;                        //🔰3.資料傳回JS
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel"></div>
   <button>scrollDown</button>
 </div>
+
+<!-- 🟡第二屏 -->
+<div class="container">
+  <div class="ad">...</div>
+  <div class="plan">...</div>
+  <div class="select">...</div>
+</div>
+<div class="footer"></div>
 ```
 {% endtab %}
 
