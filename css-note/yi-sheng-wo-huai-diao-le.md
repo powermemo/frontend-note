@@ -275,15 +275,15 @@ img(子層){
   justify-content: center;
   align-items: center;
   text-align: center;
-  -ms-overflow-style: none;  //不要卷軸/* IE and Edge */
-  scrollbar-width: none;     //不要卷軸/* Firefox */
-  &::-webkit-scrollbar{display: none;}//不要卷軸
-  
+    
   .scrollwrap{
     margin: 25px 0;        //外面留空間
     overflow:auto;         //卷軸
     border-radius: 8px;    //倒圓角
     background: deeppink;  //背景色
+    -ms-overflow-style: none;  //不要卷軸/* IE and Edge */
+    scrollbar-width: none;     //不要卷軸/* Firefox */
+    &::-webkit-scrollbar{display: none;}//不要卷軸
     
     .box{
       padding: 30px;     //以下燈箱內容置中調整
