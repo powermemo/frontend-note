@@ -236,11 +236,13 @@ img(子層){
 {% tab title="html" %}
 ```markup
 <div class="wrap">
+  <!--側邊攔-->
   <div class="sidenav">
     <ul><li></li></ul>
   </div>
-
-  <div class="boxwrap"><!--🟡-->
+  
+  <!--🟡燈箱-->
+  <div class="boxwrap">
     <div class="scrollwrap">
       <div class="box">
         <h3>小標1</h3>
@@ -252,6 +254,7 @@ img(子層){
     </div>
   </div>
 
+  <!--主文-->
   <div class="main">
     <button class="open">打開</button>
     Lorem ipsum dolor sit amet.
@@ -260,20 +263,50 @@ img(子層){
 ```
 {% endtab %}
 
-{% tab title="CSS" %}
+{% tab title="SCSS" %}
 ```css
-
+.boxwrap{
+  display:none;              //預設關閉狀態
+  background: rgba(0,0,0,.6);//黑背景
+  width: 100vw;              //滿版
+  height: 100vh;             //滿版
+  position: fixed;           //釘住
+  flex-direction: column;    //以下燈箱置中樣式
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  -ms-overflow-style: none;  //不要卷軸/* IE and Edge */
+  scrollbar-width: none;     //不要卷軸/* Firefox */
+  &::-webkit-scrollbar{display: none;}//不要卷軸
+  
+  .scrollwrap{
+    margin: 25px 0;        //外面留空間
+    overflow:auto;         //卷軸
+    border-radius: 8px;    //倒圓角
+    background: deeppink;  //背景色
+    
+    .box{
+      padding: 30px;     //以下燈箱內容置中調整
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+  }
+}
 ```
 {% endtab %}
 
 {% tab title="jq" %}
 ```javascript
 //關閉 | 開啟
-$('.open').click(function(){
+$('.open').click(function(){          //打開燈箱
   $('.boxwrap').css('display','');
   $('.boxwrap').css('display','fiex');
 })
-$('.close').click(function(){
+$('.close').click(function(){         //關閉燈箱
   $('.boxwrap').css('display','none');
 })
 ```
