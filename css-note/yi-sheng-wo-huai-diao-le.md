@@ -230,6 +230,56 @@ img(子層){
 {% endtab %}
 {% endtabs %}
 
+#### 燈箱的RWD也可以用相同作法~~
+
+{% tabs %}
+{% tab title="html" %}
+```markup
+<div class="wrap">
+  <div class="sidenav">
+    <ul><li></li></ul>
+  </div>
+
+  <div class="boxwrap"><!--🟡-->
+    <div class="scrollwrap">
+      <div class="box">
+        <h3>小標1</h3>
+        <input>
+        <h3>小標2</h3>
+        <input>
+        <button class="open">關閉</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <button class="open">打開</button>
+    Lorem ipsum dolor sit amet.
+  </div>
+</div>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```css
+
+```
+{% endtab %}
+
+{% tab title="jq" %}
+```javascript
+//關閉 | 開啟
+$('.open').click(function(){
+  $('.boxwrap').css('display','');
+  $('.boxwrap').css('display','fiex');
+})
+$('.close').click(function(){
+  $('.boxwrap').css('display','none');
+})
+```
+{% endtab %}
+{% endtabs %}
+
 ### 圖片蓋到連結，連結無法點擊
 
 {% tabs %}
