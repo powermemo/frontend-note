@@ -259,6 +259,8 @@ console.log("value4=" + value4);
 \[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]    
 非同步：\[[send json object from javascript to php](https://stackoverflow.com/questions/23750661/send-json-object-from-javascript-to-php/23750707)\]  \[[YOUTUBE](https://youtu.be/mNrJDGfQGz0?t=213)\]
 
+我就是不要非同步，我就是要同一頁取值！\[[連結](https://icodding.blogspot.com/2015/08/javascript-php.html)\]
+
 {% tabs %}
 {% tab title="傳旨給PHP" %}
 ```javascript
