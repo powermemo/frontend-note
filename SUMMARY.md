@@ -13,8 +13,6 @@
     * [CH02－背景與邊框](css-note/untitled/ch02-bei-jing-yu-bian-kuang.md)
     * [CH03－形狀](css-note/untitled/ch03-xing-zhuang.md)
     * [CH07－結構與架構](css-note/untitled/untitled-1.md)
-    * [Untitled](css-note/untitled/untitled.md)
-    * [Untitled](css-note/untitled/untitled-2.md)
   * [背景](css-note/bei-jing.md)
   * [物件](css-note/wu-jian/README.md)
     * [表格table](css-note/wu-jian/biao-ge-table.md)
