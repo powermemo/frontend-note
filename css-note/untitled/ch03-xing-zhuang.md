@@ -269,7 +269,75 @@ nav > a::before {
 {% endtab %}
 {% endtabs %}
 
-## 【06－梯形頁籤】
+## 【06－圓餅圖】
+
+Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-simple-pie-charts-with-css.html)\]
+
+### CSS－做百分比
+
+{% tabs %}
+{% tab title="圓<50%" %}
+[codepen](https://codepen.io/ch-zhuchu/pen/BaLNZQe)-14
+
+![&#x4E00;&#x500B;&#x5712;&#xFF0C;&#x7528;&#x7DDA;&#x6027;&#x6F38;&#x5C64;&#x5206;&#x5169;&#x8272;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-2.png)
+
+```markup
+<div class="pie"></div>
+```
+
+```css
+.pie {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: yellowgreen;
+  background-image: linear-gradient(to right, transparent 50%, #655 0);
+}
+```
+
+![&#x7528;&#x507D;&#x5143;&#x7D20;::before&#x7576;&#x526A;&#x88C1;&#x906E;&#x8272;&#x7247;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-4.png)
+
+```css
+.pie::before {
+  content: '';
+  display: block;
+  margin-left: 50%;
+  height: 100%;
+  border-radius: 0 100% 100% 0 / 50%;
+  background-color: inherit; /*別用background*/
+  transform-origin: left;
+}
+```
+
+{% hint style="info" %}
+ 注意：不要使用`background: inherit;`，要用`background-color: inherit;`，  
+否則父元素背景圖像上的漸變也會被繼承。
+{% endhint %}
+
+![](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-5.png)
+
+分別展示不同百分比的餅圖，從左到右：10% \(36deg或.1turn\), 20% \(72deg或.2turn\), 40% \(144deg或.4turn\)
+
+```css
+.pie::before {
+  content: '';
+  display: block;
+  margin-left: 50%;
+  height: 100%;
+  border-radius: 0 100% 100% 0 / 50%;
+  background-color: inherit; /*別用background*/
+  transform-origin: left;
+  transform: rotate(.1turn);/*🟡*/
+  /*10% (36deg或.1turn), 
+    20% (72deg或.2turn), 
+    40% (144deg或.4turn)*/
+}
+```
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
 
 
