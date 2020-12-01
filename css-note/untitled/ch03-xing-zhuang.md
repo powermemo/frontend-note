@@ -275,10 +275,10 @@ Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-sim
 
 ### CSS－百分比
 
+[codepen14](https://codepen.io/ch-zhuchu/pen/BaLNZQe)
+
 {% tabs %}
 {% tab title="圓<50%" %}
-[codepen](https://codepen.io/ch-zhuchu/pen/BaLNZQe)-14
-
 ![&#x4E00;&#x500B;&#x5712;&#xFF0C;&#x7528;&#x7DDA;&#x6027;&#x6F38;&#x5C64;&#x5206;&#x5169;&#x8272;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-2.png)
 
 ```markup
@@ -338,6 +338,34 @@ Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-sim
 問題：前一頁的圓形&gt;50%就會失效
 
 ![&#x4E0D;&#x662F;&#x6211;&#x5011;&#x8981;&#x7684;&#x7D50;&#x679C;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-6.png)
+
+解決方法：只是將偽元素::before換個顏色。
+
+```css
+background: inherit;
+```
+
+帶動畫的：
+
+```css
+@keyframes bg {
+  50% { background: #655; }
+}
+@keyframes spin {
+  to { transform: rotate(.5turn); }
+}
+.pie::before {
+  content: '';
+  display: block;
+  margin-left: 50%;
+  height: 100%;
+  border-radius: 0 100% 100% 0 / 50%;
+  background-color: inherit;
+  transform-origin: left;
+  animation: spin 3s linear infinite,
+             bg 6s step-end infinite;
+}
+```
 {% endtab %}
 {% endtabs %}
 
