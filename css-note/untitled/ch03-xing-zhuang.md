@@ -428,7 +428,7 @@ document.querySelectorAll('.pie').forEach(pie=>{
 
 ### SVG
 
-SVG solution p.158
+SVG solution p.158  [codepen14-SVG](https://codepen.io/ch-zhuchu/pen/RwGPjbJ)
 
 {% tabs %}
 {% tab title="中空圓" %}
@@ -480,7 +480,7 @@ stroke-dasharray: 150 189
 ```
 
 ```css
-.circle2 {
+.circle {
     fill: yellowgreen;
     stroke: #655;
     stroke-width: 50;
@@ -491,12 +491,56 @@ stroke-dasharray: 150 189
 ![SVG&#x52A0;&#x4E0A;&#x4E00;&#x6A23;&#x7684;&#x88AB;&#x666F;&#x8272;&#x770B;&#x8D77;&#x4F86;&#x5C31;&#x662F;&#x4E00;&#x500B;&#x5927;&#x5713;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-13.png)
 
 ```css
-.svg2{
+.svg{
   transform: rotate(-90deg); 
   background: yellowgreen; /*你可以換色看看w*/
   border-radius: 50%;
 }
 ```
+
+![](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-14.png)
+
+```markup
+
+
+```
+{% endtab %}
+
+{% tab title="未來" %}
+![](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-13.png)
+
+![](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-14.png)
+
+```markup
+<div class="pie pie1"></div>
+<div class="pie pie2" data-value="64"></div>
+<div class="pie pie3"></div>
+```
+
+```css
+.pie {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+}
+.pie1{
+  background: conic-gradient(#655 20%, yellowgreen 0);
+}
+.pie2{
+  background: conic-gradient(#655  attr(data-value %) , yellowgreen 0);
+}/*目前attr(data-*)在偽元素content可以用*/
+.pie3{
+  background: conic-gradient(deeppink 20%,  #fb3 0,#fb3 30%, yellowgreen 0);
+}
+```
+
+{% hint style="success" %}
+`conic-gradient(#655 20%, yellowgreen 0);`  
+跟線性漸層用法差不多。
+{% endhint %}
+
+{% hint style="danger" %}
+目前`attr(data-*)`在偽元素content可以用
+{% endhint %}
 {% endtab %}
 {% endtabs %}
 
