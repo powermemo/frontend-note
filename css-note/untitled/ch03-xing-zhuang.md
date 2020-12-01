@@ -273,7 +273,7 @@ nav > a::before {
 
 Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-simple-pie-charts-with-css.html)\]
 
-### CSS－百分比
+### CSS
 
 [codepen14](https://codepen.io/ch-zhuchu/pen/BaLNZQe)
 
@@ -426,5 +426,5 @@ document.querySelectorAll('.pie').forEach(pie=>{
 {% endtab %}
 {% endtabs %}
 
-
+### SVG
 
