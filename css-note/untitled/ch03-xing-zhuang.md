@@ -428,3 +428,7 @@ document.querySelectorAll('.pie').forEach(pie=>{
 
 ### SVG
 
+SVG solution p.158
+
+
+
