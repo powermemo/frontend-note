@@ -430,5 +430,73 @@ document.querySelectorAll('.pie').forEach(pie=>{
 
 SVG solution p.158
 
+{% tabs %}
+{% tab title="中空圓" %}
+![SVG&#x756B;&#x4E00;&#x500B;&#x5713;&#xFF0C;&#x539A;&#x908A;&#x6846;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-9.png)
 
+```markup
+<svg width="100" height="100"> 
+  <circle r="30" cx="50" cy="50" /> 
+</svg>
+```
+
+```css
+circle { 
+  fill: yellowgreen; 
+  stroke: #655; 
+  stroke-width: 30; 
+}
+```
+
+![&#x6709;&#x9593;&#x8DDD;&#x7684;&#x908A;&#x6846;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-10.png)
+
+```css
+stroke-dasharray: 20 10;
+```
+
+{% hint style="info" %}
+`20`的長度+`10`的邊距  
+ 周長：`C = 2πr`,所以在這裡`C = 2π × 30 ≈ 189`
+{% endhint %}
+
+![0/189, 40/189, 95/189,150/189](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-11.png)
+
+```css
+/*從左到右的虛線數值*/
+stroke-dasharray: 0 189; 
+stroke-dasharray: 40 189;
+stroke-dasharray: 95 189;
+stroke-dasharray: 150 189
+```
+{% endtab %}
+
+{% tab title="實心圓" %}
+![&#x7DDA;&#x7C97;&#x8DDF;&#x534A;&#x5F91;&#x4E00;&#x6A23;&#x5BEC;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-12.png)
+
+```markup
+<svg width="100" height="100" class="svg2">
+  <circle r="25" cx="50" cy="50"  class="circle2"/>
+</svg>
+```
+
+```css
+.circle2 {
+    fill: yellowgreen;
+    stroke: #655;
+    stroke-width: 50;
+    stroke-dasharray: 60 158; /* 2π × 25 ≈ 158 */
+}
+```
+
+![SVG&#x52A0;&#x4E0A;&#x4E00;&#x6A23;&#x7684;&#x88AB;&#x666F;&#x8272;&#x770B;&#x8D77;&#x4F86;&#x5C31;&#x662F;&#x4E00;&#x500B;&#x5927;&#x5713;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-13.png)
+
+```css
+.svg2{
+  transform: rotate(-90deg); 
+  background: yellowgreen; /*你可以換色看看w*/
+  border-radius: 50%;
+}
+```
+{% endtab %}
+{% endtabs %}
 
