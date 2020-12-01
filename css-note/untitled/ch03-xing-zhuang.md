@@ -273,7 +273,7 @@ nav > a::before {
 
 Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-simple-pie-charts-with-css.html)\]
 
-### CSS－做百分比
+### CSS－百分比
 
 {% tabs %}
 {% tab title="圓<50%" %}
@@ -334,8 +334,10 @@ Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-sim
 ```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="園>50%" %}
+問題：前一頁的圓形&gt;50%就會失效
 
+![&#x4E0D;&#x662F;&#x6211;&#x5011;&#x8981;&#x7684;&#x7D50;&#x679C;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-6.png)
 {% endtab %}
 {% endtabs %}
 
