@@ -539,7 +539,7 @@ stroke-dasharray: 150 189
 {% endhint %}
 
 {% hint style="danger" %}
-目前`attr(data-*)`在偽元素content可以用
+目前`attr(data-*)`在偽元素content可以用（pie2沒辦法呈現...）
 {% endhint %}
 {% endtab %}
 {% endtabs %}
