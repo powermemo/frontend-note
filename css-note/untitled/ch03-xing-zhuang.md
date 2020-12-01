@@ -344,7 +344,64 @@ Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-sim
 ```css
 background: inherit;
 ```
+{% endtab %}
 
+{% tab title="delay做圓餅" %}
+![](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-8.png)
+
+{% hint style="info" %}
+ 負延遲是有效的。和`0s`的延遲類似，它表示動畫將立即執行，但是是根據延遲的絕對值來自動運行的，所以如果動畫已經在指定的時間之前就開始運行了，那它就會直接從active的時間中途運行。— [CSS Animations Level 1](https://drafts.csswg.org/css-animations-1/#animation-delay)
+{% endhint %}
+
+動畫是永遠暫停的，我們給它指定的延遲大小並不會有什麼影響。
+
+```markup
+<div class="pie" style="animation-delay: -20s">20%</div> 
+<div class="pie" style="animation-delay: -60s">60%</div>
+```
+
+```css
+.pie {
+  position: relative;
+  width: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  background: yellowgreen;
+  background-image:
+   linear-gradient(to right, transparent 50%, #655 0);
+  color: transparent;
+  text-align: center;
+}
+@keyframes spin {
+  to { transform: rotate(.5turn); }
+}
+@keyframes bg {
+  50% { background: #655; }
+}
+.pie::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  width: 50%; height: 100%;
+  border-radius: 0 100% 100% 0 / 50%;
+  background-color: inherit;
+  transform-origin: left;
+  animation: spin 50s linear infinite,
+   bg 100s step-end infinite;
+  animation-play-state: paused;
+  animation-delay: inherit;
+}
+```
+
+```javascript
+document.querySelectorAll('.pie').forEach(pie=>{
+  let p = parseFloat(pie.textContent);
+  pie.style.animationDelay = '-' + p + 's';
+})
+```
+{% endtab %}
+
+{% tab title="圓動畫" %}
 帶動畫的：
 
 ```css
