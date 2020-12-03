@@ -1,3 +1,7 @@
+---
+description: p.204~p.252
+---
+
 # CH05－排版
 
 ## 【20連字】
@@ -40,4 +44,24 @@ div{
 ## 【23調整標籤寬度】
 
 Adjusting tab width p.218 \[原網址\]
+
+## 【24連體字母】
+
+Ligatures p.220 \[[原網址](https://www.w3cplus.com/css3/css-secrets/ligatures.html)\]
+
+## 【25花式&】
+
+Fancy ampersands p.224 \[[原網址](https://www.w3cplus.com/css3/css-secrets/fancy-ampersands.html)\]
+
+## 【26自定義下底線】
+
+Custom underlines p.230 \[[原網址](https://www.w3cplus.com/css3/css-secrets/custom-underlines.html)\]
+
+## 【27逼真的本文效果】
+
+Realistic text effects p.236\[[原網址](https://www.w3cplus.com/css3/css-secrets/realistic-text-effects.html)\]
+
+## 【28環形文字】
+
+Circular text p.246\[[原網址](https://www.w3cplus.com/css3/css-secrets/circular-text.html)\]
 
