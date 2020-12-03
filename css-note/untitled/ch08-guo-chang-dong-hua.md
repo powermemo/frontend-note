@@ -24,3 +24,7 @@ Smooth state animations p.364\[[原網址](https://www.w3cplus.com/css3/css-secr
 
 Animation along a circular path  p.370\[[原網址](https://www.w3cplus.com/css3/css-secrets/animation-along-a-circular-path.html)\]
 
+{% hint style="info" %}
+⭐一個圓`360deg` = `1turn`  
+{% endhint %}
+
