@@ -34,7 +34,7 @@ background-clip的其他選項：
 {% endtab %}
 {% endtabs %}
 
-## 【02-多重邊框】
+## 【02－多重邊框】
 
 border無法設多重邊框。  
 解套方案\[[原網址](https://www.w3cplus.com/css3/css-secrets/multiple-borders.html)\]
@@ -79,7 +79,7 @@ box-shadow: 0 0 0 10px #655, 0 0 0 15px deeppink;
 
 
 
-## 【03-活用背景定位】
+## 【03－活用背景定位】
 
 \[[原網址](https://www.w3cplus.com/css3/spheres.html)\]
 
