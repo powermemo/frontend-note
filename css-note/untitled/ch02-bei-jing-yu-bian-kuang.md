@@ -387,9 +387,9 @@ background: repeating-linear-gradient(60deg,
 ```css
 background: white;
 background-image: linear-gradient(90deg,
-                rgba(200,0,0,.5) 50%, transparent 0),//直的
+                rgba(200,0,0,.5) 50%, transparent 0),/*直的*/
                  linear-gradient(
-                rgba(200,0,0,.5) 50%, transparent 0);//橫的
+                rgba(200,0,0,.5) 50%, transparent 0);/*橫的*/
 background-size: 30px 30px;
 ```
 {% endtab %}
