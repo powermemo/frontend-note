@@ -211,7 +211,7 @@ $$(√2-1)<0.5$$
 
 
 
-## 【05－條紋背景】
+## 【05－條紋背景】（漸層）
 
 使用「linear-gradient」線性漸層製作。\[[原網址](https://www.w3cplus.com/css3/css-secrets/striped-backgrounds.html)\]  
 變化型漸層使用「repeating-linear-gradient」。
@@ -367,7 +367,9 @@ background: repeating-linear-gradient(60deg,
 {% endtab %}
 {% endtabs %}
 
-
+{% hint style="success" %}
+可以看原網址出來的 [CodePen](https://codepen.io/ch-zhuchu/pen/QWKybXJ)
+{% endhint %}
 
 ## 【06－複雜背景圖案】
 
