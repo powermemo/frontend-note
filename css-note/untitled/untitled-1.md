@@ -1,5 +1,25 @@
 # CH07－結構與架構
 
+## 【36內容尺寸】
+
+Intrinsic sizing p.298\[[原網址](https://www.w3cplus.com/css3/css-secrets/intrinsic-sizing.html)\]
+
+## 【37表格直欄寬】
+
+Taming table column widths p.302\[[原網址](https://www.w3cplus.com/css3/css-secrets/taming-table-column-widths.html)\]
+
+## 【38相鄰元素樣式】
+
+Styling by sibling count p.306\[[原網址](https://www.w3cplus.com/css3/css-secrets/styling-by-sibling-count.html)\]
+
+## 【39流體背景固定內容】
+
+Fluid background fixed content     p.312\[[原網址](https://www.w3cplus.com/css3/css-secrets/fluid-background-fixed-content.html)\]
+
+## 【40垂直居中】
+
+Vertical centering p.316 \[[原網址](https://www.w3cplus.com/css3/css-secrets/vertical-centering.html)\]
+
 ## 【41－Sticky Footer】
 
 ![footer&#x61C9;&#x8A72;&#x8981;&#x5728;&#x9801;&#x9762;&#x6700;&#x5E95;&#x4E0B;&#x7684;&#xFF0C;&#x4F46;&#x5B83;&#x6C92;&#x6709;&#x3002;](https://www.w3cplus.com/sites/default/files/blogs/2015/1507/css-secrets-7-22.png)
@@ -65,5 +85,5 @@ main { flex: 1; }
 
 ![&#x554F;&#x984C;&#x89E3;&#x6C7A;&#xFF0C;&#x5B83;&#x5728;&#x6700;&#x4E0B;&#x9762;&#x4E86;&#x3002;](https://www.w3cplus.com/sites/default/files/blogs/2015/1507/css-secrets-7-24.png)
 
-## 【】
+
 
