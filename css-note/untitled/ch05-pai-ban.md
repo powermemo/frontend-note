@@ -94,7 +94,39 @@ CSS用stroke
 
 ## 【28環形文字】
 
-Circular text p.246\[[原網址](https://www.w3cplus.com/css3/css-secrets/circular-text.html)\] \| [codepen28](https://codepen.io/ch-zhuchu/pen/qBaZpZV)
+Circular text p.246\[[原網址](https://www.w3cplus.com/css3/css-secrets/circular-text.html)\] \| [codepen28](https://codepen.io/ch-zhuchu/pen/qBaZpZV)  
+SVG
 
 ![](https://www.w3cplus.com/sites/default/files/blogs/2016/1601/css-secrets-5-42.png)
+
+{% tabs %}
+{% tab title="HTML" %}
+```markup
+<div class="circular">
+  <svg viewBox="0 0 100 100">
+     <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle" />
+       <text><textPath xlink:href="#circle">
+       circular reasoning works because
+     </textPath></text>
+  </svg>
+</div>
+```
+{% endtab %}
+
+{% tab title="CSS" %}
+```css
+.circular path { fill: none; }
+.circular {
+  width:  330px;
+  height: 330px;
+  margin: 3em auto 0;
+}
+.circular svg {
+  display: block;
+  overflow: visible;
+  letter-spacing: 3px;
+}
+```
+{% endtab %}
+{% endtabs %}
 
