@@ -119,7 +119,5 @@ perspective + perspective-origin → perspective-matrix
 
 ![&#x5DE6;&#x908A;backface-visibility: hidden; &#x53F3;&#x908A;backface-visibility: visible;](../.gitbook/assets/image%20%2824%29.png)
 
-{% embed url="https://codepen.io/eyesofkids/pen/VKkXmE" %}
-
 
 

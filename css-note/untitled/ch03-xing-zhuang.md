@@ -456,7 +456,7 @@ stroke-dasharray: 20 10;
 
 {% hint style="info" %}
 `20`的長度+`10`的邊距  
- 周長：`C = 2πr`,所以在這裡`C = 2π × 30 ≈ 189（189,189就是一個滿圓）`
+ 周長：`C = 2πr`,所以在這裡`C = 2π × 30 ≈ 189`
 {% endhint %}
 
 ![0/189, 40/189, 95/189,150/189](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-11.png)

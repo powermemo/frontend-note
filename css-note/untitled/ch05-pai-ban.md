@@ -104,7 +104,8 @@ SVG
 ```markup
 <div class="circular">
   <svg viewBox="0 0 100 100">
-     <path d="M 0,50 a 50,50 0 1,1 0,1 z" id="circle" />
+     <path d="M 0,50 a 50,50 0 1,1 0,1 z"
+       id="circle" />
        <text><textPath xlink:href="#circle">
        circular reasoning works because
      </textPath></text>
