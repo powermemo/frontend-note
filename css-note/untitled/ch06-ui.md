@@ -31,5 +31,5 @@ Scrolling hints p.280\[[原網址](https://www.w3cplus.com/css3/css-secrets/scro
 
 ## 【⭐35對照圖】
 
-Interactive image comparison p.286\[[原網址](https://www.w3cplus.com/css3/css-secrets/interactive-image-comparison.html)\]
+Interactive image comparison p.286\[[原網址](https://www.w3cplus.com/css3/css-secrets/interactive-image-comparison.html)\] \| [codepen35](https://codepen.io/ch-zhuchu/pen/QWKNQmO)
 
