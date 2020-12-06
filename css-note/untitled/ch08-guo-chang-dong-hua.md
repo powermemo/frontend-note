@@ -22,7 +22,7 @@ Smooth state animations p.364\[[原網址](https://www.w3cplus.com/css3/css-secr
 
 ## 【47沿圓形路徑的動畫】
 
-Animation along a circular path  p.370\[[原網址](https://www.w3cplus.com/css3/css-secrets/animation-along-a-circular-path.html)\]
+Animation along a circular path  p.370\[[原網址](https://www.w3cplus.com/css3/css-secrets/animation-along-a-circular-path.html)\] \| [codepen](https://codepen.io/airen/pen/Jdvbgr)
 
 {% hint style="info" %}
 ⭐一個圓`360deg` = `1turn`  \[[詳情](https://css-tricks.com/gradians-and-turns-the-quiet-heroes-of-css-angles/)\]

@@ -6,8 +6,7 @@ description: p.253
 
 ## 【29游標】
 
-Picking the right cursor p.254\[[原網址](https://www.w3cplus.com/css3/css-secrets/picking-the-right-cursor.html)\]  
-CSS－`cursor`
+Picking the right cursor p.254\[[原網址](https://www.w3cplus.com/css3/css-secrets/picking-the-right-cursor.html)\]
 
 ## 【30擴展可點擊區】
 
@@ -31,5 +30,5 @@ Scrolling hints p.280\[[原網址](https://www.w3cplus.com/css3/css-secrets/scro
 
 ## 【⭐35對照圖】
 
-Interactive image comparison p.286\[[原網址](https://www.w3cplus.com/css3/css-secrets/interactive-image-comparison.html)\] \| [codepen35](https://codepen.io/ch-zhuchu/pen/QWKNQmO)
+Interactive image comparison p.286\[[原網址](https://www.w3cplus.com/css3/css-secrets/interactive-image-comparison.html)\]
 
