@@ -6,7 +6,8 @@ description: p.253
 
 ## 【29游標】
 
-Picking the right cursor p.254\[[原網址](https://www.w3cplus.com/css3/css-secrets/picking-the-right-cursor.html)\]
+Picking the right cursor p.254\[[原網址](https://www.w3cplus.com/css3/css-secrets/picking-the-right-cursor.html)\]  
+CSS－`cursor`
 
 ## 【30擴展可點擊區】
 
