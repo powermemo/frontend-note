@@ -38,7 +38,7 @@
       * [Boolean布林值，判斷](js/ji-ben-yu-fa/js-de-zi-liao-xing-tai/boolean-bu-lin-zhi-pan-duan.md)
       * [Null及Undefined](js/ji-ben-yu-fa/js-de-zi-liao-xing-tai/null-ji-undefined.md)
       * [Math](js/ji-ben-yu-fa/js-de-zi-liao-xing-tai/math.md)
-      * [RegExp正規表示式](js/ji-ben-yu-fa/js-de-zi-liao-xing-tai/regexp-zheng-gui-biao-shi-shi.md)
+      * [RegExp正則表示式](js/ji-ben-yu-fa/js-de-zi-liao-xing-tai/regexp-zheng-gui-biao-shi-shi.md)
       * [運算符號](js/ji-ben-yu-fa/js-de-zi-liao-xing-tai/yun-suan-fu-hao.md)
     * [function函式](js/ji-ben-yu-fa/function-han-shi.md)
     * [流程控制](js/ji-ben-yu-fa/liu-cheng-kong-zhi/README.md)

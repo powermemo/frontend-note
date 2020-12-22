@@ -2,7 +2,7 @@
 description: 全名：Regular Expression
 ---
 
-# RegExp正規表示式
+# RegExp正則表示式
 
 參考網站\[[link](https://www.fooish.com/javascript/regexp/)\]
 
