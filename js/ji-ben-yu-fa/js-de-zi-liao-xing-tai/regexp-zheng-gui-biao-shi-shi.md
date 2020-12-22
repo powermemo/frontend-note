@@ -325,25 +325,25 @@ negative lookahead 是相對於 positive lookahead，只有在接下來的內容
 
 ## 範例
 
-▼手機號碼 正規表示式
+▼手機號碼 正則表示式
 
 ```javascript
 <input pattern="(\d{4})-(\d{3})-(\d{3})"/>
 ```
 
-▼ Email Regex / Email 正規表示式
+▼ Email Regex / Email 正則表示式
 
 ```javascript
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 ```
 
-▼ URL Regex / 網址正規表示式
+▼ URL Regex / 網址正則表示式
 
 ```javascript
 /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
 ```
 
-▼ IP Address Regex / IP 位址正規表示式
+▼ IP Address Regex / IP 位址正則表示式
 
 ```javascript
 /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
