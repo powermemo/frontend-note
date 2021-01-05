@@ -56,7 +56,7 @@ mac「command」+「shit」+「.」可以顯示隱藏檔
     <tr>
       <td style="text-align:left"><code>git add .</code>
       </td>
-      <td style="text-align:left">&#x6279;&#x6B21;&#x6C5F;&#x5B50;&#x9805;&#x52A0;&#x5165;&#x66AB;&#x5B58;&#x5340;&#xFF0C;
+      <td style="text-align:left">&#x6279;&#x6B21;&#x5C07;&#x5B50;&#x9805;&#x52A0;&#x5165;&#x66AB;&#x5B58;&#x5340;&#xFF0C;
         <br
         />&#x300C;.&#x300D;&#x53EF;&#x4EE5;&#x662F;&#x6307;&#x5B9A;&#x6A94;&#x6848;&#x540D;&#x7A31;</td>
     </tr>
