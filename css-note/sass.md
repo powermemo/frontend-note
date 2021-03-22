@@ -346,7 +346,8 @@ if\_\_else
 {% tab title="繼承" %}
 @extend
 
-若沒有要使用參數的話「@extend」會是比「@mixin」更好的用法～
+若沒有要使用參數的話「@extend」會是比「@mixin」更好的用法～  
+ [stackOverflow相似的說法](https://stackoverflow.com/questions/18008700/)
 
 ```css
 //SCSS
