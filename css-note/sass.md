@@ -29,7 +29,7 @@
 
 ### 編譯方法三
 
-使用軟體編譯－[Prepros ](https://prepros.io/)
+使用軟體編譯－例如[Prepros ](https://prepros.io/)
 
 {% hint style="info" %}
 請注意，以上方法各自~~為政~~獨立，請不要混用！！
@@ -359,8 +359,8 @@ if\_\_else
 {% tab title="繼承" %}
 @extend
 
-若沒有要使用參數的話「@extend」會是比「@mixin」更好的用法～  
- [stackOverflow相似的說法](https://stackoverflow.com/questions/18008700/)
+老師說：若沒有要使用參數的話「@extend」會是比「@mixin」更好的用法～\(？\)  
+可是 [stackOverflow](https://stackoverflow.com/questions/18008700/)
 
 ```css
 //SCSS
