@@ -127,6 +127,7 @@ $bg-color:lightblue;
 SCSS導入非常簡單，不用副檔名，直接輸入檔名即可。
 
 ```css
+// 此檔案為style.scss
 @import url(var);//但實際測試後，好像不行用，要用下面的那個才行
 @import "var";
 ```
