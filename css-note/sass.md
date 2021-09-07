@@ -594,12 +594,8 @@ $images: a1, a2, a3 box feature;//可給逗號、可不給
   background-image: url(./img/a3.jpg);
 }
 
-.a4-img {
-  background-image: url(./img/a4.jpg);
-}
-
-.a5-img {
-  background-image: url(./img/a5.jpg);
+.box-img {
+  background-image: url(./img/box.jpg);
 }
 ```
 {% endtab %}
