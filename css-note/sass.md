@@ -500,6 +500,7 @@ if\_\_else
 ```
 
 ```css
+// 編譯後看起來像這樣
 @media all and (min-width: 767px) and (max-width: 1200px) {
   .col-md-1 {
     width: 8.33333%;
