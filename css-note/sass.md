@@ -31,6 +31,10 @@
 
 使用軟體編譯－[Prepros ](https://prepros.io/)
 
+{% hint style="info" %}
+請注意，以上三個方法各自~~為政~~獨立，請不要混用！！
+{% endhint %}
+
 ## SASS簡介
 
 SASS與SCSS的念法一樣，差在它們副檔名不同,還有...  
