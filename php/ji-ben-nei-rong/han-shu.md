@@ -9,7 +9,7 @@ description: 分為自訂函式與內建函式
 * 數學
 * 字串
 * 陣列
-* 日期 \[[官網連結](https://www.php.net/manual/en/function.date)\]
+* 日期 \[[官網連結](https://www.php.net/manual/en/function.date)]
 * mySQL
 * PHP相關資訊
 * 目錄管理
@@ -17,99 +17,14 @@ description: 分為自訂函式與內建函式
 * 電子郵件
 * ...
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x6578;&#x5B57;</th>
-      <th style="text-align:left">&#x5B57;&#x4E32;</th>
-      <th style="text-align:left">&#x65E5;&#x671F;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p>&#x4E82;&#x6578;</p>
-        <p><code>rand()</code>
-        </p>
-      </td>
-      <td style="text-align:left">
-        <p>&#x5B57;&#x4E32;&#x9577;&#x5EA6;</p>
-        <p><code>strlen($str)</code>
-        </p>
-      </td>
-      <td style="text-align:left">
-        <p>&#x73FE;&#x5728;&#x6642;&#x9593;</p>
-        <p><code>time()</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>&#x66F4;&#x597D;&#x7684;&#x4E82;&#x6578;</p>
-        <p><code>mt_rand()</code>
-        </p>
-      </td>
-      <td style="text-align:left">
-        <p>&#x5728;&#x5B57;&#x4E32;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;</p>
-        <p><code>strpos($str, &quot;&#x5B57;&#x4E32;&quot;)</code>
-        </p>
-      </td>
-      <td style="text-align:left">
-        <p>&#x6642;&#x9593;&#x683C;&#x5F0F;</p>
-        <p><code>date(&quot;&#x683C;&#x5F0F;&quot;, &#x6642;&#x9593;&#x51FD;&#x5F0F;&#x7B49;)</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>&#x53D6;&#x5C0F;&#x65BC;x&#x7684;&#x6700;&#x5927;&#x6574;&#x6578;</p>
-        <p><code>floor()</code>
-        </p>
-      </td>
-      <td style="text-align:left">
-        <p>&#x53D6;&#x5B50;&#x5B57;&#x4E32;</p>
-        <p><code>substr($str,&#x5F9E;&#x54EA;&#x958B;&#x59CB;,&#x53D6;&#x5E7E;&#x500B;&#x5B57;)</code>
-        </p>
-      </td>
-      <td style="text-align:left">
-        <p>&#x6642;&#x9593;&#x6233;&#x8A18;</p>
-        <p><code>mktime(&#x6642;,&#x5206;,&#x79D2;,&#x6708;,&#x65E5;,&#x5E74;)</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>&#x53D6;&#x5927;&#x65BC;x&#x7684;&#x6700;&#x5C0F;&#x6574;&#x6578;</p>
-        <p><code>ceil()</code>
-        </p>
-      </td>
-      <td style="text-align:left">
-        <p>&#x5207;&#x5B57;&#x4E32;&#x1F7E1;&#x6703;&#x8B8A;&#x6210;&#x9663;&#x5217;&#x3010;&#x5B57;&#x4E32;&#x8F49;&#x9663;&#x5217;&#x3011;</p>
-        <p><code>explode(&quot;&#x7528;&#x751A;&#x9EBC;&#x5207;&#x5B57;&#x4E32;,&quot;$str)</code>
-        </p>
-      </td>
-      <td style="text-align:left"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left"></td>
-      <td style="text-align:left">
-        <p>&#x9023;&#x63A5;&#x5B57;&#x4E32;&#x3010;(&#x53EF;&#x80FD;&#x662F;)&#x9663;&#x5217;&#x8F49;&#x5B57;&#x4E32;&#x3011;</p>
-        <p><code>implode(&quot;&#x7528;&#x751A;&#x9EBC;&#x9023;&#x63A5;&#x5B57;&#x4E32;,&quot;$&#x5F88;&#x591A;&#x5B57;&#x4E32;&#x53EF;&#x80FD;&#x662F;&#x9663;&#x5217;)</code>
-        </p>
-      </td>
-      <td style="text-align:left"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left"></td>
-      <td style="text-align:left">
-        <p>&#x82F1;&#x6587;&#x5916;&#x7684;&#x5B57;&#x4E32;&#xFF0C;&#x4EE5;&#x1F7E1;&#x300C;mb_&#x300D;&#x958B;&#x982D;</p>
-        <p>&#x4F8B;&#x5982;&#x5B57;&#x4E32;&#x9577;&#x5EA6;&#xFF1A;<code>mb_strlen($str)</code>
-        </p>
-      </td>
-      <td style="text-align:left"></td>
-    </tr>
-  </tbody>
-</table>
+| 數字                                          | 字串                                                                       | 日期                                                 |
+| ------------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------- |
+| <p>亂數</p><p><code>rand()</code></p>         | <p>字串長度</p><p><code>strlen($str)</code></p>                              | <p>現在時間</p><p><code>time()</code></p>              |
+| <p>更好的亂數</p><p><code>mt_rand()</code></p>   | <p>在字串中的位置</p><p><code>strpos($str, "字串")</code></p>                     | <p>時間格式</p><p><code>date("格式", 時間函式等)</code></p>   |
+| <p>取小於x的最大整數</p><p><code>floor()</code></p> | <p>取子字串</p><p><code>substr($str,從哪開始,取幾個字)</code></p>                    | <p>時間戳記</p><p><code>mktime(時,分,秒,月,日,年)</code></p> |
+| <p>取大於x的最小整數</p><p><code>ceil()</code></p>  | <p>切字串🟡會變成陣列【字串轉陣列】</p><p><code>explode("用甚麼切字串,"$str)</code></p>       |                                                    |
+|                                             | <p>連接字串【(可能是)陣列轉字串】</p><p><code>implode("用甚麼連接字串,"$很多字串可能是陣列)</code></p> |                                                    |
+|                                             | <p>英文外的字串，以🟡「mb_」開頭</p><p>例如字串長度：<code>mb_strlen($str)</code></p>       |                                                    |
 
 {% tabs %}
 {% tab title="數學" %}
@@ -187,7 +102,8 @@ echo date("星期:w",$birthday), "<br>";//星期: 6
 【非英文字串】使用「mbstring」。預設是關的，要打開....
 
 1. php.ini找「extension=mbstring」，並把「;」註解拿掉
-2. php.ini找「extension\_dir="ext"」，把「;」註解拿掉 將等號後面的值改為資料夾位置ex.「C:\php-7.4.7\ext」
+2. php.ini找「extension\_dir="ext"」，把「;」註解拿掉\
+   將等號後面的值改為資料夾位置ex.「C:\php-7.4.7\ext」
 3. 打開IIS，重新啟動。
 {% endhint %}
 
@@ -234,13 +150,13 @@ echo "10+20+30=", sumMany($arr),"<br>";
 {% endtabs %}
 
 {% hint style="danger" %}
-PHP的自訂函數不可以重複命名！\(JS可以\)
+PHP的自訂函數不可以重複命名！(JS可以)
 {% endhint %}
 
 {% hint style="info" %}
-* 自訂函數的參數值可以定義陣列\(可用foreach帶\)。
+*   自訂函數的參數值可以定義陣列(可用foreach帶)。
 
-  但參數一定要是陣列型態，不然你可以寫else讓程式辨別，非陣列型態要return false
+    但參數一定要是陣列型態，不然你可以寫else讓程式辨別，非陣列型態要return false
 {% endhint %}
 
 
@@ -400,7 +316,7 @@ echo myStatic(),"<br>";//2, 靜態變數的值不會被清空, 會繼續計算
 {% endtabs %}
 
 {% hint style="info" %}
-* 與JS不同，PHP的function變數不會往外找全域變數。 必須在function內告訴程式\(例如global $...\)，程式才會往外抓變數。
+* 與JS不同，PHP的function變數不會往外找全域變數。\
+  必須在function內告訴程式(例如global $...)，程式才會往外抓變數。
 * 靜態變數的值不會被清空, 會繼續計算
 {% endhint %}
-

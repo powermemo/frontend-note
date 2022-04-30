@@ -4,29 +4,29 @@ description: 可以理解成是字串的一種嗎@@?
 
 # Array陣列
 
-可以將多個值分配在同一個變數中。  
-例如：  
- `var sandwich = ["peanut butter", "jelly", "bread"]`。
+可以將多個值分配在同一個變數中。\
+例如：\
+&#x20;`var sandwich = ["peanut butter", "jelly", "bread"]`。
 
-巢狀陣列  
-例如：  
-`var arr = [  
-  [1,2,3],  
-  [4,5,6],  
-  [7,8,9],  
-  [[10,11,12], 13, 14]  
-];  
-  
-arr[3]; // equals [[10,11,12], 13, 14]  
-arr[3][0]; // equals [10,11,12]  
-arr[3][0][1]; // equals 11`
+巢狀陣列\
+例如：\
+`var arr = [`\
+&#x20; `[1,2,3],`\
+&#x20; `[4,5,6],`\
+&#x20; `[7,8,9],`\
+&#x20; `[[10,11,12], 13, 14]`\
+`];`\
+``\
+`arr[3]; // equals [[10,11,12], 13, 14]`\
+`arr[3][0]; // equals [10,11,12]`\
+`arr[3][0][1]; // equals 11`
 
-## 修改陣列內資料\[\]
+## 修改陣列內資料\[]
 
-直接指定陣列變數的第幾的字，再給他分配值。  
-例如：  
-`var ourArray = [50,40,30];  
-ourArray[0] = 15; // equals [15,40,30]`
+直接指定陣列變數的第幾的字，再給他分配值。\
+例如：\
+`var ourArray = [50,40,30];`\
+`ourArray[0] = 15; // equals [15,40,30]`
 
 ## 屬性
 
@@ -48,7 +48,7 @@ fruits.indexOf('oranges'); // returns 2(若是-1是沒找到的意思)
 ```
 
 {% tabs %}
-{% tab title="split\(\)切割" %}
+{% tab title="split()切割" %}
 ```javascript
 var str="How are you ?"
 var splits1 = str.split(" ");
@@ -61,7 +61,7 @@ var splits3 = str.split(" ",3);
 ```
 {% endtab %}
 
-{% tab title="splice\(\)刪除\|新增" %}
+{% tab title="splice()刪除|新增" %}
 ```javascript
 //🔸刪除
 let array = ['today', 'was', 'not', 'so', 'great'];
@@ -80,7 +80,7 @@ console.log(numbers);
 ```
 {% endtab %}
 
-{% tab title="slice\(\)複製" %}
+{% tab title="slice()複製" %}
 ```javascript
 let weatherConditions = ['rain', 'snow', 'sleet', 'hail', 'clear'];
 let todaysWeather = weatherConditions.slice(1, 3);
@@ -100,7 +100,7 @@ let thatArray = [...thisArray];
 ```
 {% endtab %}
 
-{% tab title="indexOf\(\)尋找" %}
+{% tab title="indexOf()尋找" %}
 ```javascript
 let fruits = ['apples', 'pears', 'oranges', 'peaches', 'pears'];
 fruits.indexOf('dates'); // returns -1，沒有找到為-1
@@ -109,9 +109,9 @@ fruits.indexOf('oranges'); // returns 2
 {% endtab %}
 {% endtabs %}
 
-## .push\(\)將資料加到陣列尾端
+## .push()將資料加到陣列尾端
 
-在陣列變數後加入「.push\(新增尾端陣列資料\)」的方法。
+在陣列變數後加入「.push(新增尾端陣列資料)」的方法。
 
 {% tabs %}
 {% tab title="舉例一" %}
@@ -131,26 +131,24 @@ arr2.push(["happy", "joy"]);
 {% endtab %}
 {% endtabs %}
 
-## .pop\(\)將陣列尾端資料刪除
+## .pop()將陣列尾端資料刪除
 
-舉例：  
-`var threeArr = [1, 4, 6];  
-var oneDown = threeArr.pop();  
-console.log(oneDown); // Returns 6  
-console.log(threeArr); // Returns [1, 4]`
+舉例：\
+`var threeArr = [1, 4, 6];`\
+`var oneDown = threeArr.pop();`\
+`console.log(oneDown); // Returns 6`\
+`console.log(threeArr); // Returns [1, 4]`
 
-## .shift\(\)將陣列頭端資料刪除
+## .shift()將陣列頭端資料刪除
 
-`var i= ["Stimpson", "J", ["cat"]];  
-var u = i.shift();  
-// u 現在等於 "Stimpson" i 現在等於["J", ["cat"]].`
+`var i= ["Stimpson", "J", ["cat"]];`\
+`var u = i.shift();`\
+`// u 現在等於 "Stimpson" i 現在等於["J", ["cat"]].`
 
-## .unshift\(\)將資料加入陣列頭端
+## .unshift()將資料加入陣列頭端
 
-與「.push\(\)」的作用方式完全相同，只是「.unshift\(\)」是在頭端新增。  
-舉例\(刪除後新增\)：  
-`var i = ["Stimpson", "J", "cat"];`  
-`i.shift();` //\(移除第一筆資料\) i 現在等於\["J", "cat"\]  
-`i.unshift("Happy");`  //新增第一筆資料 i 現在等於now equals \["Happy", "J", "cat"\]  
-
-
+與「.push()」的作用方式完全相同，只是「.unshift()」是在頭端新增。\
+舉例(刪除後新增)：\
+`var i = ["Stimpson", "J", "cat"];`\
+`i.shift();` //(移除第一筆資料) i 現在等於\["J", "cat"]\
+`i.unshift("Happy");`  //新增第一筆資料 i 現在等於now equals \["Happy", "J", "cat"]\

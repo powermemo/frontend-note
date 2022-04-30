@@ -12,48 +12,16 @@ var xhr = newXMLHttpRequest();
 
 ### XMLHttpRequest methods方法
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x65B9;&#x6CD5;&#x540D;&#x7A31;</th>
-      <th style="text-align:left">&#x8AAA;&#x660E;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">abort()</td>
-      <td style="text-align:left">&#x505C;&#x6B62;&#x7576;&#x524D;&#x8ACB;&#x6C42;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">getAllResponseHeaders()</td>
-      <td style="text-align:left">
-        <p>&#x53D6;&#x5F97;HTTP&#x7684;&#x6240;&#x6709;&#x56DE;&#x61C9;&#x6A19;&#x982D;</p>
-        <p>ex. &lt;meta charset...&gt;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">getResponseHeader(&quot;header&quot;)</td>
-      <td style="text-align:left">&#x53D6;&#x5F97;&#x67D0;&#x7279;&#x5B9A;HTTP&#x56DE;&#x61C9;&#x4E4B;&#x6A19;&#x982D;/&#x5B57;&#x4E32;&#x503C;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>open(&quot;method&quot;,&quot;url&quot;,async)</b>
-      </td>
-      <td style="text-align:left">&#x958B;&#x555F;&#x5C0D;&#x4F3A;&#x670D;&#x7AEF;&#x7684;&#x9023;&#x7D50;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>send(&quot;content&quot;)</b>
-      </td>
-      <td style="text-align:left">&#x5411;&#x4F3A;&#x670D;&#x5668;&#x767C;&#x9001;&#x8ACB;&#x6C42;&#xFF0C;&#x4E26;&#x5C07;&#x8CC7;&#x6599;&#x9001;&#x5230;&#x4F3A;&#x670D;&#x5668;&#x7AEF;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><b>setRequestHeader(&quot;head&quot;,&quot;value&quot;)</b>
-      </td>
-      <td style="text-align:left">&#x8A2D;&#x5B9A;HTTP&#x8ACB;&#x6C42;&#x7684;&#x8ACB;&#x6C42;&#x6A19;&#x982D;&#x3002;</td>
-    </tr>
-  </tbody>
-</table>
+| 方法名稱                                 | 說明                                                    |
+| ------------------------------------ | ----------------------------------------------------- |
+| abort()                              | 停止當前請求                                                |
+| getAllResponseHeaders()              | <p>取得HTTP的所有回應標頭</p><p>ex. &#x3C;meta charset...></p> |
+| getResponseHeader("header")          | 取得某特定HTTP回應之標頭/字串值                                    |
+| **open("method","url",async)**       | 開啟對伺服端的連結                                             |
+| **send("content")**                  | 向伺服器發送請求，並將資料送到伺服器端                                   |
+| **setRequestHeader("head","value")** | 設定HTTP請求的請求標頭。                                        |
 
-#### open\("_method_","_url_",_async_\)
+#### open("_method_","_url_",_async_)
 
 開啟對伺服端的連結
 
@@ -64,20 +32,20 @@ var xhr = newXMLHttpRequest();
     * 安全性考量
 * url參數：指定所要存取檔案的位置
 * async參數：決定採用非同步傳輸或不採用
-  * `true` 非同步  \|   false 同步
+  * `true` 非同步  |   false 同步
 
-#### send\("_content_"\)
+#### send("_content_")
 
 向伺服器發送請求，並將資料送到伺服器端。
 
-* [send\(null\)](https://google.com)：open\(\)的method為GET
-* [send\(data\_info\)](https://google.com)：open\(\)的method為POST
+* [send(null)](https://google.com)：open()的method為GET
+* [send(data\_info)](https://google.com)：open()的method為POST
   * data\_info為自定義
   * 格式："欄名1=值**&**欄名2=值**&**..."
 
-#### setRequestHeader\(_header_,_value_\)
+#### setRequestHeader(_header_,_value_)
 
-method為POST時使用，設定HTTP請求的請求標頭。  
+method為POST時使用，設定HTTP請求的請求標頭。\
 POST一定要設哦！
 
 * header：Http的標頭名稱
@@ -89,58 +57,18 @@ xhr.setRequestHeader("content-Type","application/x-www-form-urlencoded")
 
 ### XMLHttpRequest attributes屬性
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x5C6C;&#x6027;&#x540D;&#x7A31;</th>
-      <th style="text-align:left">&#x8AAA;&#x660E;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">readyState</td>
-      <td style="text-align:left">
-        <p>&#x8ACB;&#x6C42;&#x8655;&#x7406;&#x72C0;&#x614B;</p>
-        <p>ex. 0&#x2192;1&#x2192;2...</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">onreadystatechange</td>
-      <td style="text-align:left">
-        <p>&#x8ACB;&#x6C42;&#x7684;&#x8655;&#x7406;&#x72C0;&#x614B;&#x6539;&#x8B8A;&#x6642;&#x61C9;&#x57F7;&#x884C;&#x7684;&#x4E8B;&#x4EF6;&#x8655;&#x5668;</p>
-        <p>ex.readyState&#x72C0;&#x614B; 0&#x2192;1&#x2192;2...</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">status</td>
-      <td style="text-align:left">
-        <p>&#x4F3A;&#x670D;&#x5668;&#x56DE;&#x50B3;&#x7684;Http&#x72C0;&#x614B;&#x78BC;</p>
-        <p>ex.<b>404</b>&#x627E;&#x4E0D;&#x5230;&#x6A94;&#x6848;&#x3001;<b>500</b>server&#x7AEF;&#x9023;&#x7DDA;&#x554F;&#x984C;</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">statusText</td>
-      <td style="text-align:left">
-        <p>&#x4F3A;&#x670D;&#x5668;&#x56DE;&#x50B3;&#x7684;Http&#x72C0;&#x614B;&#x6587;&#x5B57;&#x8A0A;&#x606F;</p>
-        <p>ex.404<b>&#x627E;&#x4E0D;&#x5230;&#x6A94;&#x6848;</b>&#x3001;500<b>server&#x7AEF;&#x9023;&#x7DDA;&#x554F;&#x984C;</b>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">responseText</td>
-      <td style="text-align:left">&#x4F3A;&#x670D;&#x5668;&#x7684;&#x56DE;&#x50B3;&#x8CC7;&#x6599;&#xFF0C;&#x56DE;&#x61C9;&#x7684;&#x5167;&#x5BB9;&#x70BA;&#x4E00;&#x500B;&#x5B57;&#x4E32;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">responseXML</td>
-      <td style="text-align:left">&#x4F3A;&#x670D;&#x5668;&#x7684;&#x56DE;&#x50B3;&#x8CC7;&#x6599;&#xFF0C;&#x56DE;&#x61C9;&#x7684;&#x5167;&#x5BB9;&#x70BA;XML
-        Document(&#x4E32;&#x6D41;&#x6587;&#x4EF6;&#x6A94;&#x6848;)</td>
-    </tr>
-  </tbody>
-</table>
+| 屬性名稱               | 說明                                                                                         |
+| ------------------ | ------------------------------------------------------------------------------------------ |
+| readyState         | <p>請求處理狀態</p><p>ex. 0→1→2...</p>                                                           |
+| onreadystatechange | <p>請求的處理狀態改變時應執行的事件處器</p><p>ex.readyState狀態 0→1→2...</p>                                   |
+| status             | <p>伺服器回傳的Http狀態碼</p><p>ex.<strong>404</strong>找不到檔案、<strong>500</strong>server端連線問題</p>    |
+| statusText         | <p>伺服器回傳的Http狀態文字訊息</p><p>ex.404<strong>找不到檔案</strong>、500<strong>server端連線問題</strong></p> |
+| responseText       | 伺服器的回傳資料，回應的內容為一個字串                                                                        |
+| responseXML        | 伺服器的回傳資料，回應的內容為XML Document(串流文件檔案)                                                        |
 
 {% hint style="info" %}
-onload\(發生在readyState=4之後\)、  
-timeout、  
+onload(發生在readyState=4之後)、\
+timeout、\
 ontimeout
 {% endhint %}
 
@@ -148,24 +76,24 @@ ontimeout
 
 記錄server端目前針對請求的處理狀態。
 
-| 狀態 | 常數 | 說明 |
-| :--- | :--- | :--- |
-| 0 | UNSENT | 尚未初始化\(request not initialized\) |
-| 1 | OPENED | 請求已被建立\(server connection established\) |
-| 2 | HEADERS\_RECEIVED | 請求已被送出\(request received\) |
-| 3 | LOADING | 請求正在處理\(processing request\) |
-| 4 | DONE | 請求已完成\(request finished and response is ready\) |
+| 狀態 | 常數                | 說明                                            |
+| -- | ----------------- | --------------------------------------------- |
+| 0  | UNSENT            | 尚未初始化(request not initialized)                |
+| 1  | OPENED            | 請求已被建立(server connection established)         |
+| 2  | HEADERS\_RECEIVED | 請求已被送出(request received)                      |
+| 3  | LOADING           | 請求正在處理(processing request)                    |
+| 4  | DONE              | 請求已完成(request finished and response is ready) |
 
 ### status屬性
 
 server端回應的Http狀態碼
 
 * 主要三個層級，1st數字大類、2nd數字中類、3rd數字小類
-  * 1xx參考資訊\(Informational\)
-  * 2xx成功\(OK\)
-  * 3xx重新導向\(Redirection\)
-  * 4xx用戶端錯誤\(Client Error\)
-  * 5xx伺服器錯誤\(Server Error\)
+  * 1xx參考資訊(Informational)
+  * 2xx成功(OK)
+  * 3xx重新導向(Redirection)
+  * 4xx用戶端錯誤(Client Error)
+  * 5xx伺服器錯誤(Server Error)
 
 ### 🍵範例－XMLHttpRequest
 
@@ -175,7 +103,7 @@ server端回應的Http狀態碼
 * 「PostResponseText.html」「PostResponseText.php」
 * 檢查帳號是否重複
 
-#### PHP的部分\(如果你用$\_REQUEST\[''\]抓資料\)不變。
+#### PHP的部分(如果你用$\_REQUEST\['']抓資料)不變。
 
 ```php
 <?php
@@ -194,7 +122,7 @@ try{
 ?>
 ```
 
-#### HTML的JS五個步驟（第三第四會因post \| get而有不同）
+#### HTML的JS五個步驟（第三第四會因post | get而有不同）
 
 ```javascript
 function checkId(){  
@@ -242,7 +170,7 @@ window.addEventListener("load", function(){
 {% endtab %}
 
 {% tab title="responseText" %}
-對應範例檔案07/30「getMore.html」「getMore.php」  
+對應範例檔案07/30「getMore.html」「getMore.php」\
 取得會員資料（僅字串相連）
 
 ```aspnet
@@ -302,10 +230,10 @@ try{
 
 ## XML
 
-XML可以是副檔名。  
+XML可以是副檔名。\
 大概長這樣，就是比較嚴謹的編碼方式，我沒有要特別介紹..
 
-```text
+```
 <emp>
   <empno>7566</empno>
   <ename>JONES</ename>
@@ -319,181 +247,78 @@ XML可以是副檔名。
 
 ### W3C DOM 節點
 
-![DOM](../.gitbook/assets/image%20%2843%29.png)
+![DOM](<../.gitbook/assets/image (43).png>)
 
-| nodeType常數 | nodeType值 | 說明 |
-| :--- | :--- | :--- |
-| ELEMENT\_NODE | 1 | 元素節點ex.div,h2... |
-| ATTRIBUTE\_NODE | 2 |  |
-| TEXT\_NODE | 3 | 文字節點 |
-| CDATA\_SECTION\_NODE | 4 |  |
-| ENTITY\_REFERENCE\_NODE | 5 |  |
-| ENTITY\_NODE | 6 |  |
-| PROCESSING\_INSTRUCTION\_NODE | 7 |  |
-| COMMENT\_NODE | 8 |  |
-| DOCUMENT\_NODE | 9 |  |
-| DOCUMENT\_TYPE\_NODE | 10 |  |
-| DOCUMENT\_FRAGMENT\_NODE | 11 |  |
-| NOTATION\_NODE | 12 |  |
+| nodeType常數                    | nodeType值 | 說明               |
+| ----------------------------- | --------- | ---------------- |
+| ELEMENT\_NODE                 | 1         | 元素節點ex.div,h2... |
+| ATTRIBUTE\_NODE               | 2         |                  |
+| TEXT\_NODE                    | 3         | 文字節點             |
+| CDATA\_SECTION\_NODE          | 4         |                  |
+| ENTITY\_REFERENCE\_NODE       | 5         |                  |
+| ENTITY\_NODE                  | 6         |                  |
+| PROCESSING\_INSTRUCTION\_NODE | 7         |                  |
+| COMMENT\_NODE                 | 8         |                  |
+| DOCUMENT\_NODE                | 9         |                  |
+| DOCUMENT\_TYPE\_NODE          | 10        |                  |
+| DOCUMENT\_FRAGMENT\_NODE      | 11        |                  |
+| NOTATION\_NODE                | 12        |                  |
 
 範例
 
-| node | nodeType | nodeName | nodeValue |
-| :--- | :--- | :--- | :--- |
-| div | 1\(元素節點\) | div | undefined |
-| h2 | 1\(元素節點\) | h2 | undefined |
-| Welcome to W3C DOM | 3\(文字節點\) | \#text | Welcome to W3C COM |
+| node               | nodeType | nodeName | nodeValue          |
+| ------------------ | -------- | -------- | ------------------ |
+| div                | 1(元素節點)  | div      | undefined          |
+| h2                 | 1(元素節點)  | h2       | undefined          |
+| Welcome to W3C DOM | 3(文字節點)  | #text    | Welcome to W3C COM |
 
 ### W3C DOM 文件的methods
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x8A9E;&#x6CD5;</th>
-      <th style="text-align:left">&#x8AAA;&#x660E;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><code>document.createElement(</code><em><code>tagName</code></em><code>)</code>
-        </p>
-        <p>&#x4F8B;&#x5982;document.createElement(&quot;div&quot;)</p>
-      </td>
-      <td style="text-align:left"><b>&#x5EFA;&#x7ACB;</b>&#x4E00;&#x500B;&#x6A19;&#x7C64;&#x540D;&#x7A31;&#x70BA;tagName&#x7684;&#x5143;&#x7D20;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><code>document.createTextNode(</code><em><code>text</code></em><code>)</code>
-        </p>
-        <p>&#x4F8B;&#x5982;document.createTextNode(&quot;Hello&quot;)</p>
-      </td>
-      <td style="text-align:left"><b>&#x5EFA;&#x7ACB;</b>&#x4E00;&#x500B;&#x5305;&#x542B;&#x975C;&#x614B;&#x6587;&#x5B57;&#x7684;&#x7BC0;&#x9EDE;</td>
-    </tr>
-  </tbody>
-</table>
+| 語法                                                                                                                            | 說明                      |
+| ----------------------------------------------------------------------------------------------------------------------------- | ----------------------- |
+| <p><code>document.createElement(</code><em><code>tagName</code></em><code>)</code></p><p>例如document.createElement("div")</p>  | **建立**一個標籤名稱為tagName的元素 |
+| <p><code>document.createTextNode(</code><em><code>text</code></em><code>)</code></p><p>例如document.createTextNode("Hello")</p> | **建立**一個包含靜態文字的節點       |
 
 ### W3C DOM 節點的attribute
 
-![](../.gitbook/assets/image%20%2844%29.png)
+![](<../.gitbook/assets/image (44).png>)
 
-| 屬性名稱 | 說明 |
-| :--- | :--- |
-| childNodes | 傳回目前元素所有子節點的節點清單 |
-| firstChild | 傳回目前元素的第一個子節點 |
-| lastChild | 傳回目前元素的最後一個子節點 |
-| nextSibling | 傳回緊鄰在目前節點之後的節點 |
-| previousSibling | 傳回緊鄰在目前節點之前的節點 |
-| parentNode | 傳回元素的父節點 |
-| nodeName | 傳回節點的節點名稱 |
-| nodeType | 傳回節點的節點型態 |
-| nodeValue | 傳回節點的值 |
+| 屬性名稱            | 說明               |
+| --------------- | ---------------- |
+| childNodes      | 傳回目前元素所有子節點的節點清單 |
+| firstChild      | 傳回目前元素的第一個子節點    |
+| lastChild       | 傳回目前元素的最後一個子節點   |
+| nextSibling     | 傳回緊鄰在目前節點之後的節點   |
+| previousSibling | 傳回緊鄰在目前節點之前的節點   |
+| parentNode      | 傳回元素的父節點         |
+| nodeName        | 傳回節點的節點名稱        |
+| nodeType        | 傳回節點的節點型態        |
+| nodeValue       | 傳回節點的值           |
 
 ### W3C DOM 節點的methods
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x8A9E;&#x6CD5;</th>
-      <th style="text-align:left">&#x8AAA;&#x660E;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p><code>node.appendChild(childNode)</code>
-        </p>
-        <p>&#x4F8B;&#x5982;tr.appendChild(td)</p>
-      </td>
-      <td style="text-align:left">&#x5C07;&#x6307;&#x5B9A;&#x7684;&#x5B50;&#x7BC0;&#x9EDE;(childNode)&#x52A0;&#x5230;node&#x7684;&#x5B50;&#x7BC0;&#x9EDE;&#x6E05;&#x55AE;&#x4E2D;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><code>node.insertBefore(aNode,bNode)</code>
-        </p>
-        <p>&#x4F8B;&#x5982;tr.insertBefore(newTd,targetTd)</p>
-      </td>
-      <td style="text-align:left">&#x5C07;&#x6307;&#x5B9A;&#x7684;&#x7BC0;&#x9EDE;(aNode)&#x63D2;&#x5230;node&#x4E4B;&#x4E0B;&#xFF0C;
-        <br
-        />&#x7279;&#x5B9A;&#x7BC0;&#x9EDE;(bNode)&#x4E4B;&#x524D;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><code>node.removeChild(childNode)</code>
-        </p>
-        <p>&#x4F8B;&#x5982;tr.removeChild(td)</p>
-      </td>
-      <td style="text-align:left">&#x5C07;&#x5B50;&#x7BC0;&#x9EDE;(childNode)&#x5F9E;node&#x4E2D;&#x522A;&#x9664;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><code>node.replaceChild(aNode,bNode)</code>
-        </p>
-        <p>&#x4F8B;&#x5982;re.replaceChild(aCell,bCell)</p>
-      </td>
-      <td style="text-align:left">&#x5C07;&#x6B64;node&#x7684;&#x5B50;&#x7BC0;&#x9EDE;&#x4E2D;&#xFF0C;&#x67D0;&#x7279;&#x5B9A;&#x7BC0;&#x9EDE;(bNode)
-        <br
-        />&#x63DB;&#x6210;&#x53E6;&#x4E00;&#x500B;&#x7BC0;&#x9EDE;(aNode)</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p><code>node.hasChildNodes()</code>
-        </p>
-        <p>&#x4F8B;&#x5982;tr.hasChildNodes()</p>
-      </td>
-      <td style="text-align:left">&#x50B3;&#x56DE;&#x4E00;&#x500B;&#x5E03;&#x6797;&#x503C;&#xFF0C;&#x6307;&#x51FA;&#x6B64;node&#x662F;&#x5426;&#x6709;&#x5B50;&#x7BC0;&#x9EDE;</td>
-    </tr>
-  </tbody>
-</table>
+| 語法                                                                                         | 說明                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| <p><code>node.appendChild(childNode)</code></p><p>例如tr.appendChild(td)</p>                 | 將指定的子節點(childNode)加到node的子節點清單中                   |
+| <p><code>node.insertBefore(aNode,bNode)</code></p><p>例如tr.insertBefore(newTd,targetTd)</p> | <p>將指定的節點(aNode)插到node之下，<br>特定節點(bNode)之前</p>    |
+| <p><code>node.removeChild(childNode)</code></p><p>例如tr.removeChild(td)</p>                 | 將子節點(childNode)從node中刪除                           |
+| <p><code>node.replaceChild(aNode,bNode)</code></p><p>例如re.replaceChild(aCell,bCell)</p>    | <p>將此node的子節點中，某特定節點(bNode)<br>換成另一個節點(aNode)</p> |
+| <p><code>node.hasChildNodes()</code></p><p>例如tr.hasChildNodes()</p>                        | 傳回一個布林值，指出此node是否有子節點                             |
 
 ### W3C DOM 元素的methods
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">&#x8A9E;&#x6CD5;</th>
-      <th style="text-align:left">&#x8AAA;&#x660E;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">
-        <p>element.getAttribute(attributeName)</p>
-        <p>&#x4F8B;&#x5982;table.getAttribute(&quot;borderColor&quot;)</p>
-      </td>
-      <td style="text-align:left">&#x53D6;&#x5F97;element&#x4E2D;&#x67D0;&#x5C6C;&#x6027;(attributeName)&#x7684;&#x503C;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>element.setAttribute(attributeName,value)</p>
-        <p>&#x4F8B;&#x5982;table.setAttribute(&quot;border&quot;,1)</p>
-      </td>
-      <td style="text-align:left">&#x8A2D;&#x5B9A;element&#x4E2D;&#x67D0;&#x5C6C;&#x6027;(attributeName)&#x7684;&#x503C;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>element.removeAttribute(attributeName)</p>
-        <p>&#x4F8B;&#x5982;table.removeAttibute(&quot;border&quot;)</p>
-      </td>
-      <td style="text-align:left">&#x5C07;&#x6307;&#x5B9A;&#x7684;&#x5C6C;&#x6027;(attributeName)&#x5F9E;&#x6B64;element&#x4E2D;&#x79FB;&#x9664;</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <p>element.getElementsByTagName(tagName)</p>
-        <p>&#x4F8B;&#x5982;table.getElementsByTagName(&quot;td&quot;)</p>
-      </td>
-      <td style="text-align:left">&#x53D6;&#x5F97;&#x6B64;element&#x5167;&#x6A19;&#x7C64;&#x540D;&#x7A31;&#x70BA;tagName&#x7684;
-        <br
-        />&#x6240;&#x6709;&#x5B50;&#x5143;&#x7D20;</td>
-    </tr>
-  </tbody>
-</table>
+| 語法                                                                                      | 說明                                       |
+| --------------------------------------------------------------------------------------- | ---------------------------------------- |
+| <p>element.getAttribute(attributeName)</p><p>例如table.getAttribute("borderColor")</p>    | 取得element中某屬性(attributeName)的值           |
+| <p>element.setAttribute(attributeName,value)</p><p>例如table.setAttribute("border",1)</p> | 設定element中某屬性(attributeName)的值           |
+| <p>element.removeAttribute(attributeName)</p><p>例如table.removeAttibute("border")</p>    | 將指定的屬性(attributeName)從此element中移除        |
+| <p>element.getElementsByTagName(tagName)</p><p>例如table.getElementsByTagName("td")</p>   | <p>取得此element內標籤名稱為tagName的<br>所有子元素</p> |
 
 ### 🍵範例－XML－動態建立表格
 
 {% tabs %}
 {% tab title="responseXML" %}
-對應範例檔案07/30「getMore\_XML.html」「getMore\_XML.php」  
+對應範例檔案07/30「getMore\_XML.html」「getMore\_XML.php」\
 取得會員資料（XML標籤）
 
 ```aspnet
@@ -614,7 +439,7 @@ try{
 
 {% tabs %}
 {% tab title="stringify" %}
-JSON.stringify\(js物件\) //JS物件轉JSON字串
+JSON.stringify(js物件) //JS物件轉JSON字串
 
 ```javascript
  var emp={
@@ -646,7 +471,7 @@ document.write("json:",str,"<br>");
 {% endtab %}
 
 {% tab title="parse" %}
-JSON.parse\(json字串\)//JSON字串轉JS物件
+JSON.parse(json字串)//JSON字串轉JS物件
 
 ```javascript
 var str = '{"empno": "7001","ename": "Andy","sal": "33000","phone":["03-4257387","03-168168","0933168168"]}';
@@ -691,14 +516,14 @@ for(let i in obj.phone){
 
 {% hint style="info" %}
 * `json_encode()  //陣列|物件   轉   字串`
-* \`\`[`json_decode`](https://sites.google.com/site/phplearnmark/php/php-zhi-ling-qing-dan/json-han-shu/php-json_decode)`()  //字串        轉   陣列|物件`
+* ``[`json_decode`](https://sites.google.com/site/phplearnmark/php/php-zhi-ling-qing-dan/json-han-shu/php-json\_decode)`()  //字串        轉   陣列|物件`
 {% endhint %}
 
 對應範例檔0804「json.php」
 
 {% tabs %}
-{% tab title="json\_encode" %}
-json\_encode\(\)  //陣列\|物件   轉   字串
+{% tab title="json_encode" %}
+json\_encode()  //陣列|物件   轉   字串
 
 ```php
 //PHP的索引陣列轉成json
@@ -717,8 +542,8 @@ echo "json:$str<br>";
 ```
 {% endtab %}
 
-{% tab title="json\_decode" %}
-json\_decode\(\)  //字串        轉   陣列\|物件
+{% tab title="json_decode" %}
+json\_decode()  //字串        轉   陣列|物件
 
 ```php
 //json格式一：轉成PHP的陣列
@@ -764,7 +589,7 @@ echo $obj->sal, "<br>";
 {% endtab %}
 {% endtabs %}
 
-## 
+##
 
 ### 🍵範例－JSON－串聯多頁面會員登入
 
@@ -772,8 +597,8 @@ echo $obj->sal, "<br>";
 
 {% tabs %}
 {% tab title="index+navBar" %}
-「index.php」首頁  
-連結「navBar.inc」，登入區域分離  
+「index.php」首頁\
+連結「navBar.inc」，登入區域分離\
 連結「login.js」，登入控制
 
 ```php
@@ -835,9 +660,9 @@ require_once("navBar.inc");
 {% endtab %}
 
 {% tab title="jsLogin" %}
-「login.js」，登入控制  
-連結「logout.php」，關閉session資料  
-連結「ajaxLogin.php」，將資料寫入session  
+「login.js」，登入控制\
+連結「logout.php」，關閉session資料\
+連結「ajaxLogin.php」，將資料寫入session\
 連結「getLonginInfo.php」
 
 ```javascript
@@ -944,11 +769,11 @@ window.addEventListener("load", init, false);
 {% endtab %}
 
 {% tab title="longin" %}
-「logout.php」，關閉session資料  
-「ajaxLogin.php」，將資料寫入session  
+「logout.php」，關閉session資料\
+「ajaxLogin.php」，將資料寫入session\
 「getLonginInfo.php」
 
-```text
+```
 //logout.php
 <?php 
 session_start();
@@ -1010,4 +835,3 @@ if( isset($_SESSION["memId"]) === true){
 {% endtabs %}
 
 2
-

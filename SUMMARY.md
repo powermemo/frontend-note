@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Initial page](README.md)
-* [暫存](zan-cun.md)
 * [HTML](html/README.md)
   * [VS code](html/vs-code-kuai-jie-jian.md)
 * [CSS note](css-note/README.md)
@@ -30,8 +29,8 @@
   * [基本語法](js/ji-ben-yu-fa/README.md)
     * [JS命名](js/ji-ben-yu-fa/js-ming-ming.md)
     * [變數](js/ji-ben-yu-fa/bian-shu/README.md)
-      * [物件屬性\(object properties\)](js/ji-ben-yu-fa/bian-shu/object-wu-jian.md)
-    * [資料型態\(內建物件\)](js/ji-ben-yu-fa/js-de-zi-liao-xing-tai/README.md)
+      * [物件屬性(object properties)](js/ji-ben-yu-fa/bian-shu/object-wu-jian.md)
+    * [資料型態(內建物件)](js/ji-ben-yu-fa/js-de-zi-liao-xing-tai/README.md)
       * [String字串](js/ji-ben-yu-fa/js-de-zi-liao-xing-tai/untitled.md)
       * [Array陣列](js/ji-ben-yu-fa/js-de-zi-liao-xing-tai/array-zhen-lie.md)
       * [Number數值](js/ji-ben-yu-fa/js-de-zi-liao-xing-tai/number-shu-zhi.md)
@@ -78,9 +77,8 @@
     * [資料型態、FUNCTION](mysql-zi-liao-ku/zi-liao-cha-xun/zi-liao-xing-tai-function.md)
     * [GROUP BY、HAVING](mysql-zi-liao-ku/zi-liao-cha-xun/group-by-having.md)
     * [JOIN多資料表查詢](mysql-zi-liao-ku/zi-liao-cha-xun/join-duo-zi-liao-biao-cha-xun.md)
-    * [子查詢\(巢狀\)](mysql-zi-liao-ku/zi-liao-cha-xun/zi-cha-xun-chao-zhuang.md)
+    * [子查詢(巢狀)](mysql-zi-liao-ku/zi-liao-cha-xun/zi-cha-xun-chao-zhuang.md)
   * [DML資料庫維護&交易控制](mysql-zi-liao-ku/dml-xin-zeng-xiu-gai-shan-chu.md)
   * [DDL資料庫物件維護](mysql-zi-liao-ku/ddl-zi-liao-ku-wu-jian-wei-hu.md)
   * [DCL資料庫權限管理](mysql-zi-liao-ku/dcl-zi-liao-ku-quan-xian-guan-li.md)
 * [GIT版本控制](git-ban-ben-kong-zhi.md)
-

@@ -2,84 +2,86 @@
 
 ## 前置作業
 
-以下的mac電腦都可以不用弄\(已經好了\)。
+以下的mac電腦都可以不用弄(已經好了)。
 
 {% hint style="info" %}
-【引用PDO指令】\(一種安全性較佳的指令\)
+【引用PDO指令】(一種安全性較佳的指令)
 
-1. 找到ini檔，把以下註解拿掉 extension = mysqli extension = pdo\_mysql
+1. 找到ini檔，把以下註解拿掉\
+   extension = mysqli\
+   extension = pdo\_mysql
 2. 重整IIS
 {% endhint %}
 
 {% hint style="info" %}
-【使用phpMyAdmin】\(一種網頁版的操作介面\)
+【使用phpMyAdmin】(一種網頁版的操作介面)
 
-1. 下載phpMyAdmin\(老師提供\)，丟到wwwroot資料夾。
+1. 下載phpMyAdmin(老師提供)，丟到wwwroot資料夾。
 2. 到IIS打開phpMyAdmin資料夾的「index.php」檔案。
 {% endhint %}
 
-## PDO指令\(常數\)\[官網[連結](https://www.php.net/manual/en/pdo.constants.php)\]
+## PDO指令(常數)\[官網[連結](https://www.php.net/manual/en/pdo.constants.php)]
 
-利用「PDO」存取SQL資料，是安全性較佳的方法。  
+利用「PDO」存取SQL資料，是安全性較佳的方法。\
 PDO可連結更多資料庫系統、PDO可避免SQL injection攻擊。
 
 老師提供較常使用的指令：
 
 {% tabs %}
 {% tab title="param" %}
-**`PDO::PARAM_BOOL`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents a boolean data type.
+**`PDO::PARAM_BOOL`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Represents a boolean data type.
 
-**`PDO::PARAM_NULL`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents the SQL NULL data type.
+**`PDO::PARAM_NULL`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Represents the SQL NULL data type.
 
-**`PDO::PARAM_INT`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents the SQL INTEGER data type.
+**`PDO::PARAM_INT`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Represents the SQL INTEGER data type.
 
-**`PDO::PARAM_STR`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents the SQL CHAR, VARCHAR, or other string data type.
+**`PDO::PARAM_STR`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Represents the SQL CHAR, VARCHAR, or other string data type.
 
-**`PDO::PARAM_STR_NATL`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Flag to denote a string uses the national character set. Available since PHP 7.2.0
+**`PDO::PARAM_STR_NATL`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Flag to denote a string uses the national character set. Available since PHP 7.2.0
 
-**`PDO::PARAM_STR_CHAR`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Flag to denote a string uses the regular character set. Available since PHP 7.2.0
+**`PDO::PARAM_STR_CHAR`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Flag to denote a string uses the regular character set. Available since PHP 7.2.0
 
-**`PDO::PARAM_LOB`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents the SQL large object data type.
+**`PDO::PARAM_LOB`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Represents the SQL large object data type.
 
-**`PDO::PARAM_STMT`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Represents a recordset type. Not currently supported by any drivers.
+**`PDO::PARAM_STMT`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Represents a recordset type. Not currently supported by any drivers.
 
-**`PDO::PARAM_INPUT_OUTPUT`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the parameter is an INOUT parameter for a stored procedure. You must bitwise-OR this value with an explicit PDO::PARAM\_\* data type.
+**`PDO::PARAM_INPUT_OUTPUT`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Specifies that the parameter is an INOUT parameter for a stored procedure. You must bitwise-OR this value with an explicit PDO::PARAM\_\* data type.
 {% endtab %}
 
 {% tab title="fetch" %}
-**`PDO::FETCH_LAZY`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the fetch method shall return each row as an object with variable names that correspond to the column names returned in the result set. 
+**`PDO::FETCH_LAZY`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Specifies that the fetch method shall return each row as an object with variable names that correspond to the column names returned in the result set.&#x20;
 
-**`PDO::FETCH_LAZY`** creates the object variable names as they are accessed. Not valid inside [PDOStatement::fetchAll\(\)](https://www.php.net/manual/en/pdostatement.fetchall.php).
+**`PDO::FETCH_LAZY`** creates the object variable names as they are accessed. Not valid inside [PDOStatement::fetchAll()](https://www.php.net/manual/en/pdostatement.fetchall.php).
 
-**`PDO::FETCH_ASSOC`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the fetch method shall return each row as an array indexed by column name as returned in the corresponding result set. If the result set contains multiple columns with the same name, 
+**`PDO::FETCH_ASSOC`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Specifies that the fetch method shall return each row as an array indexed by column name as returned in the corresponding result set. If the result set contains multiple columns with the same name,&#x20;
 
 **`PDO::FETCH_ASSOC`** returns only a single value per column name.
 
-**`PDO::FETCH_NAMED`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the fetch method shall return each row as an array indexed by column name as returned in the corresponding result set. If the result set contains multiple columns with the same name, 
+**`PDO::FETCH_NAMED`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Specifies that the fetch method shall return each row as an array indexed by column name as returned in the corresponding result set. If the result set contains multiple columns with the same name,&#x20;
 
 **`PDO::FETCH_NAMED`** returns an array of values per column name.
 
-**`PDO::FETCH_NUM`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the fetch method shall return each row as an array indexed by column number as returned in the corresponding result set, starting at column 0.
+**`PDO::FETCH_NUM`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Specifies that the fetch method shall return each row as an array indexed by column number as returned in the corresponding result set, starting at column 0.
 
-**`PDO::FETCH_BOTH`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Specifies that the fetch method shall return each row as an array indexed by both column name and number as returned in the corresponding result set, starting at column 0.
+**`PDO::FETCH_BOTH`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Specifies that the fetch method shall return each row as an array indexed by both column name and number as returned in the corresponding result set, starting at column 0.
 {% endtab %}
 
 {% tab title="others" %}
-**`PDO::ERRMODE_SILENT`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Do not raise an error or exception if an error occurs. The developer is expected to explicitly check for errors. This is the default mode. See [Errors and error handling](https://www.php.net/manual/en/pdo.error-handling.php) for more information about this attribute.
+**`PDO::ERRMODE_SILENT`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Do not raise an error or exception if an error occurs. The developer is expected to explicitly check for errors. This is the default mode. See [Errors and error handling](https://www.php.net/manual/en/pdo.error-handling.php) for more information about this attribute.
 
-**`PDO::ERRMODE_WARNING`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Issue a PHP **`E_WARNING`** message if an error occurs. See [Errors and error handling](https://www.php.net/manual/en/pdo.error-handling.php) for more information about this attribute.
+**`PDO::ERRMODE_WARNING`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Issue a PHP **`E_WARNING`** message if an error occurs. See [Errors and error handling](https://www.php.net/manual/en/pdo.error-handling.php) for more information about this attribute.
 
-**`PDO::ERRMODE_EXCEPTION`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Throw a [PDOException](https://www.php.net/manual/en/class.pdoexception.php) if an error occurs. See [Errors and error handling](https://www.php.net/manual/en/pdo.error-handling.php) for more information about this attribute.
+**`PDO::ERRMODE_EXCEPTION`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Throw a [PDOException](https://www.php.net/manual/en/class.pdoexception.php) if an error occurs. See [Errors and error handling](https://www.php.net/manual/en/pdo.error-handling.php) for more information about this attribute.
 
-**`PDO::CASE_NATURAL`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Leave column names as returned by the database driver.
+**`PDO::CASE_NATURAL`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Leave column names as returned by the database driver.
 
-**`PDO::CASE_LOWER`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Force column names to lower case.
+**`PDO::CASE_LOWER`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Force column names to lower case.
 
-**`PDO::CASE_UPPER`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)Force column names to upper case.
+**`PDO::CASE_UPPER`** ([integer](https://www.php.net/manual/en/language.types.integer.php))Force column names to upper case.
 
-**`PDO::NULL_NATURAL`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)
+**`PDO::NULL_NATURAL`** ([integer](https://www.php.net/manual/en/language.types.integer.php))
 
-**`PDO::NULL_EMPTY_STRING`** \([integer](https://www.php.net/manual/en/language.types.integer.php)\)
+**`PDO::NULL_EMPTY_STRING`** ([integer](https://www.php.net/manual/en/language.types.integer.php))
 {% endtab %}
 {% endtabs %}
 
@@ -96,7 +98,8 @@ PDO可連結更多資料庫系統、PDO可避免SQL injection攻擊。
     * `charset`：字元集
   * `$user`：使用者帳號
   * `$password`：使用者密碼
-  * `$options`：描述資料庫連接時的一些資訊； 以關聯性陣列的方式表示。
+  * `$options`：描述資料庫連接時的一些資訊；\
+    以關聯性陣列的方式表示。
 
 ```php
 //分號隔著寫，中間不要空白
@@ -117,12 +120,12 @@ $pdo = new PDO($dsn , $user, $password, $options);
 {% endtab %}
 
 {% tab title="try..catch錯誤時" %}
-設定正常運作時執行指令\(try\)、錯誤時的執行指令\(catch\)
+設定正常運作時執行指令(try)、錯誤時的執行指令(catch)
 
 * `PDOException`：例外物件
 * `getMessage()`：出了甚麼錯
 * `getLine()`：錯在第幾行
-* 「...-&gt;...」是類似於JS物件的寫法
+* 「...->...」是類似於JS物件的寫法
 
 ```php
 try{
@@ -153,7 +156,7 @@ try{
 * `PDO::ATTR_CASE`：大小寫屬性
 * `PDO::ATTR_ERRMODE`：錯誤發生時
 * `PDO::ATTR_ORACLE_NULLS`：null和空字串轉換
-* `PDO::ATTR_AUTOCOMMIT`：是否自動commit\(true\)
+* `PDO::ATTR_AUTOCOMMIT`：是否自動commit(true)
 * `PDO::MYSQL_ATTR_USE_BUFFERED_QUERY`：
 * `PDO::ATTR_DEFAULT_FETCH_MODE`：存取資料模式
 {% endtab %}
@@ -172,8 +175,8 @@ $options = array(
 
 ### 登入資料庫帳密
 
-小組專題時，大家的資料庫帳密都不大相同。  
-假設呈現的PHP檔案是「main.php」，將裡面資料庫登入的程式碼另存新檔 例如「connect.php」  
+小組專題時，大家的資料庫帳密都不大相同。\
+假設呈現的PHP檔案是「main.php」，將裡面資料庫登入的程式碼另存新檔 例如「connect.php」\
 再將「main.php」連結「connect.php」
 
 {% tabs %}
@@ -200,9 +203,9 @@ require("connectBooks.php");
 {% endtabs %}
 
 {% hint style="info" %}
-連結資料庫連線的檔案：  
-`require_once("引用檔案路徑");  或是  
-include_once("引用檔案路徑");`
+連結資料庫連線的檔案：\
+`require_once("引用檔案路徑");  或是`\
+`include_once("引用檔案路徑");`
 
 ※ 像JS的script:src，像CSS的@import，像HTML的link
 {% endhint %}
@@ -215,11 +218,11 @@ include_once("引用檔案路徑");`
   * 用來執行會取得result set的指令，例如select（DQL）
 * **`$pdo->prepare(`**_**`SQL命令`**_**`)`**
   * 用來事先編譯好一個SQL敘述，可以執行inset、update、delete、select等（DQL+DML）
-  * 指令內放未知數，編譯它再帶資料進去，防止別人竄改我資料庫\(SQL\)資料。
+  * 指令內放未知數，編譯它再帶資料進去，防止別人竄改我資料庫(SQL)資料。
 
 {% hint style="info" %}
-PHP的「-&gt;」相當於JS的「.」  
-ex.PHP的「`$pdo->query($sql);`」  
+PHP的「->」相當於JS的「.」\
+ex.PHP的「`$pdo->query($sql);`」\
 ex.JS的「`xxx.addEventListener('click',function(){});`」
 {% endhint %}
 
@@ -301,7 +304,7 @@ try {
 ```
 {% endtab %}
 
-{% tab title="👈取得物件的方法fetch¿\(\)👉" %}
+{% tab title="👈取得物件的方法fetch¿()👉" %}
 ### fetch：回傳一維陣列
 
 ```php
@@ -412,7 +415,10 @@ while( $prodRow = $products->fetchObject()){//當抓得到一筆資料, 取回�
 * **`$pdo->prepare(`**_**`SQL命令`**_**`)`**
   * 可以執行**inset、update、delete、select**
   * 用來事先編譯好一個SQL敘述
-  * 為什麼要用prepare？ 當指令內含有**未知數**，如前端表格送的資料， 我在我的指令內放未知數，編譯它再帶資料進去 防止別人竄改我資料庫\(SQL\)資料。
+  * 為什麼要用prepare？\
+    當指令內含有**未知數**，如前端表格送的資料，\
+    我在我的指令內放未知數，編譯它再帶資料進去\
+    防止別人竄改我資料庫(SQL)資料。
 
 ```php
 <?php
@@ -465,8 +471,8 @@ if($errMsg != ""){
 ```
 {% endtab %}
 
-{% tab title="👈引數提供bind¿\(\)" %}
-#### bindValue\(\)
+{% tab title="👈引數提供bind¿()" %}
+#### bindValue()
 
 第二個參數可以是變數、可以是字面值（如下例10）
 
@@ -485,7 +491,7 @@ $statement->bindValue(:amount,10);//🟡參數:amount，要填甚麼進去(10)
 $statement->execute();
 ```
 
-#### bindParam\(\)
+#### bindParam()
 
 第二個參數只能是變數（如下例$amount）
 
@@ -504,7 +510,7 @@ $statement->bindParam(:amount,$amount);//🟡參數:amount，要填甚麼進去(
 $statement->execute();
 ```
 
-#### bindColumn\(\)
+#### bindColumn()
 
 ```php
 $sql = "select * from products where price<500";
@@ -752,7 +758,5 @@ if( $errMsg != ""){ //例外
 {% endtab %}
 {% endtabs %}
 
-### 
-
-
+###
 

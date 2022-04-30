@@ -1,13 +1,13 @@
 # 壞了，我的醫生
 
-![](https://scontent.ftpe8-1.fna.fbcdn.net/v/t1.0-9/22688337_373357853121512_1359550471304573685_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PYhES7me9w8AX8uC9UA&_nc_ht=scontent.ftpe8-1.fna&oh=ae50ca5a806320eac362dfe47726d524&oe=5F7A59F7)
+![](https://scontent.ftpe8-1.fna.fbcdn.net/v/t1.0-9/22688337\_373357853121512\_1359550471304573685\_n.png?\_nc\_cat=105&\_nc\_sid=09cbfe&\_nc\_ohc=PYhES7me9w8AX8uC9UA&\_nc\_ht=scontent.ftpe8-1.fna\&oh=ae50ca5a806320eac362dfe47726d524\&oe=5F7A59F7)
 
 ## jQuery
 
 #### 動畫莫名其妙延遲
 
-不知道為什麼動畫進行，執行某些動作後function便會故障或是延遲幾秒才執行。  
-\[[How to prevent this strange jQuery .animate\(\) lag?](https://stackoverflow.com/questions/14613498/how-to-prevent-this-strange-jquery-animate-lag)\]
+不知道為什麼動畫進行，執行某些動作後function便會故障或是延遲幾秒才執行。\
+\[[How to prevent this strange jQuery .animate() lag?](https://stackoverflow.com/questions/14613498/how-to-prevent-this-strange-jquery-animate-lag)]
 
 ```javascript
 //🟡在.animate()前加入「.stop()」
@@ -19,15 +19,15 @@ $("#newResForm").stop().animate({ opacity: 0 }, 100,function() {
 
 #### hover控制setInterval和clearInterval
 
-hover之後，閒置一段時間，動畫不受控地快轉。  
-`❌setInterval(()=>{fn()},time)  
-✅setInterval(fn,time)`  
-\[[~~Adding pause on hover to setInterval\(\)?~~](https://stackoverflow.com/questions/10913703/adding-pause-on-hover-to-setinterval)~~\]~~
+hover之後，閒置一段時間，動畫不受控地快轉。\
+`❌setInterval(()=>{fn()},time)`\
+`✅setInterval(fn,time)`\
+\[[~~Adding pause on hover to setInterval()?~~](https://stackoverflow.com/questions/10913703/adding-pause-on-hover-to-setinterval)~~]~~
 
 我用了bootstrap...
 
 {% tabs %}
-{% tab title="\(不是重點\)動畫函式" %}
+{% tab title="(不是重點)動畫函式" %}
 ```javascript
 function moveRight3() {            //向右走
   $('.slider3 .slides').animate({
@@ -75,14 +75,13 @@ $('.news .section').hover(
 
 {% tab title="" %}
 ```
-
 ```
 {% endtab %}
 {% endtabs %}
 
-#### jQuery傳值給PHP\(POST\)
+#### jQuery傳值給PHP(POST)
 
-\[[jquery與php傳值篇](https://ithelp.ithome.com.tw/articles/10160671)\]
+\[[jquery與php傳值篇](https://ithelp.ithome.com.tw/articles/10160671)]
 
 {% tabs %}
 {% tab title="jQuery" %}
@@ -124,7 +123,7 @@ $('.news .section').hover(
 
 #### checkbox的required
 
-\[[Using the HTML5 “required” attribute for a group of checkboxes?](https://stackoverflow.com/questions/6218494/using-the-html5-required-attribute-for-a-group-of-checkboxes)\]
+\[[Using the HTML5 “required” attribute for a group of checkboxes?](https://stackoverflow.com/questions/6218494/using-the-html5-required-attribute-for-a-group-of-checkboxes)]
 
 ```markup
 <div class="checkbox-group required">
@@ -146,9 +145,9 @@ $('.news .section').hover(
 
 {% tabs %}
 {% tab title="boolean變數字" %}
-#### boolean的值怎麼變數字（給1\|0）
+#### boolean的值怎麼變數字（給1|0）
 
-\[[Convert boolean result into number/integer](https://stackoverflow.com/questions/7820683/convert-boolean-result-into-number-integer)\]
+\[[Convert boolean result into number/integer](https://stackoverflow.com/questions/7820683/convert-boolean-result-into-number-integer)]
 
 ```javascript
 let chc = document.querySelectorAll('input[type=checkbox]');
@@ -156,10 +155,10 @@ chc.forEach(data => data.checked==true ? data.value=1 : data.value=0)
 ```
 {% endtab %}
 
-{% tab title="input\[required\]的數量" %}
-#### 怎麼計算input\[required\]的數量
+{% tab title="input[required]的數量" %}
+#### 怎麼計算input\[required]的數量
 
-\[[get required form elements via DOM in javascript](https://stackoverflow.com/questions/35396980/get-required-form-elements-via-dom-in-javascript)\]
+\[[get required form elements via DOM in javascript](https://stackoverflow.com/questions/35396980/get-required-form-elements-via-dom-in-javascript)]
 
 ```javascript
 document.querySelectorAll('[required]').length;
@@ -221,10 +220,10 @@ document.querySelectorAll('[required]').length;
 
 #### 怎麼知道scrollbar的寬度
 
-滿版區域一直會凸出去產生水平卷軸...\(多出window的chorme卷軸寬度17px\)。  
-**不用算**，直接用裏面寬度去決定滿版的寬度。  
-`document.documentElement.clientWidth`  
-\[[Get scrollbar width in JavaScript](https://muffinman.io/get-scrollbar-width-in-javascript/)\]
+滿版區域一直會凸出去產生水平卷軸...(多出window的chorme卷軸寬度17px)。\
+**不用算**，直接用裏面寬度去決定滿版的寬度。\
+`document.documentElement.clientWidth`\
+\[[Get scrollbar width in JavaScript](https://muffinman.io/get-scrollbar-width-in-javascript/)]
 
 ```javascript
 //算出scrollbar寬度。
@@ -235,8 +234,8 @@ function getScrollbarWidth() {
 
 #### 要怎麼動態新增變數
 
-用`eval()`。這個函數是將傳入的字符串當做JavaScript 代碼進行執行。  
-\[[How to use dynamic variable names in JavaScript ?](https://www.geeksforgeeks.org/how-to-use-dynamic-variable-names-in-javascript/)\]
+用`eval()`。這個函數是將傳入的字符串當做JavaScript 代碼進行執行。\
+\[[How to use dynamic variable names in JavaScript ?](https://www.geeksforgeeks.org/how-to-use-dynamic-variable-names-in-javascript/)]
 
 ```javascript
 var k = 'value'; 
@@ -254,12 +253,12 @@ console.log("value4=" + value4);
 //【result】value4=4
 ```
 
-#### javasript傳值給php\(GET\)
+#### javasript傳值給php(GET)
 
-\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]    
-非同步：\[[send json object from javascript to php](https://stackoverflow.com/questions/23750661/send-json-object-from-javascript-to-php/23750707)\]  \[[YOUTUBE](https://youtu.be/mNrJDGfQGz0?t=213)\]
+\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)]  \
+非同步：\[[send json object from javascript to php](https://stackoverflow.com/questions/23750661/send-json-object-from-javascript-to-php/23750707)]  \[[YOUTUBE](https://youtu.be/mNrJDGfQGz0?t=213)]
 
-我就是不要非同步，我就是要同一頁取值！\[[連結](https://icodding.blogspot.com/2015/08/javascript-php.html)\]
+我就是不要非同步，我就是要同一頁取值！\[[連結](https://icodding.blogspot.com/2015/08/javascript-php.html)]
 
 {% tabs %}
 {% tab title="傳旨給PHP" %}
@@ -278,7 +277,7 @@ function express(){
 ```
 {% endtab %}
 
-{% tab title="把資料傳給PHP\(非同步\)" %}
+{% tab title="把資料傳給PHP(非同步)" %}
 ```javascript
 //JS檔案，以下所有「加密」「解密」純屬形容
 var jsondata;
@@ -311,11 +310,11 @@ echo $json_encode;                        //🔰3.資料傳回JS
 
 #### wheel事件沒辦法做到[fullpage](https://alvarotrigo.com/fullPage/)的不閃跳
 
-​我沒有百分之百清除，但降低很多\(頻率\)這樣的感覺。  
+​我沒有百分之百清除，但降低很多(頻率)這樣的感覺。\
 我用同學的方法：
 
 * 靠DOM觸發滑動功能，而不是document,window等。
-* 用一個「假標籤」滿版，先display:none，在滑動時顯示出來\(再消失\)。
+* 用一個「假標籤」滿版，先display:none，在滑動時顯示出來(再消失)。
 
 {% tabs %}
 {% tab title="架構" %}
@@ -404,14 +403,14 @@ function wheelhandler(e){
 
 {% tabs %}
 {% tab title="問題" %}
-input:email的格式、input\[required\]等等全都沒有用  
+input:email的格式、input\[required]等等全都沒有用\
 資料就這樣直接送去給PHP了！！
 {% endtab %}
 
 {% tab title="解方" %}
-\[[checkValidity等form原生JS驗證方法和屬性詳細介紹](https://www.zhangxinxu.com/wordpress/2019/08/js-checkvalidity-setcustomvalidity/)\] \[[範例](https://codepen.io/nickleus/pen/qOjOGe)\]
+\[[checkValidity等form原生JS驗證方法和屬性詳細介紹](https://www.zhangxinxu.com/wordpress/2019/08/js-checkvalidity-setcustomvalidity/)] \[[範例](https://codepen.io/nickleus/pen/qOjOGe)]
 
-用`checkValidity()`判斷  
+用`checkValidity()`判斷\
 用`reportValidity()`呼叫
 
 ```php
@@ -588,7 +587,7 @@ window.addEventListener('load',doFirst);
 ```
 {% endtab %}
 
-{% tab title="PHP\(connect\)" %}
+{% tab title="PHP(connect)" %}
 ```php
 <?php
 //連線(連資料庫帳號密碼等設定)用的
@@ -602,7 +601,7 @@ window.addEventListener('load',doFirst);
 ```
 {% endtab %}
 
-{% tab title="PHP\(load\)" %}
+{% tab title="PHP(load)" %}
 ```php
 <?php
 //當畫面跑完，要撈資料庫的資料到畫面上
@@ -633,7 +632,7 @@ try{
 ```
 {% endtab %}
 
-{% tab title="PHP\(sendNback\)" %}
+{% tab title="PHP(sendNback)" %}
 ```php
 <?php
 //當按下送出鍵，資料傳給資料庫、並讓畫面資料呈現剛剛輸入的(這好像..)..
@@ -682,8 +681,8 @@ try{
 
 #### 要怎麼動態新增變數
 
-用字串的方式「`{.}`」  
-\[[Using braces with dynamic variable names in PHP](https://stackoverflow.com/questions/9257505/using-braces-with-dynamic-variable-names-in-php)\]
+用字串的方式「`{.}`」\
+\[[Using braces with dynamic variable names in PHP](https://stackoverflow.com/questions/9257505/using-braces-with-dynamic-variable-names-in-php)]
 
 ```javascript
 for($i=0; $i<=2; $i++) {
@@ -693,7 +692,7 @@ for($i=0; $i<=2; $i++) {
 
 #### php傳值給javascript
 
-\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)\]
+\[[\[js\] JS 與 PHP 傳值](https://medium.com/@jacobhsu/js-js-%E8%88%87-php-%E5%82%B3%E5%80%BC-983faf68804b)]
 
 ```javascript
 <?php
@@ -708,11 +707,10 @@ for($i=0; $i<=2; $i++) {
 
 #### checkbox沒被選取，PHP顯示undefined
 
-\[[Undefined Index If I Do Not Check Checkbox](https://stackoverflow.com/questions/18603884/undefined-index-if-i-do-not-check-checkbox/18603899#18603899)\]
+\[[Undefined Index If I Do Not Check Checkbox](https://stackoverflow.com/questions/18603884/undefined-index-if-i-do-not-check-checkbox/18603899#18603899)]
 
- You have to use `isset($_POST['publishok'])` to check it whether it is checked in the server side.
+&#x20;You have to use `isset($_POST['publishok'])` to check it whether it is checked in the server side.
 
 ```php
 echo isset($_REQUEST['e']) ? 1 : 0;
 ```
-

@@ -2,11 +2,11 @@
 
 ## 【01－靈活橢圓形】
 
-Flexible ellipses\[[原網址](https://www.w3cplus.com/css3/css-secrets/flexible-ellipses.html)\]
+Flexible&#x20;ellipses\[[原網址](https://www.w3cplus.com/css3/css-secrets/flexible-ellipses.html)]
 
 {% tabs %}
 {% tab title="橢圓形" %}
-比較少人知道的方法，圓形可以調整水平與垂直的大小，用「/」隔開他們。  
+比較少人知道的方法，圓形可以調整水平與垂直的大小，用「/」隔開他們。\
 `border-radius: 水平 / 垂直;`
 
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-4.png)
@@ -17,9 +17,9 @@ border-radius: 100px / 75px;
 {% endtab %}
 
 {% tab title="半圓" %}
-先說border-radius的組成：  
-`border-radius: 10px / 5px 20px;` 等於 `border-radius: 10px 10px 10px 10px / 5px 20px 5px 20px;`  
-\(左上.右上.右下.左下\)
+先說border-radius的組成：\
+`border-radius: 10px / 5px 20px;` 等於 `border-radius: 10px 10px 10px 10px / 5px 20px 5px 20px;`\
+(左上.右上.右下.左下)
 
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-6.png)
 
@@ -45,13 +45,13 @@ border-radius: 100% 0 0 0;
 
 ## 【02－平行四邊形】
 
-Parallelograms\[[原網址](https://www.w3cplus.com/css3/css-secrets/parallelograms.html)\]  
-`transform: skew();`  
+Parallelograms\[[原網址](https://www.w3cplus.com/css3/css-secrets/parallelograms.html)]\
+`transform: skew();`\
 
 
 {% tabs %}
 {% tab title="問題" %}
-直接放transform:skew\(\);  
+直接放transform:skew();\
 文字也會變形。
 
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-14.png)
@@ -79,11 +79,13 @@ Parallelograms\[[原網址](https://www.w3cplus.com/css3/css-secrets/parallelogr
 
 ## 【03－菱形】
 
-Diamond images\[[原網址](https://www.w3cplus.com/css3/css-secrets/diamond-images.html)\]
+Diamond images\[[原網址](https://www.w3cplus.com/css3/css-secrets/diamond-images.html)]
 
 {% tabs %}
 {% tab title="問題" %}
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-19.png)
+
+
 {% endtab %}
 
 {% tab title="解決方案1" %}
@@ -101,7 +103,7 @@ Diamond images\[[原網址](https://www.w3cplus.com/css3/css-secrets/diamond-ima
 }
 ```
 
-「scale\(1.42\)」是數學問題，不要問我。
+「scale(1.42)」是數學問題，不要問我。
 {% endtab %}
 
 {% tab title="解決方案2" %}
@@ -121,7 +123,7 @@ img:hover {
 
 ## 【04－斜切角】
 
-Cutout corners\[[原網址](https://www.w3cplus.com/css3/css-secrets/cutout-corners.html)\]
+Cutout corners\[[原網址](https://www.w3cplus.com/css3/css-secrets/cutout-corners.html)]
 
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-23.png)
 
@@ -198,13 +200,13 @@ background-repeat: no-repeat;
 
 ## 【05－梯形頁籤】
 
-Trapezoid tabs\[[原網址](https://www.w3cplus.com/blog/1658.html)\]
+Trapezoid tabs\[[原網址](https://www.w3cplus.com/blog/1658.html)]
 
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-39.png)
 
 {% tabs %}
 {% tab title="First Tab" %}
-![&#x5B57;&#x6703;&#x504F;&#x4E0A;](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-43.png)
+![字會偏上](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-43.png)
 
 ```css
 .tab {
@@ -223,7 +225,7 @@ Trapezoid tabs\[[原網址](https://www.w3cplus.com/blog/1658.html)\]
 }
 ```
 
-![&#x89E3;&#x91CB;&#x70BA;&#x4EC0;&#x9EBC;&#x6703;&#x504F;&#x4E0A;](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-45.png)
+![解釋為什麼會偏上](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-45.png)
 
 ![transform-originbottom;](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-45.png)
 
@@ -232,7 +234,9 @@ transform: scaleY(1.3) perspective(.5em) rotateX(5deg);
 transform-origin: bottom;
 ```
 
-![&#x5FAE;&#x8ABF;&#x4E4B;&#x5F8C;](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-47.png)
+![微調之後](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-47.png)
+
+
 {% endtab %}
 
 {% tab title="頁籤" %}
@@ -266,12 +270,14 @@ nav > a::before {
 把`transform-origin`的值改為`bottom left`或`bottom right`，我們就可以得到向左或向右傾斜的標籤。
 
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1510/css-secrets-49.png)
+
+
 {% endtab %}
 {% endtabs %}
 
 ## 【06－圓餅圖】
 
-Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-simple-pie-charts-with-css.html)\]
+Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-simple-pie-charts-with-css.html)]
 
 ### CSS
 
@@ -279,7 +285,7 @@ Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-sim
 
 {% tabs %}
 {% tab title="圓<50%" %}
-![&#x4E00;&#x500B;&#x5712;&#xFF0C;&#x7528;&#x7DDA;&#x6027;&#x6F38;&#x5C64;&#x5206;&#x5169;&#x8272;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-2.png)
+![一個園，用線性漸層分兩色](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-2.png)
 
 ```markup
 <div class="pie"></div>
@@ -294,7 +300,7 @@ Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-sim
 }
 ```
 
-![&#x7528;&#x507D;&#x5143;&#x7D20;::before&#x7576;&#x526A;&#x88C1;&#x906E;&#x8272;&#x7247;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-4.png)
+![用偽元素::before當剪裁遮色片](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-4.png)
 
 ```css
 .pie::before {
@@ -309,13 +315,13 @@ Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-sim
 ```
 
 {% hint style="info" %}
- 注意：不要使用`background: inherit;`，要用`background-color: inherit;`，  
+&#x20;注意：不要使用`background: inherit;`，要用`background-color: inherit;`，\
 否則父元素背景圖像上的漸變也會被繼承。
 {% endhint %}
 
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-5.png)
 
-分別展示不同百分比的餅圖，從左到右：10% \(36deg或.1turn\), 20% \(72deg或.2turn\), 40% \(144deg或.4turn\)
+分別展示不同百分比的餅圖，從左到右：10% (36deg或.1turn), 20% (72deg或.2turn), 40% (144deg或.4turn)
 
 ```css
 .pie::before {
@@ -335,9 +341,9 @@ Simple pie charts p.150 \[[原網址](https://www.w3cplus.com/css3/designing-sim
 {% endtab %}
 
 {% tab title="園>50%" %}
-問題：前一頁的圓形&gt;50%就會失效
+問題：前一頁的圓形>50%就會失效
 
-![&#x4E0D;&#x662F;&#x6211;&#x5011;&#x8981;&#x7684;&#x7D50;&#x679C;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-6.png)
+![不是我們要的結果](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-6.png)
 
 解決方法：只是將偽元素::before換個顏色。
 
@@ -350,7 +356,7 @@ background: inherit;
 ![](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-8.png)
 
 {% hint style="info" %}
- 負延遲是有效的。和`0s`的延遲類似，它表示動畫將立即執行，但是是根據延遲的絕對值來自動運行的，所以如果動畫已經在指定的時間之前就開始運行了，那它就會直接從active的時間中途運行。— [CSS Animations Level 1](https://drafts.csswg.org/css-animations-1/#animation-delay)
+&#x20;負延遲是有效的。和`0s`的延遲類似，它表示動畫將立即執行，但是是根據延遲的絕對值來自動運行的，所以如果動畫已經在指定的時間之前就開始運行了，那它就會直接從active的時間中途運行。— [CSS Animations Level 1](https://drafts.csswg.org/css-animations-1/#animation-delay)
 {% endhint %}
 
 動畫是永遠暫停的，我們給它指定的延遲大小並不會有什麼影響。
@@ -432,7 +438,7 @@ SVG solution p.158  [codepen14-SVG](https://codepen.io/ch-zhuchu/pen/RwGPjbJ)
 
 {% tabs %}
 {% tab title="中空圓" %}
-![SVG&#x756B;&#x4E00;&#x500B;&#x5713;&#xFF0C;&#x539A;&#x908A;&#x6846;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-9.png)
+![SVG畫一個圓，厚邊框](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-9.png)
 
 ```markup
 <svg width="100" height="100"> 
@@ -448,15 +454,15 @@ circle {
 }
 ```
 
-![&#x6709;&#x9593;&#x8DDD;&#x7684;&#x908A;&#x6846;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-10.png)
+![有間距的邊框](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-10.png)
 
 ```css
 stroke-dasharray: 20 10;
 ```
 
 {% hint style="info" %}
-`20`的長度+`10`的邊距  
- 周長：`C = 2πr`,所以在這裡`C = 2π × 30 ≈ 189`
+`20`的長度+`10`的邊距\
+&#x20;周長：`C = 2πr`,所以在這裡`C = 2π × 30 ≈ 189（189,189就是一個滿圓）`
 {% endhint %}
 
 ![0/189, 40/189, 95/189,150/189](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-11.png)
@@ -471,7 +477,7 @@ stroke-dasharray: 150 189
 {% endtab %}
 
 {% tab title="實心圓" %}
-![&#x7DDA;&#x7C97;&#x8DDF;&#x534A;&#x5F91;&#x4E00;&#x6A23;&#x5BEC;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-12.png)
+![線粗跟半徑一樣寬](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-12.png)
 
 ```markup
 <svg width="100" height="100" class="svg2">
@@ -488,7 +494,7 @@ stroke-dasharray: 150 189
 }
 ```
 
-![SVG&#x52A0;&#x4E0A;&#x4E00;&#x6A23;&#x7684;&#x88AB;&#x666F;&#x8272;&#x770B;&#x8D77;&#x4F86;&#x5C31;&#x662F;&#x4E00;&#x500B;&#x5927;&#x5713;](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-13.png)
+![SVG加上一樣的被景色看起來就是一個大圓](https://www.w3cplus.com/sites/default/files/blogs/2015/1508/pie-charts-13.png)
 
 ```css
 .svg{
@@ -534,7 +540,7 @@ stroke-dasharray: 150 189
 ```
 
 {% hint style="success" %}
-`conic-gradient(#655 20%, yellowgreen 0);`  
+`conic-gradient(#655 20%, yellowgreen 0);`\
 跟線性漸層用法差不多。
 {% endhint %}
 
@@ -543,4 +549,3 @@ stroke-dasharray: 150 189
 {% endhint %}
 {% endtab %}
 {% endtabs %}
-

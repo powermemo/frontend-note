@@ -6,7 +6,7 @@
 
 * input
 * textarea
-* select&gt;option 下拉式選單
+* select>option 下拉式選單
 
 詳細範例可以參照老師的範例檔：
 
@@ -16,7 +16,7 @@
 
 {% tabs %}
 {% tab title="html查資料" %}
-#### 查書單書號 \(對應範例檔案prodQuery.html\)
+#### 查書單書號 (對應範例檔案prodQuery.html)
 
 ```markup
 <form method="get" action="08proQuery.php">
@@ -28,7 +28,7 @@
 {% endtab %}
 
 {% tab title="PHP查到的書單可以異動" %}
-#### 查詢到的書單明細-可以更動內容 \(對應範例檔案prodQuery.php\)
+#### 查詢到的書單明細-可以更動內容 (對應範例檔案prodQuery.php)
 
 ```php
 <?php
@@ -96,7 +96,7 @@ if( $errMsg != ""){ //例外
 {% endtab %}
 
 {% tab title="異動是否成功" %}
-#### 更動內容是否成功 \(對應範例檔案prodQueryToDb.php\)
+#### 更動內容是否成功 (對應範例檔案prodQueryToDb.php)
 
 ```php
 <?php
@@ -149,7 +149,7 @@ if($errMsg != ""){
 
 {% tabs %}
 {% tab title="產品清單範例" %}
-#### 書單-附連結 \(對應範例檔案prodList.php\)
+#### 書單-附連結 (對應範例檔案prodList.php)
 
 ```php
 <?php 
@@ -181,7 +181,7 @@ while( $prodRow = $products->fetch(PDO::FETCH_ASSOC)){//當抓得到一筆資料
 </table> 
 ```
 
-#### 書單詳細內容 \(對應範例檔案prodQuery.php\)
+#### 書單詳細內容 (對應範例檔案prodQuery.php)
 
 ```php
 <?php
@@ -232,14 +232,15 @@ if( $errMsg != ""){ //例外
 寫入語法：`setcookie("自定義cookie名稱", "cookie的值" [, 時間]);`
 
 * cookie名稱：自定義，例如`memId`。
-* 值：cookie的值，例如`$_GET["memId"`\]。
-* 時間：選填，cookie保留的期限，在設定時間內有效，例如`time()+60`； 若未設定時間，關閉瀏覽器時即刻刪除cookie。
+* 值：cookie的值，例如`$_GET["memId"`]。
+* 時間：選填，cookie保留的期限，在設定時間內有效，例如`time()+60`；\
+  若未設定時間，關閉瀏覽器時即刻刪除cookie。
 
 讀出語法：`$_COOKIE["自定義cookie名稱"];`，例如`$_COOKIE["memId"];`。
 
 {% tabs %}
 {% tab title="登入案例" %}
-#### 登入介面 \(對應範例檔案cookieLogin.html\)
+#### 登入介面 (對應範例檔案cookieLogin.html)
 
 ```markup
 <div id="loginBox">
@@ -250,7 +251,7 @@ if( $errMsg != ""){ //例外
 </form>
 ```
 
-#### 登入結果-是否登入成功 \(對應範例檔案cookieLogin.php\)
+#### 登入結果-是否登入成功 (對應範例檔案cookieLogin.php)
 
 ```php
 <?php
@@ -292,7 +293,7 @@ if($errMsg !=""){
 <a href="cookieMember.php">前往會員專區</a>  
 ```
 
-#### 登入成功的會員專區 \(對應範例檔案cookieMember.php\)
+#### 登入成功的會員專區 (對應範例檔案cookieMember.php)
 
 ```php
 <?php
@@ -309,12 +310,13 @@ echo "email : ", $_COOKIE["email"],"<br>";
 ### 前置作業
 
 1. 在C槽PHP資料夾內，新建資料夾「tmp」
-2. php.ini檔，找到「session.save\_path」，將註解「;」拿掉 並修改後方路徑，例如「C:\php-7.4.7\tmp」
+2. php.ini檔，找到「session.save\_path」，將註解「;」拿掉\
+   並修改後方路徑，例如「C:\php-7.4.7\tmp」
 3. 重啟IIS
 
 {% tabs %}
 {% tab title="First Tab" %}
-#### 登入畫面-沒有改 \(對應範例檔案sessionLogin.html\)
+#### 登入畫面-沒有改 (對應範例檔案sessionLogin.html)
 
 ```markup
 <div id="loginBox">
@@ -326,7 +328,7 @@ echo "email : ", $_COOKIE["email"],"<br>";
 </div>
 ```
 
-#### 登入結果 \(對應範例檔案sessionLogin.php\)
+#### 登入結果 (對應範例檔案sessionLogin.php)
 
 ```php
 <?php
@@ -369,7 +371,7 @@ if($errMsg !=""){
 <a href="sessionMember.php">前往會員專區</a>  
 ```
 
-#### 前往會員中心-會員資料 \(對應範例檔案sessionMember.php\)
+#### 前往會員中心-會員資料 (對應範例檔案sessionMember.php)
 
 ```php
 <?php
@@ -388,4 +390,3 @@ echo "tel : ", $_SESSION["tel"], "<br>";
 ```
 {% endtab %}
 {% endtabs %}
-

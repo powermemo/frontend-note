@@ -4,32 +4,35 @@
 
 ### 編譯方法一
 
-1. **安裝NODE.JS**  
-   安裝長期穩定版\(LTS\) \[[官網連結](https://nodejs.org/en/)\]
+1.  **安裝NODE.JS**\
+    ****安裝長期穩定版(LTS) \[[官網連結](https://nodejs.org/en/)]
 
-   要查看安裝版本，打開命令提示字元\(CMD\)，輸入「`node -v`」
-
-2. **安裝SASS** 在命令提示字元\(CMD\)輸入「`npm install -g sass`」 如果你用mac要輸入「`sudo npm install -g sass`」 更多詳情請見SASS\[[官網](https://sass-lang.com/install)\] 要查看安裝版本，命令提示字元\(CMD\)，輸入「`sass --version`」
+    要查看安裝版本，打開命令提示字元(CMD)，輸入「`node -v`」
+2. **安裝SASS**\
+   在命令提示字元(CMD)輸入「`npm install -g sass`」\
+   如果你用mac要輸入「`sudo npm install -g sass`」\
+   更多詳情請見SASS\[[官網](https://sass-lang.com/install)]\
+   要查看安裝版本，命令提示字元(CMD)，輸入「`sass --version`」
 
 ### 編譯方法二
 
-1. VS code 安裝「**Live Sass Compiler**」  
-   有像瀏覽器的console可以幫你查看哪裡有錯。  
-   在vs code的JSON指令加上以下指令\(在「設定」尋找「SASS」按「Live Sass Compiler」\)
+1.  VS code 安裝「**Live Sass Compiler**」\
+    有像瀏覽器的console可以幫你查看哪裡有錯。\
+    在vs code的JSON指令加上以下指令(在「設定」尋找「SASS」按「Live Sass Compiler」)
 
-   ```text
-   "liveSassCompile.settings.formats": [
-           {
-               "format": "expanded",
-               "extensionName": ".css",
-               "savePath": "/css/"
-           }
-       ],
-   ```
+    ```
+    "liveSassCompile.settings.formats": [
+            {
+                "format": "expanded",
+                "extensionName": ".css",
+                "savePath": "/css/"
+            }
+        ],
+    ```
 
 ### 編譯方法三
 
-使用軟體編譯－例如[Prepros ](https://prepros.io/)
+使用軟體編譯－例如[Prepros ](https://prepros.io)
 
 {% hint style="info" %}
 請注意，以上方法各自~~為政~~獨立，請不要混用！！
@@ -37,22 +40,22 @@
 
 ## SASS簡介
 
-SASS與SCSS的念法一樣，差在它們副檔名不同,還有...  
-SASS的語法沒有「{}」和「;」，不可與CSS相容  
-SCSS的語法有「{}」和「;」，可與CSS相容  
+SASS與SCSS的念法一樣，差在它們副檔名不同,還有...\
+SASS的語法沒有「{}」和「;」，不可與CSS相容\
+SCSS的語法有「{}」和「;」，可與CSS相容\
 所以**一般會用SCSS**。
 
-![](https://cdn-images-1.medium.com/max/1600/1*r7m8ZNvhIboyfsmlIdv9bw.png)
+![](https://cdn-images-1.medium.com/max/1600/1\*r7m8ZNvhIboyfsmlIdv9bw.png)
 
 {% hint style="info" %}
-更多介紹在SASS中文網 \[[連結](https://sass.bootcss.com/documentation)\]
+更多介紹在SASS中文網 \[[連結](https://sass.bootcss.com/documentation)]
 {% endhint %}
 
 ## 變數型態
 
 {% tabs %}
 {% tab title="變數" %}
-變數以「$」開頭命名\(有點像PHP\)
+變數以「$」開頭命名(有點像PHP)
 
 ```css
 $font-size : 20px;
@@ -120,8 +123,8 @@ $bg-color:lightblue;
 
 ## @import導入
 
-前面提到「.scss」儲存後，會自動轉寫一份「.map」還有「.css」檔。  
-若只想要「導入」不希望「轉寫」的話，檔案命名就要以「\_」開頭，例如「\_var.scss」。  
+前面提到「.scss」儲存後，會自動轉寫一份「.map」還有「.css」檔。\
+若只想要「導入」不希望「轉寫」的話，檔案命名就要以「\_」開頭，例如「\_var.scss」。\
 如全域變數就可以放在裡面。
 
 SCSS導入非常簡單，不用副檔名，直接輸入檔名即可。
@@ -134,12 +137,12 @@ SCSS導入非常簡單，不用副檔名，直接輸入檔名即可。
 
 ## mixin
 
-mixin就像JS的function  
+mixin就像JS的function\
 用mixin的好處是，需要使用時才呼叫。
 
 {% tabs %}
 {% tab title="不帶參數" %}
-~
+\~
 
 ```css
 /*宣告*/
@@ -153,7 +156,7 @@ mixin就像JS的function
 {% endtab %}
 
 {% tab title="帶值" %}
-~
+\~
 
 ```css
 $null:null;
@@ -228,17 +231,17 @@ $null:null;
 
 {% hint style="info" %}
 * mixin的另一種用法「`#{$var}`」
-  * 「`#{$var}`」內「`@content`」的意思：若某些屬性不在\(`#{$var}`\)裡面，可額外增加
+  * 「`#{$var}`」內「`@content`」的意思：若某些屬性不在(`#{$var}`)裡面，可額外增加
   * `@include test('.box',150px,#f20,13px)`/\*有個div的class名稱為「box」\*/
 {% endhint %}
 
-## SASS運算 \| 運用
+## SASS運算 | 運用
 
 SASS可做運算
 
 {% tabs %}
 {% tab title="普通運算" %}
-+-\*/
+\+-\*/
 
 ```css
 $w:10;
@@ -295,7 +298,7 @@ ex. floor, round
 {% endtab %}
 
 {% tab title="字級" %}
-h1~h3
+h1\~h3
 
 ```css
 //SCSS
@@ -359,7 +362,7 @@ if\_\_else
 {% tab title="繼承" %}
 @extend
 
-老師說：若沒有要使用參數的話「@extend」會是比「@mixin」更好的用法～\(？\)  
+老師說：若沒有要使用參數的話「@extend」會是比「@mixin」更好的用法～(？)\
 可是 [stackOverflow](https://stackoverflow.com/questions/18008700/)
 
 ```css
@@ -617,10 +620,8 @@ $images: a1, a2, a3 box feature;//可給逗號、可不給
 {% hint style="info" %}
 除法：
 
-* 可以\(100px / 8\);
-* 可以\(100 / 8\) + px;
-* 不可以\(100 / 8px\);
+* 可以(100px / 8);
+* 可以(100 / 8) + px;
+* 不可以(100 / 8px);
 {% endhint %}
-
-
 

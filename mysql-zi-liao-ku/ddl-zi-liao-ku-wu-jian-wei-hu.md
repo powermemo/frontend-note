@@ -4,14 +4,14 @@ description: 參照講義p.165 p.193
 
 # DDL資料庫物件維護
 
-## 新增物件CREATE  TABLE\(p.167\)
+## 新增物件CREATE  TABLE(p.167)
 
-`CREATE TABLE [IF NOT EXISTS] 表格名稱  
-(欄位名稱1 欄位型別1 [DEFAULT '預設值'][NOT NULL] [PRIMARY KEY],  
- 欄位名稱2 欄位型別2,  
- ...  
- 欄位名稱n 欄位型別n,  
-)[ENGINE 儲存引擎];`
+`CREATE TABLE [IF NOT EXISTS] 表格名稱`\
+`(欄位名稱1 欄位型別1 [DEFAULT '預設值'][NOT NULL] [PRIMARY KEY],`\
+&#x20;`欄位名稱2 欄位型別2,`\
+&#x20;`...`\
+&#x20;`欄位名稱n 欄位型別n,`\
+`)[ENGINE 儲存引擎];`
 
 {% tabs %}
 {% tab title="First Tab" %}
@@ -62,14 +62,14 @@ CREATE TABLE item
 {% endtab %}
 {% endtabs %}
 
-### 外來鍵FK \(p.174\)
+### 外來鍵FK (p.174)
 
 * ON DELETE
 * ON UPDATE
 
 {% tabs %}
 {% tab title="格式" %}
-```text
+```
 -- 新增
 CREATE TABLE table
 (...
@@ -78,7 +78,7 @@ CREATE TABLE table
 );
 ```
 
-```text
+```
 /* 🔶RESTRICT 限制，
     子表有，附表就不准改
     例如，dept, deptno.10 -> 50 [X]不行改
@@ -136,13 +136,13 @@ CREATE TABLE t2           --🔹(p.10-26---p.177)
 {% endtab %}
 {% endtabs %}
 
-### 使用現有資料建立新的資料表\(p.178\)
+### 使用現有資料建立新的資料表(p.178)
 
-`CREATE TABLE 表格名[(欄位名)]  
-  ​AS  
-  SELECT 欄位名  
-  FROM 表格名  
-  WHERE 條件`
+`CREATE TABLE 表格名[(欄位名)]`\
+&#x20; `​AS`\
+&#x20; `SELECT 欄位名`\
+&#x20; `FROM 表格名`\
+&#x20; `WHERE 條件`
 
 {% tabs %}
 {% tab title="使用現有資料建立新的資料表" %}
@@ -199,13 +199,13 @@ Empty set (0.00 sec)
 {% endtab %}
 {% endtabs %}
 
-## 修改物件ALTER  TABLE\(欄位\)\(p.181\)
+## 修改物件ALTER  TABLE(欄位)(p.181)
 
-`ALTER TABLE 表格名  
-ADD | ALTER | MODIFY | CHANGE | DROP`
+`ALTER TABLE 表格名`\
+`ADD | ALTER | MODIFY | CHANGE | DROP`
 
 {% tabs %}
-{% tab title="新增欄位\(p.181\)" %}
+{% tab title="新增欄位(p.181)" %}
 ```sql
 ALTER TABLE emp10
     ADD COLUMN mgr SMALLINT;
@@ -236,7 +236,7 @@ mysql> desc emp10;
 ```
 {% endtab %}
 
-{% tab title="新增在第一欄\(p.182\)" %}
+{% tab title="新增在第一欄(p.182)" %}
 ```sql
 ALTER TABLE emp10
     ADD COLUMN phone VARCHAR(12) DEFAULT '02-66316710' FIRST; -- 🔶【FIRST】
@@ -272,7 +272,7 @@ mysql> desc emp10;
 ```
 {% endtab %}
 
-{% tab title="新增指定欄位後\(p.182\)" %}
+{% tab title="新增指定欄位後(p.182)" %}
 ```sql
 ALTER TABLE emp10                       -- 
     ADD COLUMN hiredate DATE AFTER job; -- 🔶【AFTER】
@@ -460,15 +460,15 @@ mysql> desc emp10;
 {% endtabs %}
 
 {% hint style="info" %}
-CHANGE 與 MODIFY相似，  
+CHANGE 與 MODIFY相似，\
 CHANGE可以重新命名；MODIFY不能重新命名。
 {% endhint %}
 
 ## 刪除物件DROP  TABLE
 
-| 刪除欄位\(表格在、資料不在\) | 刪除資料表\(表格不在\) |
-| :--- | :--- |
-| `ALTER TABLE 表格名 DROP [COLUMN]` | `DROP TABLE 表格名` |
+| 刪除欄位(表格在、資料不在)                                                    | 刪除資料表(表格不在)      |
+| ----------------------------------------------------------------- | ---------------- |
+| <p><code>ALTER TABLE 表格名</code><br><code>DROP [COLUMN]</code></p> | `DROP TABLE 表格名` |
 
 {% tabs %}
 {% tab title="刪除欄位" %}
@@ -519,11 +519,11 @@ DROP TABLE emp10a;
 
 {% tabs %}
 {% tab title="建立視觀表" %}
-語法：`CREATE [OR REPLACE] VIEW column  
-AS <select_statement>`「or replace」是選填。
+語法：`CREATE [OR REPLACE] VIEW column`\
+`AS <select_statement>`「or replace」是選填。
 
-* 加上「or replace」，當有同名的view存在時，覆蓋它\(alter view\)。
-* 加上「or replace」，當沒有同名的view存在時，建立一個\(create view\)。
+* 加上「or replace」，當有同名的view存在時，覆蓋它(alter view)。
+* 加上「or replace」，當沒有同名的view存在時，建立一個(create view)。
 
 ### 建立視觀表
 
@@ -570,7 +570,7 @@ mysql> SELECT * FROM salvu20;/*
 5 rows in set (0.00 sec)*/
 ```
 
-### 建立視觀表－設定欄位名稱\(別名\)
+### 建立視觀表－設定欄位名稱(別名)
 
 ```sql
 mysql> CREATE VIEW salvu30
@@ -715,8 +715,8 @@ mysql> SELECT empno, ename, job, sal
 
 ### 視觀表－可更新與不可更新
 
- \*基底資料表-非計算欄位，view可更新  
- \*基底資料表-的計算欄位，view不可更新 
+&#x20;\*基底資料表-非計算欄位，view可更新\
+&#x20;\*基底資料表-的計算欄位，view不可更新&#x20;
 
 ```sql
  -- 🟡可更新的資料
@@ -825,7 +825,7 @@ mysql>  DELETE FROM salvu20
 a foreign key constraint fails (`demo`.`emp`, CONSTRAINT `EMP_MGR_FK` FOREIGN KEY (`MGR`) REFERENCES `emp` (`EMPNO`))*/
 ```
 
-###  複雜視觀表－無法做DML p.11-19
+### &#x20;複雜視觀表－無法做DML p.11-19
 
 ```sql
 /*mysql> SELECT * FROM dept_sum_vu;
@@ -856,7 +856,7 @@ mysql> DELETE FROM dept_sum_vu
 {% tab title="修改" %}
 ### 修改視觀表內容
 
--- 增加「WHITH CHECK OPTION」選項，違反VIEW的條件就不能修改。
+\-- 增加「WHITH CHECK OPTION」選項，違反VIEW的條件就不能修改。
 
 ```sql
 mysql> ALTER VIEW salvu30
@@ -929,7 +929,7 @@ mysql> UPDATE salvu30
 {% endtab %}
 
 {% tab title="刪除視觀表" %}
--- 從資料庫中刪除視觀表，不會刪除任何\(基底\)資料
+\-- 從資料庫中刪除視觀表，不會刪除任何(基底)資料
 
 ```sql
 mysql> DROP VIEW dept_sum_vu;
@@ -968,39 +968,38 @@ mysql> SELECT a.ename, a.sal, a.deptno, b.avgsal
 
 p.205
 
-## 作業練習－DDL\(p.191\)
+## 作業練習－DDL(p.191)
 
-1. 用下列資料新建DEPARTMENT資料表  
-   `column name	null?		data type`
+1.  用下列資料新建DEPARTMENT資料表\
+    `column name	null?		data type`
 
-   `id		NOT NULL	NUMERIC(7)`
+    `id		NOT NULL	NUMERIC(7)`
 
-   `name		NOT NULL	VARCHAR(24)`
+    `name		NOT NULL	VARCHAR(24)`
+2. 利用DEPT資料表，將資料新增至DEPARTMENT資料表中(只新增相對的資料欄)
+3.  利用下列資料新建EMPLOYEE資料表\
+    `column name	Null?		data Type`
 
-2. 利用DEPT資料表，將資料新增至DEPARTMENT資料表中\(只新增相對的資料欄\)
-3. 利用下列資料新建EMPLOYEE資料表  
-   `column name	Null?		data Type`
+    `id		NOT NULL	NUM*ERIC(7)`
 
-   `id		NOT NULL	NUM*ERIC(7)`
+    `last_nam*e	NOT NULL	VARCHAR(24)`
 
-   `last_nam*e	NOT NULL	VARCHAR(24)`
+    `first_name		 	VARCHAR(24)`
 
-   `first_name		 	VARCHAR(24)`
-
-   `dept_id	 			NUMERIC(7)`
-
-4. 將EMPLOYEE資料表中last\_name欄位資料型態更改為varchar\(40\)
-5. 使用EMP資料表結構中EMPNO,ENAME, DEPTNO定義來新建EMPLOYEE2資料表 並將欄位名稱設定為id, last\_name,dept\_id
+    `dept_id	 			NUMERIC(7)`
+4. 將EMPLOYEE資料表中last\_name欄位資料型態更改為varchar(40)
+5. 使用EMP資料表結構中EMPNO,ENAME, DEPTNO定義來新建EMPLOYEE2資料表\
+   並將欄位名稱設定為id, last\_name,dept\_id
 6. 刪除整個EMPLOYEE資料表
 7. 將EMPLOYEE2資料表改名為EMPLOYEE
 8. 將EMPLOYEE資料表中的LAST\_NAME欄位刪除
 9. 修改EMPLOYEE資料表，新增一個欄位SALARY資料型態為NUMERIC , precision 7
 10. 修改EMPLOYEE資料表，使用ID欄位新增一個primary key限制條件，並為他命名
-11. 在EMPLOYEE資料表新增一個外部鍵\(foreign key\)以確保員工不會被分派到一個不存在的部門。
+11. 在EMPLOYEE資料表新增一個外部鍵(foreign key)以確保員工不會被分派到一個不存在的部門。
 
 {% tabs %}
 {% tab title="1" %}
-```text
+```
 /*用下列資料新建DEPARTMENT資料表
 column name	null?		data type
 id		NOT NULL	NUMERIC(7)
@@ -1110,19 +1109,21 @@ ADD CONSTRAINT fk_employee_deptid FOREIGN KEY(dept_id) REFERENCES dept(deptno);
 {% endtab %}
 {% endtabs %}
 
-## 作業練習－DDL-view\(p.208\)
+## 作業練習－DDL-view(p.208)
 
 1. 使用EMP資料表中員編、姓名、部門編號 建立一個EMP\_VU view，並將姓名欄改以EMPLOYEE
 2. 顯示EMP\_VU view中的資料內容
 3. 使用EMP\_VU view來顯示所有員工姓名及部門編號。
 4. 新建一個名為DEPT20的view，包含部門20的所有員工編號、姓名、部門編號。將view資料項目命名為employee\_id, employee, department\_id，並設定不允許使用者透過DEPT20來更改員工所屬部門編號。
-5. 顯示DEPT20 view欄位定義資料\(結構\)及其所有資料內容。
+5. 顯示DEPT20 view欄位定義資料(結構)及其所有資料內容。
 6. 試試看利用DEPT20 view將Smith轉調到部門30
-7. 新建一個名為SALARY\_VU的view，包含所有員工姓名、部門名稱、薪資、薪資等級。 將view中的資料項目分別命名為employee,department,salary,grade 
+7. 新建一個名為SALARY\_VU的view，包含所有員工姓名、部門名稱、薪資、薪資等級。\
+   將view中的資料項目分別命名為employee,department,salary,grade\
+
 
 {% tabs %}
 {% tab title="1" %}
-```text
+```
 -- 使用EMP資料表中員編、姓名、部門編號 建立一個EMP_VU view，並將姓名欄改以EMPLOYEE
 
 ```
@@ -1173,4 +1174,3 @@ ADD CONSTRAINT fk_employee_deptid FOREIGN KEY(dept_id) REFERENCES dept(deptno);
 ```
 {% endtab %}
 {% endtabs %}
-

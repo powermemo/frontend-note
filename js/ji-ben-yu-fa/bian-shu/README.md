@@ -10,16 +10,16 @@ description: var | let | const
 
 ### 分配值給變數
 
-\(Storing Values with the Assignment Operator\)  
-`var a;   
-var b = 2;`
+(Storing Values with the Assignment Operator)\
+`var a;` \
+`var b = 2;`
 
 ## let
 
-let 變數與var相似，它更傾向於「**區域變數**」。  
+let 變數與var相似，它更傾向於「**區域變數**」。\
 在哪個敘述句定義，它就是那個敘述句的變數，不會被定義為全域變數。
 
-##  const
+## &#x20;const
 
 const變數，它的變更條件受限，你不能隨意或是無法變動它定義的值。
 
@@ -28,8 +28,8 @@ const X = 'John';
 const X = 'Allen'; //❌ error!!
 ```
 
-通常命名的時候，全部使用大寫還有底線，例如  
-`const` **`FAV_COLOR`** `= 'red';`
+通常命名的時候，全部使用大寫還有底線，例如\
+`const`` `**`FAV_COLOR`**` ``= 'red';`
 
 ```javascript
 'use strict';//嚴格
@@ -41,7 +41,7 @@ console.log(s); // returns [5, 6, 45]
 
 ## Object.freeze  不要變動 變數的值
 
-看到上面const定義的陣列，「欸幹，我都用const你還給我變動裡面的值?!」  
+看到上面const定義的陣列，「欸幹，我都用const你還給我變動裡面的值?!」\
 這時候就使用**`Object.freeze()`**，你變數定義的值就無法變更囉～
 
 ```javascript
@@ -54,4 +54,3 @@ obj.review = "bad"; // 被忽略，變更不被允許
 obj.newProp = "Test"; // 被忽略，變更不被允許
 console.log(obj); // { name: "FreeCodeCamp", review:"Awesome"}
 ```
-

@@ -4,32 +4,32 @@ description: 參照講義p.99~p.118
 
 # GROUP BY、HAVING
 
-## 群組彙總函數\(p.100\)
+## 群組彙總函數(p.100)
 
-| 函數 | 功能 |
-| :--- | :--- |
-| COUNT\(\*\) | 資料的筆數 |
-| COUNT\(_column_\) | 欄位不為空值的筆數 |
-| COUNT\(DISTINCT _column_\) | 去除重複列不為空值的筆數 |
-| MAX\(_column_\) | 欄位中最大的值 |
-| MIN\(_column_\) | 欄位中最小的值 |
-| SUM\(_column_\) | ​欄位的加總 |
-| AVG\(_column_\) | 欄位的平均值 |
+| 函數                       | 功能           |
+| ------------------------ | ------------ |
+| COUNT(\*)                | 資料的筆數        |
+| COUNT(_column_)          | 欄位不為空值的筆數    |
+| COUNT(DISTINCT _column_) | 去除重複列不為空值的筆數 |
+| MAX(_column_)            | 欄位中最大的值      |
+| MIN(_column_)            | 欄位中最小的值      |
+| SUM(_column_)            | ​欄位的加總       |
+| AVG(_column_)            | 欄位的平均值       |
 
 下面範例
 
 {% tabs %}
 {% tab title="COUNT1" %}
-`-- COUNT對照  
-SELECT *  
-FROM emp  
-WHERE deptno = 10;  
-	-- 🔶COUNT(*)  
-	SELECT COUNT(*)  
-	FROM emp  
-	WHERE deptno = 10;`
+`-- COUNT對照`\
+`SELECT *`\
+`FROM emp`\
+`WHERE deptno = 10;`\
+&#x9;`-- 🔶COUNT(*)`\
+&#x9;`SELECT COUNT(*)`\
+&#x9;`FROM emp`\
+&#x9;`WHERE deptno = 10;`
 
-```text
+```
 -- (p.101)
 +----------+
 | COUNT(*) |
@@ -39,7 +39,7 @@ WHERE deptno = 10;
 1 row in set (0.00 sec)
 ```
 
-```text
+```
 -- 對照表
 mysql> SELECT *
     -> FROM   emp
@@ -56,9 +56,9 @@ mysql> SELECT *
 {% endtab %}
 
 {% tab title="COUNT2" %}
-\(p.101\) 傳回資料表中的資料列數
+(p.101) 傳回資料表中的資料列數
 
-```text
+```
 mysql> SELECT comm
     -> FROM emp
     -> WHERE deptno = 30;
@@ -87,15 +87,15 @@ mysql> SELECT COUNT(comm)
 {% endtab %}
 
 {% tab title="DISTINCT" %}
-`SELECT DISTINCT comm  
-FROM emp  
-WHERE deptno = 30;  
-	-- 🔶COUNT(DISTINCT column | expr)  
-	SELECT DISTINCT COUNT(comm)  
-	FROM emp  
-	WHERE deptno = 30;`
+`SELECT DISTINCT comm`\
+`FROM emp`\
+`WHERE deptno = 30;`\
+&#x9;`-- 🔶COUNT(DISTINCT column | expr)`\
+&#x9;`SELECT DISTINCT COUNT(comm)`\
+&#x9;`FROM emp`\
+&#x9;`WHERE deptno = 30;`
 
-```text
+```
 -- (p.102) 傳回欄位或運算式中去除重複資料的資料列數，但不包含空值。(p.102)
 mysql> SELECT DISTINCT comm
     -> FROM emp
@@ -126,7 +126,7 @@ mysql> SELECT DISTINCT COUNT(comm)
 {% endtab %}
 
 {% tab title="MAX" %}
-```text
+```
 -- MAX(column) | expr)對照(p.102)
 mysql> SELECT sal
     -> FROM emp
@@ -159,7 +159,7 @@ mysql> SELECT sal
 {% endtab %}
 
 {% tab title="MIN" %}
-```text
+```
 -- MIN(column) | expr)對照(p.103)
 mysql> SELECT sal
     -> FROM emp
@@ -191,7 +191,7 @@ mysql> SELECT MIN(sal)
 {% endtab %}
 
 {% tab title="SUM" %}
-```text
+```
 -- SUM(column) | expr)對照(p.103)
 mysql> SELECT sal
     -> FROM emp
@@ -223,7 +223,7 @@ mysql> SELECT SUM(sal)
 {% endtab %}
 
 {% tab title="AVG" %}
-```text
+```
 -- AVG(column) | expr)對照(p.104)
 +---------+
 | comm    |
@@ -266,9 +266,9 @@ mysql> SELECT AVG(IFNULL(comm,0)) AVG
 {% endtab %}
 
 {% tab title="綜合" %}
--- 群組函數\(p.105\)
+\-- 群組函數(p.105)
 
-```text
+```
 mysql> SELECT SUM(sal),MIN(sal),MAX(sal),AVG(sal),COUNT(*)
     -> FROM emp
     -> WHERE deptno = 30;
@@ -282,7 +282,7 @@ mysql> SELECT SUM(sal),MIN(sal),MAX(sal),AVG(sal),COUNT(*)
 {% endtab %}
 {% endtabs %}
 
-## 資料分組GROUP BY\(p.106\)
+## 資料分組GROUP BY(p.106)
 
 **`GROUP BY`** _欄位名_
 
@@ -290,7 +290,7 @@ mysql> SELECT SUM(sal),MIN(sal),MAX(sal),AVG(sal),COUNT(*)
 
 {% tabs %}
 {% tab title="分組" %}
-```text
+```
 -- GROUP BY資料分組(p.107)
 mysql> SELECT    deptno, SUM(sal)
     -> FROM      emp
@@ -304,7 +304,7 @@ mysql> SELECT    deptno, SUM(sal)
 +--------+----------+
 ```
 
-```text
+```
 -- NULL自己一組(p.108)
 mysql> SELECT   comm, COUNT(*)
     -> FROM     emp
@@ -320,7 +320,7 @@ mysql> SELECT   comm, COUNT(*)
 +---------+----------+
 ```
 
-```text
+```
 -- 使用ORDER BY (p.108)
 mysql> SELECT   deptno,SUM(sal)
     -> FROM     emp
@@ -337,9 +337,9 @@ mysql> SELECT   deptno,SUM(sal)
 {% endtab %}
 
 {% tab title="多欄分組" %}
--- 多欄分組\(多條件中都相符才歸為一組\)\(p.109\)
+\-- 多欄分組(多條件中都相符才歸為一組)(p.109)
 
-```text
+```
 mysql> SELECT   deptno,job,COUNT(*)
     -> FROM     emp
     -> GROUP BY deptno, job
@@ -363,13 +363,13 @@ mysql> SELECT   deptno,job,COUNT(*)
 {% endtab %}
 {% endtabs %}
 
-## 篩選分組資料 HAVING\(p.110\)
+## 篩選分組資料 HAVING(p.110)
 
 下面範例
 
 {% tabs %}
 {% tab title="分組篩選" %}
-```text
+```
 -- (p.109)
 mysql> SELECT deptno, MAX(sal) SalMax
     -> FROM emp
@@ -408,11 +408,11 @@ mysql> SELECT   deptno, sal
 {% endtab %}
 
 {% tab title="分組資料串接" %}
--- GROUP\_CONCAT分組資料串接  
--- SEPARATOR ==&gt;用甚麼隔開  
--- 範例：該部門有哪些職位、同部門去除重複的職位\(p.117\)
+\-- GROUP\_CONCAT分組資料串接\
+\-- SEPARATOR ==>用甚麼隔開\
+\-- 範例：該部門有哪些職位、同部門去除重複的職位(p.117)
 
-```text
+```
 mysql> SELECT deptno, GROUP_CONCAT(DISTINCT job SEPARATOR ',') jobs
     -> FROM emp
     -> GROUP BY deptno;
@@ -429,7 +429,7 @@ mysql> SELECT deptno, GROUP_CONCAT(DISTINCT job SEPARATOR ',') jobs
 
 
 
-## 作業練習－DQL-Group by\(p.117\)
+## 作業練習－DQL-Group by(p.117)
 
 1. 顯示所有員工的最高、最低、總和、平均薪資，表頭命名maximum,minimum,sum,average，顯示結果四捨五入取整數。
 2. 顯示每種職稱的最低、最高、總和、平均薪資。
@@ -441,7 +441,7 @@ mysql> SELECT deptno, GROUP_CONCAT(DISTINCT job SEPARATOR ',') jobs
 
 {% tabs %}
 {% tab title="1" %}
-```text
+```
 /*顯示所有員工的最高、最低、總和、平均薪資，
 表頭命名maximum,minimum,sum,average，顯示結果四捨五入取整數。*/
 SELECT ROUND(MAX(sal),0) 'Maximum',  
@@ -565,6 +565,4 @@ HAVING HYear IN (1980,1981,1982,1983);
 ```
 {% endtab %}
 {% endtabs %}
-
-
 

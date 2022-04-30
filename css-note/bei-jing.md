@@ -2,7 +2,7 @@
 
 ## 多重背景
 
-先打的圖片會在前面\[[w3c](https://www.w3schools.com/css/tryit.asp?filename=trycss3_background_multiple)\]
+先打的圖片會在前面\[[w3c](https://www.w3schools.com/css/tryit.asp?filename=trycss3\_background\_multiple)]
 
 {% tabs %}
 {% tab title="HTML" %}
@@ -34,8 +34,9 @@
 訣竅
 
 * 利用**::after偽元素**增加背景圖片，並設定透明度。
-* body設定「relative」； body::after設定「**absolute**」、還有「**top/bottom/left/right:0**」
-* body::after要加「**z-index\(負值\)**」才不會蓋到網頁上其他的東西哦～
+* body設定「relative」；\
+  body::after設定「**absolute**」、還有「**top/bottom/left/right:0**」
+* body::after要加「**z-index(負值)**」才不會蓋到網頁上其他的東西哦～
 
 {% tabs %}
 {% tab title="CSS" %}
@@ -65,9 +66,9 @@ body::after{ /*重複透明的圖片蓋在body上*/
 
 我不要整個網頁底部才看得到我的另一色，我想要「vh」+「fixed」的效果。
 
-![&#x5927;&#x6982;&#x662F;&#x9019;&#x6A23;&#x7684;&#x611F;&#x89BA;](../.gitbook/assets/image%20%2828%29.png)
+![大概是這樣的感覺](<../.gitbook/assets/image (28).png>)
 
-background設定「linear-gradient」按下**空白鍵**後繼續加上其他屬性  
+background設定「linear-gradient」按下**空白鍵**後繼續加上其他屬性\
 「**fixed**」「**center center / 100% 100%**」
 
 {% tabs %}
@@ -79,9 +80,9 @@ background: linear-gradient( #a9f,#9ff)
 {% endtab %}
 {% endtabs %}
 
-## 奇特的padding-top:100%背景\[[link](https://codepen.io/ch-zhuchu/pen/qBOwJGW)\]
+## 奇特的padding-top:100%背景\[[link](https://codepen.io/ch-zhuchu/pen/qBOwJGW)]
 
-![](../.gitbook/assets/image%20%2826%29.png)
+![](<../.gitbook/assets/image (26).png>)
 
 {% tabs %}
 {% tab title="HTML" %}
@@ -119,19 +120,18 @@ div.img_block{
 {% endtab %}
 {% endtabs %}
 
-## 圖片框\[[link](https://www.webmart.tw/blog/45-css-border-and-box-effect/)\]
+## 圖片框\[[link](https://www.webmart.tw/blog/45-css-border-and-box-effect/)]
 
-## 
+##
 
-## 自設透明圖片\(遮罩\)
+## 自設透明圖片(遮罩)
 
 {% embed url="https://bennettfeely.com/clippy/" %}
 
 舉例（六角形）：
 
-![](../.gitbook/assets/image%20%2832%29.png)
+![](<../.gitbook/assets/image (32).png>)
 
 ```css
 clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 ```
-

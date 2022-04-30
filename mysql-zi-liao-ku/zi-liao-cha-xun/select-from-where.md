@@ -4,84 +4,47 @@ description: 參照講義p.39~p.50、p.51~p.74
 
 # SELECT FROM WHERE
 
-## SELECT FROM\(p.39\)
+## SELECT FROM(p.39)
 
-* 顯示表格全部欄位及資料。 `SELECT * FROM` 表格名稱; 
-* 顯示指定欄位及其底下的資料。 SELECT 欄位名稱1,欄位名稱2,欄位名稱3... FROM 表格名稱; 
-* 設定欄位名稱別名，以逗號區隔欄位。 SELECT 欄位名稱1 欄位別名1,欄位名稱2 欄位別名2,欄位名稱3 欄位別名3... FROM 表格名稱; 
-* 欄位合併 \(p.47\) SELECT `concat`\(欄位名稱1,’用甚麼連結\(這是選填\)’,欄位名稱2\) 合併後的欄位名稱 FROM 表格名稱; 
-* 重複資料列排除\(DISTINCT\)，例如想知道公司的部門有哪些，用員工資料查詢。 \(p.48\) SELECT `DISTINCT` 欄位名稱 FROM 表格名稱; 
-* 查詢結果傳回資料筆數\(LIMIT\) \(p.49\) SELECT 欄位名稱1,欄位名稱2,欄位名稱3... FROM 表格名稱 `LIMIT` \[\(選填\)跳過開始的?筆資料,\] 顯示?筆資料;
+* 顯示表格全部欄位及資料。\
+  `SELECT * FROM` 表格名稱;\
+
+* 顯示指定欄位及其底下的資料。\
+  SELECT 欄位名稱1,欄位名稱2,欄位名稱3...\
+  FROM 表格名稱;\
+
+* 設定欄位名稱別名，以逗號區隔欄位。\
+  SELECT 欄位名稱1 欄位別名1,欄位名稱2 欄位別名2,欄位名稱3 欄位別名3...\
+  FROM 表格名稱;\
+
+* 欄位合併 (p.47)\
+  SELECT `concat`(欄位名稱1,’用甚麼連結(這是選填)’,欄位名稱2) 合併後的欄位名稱\
+  FROM 表格名稱;\
+
+* 重複資料列排除(DISTINCT)，例如想知道公司的部門有哪些，用員工資料查詢。 (p.48)\
+  SELECT `DISTINCT` 欄位名稱\
+  FROM 表格名稱;\
+
+* 查詢結果傳回資料筆數(LIMIT) (p.49)\
+  SELECT 欄位名稱1,欄位名稱2,欄位名稱3...\
+  FROM 表格名稱\
+  `LIMIT` \[(選填)跳過開始的?筆資料,] 顯示?筆資料;
 
 
 
-## SELECT FROM WHERE\(p.51\)
+## SELECT FROM WHERE(p.51)
 
 * 特定運算子:
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left"></th>
-      <th style="text-align:left">BETWEEN <em>x1</em> AND <em>x2</em>
-      </th>
-      <th style="text-align:left">IN(<em>x1,x2,...,xn</em>)</th>
-      <th style="text-align:left">LIKE</th>
-      <th style="text-align:left">IS NULL</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">&#x89E3;&#x8AAA;</td>
-      <td style="text-align:left">
-        <p>&#x5728;&#x67D0;&#x7BC4;&#x570D;(x1~x2)&#x5167;</p>
-        <p>&#x4F8B;&#x5982;1000~3000</p>
-        <p>&#x5305;&#x542B;x1&#x548C;x2&#x7684;&#x503C;</p>
-      </td>
-      <td style="text-align:left">
-        <p>&#x5728;&#x67D0;&#x500B;&#x5217;&#x8209;&#x7684;&#x96C6;&#x5408;&#x4E2D;(IN&#x7684;&#x62EC;&#x865F;&#x5167;&#x7684;&#x6578;)
-          <br
-          />
-        </p>
-        <p>x1&#x6216;x2...&#x6216;xn</p>
-      </td>
-      <td style="text-align:left">
-        <p>&#x6A21;&#x7CCA;&#x6BD4;&#x5C0D;</p>
-        <p>&#x2018;%x&#x2019;&#x4EFB;&#x610F;&#x9577;&#x5EA6;&#x5B57;&#x5143;</p>
-        <p>&#x2018;_x&#x2019;&#x4E00;&#x500B;&#x5B57;&#x5143;</p>
-      </td>
-      <td style="text-align:left"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left">&#x7BC4;&#x4F8B;</td>
-      <td style="text-align:left"><code>WHERE </code><em><code>sal </code></em><code>BETWEEN </code><em><code>2000 </code></em><code>AND </code><em><code>3500;</code></em>
-      </td>
-      <td style="text-align:left"><code>WHERE </code><em><code>code </code></em><code>IN (</code><em><code>&apos;A&apos;</code></em><code>,</code><em><code>&apos;B&apos;</code></em><code>,&apos;</code><em><code>C&apos;</code></em><code>);</code>
-      </td>
-      <td style="text-align:left">
-        <p><code>WHERE </code><em><code>ename </code></em><code>LIKE</code><em><code> &apos;_A%&apos;;</code></em>
-        </p>
-        <p>&#x610F;&#x601D;&#x662F;&#x7B2C;&#x4E8C;&#x500B;&#x5B57;&#x662F;A&#xFF0C;%&#x8868;*&#x4EFB;&#x610F;&#x5B57;</p>
-      </td>
-      <td style="text-align:left"></td>
-    </tr>
-    <tr>
-      <td style="text-align:left">&#x7BC4;&#x4F8B;&#x4E8C;</td>
-      <td style="text-align:left"></td>
-      <td style="text-align:left"></td>
-      <td style="text-align:left">
-        <p><code>WHERE </code><em><code>content </code></em><code>LIKE </code><em><code>&apos;%3\%%&apos; </code></em><b><code>ESCAPE </code></b><em><code>&apos;\&apos;</code></em><code>;</code>
-        </p>
-        <p>&#x8DF3;&#x812B;&#x5B57;&#x5143;&#x300C;\&#x300D;-- 3%</p>
-      </td>
-      <td style="text-align:left"></td>
-    </tr>
-  </tbody>
-</table>
+|     | BETWEEN _x1_ AND _x2_                                        | IN(_x1,x2,...,xn_)                                         | LIKE                                                                                                                                                                                                                              | IS NULL |
+| --- | ------------------------------------------------------------ | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| 解說  | <p>在某範圍(x1~x2)內</p><p>例如1000~3000</p><p>包含x1和x2的值</p>        | <p>在某個列舉的集合中(IN的括號內的數)<br></p><p>x1或x2...或xn</p>           | <p>模糊比對</p><p>‘%x’任意長度字元</p><p>‘_x’一個字元</p>                                                                                                                                                                                       |         |
+| 範例  | `WHERE`` `_`sal`_` ``BETWEEN`` `_`2000`_` ``AND`` `_`3500;`_ | `WHERE`` `_`code`_` ``IN (`_`'A'`_`,`_`'B'`_`,'`_`C'`_`);` | <p><code>WHERE </code><em><code>ename</code></em><code> LIKE </code><em><code>'_A%';</code></em></p><p>意思是第二個字是A，%表*任意字</p>                                                                                                       |         |
+| 範例二 |                                                              |                                                            | <p><code>WHERE </code><em><code>content</code></em><code> LIKE </code><em><code>'%3\%%'</code></em><code> </code><strong><code>ESCAPE</code></strong><code> </code><em><code>'\'</code></em><code>;</code></p><p>跳脫字元「\」-- 3%</p> |         |
 
 {% tabs %}
 {% tab title="比較運算" %}
-\(p.53\)
+(p.53)
 
 ```sql
 SELECT empno, ename,job,sal
@@ -98,7 +61,7 @@ WHERE sal >=3000;
 3 rows in set (0.02 sec)*/
 ```
 
-\(p.54\)
+(p.54)
 
 ```sql
 SELECT ename,ename,job,deptno,hiredate,sal
@@ -113,7 +76,7 @@ WHERE ename = 'KING';
 1 row in set (0.00 sec)*/
 ```
 
-```text
+```
 mysql> SELECT ename, sal, comm
     -> FROM   emp
     -> WHERE  sal<=comm;
@@ -127,9 +90,9 @@ mysql> SELECT ename, sal, comm
 {% endtab %}
 
 {% tab title="邏輯運算" %}
-\(p.55\) AND
+(p.55) AND
 
-```text
+```
 SELECT empno,ename,job,sal
 FROM   emp
 WHERE  sal>=1100 AND job='clerk';
@@ -143,7 +106,7 @@ WHERE  sal>=1100 AND job='clerk';
 2 rows in set (0.00 sec)*/
 ```
 
-```text
+```
 mysql> SELECT empno,ename,job,sal,mgr
     -> FROM   emp
     -> WHERE  sal>2000 AND job = 'manager';
@@ -157,9 +120,9 @@ mysql> SELECT empno,ename,job,sal,mgr
 3 rows in set (0.00 sec)
 ```
 
-\(p.56\) OR
+(p.56) OR
 
-```text
+```
 mysql> SELECT empno,ename,job,sal,mgr
     -> FROM   emp
     -> WHERE  sal>2000 OR job = 'manager';
@@ -176,9 +139,9 @@ mysql> SELECT empno,ename,job,sal,mgr
 6 rows in set (0.00 sec)
 ```
 
-\(p.57\) NOT
+(p.57) NOT
 
-```text
+```
 mysql> SELECT empno,ename,job,sal,mgr
     -> FROM   emp
     -> WHERE  NOT(sal>2000 OR job = 'manager');
@@ -197,9 +160,9 @@ mysql> SELECT empno,ename,job,sal,mgr
 {% endtab %}
 
 {% tab title="特殊運算子BETWEEN AND,IN,IS NULL" %}
-\(p.58\) **BETWEEN AND**查詢薪水介於2000到3500之間的員工
+(p.58) **BETWEEN AND**查詢薪水介於2000到3500之間的員工
 
-```text
+```
 mysql> SELECT empno,ename,job,sal
     -> FROM   emp
     -> WHERE  sal BETWEEN 2000 AND 3500;
@@ -216,9 +179,9 @@ mysql> SELECT empno,ename,job,sal
 6 rows in set (0.00 sec)
 ```
 
-\(p.59\) **IN** 列出職務為salesman或manager的員工
+(p.59) **IN** 列出職務為salesman或manager的員工
 
-```text
+```
 mysql> SELECT empno,ename,job,sal
     -> FROM   emp
     -> WHERE  job IN ('salesman','manager');
@@ -235,9 +198,9 @@ mysql> SELECT empno,ename,job,sal
 6 rows in set (0.01 sec)
 ```
 
-\(p.63\) **IS NULL** 找出公司老闆的資料\(mgr是null的員工\)
+(p.63) **IS NULL** 找出公司老闆的資料(mgr是null的員工)
 
-```text
+```
 mysql> SELECT empno,ename,job,sal,mgr
     -> FROM emp
     -> WHERE mgr IS NULL;
@@ -251,9 +214,9 @@ mysql> SELECT empno,ename,job,sal,mgr
 {% endtab %}
 
 {% tab title="特殊運算子LIKE" %}
-\(p.60\) **LIKE** 列出姓名以A開頭的員工
+(p.60) **LIKE** 列出姓名以A開頭的員工
 
-```text
+```
 mysql> SELECT empno,ename,job,sal
     -> FROM   emp
     -> WHERE  ename LIKE 'A%';
@@ -266,7 +229,7 @@ mysql> SELECT empno,ename,job,sal
 2 rows in set (0.00 sec)
 ```
 
-```text
+```
 -- (p.61)列出姓名以N結尾的員工
 mysql> SELECT empno,ename,job,sal
     -> FROM   emp
@@ -280,7 +243,7 @@ mysql> SELECT empno,ename,job,sal
 2 rows in set (0.00 sec)
 ```
 
-```text
+```
 -- (p.61) 列出姓名中含有T的員工
 mysql> SELECT empno,ename,job,sal
     -> FROM   emp
@@ -296,7 +259,7 @@ mysql> SELECT empno,ename,job,sal
 4 rows in set (0.00 sec)
 ```
 
-```text
+```
 -- (p.62) 列出姓名第二個字為A的員工
 mysql> SELECT empno,ename,job,sal
     -> FROM   emp
@@ -318,9 +281,9 @@ mysql> SELECT empno,ename,job,sal
 * NOT LIKE
 * **IS NOT NULL**
 
-\(p.64\) **NOT** 列出除了manager & salesman以外的員工
+(p.64) **NOT** 列出除了manager & salesman以外的員工
 
-```text
+```
 mysql> SELECT empno,ename,job,sal,deptno
     -> FROM   emp
     -> WHERE  job NOT IN ('salesman','manager');
@@ -341,17 +304,17 @@ mysql> SELECT empno,ename,job,sal,deptno
 {% endtabs %}
 
 {% tabs %}
-{% tab title="列舉式CASE\(p.66\)" %}
-SELECT ...  
-FROM ...  
- 　　　CASE 欄位名  
-　　　　　　WHEN '條件1' THEN 執行1  
-　　　　　　WHEN '條件2' THEN 執行2  
-　　　　　　WHEN '條件3' THEN 執行3  
-　　　　　　ELSE 執行4  
-　　　　　END 執行後新欄位名稱;-- \(以下代入例子\)
+{% tab title="列舉式CASE(p.66)" %}
+SELECT ...\
+FROM ...\
+&#x20;　　　CASE 欄位名\
+　　　　　　WHEN '條件1' THEN 執行1\
+　　　　　　WHEN '條件2' THEN 執行2\
+　　　　　　WHEN '條件3' THEN 執行3\
+　　　　　　ELSE 執行4\
+　　　　　END 執行後新欄位名稱;-- (以下代入例子)
 
-```text
+```
 SELECT empno, ename, sal, job,
     CASE job
       WHEN 'President' THEN Sal*1.5
@@ -382,17 +345,17 @@ FROM emp;
 ```
 {% endtab %}
 
-{% tab title="條件式CASE\(p.67\)" %}
-SELECT ...  
-FROM ...  
-WHERE  
-　　CASE 欄位名 BETWEEN x1 AND y1 THEN 執行1  
-　　　　　欄位名 BETWEEN x2 AND y2 THEN 執行2  
-　　　　　欄位名 BETWEEN x3 AND y3 THEN 執行3  
-　　　　　ELSE 執行4  
-　　　　END 執行後新欄位名稱;-- \(以下帶入例子\)
+{% tab title="條件式CASE(p.67)" %}
+SELECT ...\
+FROM ...\
+WHERE\
+　　CASE 欄位名 BETWEEN x1 AND y1 THEN 執行1\
+　　　　　欄位名 BETWEEN x2 AND y2 THEN 執行2\
+　　　　　欄位名 BETWEEN x3 AND y3 THEN 執行3\
+　　　　　ELSE 執行4\
+　　　　END 執行後新欄位名稱;-- (以下帶入例子)
 
-```text
+```
 SELECT empno, ename,sal,
 　　CASE 
       WHEN  sal BETWEEN 0    AND 1000 THEN 'A'
@@ -408,18 +371,18 @@ FROM emp;
 
 ## 條件篩選ORDER BY
 
-SELECT ...  
-FROM ...  
-WHERE  …  
-ORDER BY 欄位名稱 \| 欄位數 \| 欄位別名 \[ASC升冪預設 \| DESC降冪\];
+SELECT ...\
+FROM ...\
+WHERE  …\
+ORDER BY 欄位名稱 | 欄位數 | 欄位別名 \[ASC升冪預設 | DESC降冪];
 
 以下範例
 
 {% tabs %}
 {% tab title="基本" %}
-\(p.68\) 沒有指定的欄位也可以做排序
+(p.68) 沒有指定的欄位也可以做排序
 
-```text
+```
 mysql> SELECT   empno,ename,sal--  ←－－－－－－－－－－－－－－－－－－-
     -> FROM     emp            --                                  |
     -> WHERE    deptno =10     --                                  |
@@ -434,7 +397,7 @@ mysql> SELECT   empno,ename,sal--  ←－－－－－－－－－－－－－－
 3 rows in set (0.00 sec)
 ```
 
-```text
+```
 -- (p.70)依欄位別名排序
 mysql> SELECT   empno,ename,sal*12 annsal-- 🔹annsal是別名
     -> FROM     emp
@@ -450,7 +413,7 @@ mysql> SELECT   empno,ename,sal*12 annsal-- 🔹annsal是別名
 3 rows in set (0.00 sec)
 ```
 
-```text
+```
 -- (p.70)依運算式排序
 mysql> SELECT   empno,ename,sal+comm bonus
     -> FROM     emp
@@ -471,13 +434,13 @@ mysql> SELECT   empno,ename,sal+comm bonus
 {% endtab %}
 
 {% tab title="降冪" %}
-範例一：對薪資做降冪排序 \(p.69\)  
-`SELECT empno, ename, sal  
-FROM emp  
-WHERE deptno = 10  
-ORDER BY sal DESC;🔶`
+範例一：對薪資做降冪排序 (p.69)\
+`SELECT empno, ename, sal`\
+`FROM emp`\
+`WHERE deptno = 10`\
+`ORDER BY sal DESC;🔶`
 
-```text
+```
 +-------+--------+---------+
 | empno | ename  | sal     |
 +-------+--------+---------+
@@ -490,13 +453,13 @@ ORDER BY sal DESC;🔶`
 {% endtab %}
 
 {% tab title="第x欄" %}
-範例二：對第三直排做排序\(p.71\)  
-`SELECT *  
- FROM emp   
-WHERE deptno = 20   
-ORDER BY 3;🔶`
+範例二：對第三直排做排序(p.71)\
+`SELECT *`\
+&#x20;`FROM emp` \
+`WHERE deptno = 20` \
+`ORDER BY 3;🔶`
 
-```text
+```
 +-------+-------+---------+------+---------------------+---------+------+--------+
 | EMPNO | ENAME | JOB     | MGR  | HIREDATE            | SAL     | COMM | DEPTNO |
 +-------+-------+---------+------+---------------------+---------+------+--------+
@@ -511,18 +474,18 @@ ORDER BY 3;🔶`
 {% endtab %}
 
 {% tab title="多欄" %}
-範例三：多欄排序，以「逗號」分隔\(p.72\)
+範例三：多欄排序，以「逗號」分隔(p.72)
 
-* 對 \[部門\] 做升冪排序
-* 對 \[職稱\] 做升冪排序
-* 對 \[第六直欄\] 做降冪排序
-* 對 \[第一欄\]做升冪排序
+* 對 \[部門] 做升冪排序
+* 對 \[職稱] 做升冪排序
+* 對 \[第六直欄] 做降冪排序
+* 對 \[第一欄]做升冪排序
 
-`SELECT *  
-FROM emp  
-ORDER BY deptno, job, 6 DESC, 1;🔶`
+`SELECT *`\
+`FROM emp`\
+`ORDER BY deptno, job, 6 DESC, 1;🔶`
 
-```text
+```
 +-------+--------+-----------+------+---------------------+---------+---------+--------+
 | EMPNO | ENAME  | JOB       | MGR  | HIREDATE            | SAL     | COMM    | DEPTNO |
 +-------+--------+-----------+------+---------------------+---------+---------+--------+
@@ -546,15 +509,15 @@ ORDER BY deptno, job, 6 DESC, 1;🔶`
 {% endtab %}
 
 {% tab title="LIMIT" %}
-範例四：只顯示指定筆數\(p.73\)  
-\(例如有14橫列，LIMIT 5 就是指  只顯示前面五筆。\)
+範例四：只顯示指定筆數(p.73)\
+(例如有14橫列，LIMIT 5 就是指  只顯示前面五筆。)
 
-`SELECT ename, sal, job  
-FROM emp  
-ORDER BY sal DESC🔷  
-LIMIT 5;🔶`
+`SELECT ename, sal, job`\
+`FROM emp`\
+`ORDER BY sal DESC🔷`\
+`LIMIT 5;🔶`
 
-```text
+```
 +-------+---------+-----------+
 | ename | sal     | job       |
 +-------+---------+-----------+
@@ -573,13 +536,14 @@ LIMIT 5;🔶`
 不在「SELECT」的欄位也可以做排序。
 {% endhint %}
 
-## 作業練習－DQL-SELECT\(p.49\)
+## 作業練習－DQL-SELECT(p.49)
 
-1. 建立一個查詢來顯示部門\(dept\)資料表中的所有資料。
-2. 建立一個查詢來顯示每一位員工的姓名\(name\)、職稱\(job\)、到職日\(hire date\)、員工編號\(employee number\)，並將員工編號顯示在最前面。
-3. 建立一個查詢來顯示所有員工所擔任的職稱有哪些\(重複資料只顯示一次\)。
-4. 建立一個查詢來顯示每一位員工的姓名、職稱、到職日、員編，並將員編顯示在最前面。 將資料表頭重新命名:emp\#,Employee,job,hire date。
-5. 建立一個查詢將姓名、職稱串接為一個資料項\(資料中間利用一個空白和一個逗號做區隔\)，將表頭重新命名為employee and title。
+1. 建立一個查詢來顯示部門(dept)資料表中的所有資料。
+2. 建立一個查詢來顯示每一位員工的姓名(name)、職稱(job)、到職日(hire date)、員工編號(employee number)，並將員工編號顯示在最前面。
+3. 建立一個查詢來顯示所有員工所擔任的職稱有哪些(重複資料只顯示一次)。
+4. 建立一個查詢來顯示每一位員工的姓名、職稱、到職日、員編，並將員編顯示在最前面。\
+   將資料表頭重新命名:emp#,Employee,job,hire date。
+5. 建立一個查詢將姓名、職稱串接為一個資料項(資料中間利用一個空白和一個逗號做區隔)，將表頭重新命名為employee and title。
 
 {% tabs %}
 {% tab title="1" %}
@@ -713,14 +677,15 @@ SELECT CONCAT(ename,', ',job) 'Employee and Title'
 
 
 
-## 作業練習－DQL-WHERE\(p.73\)
+## 作業練習－DQL-WHERE(p.73)
 
 1. 顯示出所有員工薪資超過2850元的員工姓名和薪資。
 2. 顯示員編7566員工姓名及其所屬部門。
-3. 顯示薪資不介於1500~2850元的員工姓名及薪資。
+3. 顯示薪資不介於1500\~2850元的員工姓名及薪資。
 4. 顯示於1981-2-20和1981-5-1間進入公司的員工姓名、職稱、到職日，並依到職日由小到大排序。
 5. 顯示部門10和30所有員工姓名及其所屬部門編號，依名字英文字母排序。
-6. 顯示薪資超過1500且在10或30部門工作員工之姓名和薪資， 表頭命名為employee和monthly salary。
+6. 顯示薪資超過1500且在10或30部門工作員工之姓名和薪資，\
+   表頭命名為employee和monthly salary。
 7. 顯示於1982年進公司的所有員工姓名、職稱、到職日。
 8. 顯示沒有主管的員工姓名和職稱。
 9. 顯示所有有賺取佣金的員工姓名、薪資、佣金，並依薪資和佣金做降冪排序。
@@ -731,7 +696,7 @@ SELECT CONCAT(ename,', ',job) 'Employee and Title'
 
 {% tabs %}
 {% tab title="1" %}
-```text
+```
 -- 顯示出所有員工薪資超過2850元的員工姓名和薪資。
 SELECT  ename, sal 
 	FROM  emp 
@@ -965,4 +930,3 @@ SELECT  ename, sal, comm
 ```
 {% endtab %}
 {% endtabs %}
-
