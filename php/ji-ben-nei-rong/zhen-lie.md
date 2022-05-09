@@ -417,7 +417,7 @@ if(isset($_GET["ability"])){
 	shuffle($poker);
 	//分配給四個玩家
 	foreach($poker as $i => $data){
-		if		($data % 4 == 0){	$player1[$i] = $data;}
+		if    ($data % 4 == 0){	$player1[$i] = $data;}
 		elseif($data % 4 == 1){	$player2[$i] = $data;}
 		elseif($data % 4 == 2){ $player3[$i] = $data;}
 		elseif($data % 4 == 3){ $player4[$i] = $data;}
