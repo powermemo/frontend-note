@@ -2,33 +2,33 @@
 description: 參照講義p.135~p.148
 ---
 
-# 子查詢\(巢狀\)
+# 子查詢(巢狀)
 
-## 認識子查詢\(p.136\)
+## 認識子查詢(p.136)
 
-執行順序：先執行子查詢\(sub-Query\)再執行主查詢\(Main-query\)。
+執行順序：先執行子查詢(sub-Query)再執行主查詢(Main-query)。
 
-![](../../.gitbook/assets/image%20%2818%29.png)
+![](<../../.gitbook/assets/image (18).png>)
 
 ### 子查詢的種類
 
 1. 自主子查詢（參照講義p.138）
 2. 相關子查詢（參照講義p.144）
 
-### 子查詢的型式\(p.137\)
+### 子查詢的型式(p.137)
 
-1. 純量（單欄單筆）\(使用頻率80%\)\(=...\)
-2. 多值（單欄多筆）\(使用頻率20%\)\(in.any.all...\)
-3. 多欄位（多欄單筆）\(exists...\)
-4. 表格值（多欄多筆）\(exists...\)
+1. 純量（單欄單筆）(使用頻率80%)(=...)
+2. 多值（單欄多筆）(使用頻率20%)(in.any.all...)
+3. 多欄位（多欄單筆）(exists...)
+4. 表格值（多欄多筆）(exists...)
 
-### 子查詢出現的位置\(p.136\)
+### 子查詢出現的位置(p.136)
 
 * WHERE 子句
 * FROM子句
 * HAVING子句
 
-## 子查詢－自主子查詢\(p.138\)
+## 子查詢－自主子查詢(p.138)
 
 {% tabs %}
 {% tab title="單筆" %}
@@ -52,7 +52,7 @@ SELECT empno,ename,deptno
 +-------+--------+--------+
 ```
 
-```text
+```
 
 -- 8-9列出薪水比員工7566高的所有員工(p.139)
 mysql> use demo;
@@ -218,7 +218,7 @@ WHERE empno NOT IN (SELECT mgr
 
 {% tabs %}
 {% tab title="1" %}
-```text
+```
 -- 8-13 多筆紀錄的error
 -- 其一：子查詢GROUP BY含多筆結果，主查詢WHERE後「=」應只含一筆結果。
 mysql> SELECT empno, ename ,sal
@@ -244,18 +244,18 @@ Empty set (0.00 sec)
 {% endtab %}
 {% endtabs %}
 
-### 多筆記錄子查詢\(p.143\)
+### 多筆記錄子查詢(p.143)
 
-![10~50&#x6578;&#x503C;&#x53EA;&#x662F;&#x8209;&#x4F8B;](../../.gitbook/assets/image%20%287%29.png)
+![10\~50數值只是舉例](<../../.gitbook/assets/image (7).png>)
 
-* &lt;ALL：小於子查詢最小值
-* &gt;ALL：大於子查詢最大值
-* &lt;ANY：小於子查詢最大值
-* &gt;ANY：大於子查詢最小值
+* \<ALL：小於子查詢最小值
+* \>ALL：大於子查詢最大值
+* \<ANY：小於子查詢最大值
+* \>ANY：大於子查詢最小值
 
 {% tabs %}
 {% tab title="ANY" %}
-```text
+```
 -- 8-17使用ANY																		(p.143)
 -- 薪水<  職稱「clerk」(最高薪資1300)  的員工
 SELECT empno, ename, job
@@ -292,7 +292,7 @@ WHERE job = 'CLERK';
 {% endtab %}
 
 {% tab title="ALL" %}
-```text
+```
 -- 8-18 薪水 > salesman(最高薪資1600)的員工(p.143)
 SELECT empno, ename, job, sal
 FROM emp
@@ -329,13 +329,13 @@ WHERE job = 'salesman' ;
 {% endtab %}
 {% endtabs %}
 
-## 子查詢－相關子查詢\(p.144\)
+## 子查詢－相關子查詢(p.144)
 
-依賴外部查詢。子查詢用到主查詢的欄位\(相關\)
+依賴外部查詢。子查詢用到主查詢的欄位(相關)
 
 {% tabs %}
 {% tab title="同表" %}
-```text
+```
 -- 8-21 每個客戶「最近」跟公司下訂單的日期                (p.145)
 -- 沒有「WHERE」結果就會只有一筆
 -- 子查詢的WHERE意思是一個客戶一個客戶找
@@ -404,16 +404,16 @@ mysql> SELECT ename, sal, deptno
 {% endtab %}
 {% endtabs %}
 
-## EXISTS－存在性測試\(p.146\)
+## EXISTS－存在性測試(p.146)
 
-* EXISTS 存在性測試，結果只有true \| false
-* 語法WHERE \[NOT\] EXISTS \(subquery\)
+* EXISTS 存在性測試，結果只有true | false
+* 語法WHERE \[NOT] EXISTS (subquery)
 * 不需要任何欄位或運算式
 * 一般子查詢SELECT都用星號「\*」
 
 {% tabs %}
 {% tab title="存在、不存在" %}
-```text
+```
 -- 8-25 下過訂單的客戶資料                        (p.147)
 mysql> SELECT custid, name
     -> FROM customer AS c
@@ -436,9 +436,9 @@ mysql> SELECT custid, name
 9 rows in set (0.00 sec)
 ```
 
-↓不存在\(NOT EXIST\)\(p.147\)
+↓不存在(NOT EXIST)(p.147)
 
-```text
+```
 -- 8-26 為下過定單的客戶資料(結果是沒有w)
 mysql> SELECT custid, name
     -> FROM customer AS c
@@ -450,9 +450,9 @@ Empty set (0.00 sec)
 {% endtab %}
 {% endtabs %}
 
-## 作業練習－DQL子查詢\(p.148\)
+## 作業練習－DQL子查詢(p.148)
 
-9~11較難。
+9\~11較難。
 
 1. 顯示和Blake同部門的所有員工之姓名和進公司日期
 2. 顯示所有在Blake之後進公司的員工之姓名及進公司日期。
@@ -464,12 +464,12 @@ Empty set (0.00 sec)
 8. 顯示薪資比公司平均薪資還要高且和姓名中有T的人在相同部門上班的所有員工之員工編號，姓名和薪資。
 9. 🟡顯示和賺取佣金的員工之部門編號和薪資都相同的員工之姓名，部門編號和薪資。
 10. 🟡顯示和在DALLAS工作的員工之薪資和佣金相同的員工之姓名，部門編號和薪資。
-11. 🟡顯示薪資和佣金都和SCOTT相同的所有員工之姓名，進公司日期和薪資。\(不要在結果中顯示SCOTT的資料\)
+11. 🟡顯示薪資和佣金都和SCOTT相同的所有員工之姓名，進公司日期和薪資。(不要在結果中顯示SCOTT的資料)
 12. 顯示薪資比所有職稱是"CLERK"還高的員工之姓名，進公司日期和薪資，並將結果依薪資由高至低顯示。
 
 {% tabs %}
 {% tab title="1" %}
-```text
+```
 -- 顯示和Blake同部門的所有員工之姓名和進公司日期
 SELECT ename, hiredate 
 	FROM emp 
@@ -496,7 +496,7 @@ SELECT ename, hiredate
 SELECT ename, hiredate 
 	FROM emp 
   WHERE hiredate > (SELECT hiredate 
-						        FROM emp 
+		    FROM emp 
                     WHERE ename='Blake');
 +--------+---------------------+
 | ename  | hiredate            |
@@ -521,7 +521,7 @@ SELECT ename, hiredate
 姓名和薪資，並依薪資由高到低排列。*/
 SELECT empno, ename, sal 
 	FROM emp WHERE sal > (SELECT AVG(sal) 
-													FROM emp) 
+				    FROM emp) 
 	ORDER BY sal DESC;
 +-------+-------+---------+
 | empno | ename | sal     |
@@ -543,7 +543,7 @@ SELECT empno, ename, sal
 SELECT deptno, ename 
 		FROM emp 
     WHERE deptno IN (SELECT DISTINCT deptno 
-							      FROM emp 
+		    FROM emp 
                     WHERE ename LIKE '%T%');
 +--------+--------+
 | deptno | ename  |
@@ -570,7 +570,7 @@ SELECT deptno, ename
 SELECT ename, deptno, job 
 	FROM emp 
   WHERE deptno IN (SELECT deptno 
-						       FROM dept 
+		   FROM dept 
                    WHERE LOC = 'Dallas');
 +-------+--------+---------+
 | ename | deptno | job     |
@@ -607,7 +607,7 @@ mysql> select e.ename,d.deptno,e.job
 SELECT ename, sal 
 	FROM emp 
   WHERE mgr = (SELECT empno 
-					     FROM emp 
+	       FROM emp 
                WHERE ename='King');
 +-------+---------+
 | ename | sal     |
@@ -626,7 +626,7 @@ SELECT ename, sal
 SELECT deptno, ename, job 
 		FROM emp 
     WHERE deptno = (SELECT deptno 
-								    FROM dept 
+		   FROM dept 
                     WHERE dname='Sales');
 +--------+--------+----------+
 | deptno | ename  | job      |
@@ -666,9 +666,9 @@ mysql> select d.deptno,e.ename,e.job
 SELECT empno, ename, sal 
 	FROM emp 
   WHERE deptno IN (SELECT DISTINCT deptno 
-							   FROM emp 
+		 FROM emp 
                  WHERE ename LIKE '%T%' AND sal>(SELECT AVG(sal)
-                                                   FROM emp));  
+                                                      FROM emp));  
 +-------+-------+---------+
 | empno | ename | sal     |
 +-------+-------+---------+
@@ -688,9 +688,9 @@ SELECT empno, ename, sal
 SELECT e1.ename, e1.deptno, e1.sal 
 	FROM emp e1 JOIN (SELECT * FROM emp 
                      WHERE comm>0) e2 
-						ON (e1.empno <> e2.empno 
-								AND e1.deptno=e2.deptno 
-								AND e1.sal = e2.sal);
+		     ON (e1.empno <> e2.empno 
+		         AND e1.deptno=e2.deptno 
+		         AND e1.sal = e2.sal);
 +--------+--------+---------+
 | ename  | deptno | sal     |
 +--------+--------+---------+
@@ -707,12 +707,12 @@ SELECT e1.ename, e1.deptno, e1.sal
 SELECT e1.ename, e1.deptno, e1.sal 
 	FROM emp e1 JOIN (SELECT * FROM emp 
                     WHERE deptno= (SELECT deptno
-                   								FROM dept 
-																	WHERE loc='Dallas')) e2 
-						ON (e1.empno <> e2.empno 
-								AND e1.sal = e2.sal 
-								AND (e1.comm = e2.comm 
-									OR (e1.comm IS NULL AND e2.comm is NULL)));
+                   		   FROM dept 
+				   WHERE loc='Dallas')) e2 
+				   ON (e1.empno <> e2.empno 
+				     AND e1.sal = e2.sal 
+				     AND (e1.comm = e2.comm 
+				     OR (e1.comm IS NULL AND e2.comm is NULL)));
 +-------+--------+---------+
 | ename | deptno | sal     |
 +-------+--------+---------+
@@ -729,13 +729,13 @@ SELECT e1.ename, e1.deptno, e1.sal
 進公司日期和薪資。(不要在結果中顯示SCOTT的資料)*/
 SELECT e1.ename, e1.deptno, e1.sal 
 	FROM emp e1 JOIN (SELECT * FROM emp 
-										WHERE empno = (SELECT empno 
-																	FROM emp 
-																	WHERE ename='SCOTT')) e2 
-						ON (e1.empno <> e2.empno 
-						AND e1.sal = e2.sal 
-						AND (e1.comm = e2.comm 
-								OR (e1.comm IS NULL AND e2.comm is NULL)));
+	WHERE empno = (SELECT empno 
+	FROM emp 
+	WHERE ename='SCOTT')) e2 
+		ON (e1.empno <> e2.empno 
+		AND e1.sal = e2.sal 
+		AND (e1.comm = e2.comm 
+		     OR (e1.comm IS NULL AND e2.comm is NULL)));
 +-------+--------+---------+
 | ename | deptno | sal     |
 +-------+--------+---------+
@@ -752,7 +752,7 @@ SELECT e1.ename, e1.deptno, e1.sal
 SELECT ename, hiredate, sal 
 	FROM emp 
    WHERE sal > ALL (SELECT sal 
-							      FROM emp
+		    FROM emp
                     WHERE job = 'CLerk');
 +--------+---------------------+---------+
 | ename  | hiredate            | sal     |
@@ -770,4 +770,3 @@ SELECT ename, hiredate, sal
 ```
 {% endtab %}
 {% endtabs %}
-
