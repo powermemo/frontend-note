@@ -142,6 +142,8 @@ WHERE deptno = (SELECT deptno
 
 ## 資料庫交易(p.159)
 
+stackOverflow PHP範例：[https://stackoverflow.com/questions/2708237](https://stackoverflow.com/questions/2708237)
+
 * COMMIT確認交易
 * ROLLBACK放棄交易
 * SAVEPOINT設定交易儲存點
